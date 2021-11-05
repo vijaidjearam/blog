@@ -1,7 +1,7 @@
 title: Memos
 description: I’m not a JavaScript fan, but needs must.
 author: Vijai 
-baseurl: /minimal-blog-for-github-pages
+baseurl: /Blog
 timezone: Europe/Paris
 # social links
 #twitter_username: thesubmarine # DO NOT include the @ character, or else the build will fail!
