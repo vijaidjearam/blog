@@ -12,6 +12,16 @@ tags: Glpi Invnetory PowerBI
 4. Launch the "ODBC Data utility Source "from Windows
 5. Select the connector in question 
 6. Enter the requested information (in my case)
+|    <!-- -->          |        <!-- -->                     |
+|----------------------|-------------------------------------|
+| **Title**            | Control Your Home with Raspberry Pi |
+| **Author**           | Koen Vervloesem                     |
+| **Publication date** | 2020-08-17                          |
+| **Number of pages**  | 331                                 |
+| **Price**            | € 37.50                             |
+| **ISBN-13**          | 978-1-907920-94-3                   |
+| **ISBN-10**          | 1-907920-94-3                       |
+| **Publisher**        | Elektor International Media (EIM)   |
 
 | Connection Name | glpi-test        |
 | Server Name     | IP of the server |
