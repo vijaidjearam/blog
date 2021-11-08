@@ -25,4 +25,4 @@ tags: Glpi Invnetory PowerBI
 8. Start Power Bi Desktop 
 9. Then choose "ODBC" in the "Get Data" menu. A window opens and you just have to select your connector that you have just created. 
  * ![image](https://user-images.githubusercontent.com/1507737/140708662-bed85654-f644-4476-9e68-de4c5e9b7975.png)
-10. Enjoy!
+10. Enjoy!:smile:
