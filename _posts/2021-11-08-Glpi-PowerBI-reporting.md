@@ -7,7 +7,8 @@ tags: Glpi Invnetory PowerBI
 ---
 1. Install [Power BI Desktop](https://www.microsoft.com/en-us/download/details.aspx?id=58494) on a machine
 2. Download the ODBC connector for MariaDB from the [official site](https://dlm.mariadb.com/browse/odbc_connector/87/1186/) (Same principle for MySQL) 
-    * Note- Please install version : [mariadb-connector-odbc-3.1.13-win64.msi](https://dlm.mariadb.com/1671860/Connectors/odbc/connector-odbc-3.1.13/mariadb-connector-odbc-3.1.13-win64.msi) , the latest version: mariadb-connector-odbc-3.1.14-win64.msi has a bug - It crashes the ODBC Data Source utility while connection.
+    * Note- Please install version : [mariadb-connector-odbc-3.1.13-win64.msi](https://dlm.mariadb.com/1671860/Connectors/odbc/connector-odbc-3.1.13/mariadb-connector-odbc-3.1.13-win64.msi)  
+    * :smiling_imp: The latest version: mariadb-connector-odbc-3.1.14-win64.msi has a bug - It crashes the ODBC Data Source utility while connection.
 4. Launch the "ODBC Data utility Source "from Windows
 5. Select the connector in question 
 6. Enter the requested information (in my case)       - glpi-test       - IP of the server and identifier having the rights on the base       - Click on the Test DSN button to check the connection / ! \ If the test is in error, check that the firewall (client and server side) allows the MYSQL port to pass (by default 3306)
