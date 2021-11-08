@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2021-11-08 09:11:00
-title: Glpi - PowerBI
+title: Glpi-PowerBI-Reporting
 category: Glpi
 tags: Glpi Invnetory PowerBI
 ---
