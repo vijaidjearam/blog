@@ -12,6 +12,7 @@ tags: Glpi Invnetory PowerBI
 4. Launch the "ODBC Data utility Source "from Windows
 5. Select the connector in question 
 6. Enter the requested information (in my case)
+
 | Connection Name | glpi-test |
 | Server Name | IP of the server |
 | Port | 3306 |
