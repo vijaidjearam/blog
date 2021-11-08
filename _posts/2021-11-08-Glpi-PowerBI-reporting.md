@@ -8,7 +8,7 @@ tags: glpi inventory powerbi
 1. Install [Power BI Desktop](https://www.microsoft.com/en-us/download/details.aspx?id=58494) on a machine
 2. Download the ODBC connector for MariaDB from the [official site](https://dlm.mariadb.com/browse/odbc_connector/87/1186/) (Same principle for MySQL) 
     * Note- Please install version : [mariadb-connector-odbc-3.1.13-win64.msi](https://dlm.mariadb.com/1671860/Connectors/odbc/connector-odbc-3.1.13/mariadb-connector-odbc-3.1.13-win64.msi)  
-    * 😈 The latest version: mariadb-connector-odbc-3.1.14-win64.msi has a bug - It crashes the ODBC Data Source utility while connection.
+    * :smiling_imp: The latest version: mariadb-connector-odbc-3.1.14-win64.msi has a bug - It crashes the ODBC Data Source utility while connection.
 4. Launch the "ODBC Data utility Source "from Windows
 5. Select the connector in question 
 6. Enter the requested information (in my case)
@@ -25,4 +25,4 @@ tags: glpi inventory powerbi
 8. Start Power Bi Desktop 
 9. Then choose "ODBC" in the "Get Data" menu. A window opens and you just have to select your connector that you have just created. 
  * ![image](https://user-images.githubusercontent.com/1507737/140708662-bed85654-f644-4476-9e68-de4c5e9b7975.png)
-10. Enjoy!😀
+10. Enjoy!:smiley:
