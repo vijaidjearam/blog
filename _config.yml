@@ -1,7 +1,7 @@
 title: Snippets
 description: Just aim you can hit it!
 author: Vijai 
-baseurl: /Blog
+baseurl: /blog
 timezone: Europe/Paris
 # social links
 #twitter_username: thesubmarine # DO NOT include the @ character, or else the build will fail!
