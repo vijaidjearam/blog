@@ -5,7 +5,7 @@ title: Glpi - PowerBI
 category: Glpi
 tags: Glpi Invnetory PowerBI
 ---
-1. Install Power BI Desktop on a machine
+1. Install [Power BI Desktop](https://www.microsoft.com/en-us/download/details.aspx?id=58494) on a machine
 2. Download the ODBC connector for MariaDB from the [official site](https://mariadb.com/downloads/?showall=1&tab=connectors&group=mariadbconnectors&product=ODBC%20connector) (Same principle for MySQL) 
 3. Launch the "ODBC Data utility Source "from Windows
 4. Select the connector in question 
