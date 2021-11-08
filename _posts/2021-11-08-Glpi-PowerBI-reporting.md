@@ -3,7 +3,7 @@ layout: post
 date: 2021-11-08 09:11:00
 title: Glpi-PowerBI-Reporting
 category: Glpi
-tags: Glpi Invnetory PowerBI
+tags: glpi inventory powerbi
 ---
 1. Install [Power BI Desktop](https://www.microsoft.com/en-us/download/details.aspx?id=58494) on a machine
 2. Download the ODBC connector for MariaDB from the [official site](https://dlm.mariadb.com/browse/odbc_connector/87/1186/) (Same principle for MySQL) 
