@@ -6,7 +6,7 @@ category: Glpi
 tags: Glpi Invnetory PowerBI
 ---
 1) Install Power BI Desktop on a machine
-2) Download the ODBC connector for MariaDB from the official site (Same principle for MySQL)
+2) Download the ODBC connector for MariaDB from the [official site](https://mariadb.com/downloads/?showall=1&tab=connectors&group=mariadbconnectors&product=ODBC%20connector) (Same principle for MySQL) 
 3) Launch the "ODBC Data utility Source "from Windows
 4) Select the connector in question 
 5) Enter the requested information (in my case)       - Name to give to the connector       - IP of the server and identifier having the rights on the base       - A test button is used to test the connection / ! \ If the test is in error, check that the firewall (client and server side) allows the MYSQL port to pass (by default 3306). In my case it was the Centos firewall that was blocking it.
