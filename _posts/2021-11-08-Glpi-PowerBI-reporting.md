@@ -19,7 +19,7 @@ tags: Glpi Invnetory PowerBI
      * Password: 
  * ![image](https://user-images.githubusercontent.com/1507737/140706917-8f6c2dc4-8ed3-4600-a2e6-50f9bc69f6f7.png)
  * ![image](https://user-images.githubusercontent.com/1507737/140708528-5d640aa1-25f0-4f38-bdae-2795d6976cf2.png)
-If the test is successful, a message tells you so and you can choose your database 
+ * If the test is successful, a message tells you so and you can choose your database 
  * ![image](https://user-images.githubusercontent.com/1507737/140708624-5f1c272b-ab38-4a04-8f79-403f0a959631.png)
 6. Start Power Bi Desktop 
 7. Then choose "ODBC" in the "Get Data" menu. A window opens and you just have to select your connector that you have just created. 
