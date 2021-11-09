@@ -24,8 +24,8 @@ tags: glpi inventory powerbi
  * ![image](https://user-images.githubusercontent.com/1507737/140708624-5f1c272b-ab38-4a04-8f79-403f0a959631.png)
 8. Open the PowerBI file and click on the *refresh* button on the ribbon menu, a window pops up and demands for the database password. Please fill in the respective info and thats-it.
 9. Enjoy!:smiley:
-10. |   |   |   |   |   |
-|---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
+| cvcxbvx | xcvxv | xcvxvx | cxvxvx | xcvxcvcx |
+|---------|-------|--------|--------|----------|
+|         |       |        |        |          |
+|         |       |        |        |          |
+|         |       |        |        |          |
