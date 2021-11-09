@@ -27,9 +27,4 @@ tags: glpi inventory powerbi
  * ![image](https://user-images.githubusercontent.com/1507737/140708662-bed85654-f644-4476-9e68-de4c5e9b7975.png)
 10. Enjoy!:smiley:
 
-| PHPMyAdmin URL | http://192.168.33.11/phpmyadmin |
-| :--- | :--- |
-| Hostname | localhost |
-| Username | root |
-| Password | root |
-| Database | mabase |
+
