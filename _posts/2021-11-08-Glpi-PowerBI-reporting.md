@@ -11,7 +11,7 @@ tags: glpi inventory powerbi
     * :smiling_imp: The latest version: mariadb-connector-odbc-3.1.14-win64.msi has a bug - It crashes the ODBC Data Source utility while connection.
 3. Installation classic of mariadb-connector-odbc-3.1.13-win64.msi.
 4. Click the start button and search "ODBC Data Source (64 bit)" and lauch it with admin privilege.
-5. click add and in the Create New Data Source window select the MariDB ODBC 3.1 Driver and click on Finish button
+5. click add and in the Create New Data Source window select the MariqDB ODBC 3.1 Driver and click on Finish button
 	 * ![image](https://user-images.githubusercontent.com/1507737/140706917-8f6c2dc4-8ed3-4600-a2e6-50f9bc69f6f7.png)
 	 * Connection Name : glpi-test
 6. In the Next window  Enter the requested information (in my case)
