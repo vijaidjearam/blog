@@ -2,8 +2,8 @@
 layout: post
 date: 2021-11-15 09:11:00
 title: Docker-Glpi
-category: Glpi
-tags: glpi inventory powerbi
+category: Glpi 
+tags: glpi inventory docker
 ---
 # Install Docker Engine on Ubuntu
 ## Set up the repository            
