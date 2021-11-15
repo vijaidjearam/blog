@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2021-11-08 09:11:00
-title: Glpi-PowerBI-Reporting
+date: 2021-11-15 09:11:00
+title: Docker-Glpi
 category: Glpi
 tags: glpi inventory powerbi
 ---
