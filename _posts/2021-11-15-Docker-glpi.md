@@ -13,4 +13,5 @@ tags: glpi inventory powerbi
     ca-certificates \
     curl \
     gnupg \
-    lsb-release '''
+    lsb-release
+'''
