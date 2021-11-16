@@ -293,6 +293,6 @@ docker run \
 -p 80:80 \
 -d diouxx/glpi
  ```
- 2. On executing the above script remove the glpi-net-956 and creates a new network for the previous version, spins up the new container conneting to the respective volumes.
+ 2. On executing the above script removes the glpi-net-956 and creates a new network for the previous version, spins up the new container conneting to the respective volumes.
  
  
