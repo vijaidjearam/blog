@@ -255,4 +255,44 @@ to check the above, you can get into the container using the following command.
  
  :imp: Inside the file first replace 921 -> 922 and then 920 -> 921 save and execute the script.
  
-    
+ #Rollback Glpi to the previous version
+ 1. Lets take the scenario of rolling back 956 -> 921. create the following script *glpi-rollback-956-921.sh*.
+ ```
+ #!/bin/bash
+docker stop $(docker ps -a -q)
+docker network rm glpi-net-956
+docker network create \
+  --driver=bridge \
+  --subnet=172.0.0.1/24 \
+  --ip-range=172.0.0.1/24 \
+  --gateway=172.0.0.254 \
+  glpi-net-921
+docker run \
+--name mysql-921 \
+--hostname mysql-921  \
+-e MYSQL_ROOT_PASSWORD=diouxx \
+-e MYSQL_DATABASE=glpidb \
+-e MYSQL_USER=glpi_user \
+-e MYSQL_PASSWORD=glpi \
+--volume /var/lib/mysql-921:/var/lib/mysql \
+--network glpi-net-921 \
+--ip 172.0.0.2 \
+-p 3306:3306 \
+-d mysql:5.7.23
+docker run \
+--name glpi-921 \
+--hostname glpi-921 \
+--volume /var/www/html/glpi-921:/var/www/html/glpi \
+--volume /etc/timezone:/etc/timezone:ro \
+--volume /etc/localtime:/etc/localtime:ro \
+-e VERSION_GLPI=9.2.1 \
+-e TIMEZONE=Europe/Brussels \
+--network glpi-net-921 \
+--ip 172.0.0.3 \
+--add-host mysql:172.0.0.2 \
+-p 80:80 \
+-d diouxx/glpi
+ ```
+ 2. On executing the above script remove the glpi-net-956 and creates a new network for the previous version, spins up the new container conneting to the respective volumes.
+ 
+ 
