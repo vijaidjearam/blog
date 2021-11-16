@@ -255,7 +255,7 @@ to check the above, you can get into the container using the following command.
  
  :imp: Inside the file first replace 921 -> 922 and then 920 -> 921 save and execute the script.
  
- #Rollback Glpi to the previous version
+#Rollback Glpi to the previous version
  1. Lets take the scenario of rolling back 956 -> 921. create the following script *glpi-rollback-956-921.sh*.
  ```
  #!/bin/bash
