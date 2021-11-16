@@ -220,8 +220,8 @@ docker run \
 In the scenario above we have created a bridged network *glpi-net-921* and we have connected both the containers to the *glpi-net-921*.
 We have provided static ip to each container so that we can address it later
 Note: The glpi calls the database using the name mysql inside the container. The database container name in our case msql-921, if we start the application we will have an error regarding name resolution. To overcome this issue we have multiple ways
-  1. Using docker-compose.yml as we have in the first scenario, docker takes care of the rest.
-  2. Using the *--link mysql-921:mysql* in the docker run command while creating docker run command as follows:
+1. Using docker-compose.yml as we have in the first scenario, docker takes care of the rest.
+2. Using the *--link mysql-921:mysql* in the docker run command while creating docker run command as follows:
 ```
 docker run \
 --name glpi-921 \
@@ -238,16 +238,16 @@ docker run \
 -d diouxx/glpi
 ```
 
-    Note: The --link parameter in the docker run command doesnt work as expected if you create a custom bridge network. You can use the --link parameter with out connecting to a custom network and docker takes care of the rest for name resolution.
+Note: The --link parameter in the docker run command doesnt work as expected if you create a custom bridge network. You can use the --link parameter with out connecting to a custom network and docker takes care of the rest for name resolution.
 
-    While using the --link with out connecting to custom network. Docker does the name resolution by adding the host name and ip address automatically to /etc/hosts 
+While using the --link with out connecting to custom network. Docker does the name resolution by adding the host name and ip address automatically to /etc/hosts 
 
-    to check the above, you can get into the container using the following command.
+to check the above, you can get into the container using the following command.
 
 ```
  docker exec -it glpi-921 bash
  cat /etc/hosts
 ```
-    3. Using *--add-host mysql:172.0.0.2* in the docker run command. Here the addhost paramater adds the name resolution manually to /etc/hosts file.
-    Here we can take the advantage of custom network and static IP for the containers.
+ 3. Using *--add-host mysql:172.0.0.2* in the docker run command. Here the addhost paramater adds the name resolution manually to /etc/hosts file.
+ Here we can take the advantage of custom network and static IP for the containers.
     
