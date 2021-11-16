@@ -178,7 +178,7 @@ chmod +x glpi-update-916-920.sh
 ```
 ./glpi-update-916-920.sh
 ```
-4. Lets take the scenario of upgrading from 920-> 921 copy *glpi-update-916-920.sh* -> *glpi-update-920-921.sh* as following* as follows:
+4. Lets take the scenario of upgrading from 920-> 921 copy *glpi-update-916-920.sh* -> *glpi-update-920-921.sh* as follows:
 ```
 #!/bin/bash
 docker stop $(docker ps -a -q)
