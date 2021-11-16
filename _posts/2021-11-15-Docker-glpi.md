@@ -127,16 +127,16 @@ MYSQL_PASSWORD=glpi
   ```
   ![image](https://user-images.githubusercontent.com/1507737/141954734-db56bc9d-5716-4d42-83c5-c59c2b2e8b9b.png)
   
-  check if both the containers is attached to the current network.
+  check if both the containers are attached to the current network.
   
   
     
-
-6.create glpi-update-916-920.sh
+# Upgrade to the latest version of Glpi
+1.Lets take the scenario of upgrading version 916 -> 920 ,create *glpi-update-916-920.sh* as following
 ```
 #!/bin/bash
 docker stop $(docker ps -a -q)
-#docker network rm glpi-net-916
+docker network rm glpi-net-916
 docker network create \
   --driver=bridge \
   --subnet=172.0.0.1/24 \
@@ -171,8 +171,11 @@ docker run \
 -p 80:80 \
 -d diouxx/glpi
 ```
-6. make file executalble via the following command below
+2. make file executalble via the following command below
 ```
 chmod +x glpi-update-916-920.sh
 ```
-7.
+3.Exceute the file 
+```
+./glpi-update-916-920.sh
+```
