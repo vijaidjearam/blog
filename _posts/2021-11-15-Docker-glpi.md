@@ -238,7 +238,7 @@ docker run \
 -d diouxx/glpi
 ```
 
-Note: The --link parameter in the docker run command doesnt work as expected if you create a custom bridge network. You can use the --link parameter with out connecting to a custom network and docker takes care of the rest for name resolution. 
+Note: The --link parameter in the docker run command doesnt work as expected if you create a custom bridge network. You can use the --link parameter with out connecting to a custom network and docker takes care of the rest for name resolution. \ 
 While using the --link with out connecting to custom network. Docker does the name resolution by adding the host name and ip address automatically to /etc/hosts 
 to check the above config, you can get into the container using the following command.
 
