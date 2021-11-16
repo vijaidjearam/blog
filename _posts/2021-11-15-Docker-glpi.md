@@ -87,23 +87,23 @@ MYSQL_USER=glpi_user
 MYSQL_PASSWORD=glpi
 ```
 5.Now you can spin up the two new containers with docker-compose command
-1.Run this command to download the current stable release of Docker Compose:
+* Run this command to download the current stable release of Docker Compose:
     ```
     sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     ```
-2.Apply executable permissions to the binary:
+* Apply executable permissions to the binary:
     ```
     sudo chmod +x /usr/local/bin/docker-compose
     ```
-3.Test the install
+* Test the install
     ```
     docker-compose --version
     ```
-4. navigate to the docker-compose.yml directory and exceute the following command as below
+* navigate to the docker-compose.yml directory and exceute the following command as below
     ```
     docker-compose up -d
     ```
-6.Check the status of the docker container.
+* Check the status of the docker container.
     ```
     docker ps -a
     ```
