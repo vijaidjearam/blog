@@ -132,11 +132,10 @@ MYSQL_PASSWORD=glpi
   
     
 # Upgrade to the latest version of Glpi
-1.Lets take the scenario of upgrading version 916 -> 920 ,create *glpi-update-916-920.sh* as following
+1.Lets take the scenario of upgrading version 916 -> 920 ,create *glpi-update-916-920.sh* as follows:
 ```
 #!/bin/bash
 docker stop $(docker ps -a -q)
-docker network rm glpi-net-916
 docker network create \
   --driver=bridge \
   --subnet=172.0.0.1/24 \
@@ -178,4 +177,43 @@ chmod +x glpi-update-916-920.sh
 3.Exceute the file 
 ```
 ./glpi-update-916-920.sh
+```
+4. Lets take the scenario of upgrading from 920-> 921 copy *glpi-update-916-920.sh* -> *glpi-update-920-921.sh* as following* as follows:
+```
+#!/bin/bash
+docker stop $(docker ps -a -q)
+docker network rm glpi-net-920
+docker network create \
+  --driver=bridge \
+  --subnet=172.0.0.1/24 \
+  --ip-range=172.0.0.1/24 \
+  --gateway=172.0.0.254 \
+  glpi-net-921
+mkdir /var/lib/mysql-921
+cp -a /var/lib/mysql-920/. /var/lib/mysql-921
+docker run \
+--name mysql-921 \
+--hostname mysql-921  \
+-e MYSQL_ROOT_PASSWORD=diouxx \
+-e MYSQL_DATABASE=glpidb \
+-e MYSQL_USER=glpi_user \
+-e MYSQL_PASSWORD=glpi \
+--volume /var/lib/mysql-921:/var/lib/mysql \
+--network glpi-net-921 \
+--ip 172.0.0.2 \
+-p 3306:3306 \
+-d mysql:5.7.23
+docker run \
+--name glpi-921 \
+--hostname glpi-921 \
+--volume /var/www/html/glpi-921:/var/www/html/glpi \
+--volume /etc/timezone:/etc/timezone:ro \
+--volume /etc/localtime:/etc/localtime:ro \
+-e VERSION_GLPI=9.2.1 \
+-e TIMEZONE=Europe/Brussels \
+--network glpi-net-921 \
+--ip 172.0.0.3 \
+--add-host mysql:172.0.0.2 \
+-p 80:80 \
+-d diouxx/glpi
 ```
