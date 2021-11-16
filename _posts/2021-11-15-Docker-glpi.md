@@ -125,7 +125,7 @@ MYSQL_PASSWORD=glpi
   ```
   docker network inspect docker_default
   ```
-  ![image](https://user-images.githubusercontent.com/1507737/141954256-b4c8dbf7-98c6-4a08-84ac-dc81b5c28375.png)
+  ![image](https://user-images.githubusercontent.com/1507737/141954734-db56bc9d-5716-4d42-83c5-c59c2b2e8b9b.png)
   
   check if both the containers is attached to the current network.
   
