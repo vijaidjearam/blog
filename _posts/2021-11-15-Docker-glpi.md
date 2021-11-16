@@ -250,4 +250,7 @@ to check the above, you can get into the container using the following command.
 ```
  3. Using *--add-host mysql:172.0.0.2* in the docker run command. Here the addhost paramater adds the name resolution manually to /etc/hosts file.
  Here we can take the advantage of custom network and static IP for the containers.
+ :imp: So for the future upgrade simply copy the file *glpi-update-920-921.sh* -> *glpi-update-921-922.sh*.
+ :imp: Inside the file first replace 921 -> 922 and then 920 -> 921 save and execute the script.
+ 
     
