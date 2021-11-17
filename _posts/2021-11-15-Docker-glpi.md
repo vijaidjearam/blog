@@ -79,7 +79,9 @@ services:
       - VERSION_GLPI=9.1.6
     restart: always
 ```
+
 4. Create mysql.env as below
+
 ```
 MYSQL_ROOT_PASSWORD=diouxx
 MYSQL_DATABASE=glpidb
@@ -88,43 +90,43 @@ MYSQL_PASSWORD=glpi
 ```
 5.Now you can spin up the two new containers with docker-compose command
 * Run this command to download the current stable release of Docker Compose:
-    ```
-    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    ```
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
 * Apply executable permissions to the binary:
-    ```
-    sudo chmod +x /usr/local/bin/docker-compose
-    ```
+```
+sudo chmod +x /usr/local/bin/docker-compose
+```
 * Test the install
-    ```
-    docker-compose --version
-    ```
+```
+docker-compose --version
+```
 * navigate to the docker-compose.yml directory and exceute the following command as below
-    ```
-    docker-compose up -d
-    ```
+```
+docker-compose up -d
+```
 * Check the status of the docker container.
-    ```
-    docker ps -a
-    ```
+```
+docker ps -a
+```
     ![image](https://user-images.githubusercontent.com/1507737/141952594-96a8c330-c7b2-4204-8e21-51a4d5a0d3e3.png)
 * Check the network mode of the container (ex: glpi-916)
-  ```
-  docker inspect glpi-916
-  ```
+```
+docker inspect glpi-916
+```
   The ouptut is a json and in the json check the network mode to check the container is attached to which network.
   ![image](https://user-images.githubusercontent.com/1507737/141953392-b41acdc8-f8e8-4e2e-bcf2-9062f4ee3df6.png)
   
   Now use the following command to list the networks available.
-  ```
-  docker network ls
-  ```
+```
+docker network ls
+```
   ![image](https://user-images.githubusercontent.com/1507737/141953620-cf9744e8-1d4e-4210-800e-1bd698c98f68.png)
   
   you will find the docker_default network listed, to check the status of the docker_default network use the following command below
-  ```
-  docker network inspect docker_default
-  ```
+```
+docker network inspect docker_default
+```
   ![image](https://user-images.githubusercontent.com/1507737/141954734-db56bc9d-5716-4d42-83c5-c59c2b2e8b9b.png)
   
   check if both the containers are attached to the current network.
