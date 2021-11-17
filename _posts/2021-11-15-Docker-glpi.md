@@ -7,7 +7,7 @@ tags: glpi inventory docker
 ---
 # Install Docker Engine on Ubuntu
 ## Set up the repository            
-1.Update the apt package index and install packages to allow apt to use a repository over HTTPS:
+Update the apt package index and install packages to allow apt to use a repository over HTTPS:
 ``` 
     sudo apt-get update
     
@@ -17,37 +17,37 @@ tags: glpi inventory docker
     gnupg \
     lsb-release
 ```
-2.Add Docker’s official GPG key:
+Add Docker’s official GPG key:
 ``` 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 ```
-3.Use the following command to set up the stable repository. To add the nightly or test repository, add the word nightly or test (or both) after the word stable in the commands below. Learn about nightly and test channels.
+Use the following command to set up the stable repository. To add the nightly or test repository, add the word nightly or test (or both) after the word stable in the commands below. Learn about nightly and test channels.
 ``` 
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 ## Install Docker Engine
-1.Update the apt package index, and install the latest version of Docker Engine and containerd, or go to the next step to install a specific version:
+Update the apt package index, and install the latest version of Docker Engine and containerd, or go to the next step to install a specific version:
 ```
  sudo apt-get update
 
  sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```
-2.Verify that Docker Engine is installed correctly by running the hello-world image.
+Verify that Docker Engine is installed correctly by running the hello-world image.
 ```
  sudo docker run hello-world
 ```
 # Glpi Docker Configuring
-1. Create directory Docker in the root
+ Create directory Docker in the root
 ```
 mkdir /docker
 ```
-2.Create a docker-compose.yml inside /docker 
+Create a docker-compose.yml inside /docker 
 ```
 nano docker-compose.yml
 ```
-3. here is the content of the docker-compose.yml
+here is the content of the docker-compose.yml
 ```
 version: "3.2"
 
@@ -80,7 +80,7 @@ services:
     restart: always
 ```
 
-4. Create mysql.env as below
+Create mysql.env as below
 
 ```
 MYSQL_ROOT_PASSWORD=diouxx
@@ -88,7 +88,7 @@ MYSQL_DATABASE=glpidb
 MYSQL_USER=glpi_user
 MYSQL_PASSWORD=glpi
 ```
-5.Now you can spin up the two new containers with docker-compose command
+Now you can spin up the two new containers with docker-compose command
 * Run this command to download the current stable release of Docker Compose:
 ```
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -134,7 +134,7 @@ docker network inspect docker_default
   
     
 # Upgrade to the latest version of Glpi
-1.Lets take the scenario of upgrading version 916 -> 920 ,create *glpi-update-916-920.sh* as follows:
+Lets take the scenario of upgrading version 916 -> 920 ,create *glpi-update-916-920.sh* as follows:
 ```
 #!/bin/bash
 docker stop $(docker ps -a -q)
@@ -172,15 +172,15 @@ docker run \
 -p 80:80 \
 -d diouxx/glpi
 ```
-2. make file executalble via the following command below
+make file executalble via the following command below
 ```
 chmod +x glpi-update-916-920.sh
 ```
-3.Exceute the file 
+Exceute the file 
 ```
 ./glpi-update-916-920.sh
 ```
-4. Lets take the scenario of upgrading from 920-> 921 copy *glpi-update-916-920.sh* -> *glpi-update-920-921.sh* as follows:
+Lets take the scenario of upgrading from 920-> 921 copy *glpi-update-916-920.sh* -> *glpi-update-920-921.sh* as follows:
 ```
 #!/bin/bash
 docker stop $(docker ps -a -q)
@@ -220,10 +220,13 @@ docker run \
 -d diouxx/glpi
 ```
 In the scenario above we have created a bridged network *glpi-net-921* and we have connected both the containers to the *glpi-net-921*.
-We have provided static ip to each container so that we can address it later
+
+We have provided static ip to each container so that we can address it later.
+
 Note: The glpi calls the database using the name mysql inside the container. The database container name in our case msql-921, if we start the application we will have an error regarding name resolution. To overcome this issue we have multiple ways
-1. Using docker-compose.yml as we have in the first scenario, docker takes care of the rest.
-2. Using the *--link mysql-921:mysql* in the docker run command while creating docker run command as follows:
+
+- Using docker-compose.yml as we have in the first scenario, docker takes care of the rest.
+- Using the *--link mysql-921:mysql* in the docker run command while creating docker run command as follows:
 ```
 docker run \
 --name glpi-921 \
@@ -244,13 +247,13 @@ Note: The --link parameter in the docker run command doesnt work as expected if 
 
 While using the --link with out connecting to custom network. Docker does the name resolution by adding the host name and ip address automatically to /etc/hosts 
 
-to check the above, you can get into the container using the following command.
+- to check the above, you can get into the container using the following command.
 
 ```
  docker exec -it glpi-921 bash
  cat /etc/hosts
 ```
- 3. Using *--add-host mysql:172.0.0.2* in the docker run command. Here the addhost paramater adds the name resolution manually to /etc/hosts file.
+ - Using *--add-host mysql:172.0.0.2* in the docker run command. Here the addhost paramater adds the name resolution manually to /etc/hosts file.
  Here we can take the advantage of custom network and static IP for the containers.
  
  :imp: So for the future upgrade simply copy the file *glpi-update-920-921.sh* -> *glpi-update-921-922.sh*.
@@ -258,9 +261,9 @@ to check the above, you can get into the container using the following command.
  :imp: Inside the file first replace 921 -> 922 and then 920 -> 921 save and execute the script.
  
 # Rollback Glpi to previous version
- 1. Lets take the scenario of rolling back 956 -> 921. create the following script *glpi-rollback-956-921.sh*.
+- Lets take the scenario of rolling back 956 -> 921. create the following script *glpi-rollback-956-921.sh*.
 ```
- #!/bin/bash
+#!/bin/bash
 docker stop $(docker ps -a -q)
 docker network rm glpi-net-956
 docker network create \
@@ -295,6 +298,4 @@ docker run \
 -p 80:80 \
 -d diouxx/glpi
 ```
- 2. On executing the above script removes the glpi-net-956 and creates a new network for the previous version, spins up the new container conneting to the respective volumes.
- 
- 
+- On executing the above script removes the glpi-net-956 and creates a new network for the previous version, spins up the new container conneting to the respective volumes.
