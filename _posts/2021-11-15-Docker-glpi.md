@@ -257,7 +257,7 @@ to check the above, you can get into the container using the following command.
  
 # Rollback Glpi to previous version
  1. Lets take the scenario of rolling back 956 -> 921. create the following script *glpi-rollback-956-921.sh*.
- ```
+```
  #!/bin/bash
 docker stop $(docker ps -a -q)
 docker network rm glpi-net-956
@@ -292,7 +292,7 @@ docker run \
 --add-host mysql:172.0.0.2 \
 -p 80:80 \
 -d diouxx/glpi
- ```
+```
  2. On executing the above script removes the glpi-net-956 and creates a new network for the previous version, spins up the new container conneting to the respective volumes.
  
  
