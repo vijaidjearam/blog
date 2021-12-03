@@ -18,8 +18,9 @@ bcdedit /set {current} safeboot network
 ```
 * to resest the pcto boot normally :
   * use msconfig -> Boot -> disable safeboot 
+
 ## Stage 2
-* Boot the PC with windows iso and get into repair mode
+* Boot Pc from windows CD -> repair option -> command prompt;
 * launch command prompt and search for the drive letter that has windows and programfiles use that drive letter in the below command
 ```
 SFC /scannow /OFFBootdir=%drive%:\ /OFFWindir=%drive%:\Windows
