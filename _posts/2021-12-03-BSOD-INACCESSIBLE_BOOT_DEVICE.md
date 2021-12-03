@@ -16,7 +16,8 @@ bcdedit /set {default} safeboot minimal
 ```
 bcdedit /set {current} safeboot network
 ```
-* to resest the pcto boot normally :
+* If the pc is able to boot into safe mode, its evident that some driver or thirdparty apps is blocking the windows boot process
+* to reset the pc to boot normally :
   * use msconfig -> Boot -> disable safeboot 
 
 ## Stage 2
@@ -27,7 +28,7 @@ SFC /scannow /OFFBootdir=%drive%:\ /OFFWindir=%drive%:\Windows
 Dism /Image:%drive%:\ /Cleanup-Image /RestoreHealth
 chkdsk %drive%: /R /F
 ```
-* you can also prepare a batch file with the following content below to simlpify the steps:
+* you can also prepare a batch file with the following content below to simlipify the steps:
 ```
 @echo off 
 set /p drive=Input Drive letter:
