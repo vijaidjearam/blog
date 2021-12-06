@@ -25,9 +25,9 @@ restart-computer -Wait -Force -ComputerName $computer
 
 
 Invoke-Command -ComputerName $computer -ScriptBlock{
-#After restart
+# Type all the commands in this stage, After command is executed the uwf filter is enabled and the pc restarts
 #Set-ScheduledTask -TaskName scheduled-shutdown -User $env:COMPUTERNAME\user
-install-module DellBIOSProvider -Force
+#install-module DellBIOSProvider -Force
 #$env:Path += ";C:\Program Files (x86)\Dell\Command Configure\X86_64\"
 uwfmgr volume protect c:
 uwfmgr filter enable
