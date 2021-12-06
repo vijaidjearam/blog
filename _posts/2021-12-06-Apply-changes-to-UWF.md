@@ -2,7 +2,7 @@
 layout: post
 date: 2021-12-06 03:58:00
 title: Apply changes to Pc while UWF is enabled
-category: materiel
+category: Powershell
 tags: uwf powershell
 ---
 # The following script helps to make changes on a PC with UWF Active.
