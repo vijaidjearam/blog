@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2021-11-05 11:29:00
-title: Upgrade Zalman VE-300 firmware to an iodd 2531 firmware
+date: 2021-12-06 03:58:00
+title: Apply changes to Pc while UWF is enabled
 category: materiel
 tags: uwf powershell
 ---
