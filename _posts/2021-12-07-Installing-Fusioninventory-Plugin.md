@@ -8,7 +8,7 @@ tags: glpi fusioninventory
 
 # Installez et configurez le plugin FusionInventory
 
-Credit: https://openclassrooms.com/fr/courses/1730516-gerez-votre-parc-informatique-avec-glpi/5994176-installez-le-plugin-et-l-agent-fusioninventory
+Credit: [Openclassroom](https://openclassrooms.com/fr/courses/1730516-gerez-votre-parc-informatique-avec-glpi/5994176-installez-le-plugin-et-l-agent-fusioninventory)
 
 ## Installez le plugin
 
