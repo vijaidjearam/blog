@@ -41,8 +41,8 @@ Une fois connecté, rendez vous dans la rubrique suivante : Configuration > Plug
 ![pluginsmenu](https://user.oc-static.com/upload/2019/01/29/15487727238486_image11.png)
 Si les manipulations sur Linux sont correctes, vous devriez voir apparaître la fenêtre suivante :
 ![plugin fusion inventory](https://user.oc-static.com/upload/2019/01/29/15487727999289_image21.png)
-Si vous la voyez ainsi, c’est que le plugin FusionInventory est prêt à être installé dans GLPI. Cliquez sur #Installer pour continuer.
-L’installation est faite dans la base de données. Vous pouvez cliquer maintenant sur le bouton #Activer.
+Si vous la voyez ainsi, c’est que le plugin FusionInventory est prêt à être installé dans GLPI. Cliquez sur #Installer# pour continuer.
+L’installation est faite dans la base de données. Vous pouvez cliquer maintenant sur le bouton #Activer#.
 Ça y est ! Le plugin FusionInventory est installé. Il ne nous reste plus qu'à le configurer.
 
 ## Configurez le plugin FusionInventory
@@ -71,7 +71,7 @@ Une fois fini, on relance le daemon du cron :
 Retournez ensuite sur la page web de GLPI et allez dans le menu : Configuration > Actions Automatiques.
 Dans la liste (souvent en page 2), cherchez l’action automatique nommée TaskScheduler 
 ![Action automatic](https://user.oc-static.com/upload/2019/01/29/15487733998798_image40.png)
-Cliquez dessus pour ouvrir le menu et cliquez ensuite sur le bouton #Exécuter :
+Cliquez dessus pour ouvrir le menu et cliquez ensuite sur le bouton #Exécuter# :
 ![Task Scheduler](https://user.oc-static.com/upload/2019/01/29/1548773509188_image17.png)
 Si vous retournez dans : Administration > FusionInventory, le message d’erreur en jaune devrait avoir disparu !
 
