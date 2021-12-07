@@ -36,4 +36,4 @@ mv fusioninventory-for-glpi-glpi9.3-1.3/ fusioninventory/
 ## Finalisez l’installation sur l’interface web
 
 Revenons à présent dans GLPI. Connectez-vous avec le compte glpi (le super administrateur du serveur) :
-![loginpage]https://user.oc-static.com/upload/2019/01/29/15487725681875_image25.png
+![loginpage](https://user.oc-static.com/upload/2019/01/29/15487725681875_image25.png)
