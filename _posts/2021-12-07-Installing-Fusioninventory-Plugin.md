@@ -31,7 +31,7 @@ chown -R www-data:www-data /var/www/html/glpi/plugins
 Préparez la compatibilité du répertoire pour être visible dans GLPI
 ```
 cd /var/www/html/glpi/plugins
-mv fusioninventory-for-glpi-glpi9.3-1.3/ fusioninventory/
+mv /usr/src/fusioninvnetory fusioninventory/
 ```
 ## Finalisez l’installation sur l’interface web
 
