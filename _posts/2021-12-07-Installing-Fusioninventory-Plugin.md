@@ -5,9 +5,13 @@ title: Installing Fusioninventory Plugin
 category: GLPI
 tags: glpi fusioninventory
 ---
+
 # Installez et configurez le plugin FusionInventory
+
 Credit: https://openclassrooms.com/fr/courses/1730516-gerez-votre-parc-informatique-avec-glpi/5994176-installez-le-plugin-et-l-agent-fusioninventory
+
 ## Installez le plugin
+
 Le plugin est téléchargeable sur le site Internet dédié aux plugins, [à cette adresse](https://github.com/fusioninventory/fusioninventory-for-glpi/releases).
 Mettez à jour votre système :
 ```
@@ -29,3 +33,7 @@ Préparez la compatibilité du répertoire pour être visible dans GLPI
 cd /var/www/html/glpi/plugins
 mv fusioninventory-for-glpi-glpi9.3-1.3/ fusioninventory/
 ```
+## Finalisez l’installation sur l’interface web
+
+Revenons à présent dans GLPI. Connectez-vous avec le compte glpi (le super administrateur du serveur) :
+![loginpage]https://user.oc-static.com/upload/2019/01/29/15487725681875_image25.png
