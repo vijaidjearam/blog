@@ -28,7 +28,7 @@ The above errors if the Microsoft Store package folder is missing (or incomplete
 
 You can download the Microsoft Store app and its dependencies in the form of .Appx and .AppxBundle package or installers from Microsoft’s servers. Follow these steps to do so:
 
-1. Visit the following website:
+1. Visit the following website
 
 > [https://store.rg-adguard.net/](https://store.rg-adguard.net/)
 
@@ -71,6 +71,7 @@ get-appxpackage | sort-object -Property PackageFullName | select packagefullname
 ```
 
 If the package (of the same version) is already installed, you don’t have to install it again.
+
 ![image](https://user-images.githubusercontent.com/1507737/145414471-1c5578aa-16dc-4ec1-b37b-b11bb79cc510.png)
 
 > Getting the error 0x80073D05?
