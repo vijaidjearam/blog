@@ -11,13 +11,18 @@ powershell -ExecutionPolicy Unrestricted Add-AppxPackage -DisableDevelopmentMode
 
 ```
 # If you receive an <span style="color:red">error</span>
+<style>
+H1{color:Blue !important;}
+H2{color:DarkOrange !important;}
+p{color:Red !important;}
+</style>
 
-> <span style="color:red">Add-AppxPackage : Cannot find path 'C:\AppXManifest.xml' because it does not exist.
+> Add-AppxPackage : Cannot find path 'C:\AppXManifest.xml' because it does not exist.
 > At line:1 char:61
 > + ...  | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.I ...
 > +                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 >     + CategoryInfo          : ObjectNotFound: (C:\AppXManifest.xml:String) [Add-AppxPackage], ItemNotFoundException
->     + FullyQualifiedErrorId : PathNotFound,Microsoft.Windows.Appx.PackageManager.Commands.AddAppxPackageCommand</span>
+>     + FullyQualifiedErrorId : PathNotFound,Microsoft.Windows.Appx.PackageManager.Commands.AddAppxPackageCommand
 
 
 
