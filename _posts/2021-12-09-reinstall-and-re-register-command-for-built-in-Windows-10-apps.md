@@ -11,7 +11,7 @@ Credit : [winhelponline](https://www.winhelponline.com/blog/restore-windows-stor
 powershell -ExecutionPolicy Unrestricted Add-AppxPackage -DisableDevelopmentMode -Register $Env:SystemRoot\ImmersiveControlPanel\AppxManifest.xml
 
 ```
-# If you receive an <span style="color:red">error</span>
+# If you receive an error
 
 ```diff
 - Add-AppxPackage : Cannot find path 'C:\AppXManifest.xml' because it does not exist.
@@ -39,10 +39,13 @@ The above third-party site can generate download links (to app installers) for t
 > [https://www.microsoft.com/en-us/p/microsoft-store/9wzdncrfjbmp](https://www.microsoft.com/en-us/p/microsoft-store/9wzdncrfjbmp)
 
 3. Select Retail (or the appropriate branch accordingly), and click the generate button.
+
 ![image](https://user-images.githubusercontent.com/1507737/145414362-5c3cc380-a96b-442f-a8a1-2c2ac1b28886.png)
 
 4. As the Microsoft Store app depends on .NET Framework, .NET Runtime, and VC Libs, download the latest packages of each item listed. Be sure to download the correct ones matching the bitness (x86 vs. x64) of your Windows 10.
+
 5. Now, you would have downloaded these four Appx packages — the version numbers will vary according to the build/version of the Microsoft Store app.
+
 ```
 Microsoft.NET.Native.Framework.2.2_2.2.27912.0_x64__8wekyb3d8bbwe.Appx
 
@@ -54,12 +57,15 @@ Microsoft.WindowsStore_12010.1001.313.0_neutral___8wekyb3d8bbwe.AppxBundle
 ```
 
 6. Run each .appx installers first, as they’re the dependencies of Microsoft Store. Alternatively, you can use PowerShell to install each package. The PowerShell command-line syntax is below:
+
 ```
 Add-AppxPackage -Path "C:\Path\filename.Appx"
 ```
+
 - If you get the error Deployment failed with HRESULT: 0x80073D02, skip the package. It’s most likely because the package or dependency is already installed and currently in use by some other app.
 
 - Also, you can run the following command to check if an app package is already installed or not:
+
 ```
 get-appxpackage | sort-object -Property PackageFullName | select packagefullname | out-gridview
 ```
@@ -71,15 +77,19 @@ If the package (of the same version) is already installed, you don’t have to i
 > Open the C:\Users\(Your Username)\AppData\Local\Packages folder and try renaming the folder related to the app (e.g., Microsoft.VCLibs.140.00_8wekyb3d8bbwe) you’re trying to install. If Windows doesn’t let you delete the folder, try moving it to another folder or drive. Or, you may use other methods to delete the stubborn folder.
 
 7. Finally, run the Windows Store .appxbundle file and complete the process
+
 ![image](https://user-images.githubusercontent.com/1507737/145415130-1e37c519-bb66-47e9-b73d-a64a5596b62c.png)
 
 8. That’s it. The Microsoft Store app is now reinstated. Open Microsoft Store → Settings to check its version.
+
 ![image](https://user-images.githubusercontent.com/1507737/145415202-6393f085-01c2-4476-a985-228ab3ce0712.png)
 
 9. verify the Microsoft Store app info, open the PowerShell (administrator) window and run the following command:
+
 ```
 Get-AppxPackage -allusers Microsoft.WindowsStore
 ```
+
 ```
 Name                   : Microsoft.WindowsStore
 Publisher              : CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
@@ -106,6 +116,7 @@ IsPartiallyStaged      : False
 SignatureKind          : Store
 Status                 : Ok
 ```
+
 ![image](https://user-images.githubusercontent.com/1507737/145416556-eb8db193-5966-4899-b0de-03eeb9f7202a.png)
 
 You’ll see that the Microsoft Store app is fully installed along with its dependencies.
