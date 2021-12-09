@@ -6,11 +6,13 @@ category: Powershell
 tags: powershell windowsapp
 ---
 Credit : [winhelponline](https://www.winhelponline.com/blog/restore-windows-store-windows-10-uninstall-with-powershell/)
+
 # Reinstall and re-register command for built-in Windows 10 apps
-```
-powershell -ExecutionPolicy Unrestricted Add-AppxPackage -DisableDevelopmentMode -Register $Env:SystemRoot\ImmersiveControlPanel\AppxManifest.xml
 
 ```
+powershell -ExecutionPolicy Unrestricted Add-AppxPackage -DisableDevelopmentMode -Register $Env:SystemRoot\ImmersiveControlPanel\AppxManifest.xml
+```
+
 # If you receive an error
 
 ```diff
