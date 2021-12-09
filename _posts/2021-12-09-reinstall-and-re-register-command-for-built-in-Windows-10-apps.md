@@ -30,17 +30,17 @@ You can download the Microsoft Store app and its dependencies in the form of .Ap
 
 1. Visit the following website
 
-> [https://store.rg-adguard.net/](https://store.rg-adguard.net/)
+ > [https://store.rg-adguard.net/](https://store.rg-adguard.net/)
 
-The above third-party site can generate download links (to app installers) for the chosen app. These are direct download links pointing at the official Microsoft servers.
+ The above third-party site can generate download links (to app installers) for the chosen app. These are direct download links pointing at the official Microsoft servers.
 
 2. On the above page, paste the following link in the URL text box. The following is the Microsoft Store app’s official link.
 
-> [https://www.microsoft.com/en-us/p/microsoft-store/9wzdncrfjbmp](https://www.microsoft.com/en-us/p/microsoft-store/9wzdncrfjbmp)
+ > [https://www.microsoft.com/en-us/p/microsoft-store/9wzdncrfjbmp](https://www.microsoft.com/en-us/p/microsoft-store/9wzdncrfjbmp)
 
 3. Select Retail (or the appropriate branch accordingly), and click the generate button.
 
-![image](https://user-images.githubusercontent.com/1507737/145414362-5c3cc380-a96b-442f-a8a1-2c2ac1b28886.png)
+ ![image](https://user-images.githubusercontent.com/1507737/145414362-5c3cc380-a96b-442f-a8a1-2c2ac1b28886.png)
 
 4. As the Microsoft Store app depends on .NET Framework, .NET Runtime, and VC Libs, download the latest packages of each item listed. Be sure to download the correct ones matching the bitness (x86 vs. x64) of your Windows 10.
 
