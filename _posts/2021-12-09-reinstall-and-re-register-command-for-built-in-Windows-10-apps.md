@@ -38,7 +38,7 @@ The above third-party site can generate download links (to app installers) for t
 > [https://www.microsoft.com/en-us/p/microsoft-store/9wzdncrfjbmp](https://www.microsoft.com/en-us/p/microsoft-store/9wzdncrfjbmp)
 
 3. Select Retail (or the appropriate branch accordingly), and click the generate button.
-microsoft store reinstall app bundle
+![image](https://user-images.githubusercontent.com/1507737/145414362-5c3cc380-a96b-442f-a8a1-2c2ac1b28886.png)
 
 4. As the Microsoft Store app depends on .NET Framework, .NET Runtime, and VC Libs, download the latest packages of each item listed. Be sure to download the correct ones matching the bitness (x86 vs. x64) of your Windows 10.
 5. Now, you would have downloaded these four Appx packages — the version numbers will vary according to the build/version of the Microsoft Store app.
@@ -64,5 +64,44 @@ get-appxpackage | sort-object -Property PackageFullName | select packagefullname
 ```
 
 If the package (of the same version) is already installed, you don’t have to install it again.
+![image](https://user-images.githubusercontent.com/1507737/145414471-1c5578aa-16dc-4ec1-b37b-b11bb79cc510.png)
 
-list installed packages
+> Getting the error 0x80073D05?
+> Open the C:\Users\(Your Username)\AppData\Local\Packages folder and try renaming the folder related to the app (e.g., Microsoft.VCLibs.140.00_8wekyb3d8bbwe) you’re trying to install. If Windows doesn’t let you delete the folder, try moving it to another folder or drive. Or, you may use other methods to delete the stubborn folder.
+
+7. Finally, run the Windows Store .appxbundle file and complete the process
+![image](https://user-images.githubusercontent.com/1507737/145415130-1e37c519-bb66-47e9-b73d-a64a5596b62c.png)
+
+8. That’s it. The Microsoft Store app is now reinstated. Open Microsoft Store → Settings to check its version.
+![image](https://user-images.githubusercontent.com/1507737/145415202-6393f085-01c2-4476-a985-228ab3ce0712.png)
+
+9. verify the Microsoft Store app info, open the PowerShell (administrator) window and run the following command:
+```
+Get-AppxPackage -allusers Microsoft.WindowsStore
+```
+>>>
+Name                   : Microsoft.WindowsStore
+Publisher              : CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Architecture           : X64
+ResourceId             :
+Version                : 12010.1001.3.0
+PackageFullName        : Microsoft.WindowsStore_12010.1001.3.0_x64__8wekyb3d8bbwe
+InstallLocation        : C:\Program Files\WindowsApps\Microsoft.WindowsStore_12010.1001.3.0_x64__8wekyb3d8bbwe
+IsFramework            : False
+PackageFamilyName      : Microsoft.WindowsStore_8wekyb3d8bbwe
+PublisherId            : 8wekyb3d8bbwe
+PackageUserInformation : {S-1-5-21-460002293-3200999940-3601599048-1002 [shelltest]: Staged,
+                         S-1-5-21-460002293-3200999940-3601599048-500 [Administrator]: Installed,
+                         S-1-5-21-460002293-3200999940-3601599048-1001 [Ramesh Srinivasan]: Installed}
+IsResourcePackage      : False
+IsBundle               : False
+IsDevelopmentMode      : False
+NonRemovable           : False
+Dependencies           : {Microsoft.NET.Native.Framework.2.2_2.2.27912.0_x64__8wekyb3d8bbwe,
+                         Microsoft.NET.Native.Runtime.2.2_2.2.28604.0_x64__8wekyb3d8bbwe,
+                         Microsoft.VCLibs.140.00_14.0.29231.0_x64__8wekyb3d8bbwe,
+                         Microsoft.WindowsStore_12010.1001.3.0_neutral_split.scale-100_8wekyb3d8bbwe}
+IsPartiallyStaged      : False
+SignatureKind          : Store
+Status                 : Ok
+>>>
