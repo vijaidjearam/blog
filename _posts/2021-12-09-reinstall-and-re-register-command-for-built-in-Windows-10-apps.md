@@ -85,7 +85,7 @@ If the package (of the same version) is already installed, you don’t have to i
 
 ![image](https://user-images.githubusercontent.com/1507737/145415202-6393f085-01c2-4476-a985-228ab3ce0712.png)
 
-9. verify the Microsoft Store app info, open the PowerShell (administrator) window and run the following command:
+9. Verify the Microsoft Store app info, open the PowerShell (administrator) window and run the following command:
 
 ```
 Get-AppxPackage -allusers Microsoft.WindowsStore
@@ -120,6 +120,4 @@ Status                 : Ok
 
 ![image](https://user-images.githubusercontent.com/1507737/145416556-eb8db193-5966-4899-b0de-03eeb9f7202a.png)
 
-You’ll see that the Microsoft Store app is fully installed along with its dependencies.
-:smiley:
-
+You’ll see that the Microsoft Store app is fully installed along with its dependencies.:smiley:
