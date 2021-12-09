@@ -21,7 +21,7 @@ powershell -ExecutionPolicy Unrestricted Add-AppxPackage -DisableDevelopmentMode
 -     + FullyQualifiedErrorId : PathNotFound,Microsoft.Windows.Appx.PackageManager.Commands.AddAppxPackageCommand
 ```
 
-The above errors if the Microsoft Store package folder is missing (or incomplete) from the C:\Program Files\WindowsApps folder. You’ll need to download the Microsoft Store appx bundle/package from Microsoft and install it in those cases. The instructions are given in below.
+The above errors if the Microsoft Store package folder is missing (or incomplete) from the C:\Program Files\WindowsApps folder. You’ll need to download the Microsoft Store appx bundle/package from Microsoft and install it in those cases. The instructions are given below.
 
 # Download the Microsoft Store installer (Appx package)
 
