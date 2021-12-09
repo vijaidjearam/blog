@@ -29,13 +29,13 @@ You can download the Microsoft Store app and its dependencies in the form of .Ap
 
 1. Visit the following website:
 
-[https://store.rg-adguard.net/](https://store.rg-adguard.net/)
+> [https://store.rg-adguard.net/](https://store.rg-adguard.net/)
 
 The above third-party site can generate download links (to app installers) for the chosen app. These are direct download links pointing at the official Microsoft servers.
 
 2. On the above page, paste the following link in the URL text box. The following is the Microsoft Store app’s official link.
 
-[https://www.microsoft.com/en-us/p/microsoft-store/9wzdncrfjbmp](https://www.microsoft.com/en-us/p/microsoft-store/9wzdncrfjbmp)
+> [https://www.microsoft.com/en-us/p/microsoft-store/9wzdncrfjbmp](https://www.microsoft.com/en-us/p/microsoft-store/9wzdncrfjbmp)
 
 3. Select Retail (or the appropriate branch accordingly), and click the generate button.
 microsoft store reinstall app bundle
