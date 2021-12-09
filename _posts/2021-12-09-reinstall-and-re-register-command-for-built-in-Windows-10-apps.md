@@ -74,6 +74,7 @@ If the package (of the same version) is already installed, you don’t have to i
 ![image](https://user-images.githubusercontent.com/1507737/145414471-1c5578aa-16dc-4ec1-b37b-b11bb79cc510.png)
 
 > Getting the error 0x80073D05?
+> 
 > Open the C:\Users\(Your Username)\AppData\Local\Packages folder and try renaming the folder related to the app (e.g., Microsoft.VCLibs.140.00_8wekyb3d8bbwe) you’re trying to install. If Windows doesn’t let you delete the folder, try moving it to another folder or drive. Or, you may use other methods to delete the stubborn folder.
 
 7. Finally, run the Windows Store .appxbundle file and complete the process
