@@ -107,5 +107,6 @@ SignatureKind          : Store
 Status                 : Ok
 ```
 ![image](https://user-images.githubusercontent.com/1507737/145416556-eb8db193-5966-4899-b0de-03eeb9f7202a.png)
+
 You’ll see that the Microsoft Store app is fully installed along with its dependencies.
 
