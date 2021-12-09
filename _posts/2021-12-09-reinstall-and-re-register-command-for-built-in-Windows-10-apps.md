@@ -79,29 +79,27 @@ If the package (of the same version) is already installed, you don’t have to i
 ```
 Get-AppxPackage -allusers Microsoft.WindowsStore
 ```
->>>
-Name                   : Microsoft.WindowsStore
-Publisher              : CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
-Architecture           : X64
-ResourceId             :
-Version                : 12010.1001.3.0
-PackageFullName        : Microsoft.WindowsStore_12010.1001.3.0_x64__8wekyb3d8bbwe
-InstallLocation        : C:\Program Files\WindowsApps\Microsoft.WindowsStore_12010.1001.3.0_x64__8wekyb3d8bbwe
-IsFramework            : False
-PackageFamilyName      : Microsoft.WindowsStore_8wekyb3d8bbwe
-PublisherId            : 8wekyb3d8bbwe
-PackageUserInformation : {S-1-5-21-460002293-3200999940-3601599048-1002 [shelltest]: Staged,
-                         S-1-5-21-460002293-3200999940-3601599048-500 [Administrator]: Installed,
-                         S-1-5-21-460002293-3200999940-3601599048-1001 [Ramesh Srinivasan]: Installed}
-IsResourcePackage      : False
-IsBundle               : False
-IsDevelopmentMode      : False
-NonRemovable           : False
-Dependencies           : {Microsoft.NET.Native.Framework.2.2_2.2.27912.0_x64__8wekyb3d8bbwe,
-                         Microsoft.NET.Native.Runtime.2.2_2.2.28604.0_x64__8wekyb3d8bbwe,
-                         Microsoft.VCLibs.140.00_14.0.29231.0_x64__8wekyb3d8bbwe,
-                         Microsoft.WindowsStore_12010.1001.3.0_neutral_split.scale-100_8wekyb3d8bbwe}
-IsPartiallyStaged      : False
-SignatureKind          : Store
-Status                 : Ok
->>>
+> Name                   : Microsoft.WindowsStore
+> Publisher              : CN=Microsoft Corporation
+> Architecture           : X64
+> ResourceId             :
+> Version                : 12010.1001.3.0
+> PackageFullName        : Microsoft.WindowsStore_12010.1001.3.0_x64__8wekyb3d8bbwe
+> InstallLocation        : C:\Program Files\WindowsApps\Microsoft.WindowsStore_12010.1001.3.0_x64__8wekyb3d8bbwe
+> IsFramework            : False
+> PackageFamilyName      : Microsoft.WindowsStore_8wekyb3d8bbwe
+> PublisherId            : 8wekyb3d8bbwe
+> PackageUserInformation : {S-1-5-21-460002293-3200999940-3601599048-1002 [shelltest]: Staged
+> S-1-5-21-460002293-3200999940-3601599048-500 [Administrator]: Installed
+> S-1-5-21-460002293-3200999940-3601599048-1001 [Ramesh Srinivasan]: Installed}
+> IsResourcePackage      : False
+> IsBundle               : False
+> IsDevelopmentMode      : False
+> NonRemovable           : False
+> Dependencies           : {Microsoft.NET.Native.Framework.2.2_2.2.27912.0_x64__8wekyb3d8bbwe
+> Microsoft.NET.Native.Runtime.2.2_2.2.28604.0_x64__8wekyb3d8bbwe
+> Microsoft.VCLibs.140.00_14.0.29231.0_x64__8wekyb3d8bbwe
+> Microsoft.WindowsStore_12010.1001.3.0_neutral_split.scale-100_8wekyb3d8bbwe}
+> IsPartiallyStaged      : False
+> SignatureKind          : Store
+> Status                 : Ok
