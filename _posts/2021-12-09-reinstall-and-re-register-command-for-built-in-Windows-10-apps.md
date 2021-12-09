@@ -10,7 +10,7 @@ tags: powershell windowsapp
 powershell -ExecutionPolicy Unrestricted Add-AppxPackage -DisableDevelopmentMode -Register $Env:SystemRoot\ImmersiveControlPanel\AppxManifest.xml
 
 ```
-# If you receive an error
+# If you receive an <span style="color:red">error</span>
 
 > <span style="color:red">Add-AppxPackage : Cannot find path 'C:\AppXManifest.xml' because it does not exist.
 > At line:1 char:61
