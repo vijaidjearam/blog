@@ -18,4 +18,7 @@ powershell -ExecutionPolicy Unrestricted Add-AppxPackage -DisableDevelopmentMode
 > +                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 >     + CategoryInfo          : ObjectNotFound: (C:\AppXManifest.xml:String) [Add-AppxPackage], ItemNotFoundException
 >     + FullyQualifiedErrorId : PathNotFound,Microsoft.Windows.Appx.PackageManager.Commands.AddAppxPackageCommand</span>
+
+
+
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `#f03c15`
