@@ -11,11 +11,9 @@ powershell -ExecutionPolicy Unrestricted Add-AppxPackage -DisableDevelopmentMode
 
 ```
 # If you receive an <span style="color:red">error</span>
-<style>
-H1{color:Blue !important;}
-H2{color:DarkOrange !important;}
-p{color:Red !important;}
-</style>
+<style>p{color:Red;}</style>
+
+test
 
 > Add-AppxPackage : Cannot find path 'C:\AppXManifest.xml' because it does not exist.
 > At line:1 char:61
