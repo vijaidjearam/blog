@@ -16,7 +16,7 @@ invoke-command -ComputerName $comp -ScriptBlock {Get-ScheduledTask -TaskName sch
 ### To install Powershell Modules on Remote Pc with out prompting confirmation to the user (ex: DellBiosprovider)
 
 ```
-Invoke-Command -ComputerName $comp -ScriptBlock{Install-Module DellBiosProvider -Force -Confirm:$false} 
+Invoke-Command -ComputerName $comp -ScriptBlock{Install-Module DellBiosProvider -Force -SkipPublisherCheck -Confirm:$false} 
 ```
 
 ### To get Dell Bios Auto On Parameters
