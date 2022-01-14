@@ -19,6 +19,12 @@ invoke-command -ComputerName $comp -ScriptBlock {Get-ScheduledTask -TaskName sch
 Invoke-Command -ComputerName $comp -ScriptBlock{Install-Module DellBiosProvider -Force -SkipPublisherCheck -Confirm:$false} 
 ```
 
+### To install Powershell Modules on Remote Pc If Nuget is not installed (ex: DellBiosprovider)
+
+```
+Invoke-Command -ComputerName $comp -ScriptBlock{[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.208 -Force; Install-Module DellBiosProvider -Force -SkipPublisherCheck -Confirm:$false} 
+```
+
 ### To get Dell Bios Auto On Parameters
 
 👿 Make sure DellBiosProvider powershell module is installed in the client. 
