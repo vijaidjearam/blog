@@ -32,8 +32,8 @@ activate anonymous user -> if not if a user is trying to install application it 
 
 nexus-configuration
 
-|   |   |   |   |   |
-|---|---|---|---|---|
-| installDirectory  |  C:\ProgramData\nexus |   |   |   |
-|  workingDirectory |  C:\ProgramData\sonatype-work\nexus3 |   |   |   |
-| temporaryDirectory  | C:\ProgramData\sonatype-work\nexus3\tmp   |   |   |   |
+|   |   |   
+|---|---|
+| installDirectory  |  C:\ProgramData\nexus |  
+|  workingDirectory |  C:\ProgramData\sonatype-work\nexus3 |  
+| temporaryDirectory  | C:\ProgramData\sonatype-work\nexus3\tmp   |   
