@@ -6,7 +6,8 @@ category: chocolatey
 tags: chocolatey powershell
 ---
 
-##Installation: 
+##Installation:
+
 choco install nexus-repository
 note: if you need to configure nexus to run on port :80 
 - download the package and in the chocoinstall.ps1 change the port value to 80 
@@ -30,10 +31,10 @@ After the installation is completed the password  administrateur is in c:\progra
 change the default password 
 activate anonymous user -> if not if a user is trying to install application it will demand for username and password.
 
-nexus-configuration
+##nexus-configuration
 
 |   |   |   
 |---|---|
-| installDirectory  |  C:\ProgramData\nexus |  
-|  workingDirectory |  C:\ProgramData\sonatype-work\nexus3 |  
-| temporaryDirectory  | C:\ProgramData\sonatype-work\nexus3\tmp   |   
+| InstallDirectory  |  C:\ProgramData\nexus |  
+| WorkingDirectory |  C:\ProgramData\sonatype-work\nexus3 |  
+| TemporaryDirectory  | C:\ProgramData\sonatype-work\nexus3\tmp   |   
