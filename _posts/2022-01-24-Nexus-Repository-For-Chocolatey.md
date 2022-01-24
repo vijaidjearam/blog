@@ -37,4 +37,26 @@ activate anonymous user -> if not if a user is trying to install application it 
 |---|---|
 | InstallDirectory  |  C:\ProgramData\nexus |  
 | WorkingDirectory |  C:\ProgramData\sonatype-work\nexus3 |  
-| TemporaryDirectory  | C:\ProgramData\sonatype-work\nexus3\tmp   |   
+| TemporaryDirectory  | C:\ProgramData\sonatype-work\nexus3\tmp   |  
+
+## Config on Nexus Repository
+
+create three repository for chocolatey: chocolatey-proxy, chocolatey-hosted, chocolatey-group.
+
+![image](https://user-images.githubusercontent.com/1507737/150816577-a01e8b7b-44d3-4f70-9090-35a27eb5b4ee.png)
+
+create repository chocolatey-proxy
+
+![image](https://user-images.githubusercontent.com/1507737/150816677-ab643911-6b76-4f9b-a472-118abb0d7eaf.png)
+
+![image](https://user-images.githubusercontent.com/1507737/150816713-c9a4bad1-af92-4224-aa69-27cc732d43e1.png)
+
+![image](https://user-images.githubusercontent.com/1507737/150816743-02b1390d-8432-4c3a-9437-317b6af38732.png)
+
+click save
+for the chocolatey-hosted( this is for uploading internal package)
+click on create new repository -> select nuget(hosted) -> in the name field type chocolatey-hosted
+now for Chocolatey-group
+click create repository and choose nuget(group)
+name it as chocolatey-group 
+add chocolatey-proxy and chocolatey-hosted as members
