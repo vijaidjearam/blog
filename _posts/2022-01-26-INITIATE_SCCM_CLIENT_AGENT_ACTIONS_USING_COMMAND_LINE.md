@@ -29,3 +29,58 @@ CLIENT AGENT TRIGGER SCHEDULE ID
 |{00000000-0000-0000-0000-000000000027}|User policy evaluation cycle|
 |{00000000-0000-0000-0000-000000000032}|Windows installer source list update cycle|
 |{00000000-0000-0000-0000-000000000010}|File collection|
+
+![image](https://user-images.githubusercontent.com/1507737/151155683-bd766d66-b125-4354-be54-825c25670075.png)
+
+## INITIATE COMMAND LINE ON LOCAL SYSTEM
+
+First you need to open command prompt with elevated privileges. Run the following commands:
+
+||||
+|--- |--- |--- |
+|Client Action Name
+  (For Local System)|Client Agent Trigger Schedule ID|SCCM / MECM log files to verify|
+|Machine policy retrieval &
+  Evaluation Cycle|WMIC /namespace:\\root\ccm path
+  sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000021}"
+  /NOINTERACTIVE|PolicyAgent.log|
+|Machine policy evaluation cycle|WMIC /namespace:\\root\ccm path
+  sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000022}"
+  /NOINTERACTIVE||
+|Discovery Data Collection Cycle|WMIC /namespace:\\root\ccm path
+  sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000003}"
+  /NOINTERACTIVE|InventoryAgent.log|
+|Software inventory cycle|WMIC /namespace:\\root\ccm path
+  sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000002}"
+  /NOINTERACTIVE|Inventoryagent.log|
+|Hardware inventory cycle|WMIC /namespace:\\root\ccm path
+  sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000001}"
+  /NOINTERACTIVE|Inventoryagent.log|
+|Software updates scan cycle|WMIC /namespace:\\root\ccm path
+  sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000113}"
+  /NOINTERACTIVE|ScanAgent.log|
+|Software updates deployment evaluation
+  cycle|WMIC /namespace:\\root\ccm path
+  sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000114}"
+  /NOINTERACTIVE|ScanAgent.log,UpdateDeployment.log|
+|Software metering usage report cycle|WMIC /namespace:\\root\ccm path
+  sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000031}"
+  /NOINTERACTIVE|Mtrmgr.log|
+|Application deployment evaluation
+  cycle|WMIC /namespace:\\root\ccm path
+  sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000121}"
+  /NOINTERACTIVE|Appdiscovery.log, AppIntentEval|
+|User policy retrieval|WMIC /namespace:\\root\ccm path
+  sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000026}"
+  /NOINTERACTIVE||
+|User policy evaluation cycle|WMIC /namespace:\\root\ccm path
+  sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000027}"
+  /NOINTERACTIVE||
+|Windows installer source list update
+  cycle|WMIC /namespace:\\root\ccm path
+  sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000032}"
+  /NOINTERACTIVE||
+|File collection|WMIC /namespace:\\root\ccm path
+  sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000010}"
+  /NOINTERACTIVE||
+
