@@ -52,3 +52,37 @@ First you need to open command prompt with elevated privileges. Run the followin
 |User policy evaluation cycle|WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000027}" /NOINTERACTIVE||
 |Windows installer source list update cycle|WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000032}" /NOINTERACTIVE||
 |File collection|WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000010}" /NOINTERACTIVE||
+
+Log files can be verified to see the action initiated. You can find the logs under c:\windows\ccm\logs directory. Following is the screenshot for the reference:
+
+![image](https://user-images.githubusercontent.com/1507737/151156520-70ced51d-dff0-4794-919a-da790b9d1e16.png)
+
+## INITIATE COMMAND LINE ON REMOTE SYSTEM
+
+There will be a slight variation with the command by using the /node parameter with WMIC. Following is one example:
+
+```
+WMIC /node:"HOSTNAME" /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000021}" /NOINTERACTIVE
+```
+Where hostname is a remote system name where you wanted to execute the command.
+
+## INITIATE POWERSHELL COMMAND ON LOCAL SYSTEM
+
+```
+Invoke-WmiMethod -Namespace root\ccm -Class sms_client -Name TriggerSchedule "{00000000-0000-0000-0000-000000000021}"
+```
+
+## INITIATE POWERSHELL COMMAND ON REMOTE SYSTEM
+
+With Invoke-WmiMethod we have to use additional parameter ie. -ComputerName
+
+```
+Invoke-WmiMethod -ComputerName “hostname” -Namespace root\ccm -Class sms_client -Name TriggerSchedule "{00000000-0000-0000-0000-000000000021}"
+```
+
+
+
+
+
+
+
