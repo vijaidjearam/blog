@@ -48,3 +48,12 @@ Invoke-Command -ComputerName $comp -ScriptBlock {import-module DellBIOSProvider;
 ```
 Invoke-Command -ComputerName $comp -scriptblock {import-module DellBIOSProvider; si -Path DellSmbios:\PowerManagement\AutoOn "Weekdays" -Password ""}
 ```
+
+### To set Autoon only on Saturday at 08H00 in Bios
+
+```
+Invoke-Command -ComputerName $comp -scriptblock {import-module DellBIOSProvider; si -Path DellSmbios:\PowerManagement\AutoOn "SelectDays" -Password ""}
+Invoke-Command -ComputerName $comp -scriptblock {import-module DellBIOSProvider; si -Path DellSmbios:\PowerManagement\AutoOnSat "Enabled" -Password ""}
+Invoke-Command -ComputerName $comp -scriptblock {import-module DellBIOSProvider; si -Path DellSmbios:\PowerManagement\AutoOnHr "08" -Password ""}
+Invoke-Command -ComputerName $comp -scriptblock {import-module DellBIOSProvider; si -Path DellSmbios:\PowerManagement\AutoOnMn "00" -Password ""}
+```
