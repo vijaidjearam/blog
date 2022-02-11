@@ -41,6 +41,14 @@ Invoke-Command -ComputerName $comp -ScriptBlock {import-module DellBIOSProvider;
 Invoke-Command -ComputerName $comp -ScriptBlock {import-module DellBIOSProvider;Select-Object @{N="AcPwrRcvry";E={(Get-ChildItem -Path DellSmbios:\PowerManagement\AcPwrRcvry).CurrentValue}} -InputObject '';}  | Select-Object PSComputerName,AcPwrRcvry | Ft -AutoSize
 ```
 
+### To Disable Autoon in Bios
+
+👿 Make sure DellBiosProvider powershell module is installed in the client. 
+
+```
+Invoke-Command -ComputerName $comp -scriptblock {import-module DellBIOSProvider; si -Path DellSmbios:\PowerManagement\AutoOn "Disabled" -Password ""}
+```
+
 ### To set Autoon to weekdays in Bios
 
 👿 Make sure DellBiosProvider powershell module is installed in the client. 
