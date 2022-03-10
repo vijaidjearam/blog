@@ -10,6 +10,13 @@ tags: glpi fusioninventory
 
 Credit: [Openclassroom](https://openclassrooms.com/fr/courses/1730516-gerez-votre-parc-informatique-avec-glpi/5994176-installez-le-plugin-et-l-agent-fusioninventory)
 
+# Method 1 (Automated script):
+```
+wget -O - https://raw.githubusercontent.com/vijaidjearam/katacoda-scenarios/main/glpi-playground/source-file/fusioninventory-9530.sh | bash
+```
+
+# Method 2 (Install Manual):
+
 ## Installez le plugin
 
 Le plugin est téléchargeable sur le site Internet dédié aux plugins, [à cette adresse](https://github.com/fusioninventory/fusioninventory-for-glpi/releases).
@@ -76,6 +83,10 @@ Cliquez dessus pour ouvrir le menu et cliquez ensuite sur le bouton *Exécuter* 
 ![Task Scheduler](https://user.oc-static.com/upload/2019/01/29/1548773509188_image17.png)
 Si vous retournez dans : Administration > FusionInventory, le message d’erreur en jaune devrait avoir disparu !
 
+Or you can exceute the following command which will automate the fusion inventory install :
+```
+wget -O - https://raw.githubusercontent.com/vijaidjearam/katacoda-scenarios/main/glpi-playground/source-file/fusioninventory-9530.sh | bash
+```
 
 
 
