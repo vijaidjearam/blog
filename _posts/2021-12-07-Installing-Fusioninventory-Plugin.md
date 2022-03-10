@@ -32,7 +32,7 @@ chown -R www-data:www-data /var/www/html/glpi/plugins
 Préparez la compatibilité du répertoire pour être visible dans GLPI
 ```
 cd /var/www/html/glpi/plugins
-mv /usr/src/fusioninvnetory fusioninventory/
+mv /usr/src/fusioninventory fusioninventory/
 ```
 ## Finalisez l’installation sur l’interface web
 
