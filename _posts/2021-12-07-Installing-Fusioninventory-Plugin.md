@@ -21,6 +21,7 @@ Retournez dans le répertoire des sources et téléchargez le plugin FusionInven
 ```
 cd /usr/src
 wget https://github.com/fusioninventory/fusioninventory-for-glpi/releases/download/glpi9.5%2B3.0/fusioninventory-9.5+3.0.tar.bz2
+apt-get update
 apt-get install bzip2
 tar xjvf fusioninventory-9.5+3.0.tar.bz2
 ```
@@ -62,7 +63,7 @@ crontab -u www-data -e
 ```
 À la fin de celui-ci, ajoutez la ligne suivante et enregistrez ensuite :
 ```
-* * * * * * /usr/bin/php /var/www/html/glpi/front/cron.php &>/dev/null
+* * * * *  /usr/bin/php /var/www/html/glpi/front/cron.php &>/dev/null
 ```
 Une fois fini, on relance le daemon du cron :
 ```
