@@ -6,7 +6,7 @@ category: GLPI
 tags: glpi inventory
 ---
 
-## When you would like to upgrade to the new version of Glpi or new version of Fusion invnetory.
+## When you would like to upgrade to the new version of Glpi or new version of Fusion inventory.
 
 For instance if you have installed Glpi 9.5.7 and fusion invnetory 9.5.30 the folder where the data resides is Glpi957fusion9530
 ![image](https://user-images.githubusercontent.com/1507737/165894866-eb639f4f-c23c-4813-9016-be894afdc125.png)
@@ -84,14 +84,30 @@ Make the following changes in the stack code
 ```
 
 Update the stack
+
 Check the mariadb and mariadbslave container is up with no errors
+
 When you launch GLPI choose the upgrade option and point to the **glpi** database.
+
 if glpi page is not server, check the user group /var/www/html/glpi folder changeit as follows.
+
+If the glpi says the that it couldnt contact the sql server: make sure the mariadbcontainer is running in the same network of Glpi
+![image](https://user-images.githubusercontent.com/1507737/165898164-e10acc86-6d55-4094-8758-1c63dfc61c5a.png)
+
+
 
 ```
 sudo chown -R www-data:www-data /var/www/html
 ```
 Copy the /var/www/html/glpi/files folder from glpi957fusion9530 -> glpi958fusion9530  (This contains all the PDF files uploaded into the GLPI)
+
 Install [fusioninventory plugin](https://vijaidjearam.github.io/blog/glpi/2021/12/07/Installing-Fusioninventory-Plugin.html)
+
+Go to the Duplicati and edit the configuration to backup the newfolder glpi957fusion9530 -> glpi958fusion9530
+
+
+
+
+
 
 
