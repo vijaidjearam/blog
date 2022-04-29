@@ -89,10 +89,10 @@ Check the mariadb and mariadbslave container is up with no errors
 
 When you launch GLPI choose the upgrade option and point to the **glpi** database.
 
-if glpi page is not server, check the user group /var/www/html/glpi folder changeit as follows.
+  * if glpi page is not server, check the user group /var/www/html/glpi folder changeit as follows.
 
-If the glpi says the that it couldnt contact the sql server: make sure the mariadbcontainer is running in the same network of Glpi
-![image](https://user-images.githubusercontent.com/1507737/165898164-e10acc86-6d55-4094-8758-1c63dfc61c5a.png)
+  * If the glpi says the that it couldnt contact the sql server: make sure the mariadbcontainer is running in the same network of Glpi
+  ![image](https://user-images.githubusercontent.com/1507737/165898164-e10acc86-6d55-4094-8758-1c63dfc61c5a.png)
 
 
 
