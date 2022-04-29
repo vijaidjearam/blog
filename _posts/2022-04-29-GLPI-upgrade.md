@@ -89,7 +89,7 @@ Check the mariadb and mariadbslave container is up with no errors
 
 When you launch GLPI choose the upgrade option and point to the **glpi** database.
 
-  * if glpi page is not server, check the user group /var/www/html/glpi folder changeit as follows.
+  * if glpi page is not served, check the user group /var/www/html/glpi folder changeit as follows.
     ```
     sudo chown -R www-data:www-data /var/www/html
     ```
