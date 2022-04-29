@@ -95,7 +95,8 @@ When you launch GLPI choose the upgrade option and point to the **glpi** databas
     ```
 
   * If the glpi says the that it couldnt contact the sql server: 
-      * make sure the mariadbcontainer is running in the same network of Glpi
+      * Using portainer go into Glpi Container and try to Ping MariaDB.
+      * make sure the mariadb container is running in the same network of Glpi
        ![image](https://user-images.githubusercontent.com/1507737/165898164-e10acc86-6d55-4094-8758-1c63dfc61c5a.png)
       * Using FileBrowser go to *glpi957fusion9530/glpi-frontend/var/www/html/glpi/config/* and edit the config_db.php
        ![image](https://user-images.githubusercontent.com/1507737/165916339-859ade2c-0838-403e-af8e-2e980d1a8781.png)
