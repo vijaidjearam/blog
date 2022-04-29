@@ -2,7 +2,7 @@
 layout: post
 date: 2022-04-29 08:24:01
 title: GLPI Upgrade
-category: GLPI
+category: Glpi
 tags: glpi inventory
 ---
 
