@@ -94,9 +94,11 @@ When you launch GLPI choose the upgrade option and point to the **glpi** databas
     sudo chown -R www-data:www-data /var/www/html
     ```
 
-  * If the glpi says the that it couldnt contact the sql server: make sure the mariadbcontainer is running in the same network of Glpi
-  ![image](https://user-images.githubusercontent.com/1507737/165898164-e10acc86-6d55-4094-8758-1c63dfc61c5a.png)
-
+  * If the glpi says the that it couldnt contact the sql server: 
+      * make sure the mariadbcontainer is running in the same network of Glpi
+       ![image](https://user-images.githubusercontent.com/1507737/165898164-e10acc86-6d55-4094-8758-1c63dfc61c5a.png)
+      * Using FileBrowser go to *glpi957fusion9530/glpi-frontend/var/www/html/glpi/config/* and edit the config_db.php
+       ![image](https://user-images.githubusercontent.com/1507737/165916339-859ade2c-0838-403e-af8e-2e980d1a8781.png)
 
 Copy the /var/www/html/glpi/files folder from glpi957fusion9530 -> glpi958fusion9530  (This contains all the PDF files uploaded into the GLPI)
 
