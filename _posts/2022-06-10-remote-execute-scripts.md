@@ -9,6 +9,7 @@ tags: powershell
 Here is the script that executes powershell code on remote Pc and gets the status of the install or uninstall.
 
 '''
+
 Get-Job | Remove-Job -Force
 $computers = gc -Path C:\temp\temp.txt
 foreach ($computer in $computers)
