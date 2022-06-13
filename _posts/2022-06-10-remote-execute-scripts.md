@@ -11,7 +11,7 @@ Here is the script that executes powershell code on remote Pc and gets the statu
 ```
 
 Get-Job | Remove-Job -Force
-$computers = gc -Path C:\temp\temp.txt
+$computers = gc -Path C:\salle\D006-temp.txt
 foreach ($computer in $computers)
 {
 if (Test-Connection $computer -Count 1 -Quiet)
@@ -55,7 +55,7 @@ foreach($job in Get-Job){
       #$results+=@{ComputerName=$job.Location;Result=$result};
       $resultobject | Add-Member -MemberType NoteProperty -Name "ComputerName" -Value $job.Location
       $resultobject | Add-Member -MemberType NoteProperty -Name "Result" -Value $result
-      $resultobject | Add-Member -MemberType NoteProperty -Name "Install-Staus" -Value $installstatus
+      $resultobject | Add-Member -MemberType NoteProperty -Name "Install/uninstall-Status" -Value $installstatus
       $results +=$resultobject
 }
 $results | Out-GridView
