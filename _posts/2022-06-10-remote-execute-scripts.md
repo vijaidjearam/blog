@@ -9,9 +9,15 @@ tags: powershell
 Here is the script that executes powershell code on remote Pc and gets the status of the install or uninstall.
 
 ```
+function uninstall-software()
+{
+  Param
+    (
+        [Parameter(Mandatory = $true)] [Array] $computers,
+        [Parameter(Mandatory = $true)] [string] $uninstallstring
+    )
 
 Get-Job | Remove-Job -Force
-$computers = gc -Path C:\salle\D006-temp.txt
 foreach ($computer in $computers)
 {
 if (Test-Connection $computer -Count 1 -Quiet)
@@ -19,11 +25,10 @@ if (Test-Connection $computer -Count 1 -Quiet)
 write-host "Executing command on :"$computer -ForegroundColor Green
 Invoke-Command -ComputerName $computer -ScriptBlock{
 
-$kaspersky = Start-Process "msiexec.exe" -ArgumentList "/X {7EC66A9F-0A49-4DC0-A9E8-460333EA8013} /quiet /norestart" -Wait -PassThru; 
-$kaspersky.ExitCode
-#$kasperskyagent=Start-Process "msiexec.exe" -ArgumentList "/X {2924BEDA-E0D7-4DAF-A224-50D2E0B12F5B} /quiet /norestart" -Wait -PassThru;
-#write-host $kasperskyagent.ExitCode
-#write-host $LASTEXITCODE
+
+$software = Start-Process "msiexec.exe" -ArgumentList "/X {$uninstallstring} /quiet /norestart" -Wait -PassThru; 
+$software.ExitCode
+
 } -AsJob
 }
 else
@@ -32,6 +37,7 @@ Write-Host "$computer - Is offline" -BackgroundColor Red
 }
 
 }
+Write-Host "Command dispatched to all the Pcs online" -ForegroundColor Green
 While (Get-Job -State "Running") {
     Get-Job
     Start-Sleep 1
@@ -52,12 +58,21 @@ foreach($job in Get-Job){
       {$installstatus= "Nok"}
 
       $resultobject = New-Object psobject
-      #$results+=@{ComputerName=$job.Location;Result=$result};
       $resultobject | Add-Member -MemberType NoteProperty -Name "ComputerName" -Value $job.Location
       $resultobject | Add-Member -MemberType NoteProperty -Name "Result" -Value $result
       $resultobject | Add-Member -MemberType NoteProperty -Name "Install/uninstall-Status" -Value $installstatus
       $results +=$resultobject
 }
 $results | Out-GridView
+}
+
+# example of usage
+
+# uninstall-software -computers $computers -uninstallstring "7EC66A9F-0A49-4DC0-A9E8-460333EA8013"
+# Kaspersky - 7EC66A9F-0A49-4DC0-A9E8-460333EA8013
+# Kaspersky Agent - 2924BEDA-E0D7-4DAF-A224-50D2E0B12F5B
+
+# 948B0156-E2D5-4507-A553-FCF05AA03496  - F-secure security premium
+# A6A61BE1-7D2D-4B2A-8865-9CB38FF0E485 - F-Secure SWUP
 
 ```
