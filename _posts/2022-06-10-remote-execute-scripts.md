@@ -14,7 +14,8 @@ function uninstall-software()
   Param
     (
         [Parameter(Mandatory = $true)] [Array] $computers,
-        [Parameter(Mandatory = $true)] [string] $uninstallstring
+        [Parameter(Mandatory = $true)] [string] $uninstallstring,
+        [Parameter(Mandatory = $true)] [Array] $validexitcodes
     )
 
 Get-Job | Remove-Job -Force
@@ -52,7 +53,7 @@ $results = @()
 foreach($job in Get-Job){
 
       $result = Receive-Job $job
-      if ($result -eq 0)
+      if ($validexitcodes.Contains($result))
       {$installstatus= "ok"}
       else
       {$installstatus= "Nok"}
