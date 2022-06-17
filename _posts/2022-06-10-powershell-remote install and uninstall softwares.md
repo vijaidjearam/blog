@@ -1,12 +1,12 @@
 ---
 layout: post
 date: 2022-06-10 16:40:10
-title: Remote Execute Scripts Via Powershell
+title: Powershell remote install/uninstall softwares
 category: powershell
 tags: powershell
 ---
 
-Here is the script that executes powershell code on remote Pc and gets the status of the install or uninstall.
+Powershell Function to uninstall msi remotely and get the output status
 
 ```
 function uninstall-software()
@@ -77,3 +77,70 @@ $results | Out-GridView
 # A6A61BE1-7D2D-4B2A-8865-9CB38FF0E485 - F-Secure SWUP
 
 ```
+
+function to remotely install chocolatey softwares and get the result status
+
+```
+function install-choco-software()
+{
+  Param
+    (
+        [Parameter(Mandatory = $true)] [Array] $computers,
+        [Parameter(Mandatory = $true)] [string] $installstring,
+        [Parameter(Mandatory = $true)] [Array] $validexitcodes
+    )
+
+Get-Job | Remove-Job -Force
+foreach ($computer in $computers)
+{
+if (Test-Connection $computer -Count 1 -Quiet)
+{
+write-host "Executing command on :"$computer -ForegroundColor Green
+Invoke-Command -ComputerName $computer -ScriptBlock{
+
+param ($installstring)
+$software = Start-Process "cmd" -ArgumentList "/c choco install -y $installstring" -Wait -PassThru; 
+$software.ExitCode
+
+} -AsJob -ArgumentList $installstring
+}
+else
+{
+Write-Host "$computer - Is offline" -BackgroundColor Red
+}
+
+}
+Write-Host "Command dispatched to all the Pcs online" -ForegroundColor Green
+While (Get-Job -State "Running") {
+    Get-Job
+    Start-Sleep 1
+    cls
+}
+Get-Job
+write-host "Jobs completed, getting output"
+
+
+$results = @()
+
+foreach($job in Get-Job){
+
+      $result = Receive-Job $job
+      if ($validexitcodes.Contains($result))
+      {$installstatus= "ok"}
+      else
+      {$installstatus= "Nok"}
+
+      $resultobject = New-Object psobject
+      $resultobject | Add-Member -MemberType NoteProperty -Name "ComputerName" -Value $job.Location
+      $resultobject | Add-Member -MemberType NoteProperty -Name "Result" -Value $result
+      $resultobject | Add-Member -MemberType NoteProperty -Name "Install/uninstall-Status" -Value $installstatus
+      $results +=$resultobject
+}
+$results | Out-GridView
+}
+
+# example of usage
+
+# install-choco-software -computers $computer -installstring "f-secure" -validexitcodes @(0,3010)
+```
+
