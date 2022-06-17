@@ -15,27 +15,51 @@ function uninstall-software()
     (
         [Parameter(Mandatory = $true)] [Array] $computers,
         [Parameter(Mandatory = $true)] [string] $uninstallstring,
+        [string] $file,
+        [Parameter(Mandatory = $true)] [ValidateSet("Msi","Exe")] $uninstalltype,
         [Parameter(Mandatory = $true)] [Array] $validexitcodes
     )
 
 Get-Job | Remove-Job -Force
 foreach ($computer in $computers)
 {
-if (Test-Connection $computer -Count 1 -Quiet)
-{
-write-host "Executing command on :"$computer -ForegroundColor Green
-Invoke-Command -ComputerName $computer -ScriptBlock{
+    if (Test-Connection $computer -Count 1 -Quiet)
+    {
+    write-host "Executing command on :"$computer -ForegroundColor Green
+        if ($uninstalltype -eq "Msi")
+        {
+        Invoke-Command -ComputerName $computer -ScriptBlock{
+        param($uninstallstring)
+
+        $software = Start-Process "msiexec.exe" -ArgumentList "/X {$uninstallstring} /quiet /norestart" -Wait -PassThru; 
+        $software.ExitCode
+
+        } -AsJob -ArgumentList $uninstallstring
+        }
+        else
+        {
+        Invoke-CommandAs -ComputerName $computer -ScriptBlock{
+                param(
+                [string]$uninstallstring,
+                [string]$file
+                
+                )
+
+        write-host "uninstall string:" $uninstallstring
+        Write-Host "File:"$file
 
 
-$software = Start-Process "msiexec.exe" -ArgumentList "/X {$uninstallstring} /quiet /norestart" -Wait -PassThru; 
-$software.ExitCode
+        $software = Start-Process cmd -ArgumentList "/c $file $uninstallstring" -Wait -PassThru; 
+        $software.ExitCode
 
-} -AsJob
-}
-else
-{
-Write-Host "$computer - Is offline" -BackgroundColor Red
-}
+        } -AsJob -ArgumentList ($uninstallstring,$file) -AsSystem
+
+    }
+    }
+    else
+    {
+    Write-Host "$computer - Is offline" -BackgroundColor Red
+    }
 
 }
 Write-Host "Command dispatched to all the Pcs online" -ForegroundColor Green
@@ -69,12 +93,14 @@ $results | Out-GridView
 
 # example of usage
 
-# uninstall-software -computers $computers -uninstallstring "7EC66A9F-0A49-4DC0-A9E8-460333EA8013"
+# uninstall-software -computers $computers -uninstalltype "Msi" -uninstallstring "7EC66A9F-0A49-4DC0-A9E8-460333EA8013"
+# uninstall-software -uninstalltype Exe -file \\batchs\antivirus\antivirus_Fsecure\FsUninstallationTool.exe -uninstallstring "--silent" -computers $computer -validexitcodes @(0,99)
 # Kaspersky - 7EC66A9F-0A49-4DC0-A9E8-460333EA8013
 # Kaspersky Agent - 2924BEDA-E0D7-4DAF-A224-50D2E0B12F5B
 
 # 948B0156-E2D5-4507-A553-FCF05AA03496  - F-secure security premium
 # A6A61BE1-7D2D-4B2A-8865-9CB38FF0E485 - F-Secure SWUP
+
 
 ```
 
