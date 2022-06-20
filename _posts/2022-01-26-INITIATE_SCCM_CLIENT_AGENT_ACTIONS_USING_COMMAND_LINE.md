@@ -13,22 +13,22 @@ We can initiate SCCM Client agent actions by going to Configuration Manager Prop
 Every action stated under actions tab has a specific Trigger Schedule ID. The list of these ID’s are as follows:
 
 CLIENT AGENT TRIGGER SCHEDULE ID
-|||
-|--- |--- |
-|Client Agent Trigger Schedule ID|Client Action Name|
-|{00000000-0000-0000-0000-000000000021}|Machine policy retrieval & Evaluation Cycle|
-|{00000000-0000-0000-0000-000000000022}|Machine policy evaluation cycle|
-|{00000000-0000-0000-0000-000000000003}|Discovery Data Collection Cycle|
-|{00000000-0000-0000-0000-000000000002}|Software inventory cycle|
-|{00000000-0000-0000-0000-000000000001}|Hardware inventory cycle|
-|{00000000-0000-0000-0000-000000000113}|Software updates scan cycle|
-|{00000000-0000-0000-0000-000000000114}|Software updates deployment evaluation cycle|
-|{00000000-0000-0000-0000-000000000031}|Software metering usage report cycle|
-|{00000000-0000-0000-0000-000000000121}|Application deployment evaluation cycle|
-|{00000000-0000-0000-0000-000000000026}|User policy retrieval|
-|{00000000-0000-0000-0000-000000000027}|User policy evaluation cycle|
-|{00000000-0000-0000-0000-000000000032}|Windows installer source list update cycle|
-|{00000000-0000-0000-0000-000000000010}|File collection|
+
+|    Client Agent Trigger Schedule ID    |              Client Action Name              |
+|:--------------------------------------:|:--------------------------------------------:|
+| {00000000-0000-0000-0000-000000000021} |  Machine policy retrieval & Evaluation Cycle |
+| {00000000-0000-0000-0000-000000000022} |        Machine policy evaluation cycle       |
+| {00000000-0000-0000-0000-000000000003} |        Discovery Data Collection Cycle       |
+| {00000000-0000-0000-0000-000000000002} |           Software inventory cycle           |
+| {00000000-0000-0000-0000-000000000001} |           Hardware inventory cycle           |
+| {00000000-0000-0000-0000-000000000113} |          Software updates scan cycle         |
+| {00000000-0000-0000-0000-000000000114} | Software updates deployment evaluation cycle |
+| {00000000-0000-0000-0000-000000000031} |     Software metering usage report cycle     |
+| {00000000-0000-0000-0000-000000000121} |    Application deployment evaluation cycle   |
+| {00000000-0000-0000-0000-000000000026} |             User policy retrieval            |
+| {00000000-0000-0000-0000-000000000027} |         User policy evaluation cycle         |
+| {00000000-0000-0000-0000-000000000032} |  Windows installer source list update cycle  |
+| {00000000-0000-0000-0000-000000000010} |                File collection               |
 
 ![image](https://user-images.githubusercontent.com/1507737/151155683-bd766d66-b125-4354-be54-825c25670075.png)
 
