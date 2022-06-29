@@ -124,3 +124,21 @@ Status                 : Ok
 ![image](https://user-images.githubusercontent.com/1507737/145416556-eb8db193-5966-4899-b0de-03eeb9f7202a.png)
 
 You’ll see that the Microsoft Store app is fully installed along with its dependencies.:smiley:
+
+## Example to install microsoft windows calculator
+
+```
+get-appxpackage *calculator*
+```
+running the above command shows the result as folllows
+
+![image](https://docs.microsoft.com/answers/storage/attachments/104093-60.png)
+
+then go to below website on one internet connected computer and enter like "Microsoft.WindowsCalculator_8wekyb3d8bbwe" in box then we can find calculator and right click "open in new tab" to download Calculator .appxbundle file. Finally, we can copy this Calculator .appxbundle file to target computer and install it.
+
+https://store.rg-adguard.net/
+
+![image](https://docs.microsoft.com/answers/storage/attachments/104083-62.png)
+
+
+
