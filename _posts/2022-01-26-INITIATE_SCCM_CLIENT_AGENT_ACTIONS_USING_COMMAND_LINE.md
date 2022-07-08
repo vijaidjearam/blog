@@ -80,6 +80,11 @@ With Invoke-WmiMethod we have to use additional parameter ie. -ComputerName
 Invoke-WmiMethod -ComputerName “hostname” -Namespace root\ccm -Class sms_client -Name TriggerSchedule "{00000000-0000-0000-0000-000000000021}"
 ```
 
+## INITIATE Psexec COMMAND ON REMOTE SYSTEM
+
+```
+psexec.exe \\%%WKSNAME%% cmd /k WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000021}" /NOINTERACTIVE &amp;&amp; WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000121}" /NOINTERACTIVE &amp;&amp; WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000114}" /NOINTERACTIVE
+```
 
 
 
