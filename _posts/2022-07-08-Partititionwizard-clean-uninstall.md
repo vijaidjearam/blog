@@ -3,7 +3,7 @@ layout: post
 date: 2022-07-08 10:14:08
 title: PartitionWizard Clean Uninstall
 category: Windows
-tags: windows partition
+tags: windows
 ---
 
 # Partition Wizard Clean uninstall
