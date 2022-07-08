@@ -8,13 +8,13 @@ tags: windows partition
 
 # Partition Wizard Clean uninstall
 
-Uninstall partition wizard via chocolatey doesnt do a clean job.
+Uninstalling partition wizard via chocolatey doesnt do a clean job.
 
 The updatechecker.exe is still left in the PC  in "C:\Program Files\MiniTool Partition Wizard 12"
 
 There is also a scheduled task that needs to be deleted and Which in turn pops up an error message during the startup. 
 
-There error is as foolows: An error has occured in the script on this page.
+There error is as follows: An error has occured in the script on this page.
 
 ![googl script error](https://user-images.githubusercontent.com/1507737/177950506-9ec5e5b3-0e24-4c4c-bc23-eee14fced492.jpg)
 
