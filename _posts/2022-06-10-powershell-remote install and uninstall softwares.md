@@ -103,7 +103,7 @@ $results | Out-GridView
 
 # 948B0156-E2D5-4507-A553-FCF05AA03496  - F-secure security premium
 # A6A61BE1-7D2D-4B2A-8865-9CB38FF0E485 - F-Secure SWUP
-
+# uninstall-software -computers 028F2-0D0003015 -uninstalltype "Msi" -uninstallstring "FFD8CF3D-3063-4D97-B007-26258E71D02F" -validexitcodes @(0,0)
 
 ```
 
