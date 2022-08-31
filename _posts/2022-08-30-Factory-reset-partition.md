@@ -572,3 +572,19 @@ WlanAutoSense=Disabled
 WwanAutoSense=Disabled
 
 ```
+
+# Clone the disk using dd
+
+Boot from linuxmint or ubuntu and use dd to create a backup.
+Tried clonezilla , Macrium reflect , Lazersoft .. nothing works gives an error.
+so boot into live environment and use the following command to backup
+
+```
+sudo dd if=/dev/nvme0n1 of=/media/mint/Vijai/test/test.img bs=1K conv=noerror,sync status=progress
+```
+
+To restore
+
+```
+sudo dd if=/media/mint/Vijai/test/test.img of=/dev/nvme0n1  bs=1K conv=noerror,sync status=progress
+```
