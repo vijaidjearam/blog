@@ -582,8 +582,10 @@ so boot into live environment and use the following command to backup
 ```
 sudo dd if=/dev/nvme0n1 of=/media/mint/Vijai/test/test.img bs=1K conv=noerror,sync status=progress
 ```
+
 using Gzip compression
 
+```
 sudo dd if=/dev/nvme0n1 bs=1K conv=noerror,sync status=progress | gzip > /media/mint/Vijai/test/test.gz
 ```
 
