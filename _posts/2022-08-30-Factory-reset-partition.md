@@ -573,9 +573,9 @@ WwanAutoSense=Disabled
 
 ```
 # For Backing up the Disk
-:warning: Clonezilla live cd was not able to detetct the nvme disk in the dell, so use the following mode to backup
+:warning: Clonezilla live cd was not able to detect the nvme disk in the dell, so use the following mode to backup
 
-To backup the disk boot Linum mint the latest version available
+To backup the disk boot the machine using  Linum mint live cd
 
 Install clonezilla using the following command
 ```
@@ -590,7 +590,7 @@ Make the backup in the usual way.
 After backup is completed boot to the bios menu, you will find two partition to boot
 The Partition 2 is windows boot
 The partition 5 is clonezilla boot
-Please rename the boot menu using Bootice
+Please rename the boot menu using Bootice in windows environment. Restart and confirm the bootmenu changes.
 
 ⚠️ The backup partition is set to readonly if you want to create a new backup of the windows partition please change the attribute of the partition to readonly via the following command
 
