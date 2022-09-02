@@ -572,6 +572,33 @@ WlanAutoSense=Disabled
 WwanAutoSense=Disabled
 
 ```
+# For Backing up the Disk
+:warning: Clonezilla live cd was not able to detetct the nvme disk in the dell, so use the following mode to backup
+
+To backup the disk boot Linum mint the latest version available
+
+Install clonezilla using the following command
+```
+sudo apt install clonezilla
+```
+Launch clonezilla with the following command
+```
+sudo clonezilla
+```
+Make the backup in the usual way.
+
+After backup is completed boot to the bios menu, you will find two partition to boot
+The Partition 2 is windows boot
+The partition 5 is clonezilla boot
+Please rename the boot menu using Bootice
+
+⚠️ The backup partition is set to readonly if you want to create a new backup of the windows partition please change the attribute of the partition to readonly via the following command
+
+```
+ATT VOL CLEAR READONLY
+ATT VOL CLEAR HIDDEN
+```
+
 
 # Clone the disk using dd
 
@@ -601,3 +628,5 @@ using Gzip compression
 sudo gzip -c /media/mint/Vijai/test/test.gz | dd of=/dev/nvme0n1  bs=1K conv=noerror,sync status=progress
 
 ```
+
+
