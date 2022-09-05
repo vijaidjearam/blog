@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2022-09-02 14:34:20
-title: Réinitialiser le pc aux paramètres d'usine
+title: Reinitialiser le pc aux paramètres dusine
 category: Recovery 
 tags: Recovery clonezilla factory-reset
 ---
