@@ -600,6 +600,11 @@ ATT VOL CLEAR HIDDEN
 ```
 
 
+# For Restoring the disk with clonezilla backup
+⚠️ Make sure in the BIOS : UEFI boot path security is set to Never.
+After complteing the restoration process set UEFI boot path security to Always ( which prompts user for bios password to enter clonezilla partition)
+
+
 # Clone the disk using dd
 
 Boot from linuxmint or ubuntu and use dd to create a backup.
