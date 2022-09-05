@@ -572,8 +572,8 @@ WlanAutoSense=Disabled
 WwanAutoSense=Disabled
 
 ```
-# For Backing up the Disk
-:warning: Clonezilla live cd was not able to detect the nvme disk in the dell, so use the following mode to backup
+# For Backing up the Disk with clonezilla partition
+⚠️ Clonezilla live cd was not able to detect the nvme disk in the dell, so use the following mode to backup
 
 To backup the disk boot the machine using  Linum mint live cd
 
@@ -603,6 +603,7 @@ ATT VOL CLEAR HIDDEN
 # For Restoring the disk with clonezilla backup
 ⚠️ Make sure in the BIOS : UEFI boot path security is set to Never.
 After complteing the restoration process set UEFI boot path security to Always ( which prompts user for bios password to enter clonezilla partition)
+
 
 
 # Clone the disk using dd
