@@ -29,7 +29,7 @@ If you know the Admin Password
 * After the restart, your phone will be successfully reset
 
 If you do not know the Admin Password
-* Download the most recent firmware for your phone version (from AASTRA website) and unzip the actual firmware file under the root location (ex: C:\tftp).
+* Download the most recent firmware for your phone version (from **[Mitel](https://www.mitel.com/de-de/open-solutions/archives/6755)** website) and unzip the actual firmware file under the root location (ex: C:\tftp).
 
 ![image](https://user-images.githubusercontent.com/1507737/194351315-d33a1ee3-bd09-4057-b84b-faa88006ca04.png)
 * Download and install PumpKIN TFTP application.
