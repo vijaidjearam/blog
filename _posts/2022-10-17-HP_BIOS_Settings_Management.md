@@ -171,18 +171,7 @@ The script can be run as a standalone script in Windows, or as a part of a Confi
 
 Here are a few examples of calling the script from a PowerShell prompt.
 
-```
-#Set BIOS settings supplied in the script
-Manage-HPBiosSettings.ps1 -SetSettings -SetupPassword ExamplePassword
- 
-#Set BIOS settings supplied in a CSV file
-Manage-HPBiosSettings.ps1 -SetSettings -CsvPath C:\Temp\Settings.csv -SetupPassword ExamplePassword
- 
-#Output a list of current BIOS settings to the screen
-Manage-HPBiosSettings.ps1 -GetSettings
- 
-#Output a list of current BIOS settings to a CSV file
-Manage-HPBiosSettings.ps1 -GetSettings -CsvPath C:\Temp\Settings.csv
+
 ```
 #Set BIOS settings supplied in the script
 Manage-HPBiosSettings.ps1 -SetSettings -SetupPassword ExamplePassword
@@ -197,6 +186,7 @@ Manage-HPBiosSettings.ps1 -GetSettings
 Manage-HPBiosSettings.ps1 -GetSettings -CsvPath C:\Temp\Settings.csv
 
 ```
+
 
 Here is an example of calling the script during a task sequence. In this example the settings are specified in the body of the script, so the script can be stored directly in the task sequence step. Also the setup password is set, so the SetupPassword parameter is specified.
 
