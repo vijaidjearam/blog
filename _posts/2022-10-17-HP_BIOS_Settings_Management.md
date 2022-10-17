@@ -6,6 +6,7 @@ category: bios
 tags: bios hp
 ---
 HP BIOS Settings Management
+[source](https://www.configjon.com/hp-bios-settings-management/)
 
 JULY 29, 2019 BY JON ANDERSON
 HP BIOS Settings Management
