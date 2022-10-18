@@ -2,7 +2,7 @@
 layout: post
 date: 2022-10-17 15:08:24
 title: HP BIOS Settings Management
-category: bios
+category: BIOS
 tags: bios hp
 ---
 HP BIOS Settings Management
