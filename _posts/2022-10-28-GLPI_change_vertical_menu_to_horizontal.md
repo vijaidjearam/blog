@@ -7,6 +7,7 @@ tags: glpi inventory
 ---
 # Change Vertical Menu to Horizontal Menu
 
+
 ![image](https://user-images.githubusercontent.com/1507737/198555544-8180717e-5edf-4f29-9b87-8a4b1a7de049.png)
 
 Go to my settings:
