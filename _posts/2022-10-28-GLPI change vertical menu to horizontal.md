@@ -2,8 +2,8 @@
 layout: post
 date: 2022-10-28 11:31:50
 title: Change Vertical Menu to Horizontal Menu
-category: GLPI
-tags: GLPI 
+category: Glpi
+tags: Glpi
 ---
 # Change Vertical Menu to Horizontal Menu
 
