@@ -14,5 +14,7 @@ HKEY_LOCAL_MACHINE\Software\WOW6432Node\Insight Tech Console\WOL_List
 ```
 
 Once all the PC's are dynamically auto-populated in the Insight Tech console app, Go to the following registry and backup the registry key as .reg file.
+
 On executing the .reg file all the pcs can be imported to the Insight Tech console in case of data loss or after new installation.
+
 😋 Thats it!... 😄
