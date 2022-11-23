@@ -199,7 +199,7 @@ An exe has been generated called Install.exe
 
 Calling the Install.exe will automate the process of install.
 
-Copy the **RG_V9_Rev.ZA_ROBOGUIDE_[A08B-9410-J605]** package to to temp deirectory of the client via Insight send file.
+Copy the **RG_V9_Rev.ZA_ROBOGUIDE_[A08B-9410-J605]** package to to temp directory of the client via Insight send file.
 
 execute the following command to install
 
