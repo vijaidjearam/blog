@@ -236,5 +236,5 @@ Executing the following command generates the license file info in *c:\temp* cal
 cmd /k c:\temp\RG_V9_Rev.ZA_ROBOGUIDE_[A08B-9410-J605]\roboguide-collect-license-info.exe
 ```
 
-Using Insight Tech console collect file from client pc stored in c:\temp\license-roboguide.txt
+Using Insight Tech console -> collect the file from the client pc stored in c:\temp\license-roboguide.txt
 
