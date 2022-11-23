@@ -196,8 +196,11 @@ ConsoleWrite("The installation process has been completed sucessfully" & @LF)
 ```
 
 An exe has been generated called Install.exe
+
 Calling the Install.exe will automate the process of install.
+
 Copy the **RG_V9_Rev.ZA_ROBOGUIDE_[A08B-9410-J605]** package to to temp deirectory of the client via Insight send file.
+
 execute the following command to install
 
 ```
@@ -224,6 +227,7 @@ ControlClick("Enregistrer sous","&Enregistrer","[CLASS:Button; INSTANCE:2]")
 WinWaitActive("license-roboguide.txt - Bloc-notes")
 WinClose("license-roboguide.txt - Bloc-notes")
 ```
+
 An exe has been generated called roboguide-license-collect-info.exe
 
 Executing the following command generates the license file info in *c:\temp* called *license-roboguide.txt*
