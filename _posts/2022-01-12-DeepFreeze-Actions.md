@@ -8,7 +8,7 @@ tags: DeepFreeze
 # DeepFreeze Actions
 
 ## Create Scheduled Task For Shutdown
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Deep Freeze Exported Custom Action file-->
 <CUSTOMDEFINEDACTIONS>
@@ -31,7 +31,7 @@ tags: DeepFreeze
 
 ## Modify the time in Schedule Task For Shutdown
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Deep Freeze Exported Custom Action file-->
 <CUSTOMDEFINEDACTIONS>
