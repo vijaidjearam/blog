@@ -53,5 +53,27 @@ tags: DeepFreeze
 </CUSTOMDEFINEDACTIONS>
 ```
 
+## Update default Profile 
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Deep Freeze Exported Custom Action file-->
+<CUSTOMDEFINEDACTIONS>
+   <ACTION2>
+      <CAPTION>
+         <FRENCH>Update Default Profile</FRENCH>
+         <ENGLISH>Update Default Profile</ENGLISH>
+      </CAPTION>
+      <FILEMENU>Y</FILEMENU>
+      <POPUPMENU>Y</POPUPMENU>
+      <SUBITEMS />
+      <PARAMS />
+      <SYNC />
+      <LOG />
+      <EXECUTE>winrs -r:%%WKSNAME%% cmd /k defprof user</EXECUTE>
+      <WORKDIR>C:\windows\system32</WORKDIR>
+   </ACTION2>
+</CUSTOMDEFINEDACTIONS>
+```
 
 
