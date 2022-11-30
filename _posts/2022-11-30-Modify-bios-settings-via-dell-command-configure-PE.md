@@ -9,8 +9,7 @@ tags: bios dell winPE
 # Modify BIOS settings via dell command configure winPE ISO
 
 :information_source: The following script creates an iso by default, changing the makewinpemedia switch to udf and pointing to the drive lettre of usb creates a bootoable usb
-
-![image](https://www.flaticon.com/download/icon/6995914?icon_id=6995914&author=1540&team=1540&keyword=Requirements&pack=6995900&style=0&style_id=1219&format=png&color=%23000000&colored=1&size=24&selection=1&premium=0&type=standard)
+![image](https://user-images.githubusercontent.com/1507737/204784977-3fe13477-3365-4768-a0d6-a3345f03ddc9.png)
 
 
 
