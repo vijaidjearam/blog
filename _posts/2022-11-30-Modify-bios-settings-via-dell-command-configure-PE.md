@@ -97,5 +97,24 @@ pause
 
 The above script creates a dellbios.iso in c:\dellbios
 
+Booting the iso goes to the winPE environment:
+
+-> STARTNET.cmd gets exectuted at startup 
+
+-> The *biosupdate.bat* is injected to STARTNET.cmd and gets executed 
+
+-> The *biosupdate.bat* content is as follows:
+
+```batch
+	@echo Find a drive that has bios.ini.
+	@for %%a in (C D E F G H I J K L M N O P Q R S T U V W X Y Z) do @if exist %%a:\bios.ini set BIOSDRIVE=%%a
+	@echo The Images folder is on drive: %BIOSDRIVE%
+	@echo %BIOSDRIVE%:\bios.ini
+	X:\Command_Configure\X86_64\cctk.exe -i %BIOSDRIVE%:\bios.ini --ValSetupPwd=test 
+```
+
+-> The *biosupdate.bat* file searches for *bios.ini* in the root of all the drives, when found executes 💡 *cctk.exe* and imports the *bios.ini* parametre settings
+
+
 The *bios.ini* can be injected to the iso using [Anyburn](https://anyburn.com/download.php) please follow the instructions [here](https://anyburn.com/tutorials/edit-iso-file.htm)
 
