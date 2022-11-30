@@ -11,9 +11,9 @@ tags: bios dell winPE
 :information_source: The following script creates an iso by default, changing the makewinpemedia switch to udf and pointing to the drive lettre of usb creates a bootable usb.
 
 :key: Pre-requistes:
-* [Download the Windows ADK](https://go.microsoft.com/fwlink/?linkid=2196127)
+* [Install the Windows ADK](https://go.microsoft.com/fwlink/?linkid=2196127)
 
-* [Download the Windows PE add-on for the Windows ADK](https://go.microsoft.com/fwlink/?linkid=2196224)
+* [Install the Windows PE add-on for the Windows ADK](https://go.microsoft.com/fwlink/?linkid=2196224)
 
 *  Install Dell Command Configure
 
