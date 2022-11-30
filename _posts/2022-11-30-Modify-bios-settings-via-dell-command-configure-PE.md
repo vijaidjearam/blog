@@ -10,6 +10,10 @@ tags: bios dell winPE
 
 :information_source: The following script creates an iso by default, changing the makewinpemedia switch to udf and pointing to the drive lettre of usb creates a bootoable usb
 
+![image](https://user-images.githubusercontent.com/1507737/204784575-fbfee08a-d31c-45dd-87ac-779867ded3e3.png)
+
+
+
 ```Batch
 @echo off
 REM Check if Windows ADK is Installed
