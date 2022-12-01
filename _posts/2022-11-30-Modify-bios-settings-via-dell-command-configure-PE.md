@@ -126,7 +126,7 @@ The *biosupdate.bat* file is modifed, it searches the bios.ini config from a loc
 net use Z: \\10.57.0.4\batchs /user:user pass
 X:\Command_Configure\X86_64\cctk.exe -i Z:\bios\bios.ini --ValSetupPwd=test 
 ```
-Place the *biosupdate.bat* in *C:\Progra~2\Dell\Comman~2\X86_64*
+Place the *biosupdate.bat* in ``` C:\Progra~2\Dell\Comman~2\X86_64 ```
 
 Generate the dellbios.iso following the same method as described above.
 
