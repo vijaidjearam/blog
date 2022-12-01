@@ -47,11 +47,8 @@ cd /d "C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Depl
 REM Set PE Tools ENV Variables
 call DandISetEnv.bat
 
-REM Un-mount any previous mounts to C:\WinPEx86\mount
-imagex /unmount "C:\WinPEx86\mount"
-
-REM Delete Working PE Build folder if exists
-rd c:\WinPEx86 /s/q
+REM Un-mount any previous mounts to C:\dellbios\mount
+imagex /unmount "C:\dellbios\mount"
 
 REM Create PE Boot .WIM
 call copype.cmd amd64 c:\dellbios
