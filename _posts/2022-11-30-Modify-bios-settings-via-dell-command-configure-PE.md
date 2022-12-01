@@ -120,12 +120,31 @@ The *bios.ini* can be injected to the iso using [Anyburn](https://anyburn.com/do
 
 ## Scenario 2 : WinPE via FOG
 
-The *biosupdate.bat* file is modifed, it searche the bios.ini config from a network share
+The *biosupdate.bat* file is modifed, it searches the bios.ini config from a local network share
 
 ```batch
 net use Z: \\10.57.0.4\batchs /user:user pass
 X:\Command_Configure\X86_64\cctk.exe -i Z:\bios\bios.ini --ValSetupPwd=test 
 ```
+Place the *biosupdate.bat* in *C:\Progra~2\Dell\Comman~2\X86_64*
+
+Generate the dellbios.iso following the same method as described above.
+
+ℹ️ Source: [link](https://ipxe.org/wimboot)
+
+Mount the iso and copy the contents of the iso to fog */var/www/html/isos/winpe*
+
+Download the latest version of the kernel for wimboot from [here](https://github.com/ipxe/wimboot/releases) and place it in the root of the same directory.
+
+In the fog go to fog configuration -> click on iPXE New Menu Entry and configure the settings as below:
+
+![image](https://user-images.githubusercontent.com/1507737/205088215-da033c83-83cc-4d66-adac-ef887968c296.png)
+
+
+
+
+
+
 
 
 
