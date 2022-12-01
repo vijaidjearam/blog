@@ -28,16 +28,11 @@ REM check if dell command configure is installed
 if exist "C:\Progra~2\Dell\Comman~2\X86_64" (echo Dell command configure Installed) else (GOTO :Dellcommandconfigurenotinstalled)
 
 REM check if Dellbios folder exist on the machine
-if exist "C:\dellbios" (GOTO :dellbiosfolderdetected) else (GOTO :dellbiosfoldernotdetected)
+if exist "C:\dellbios" (GOTO :dellbiosfolderdetected) else (GOTO :main)
 :dellbiosfolderdetected
 echo dellbios folder detected so deleting and recreating the folder
 rmdir /s /q c:\dellbios
-mkdir c:\dellbios
 GOTO :main
-
-:dellbiosfoldernotdetected
-echo dellbios folder not detected so creating the folder
-mkdir c:\dellbios
 
 :main
 
