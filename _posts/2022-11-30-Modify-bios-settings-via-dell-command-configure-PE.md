@@ -140,7 +140,18 @@ In the fog go to fog configuration -> click on iPXE New Menu Entry and configure
 
 ![image](https://user-images.githubusercontent.com/1507737/205088215-da033c83-83cc-4d66-adac-ef887968c296.png)
 
+The parameter configuration should be as below:
 
+```
+set http-path http://${fog-ip}/isos/winpe
+kernel ${http-path}/wimboot
+initrd ${http-path}/Boot/BCD BCD
+initrd ${http-path}/Boot/boot.sdi boot.sdi
+initrd ${http-path}/sources/boot.wim boot.wim
+boot || goto MENU
+```
+
+Boot the machine via network IP V4 and select the dellbios in the menu , that's it the winpe environment will configure the bios 😃
 
 
 
