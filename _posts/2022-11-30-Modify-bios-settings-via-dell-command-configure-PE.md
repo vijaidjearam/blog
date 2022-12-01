@@ -66,6 +66,7 @@ DISM /image=C:\dellbios\mount /Add-Package /PackagePath:"winpe-fontsupport-zh-cn
 DISM /image=C:\dellbios\mount /Add-Package /PackagePath:"winpe-wmi.cab"
 DISM /image=C:\dellbios\mount /Add-Package /PackagePath:"winpe-scripting.cab"
 DISM /image=C:\dellbios\mount /Add-Package /PackagePath:"winpe-wds-tools.cab"
+dism /image:"c:\windowsPE\mount" /set-inputlocale:040c:0000040c
 
 REM Copy Custom files to inside mounted WIM folder
 xcopy C:\Progra~2\Dell\Comman~2\X86_64  c:\dellbios\mount\Command_Configure\X86_64 /S /E /i /Y
