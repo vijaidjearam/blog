@@ -94,6 +94,7 @@ echo Dell command configure not installed.
 :end
 pause
 ```
+## Scenario 1 : Create iso
 
 The above script creates a dellbios.iso in c:\dellbios
 
@@ -115,6 +116,16 @@ Booting the iso goes to the winPE environment:
 
 -> The *biosupdate.bat* file searches for *bios.ini* in the root of all the drives, when found executes 💡 *cctk.exe* and imports the *bios.ini* parametre settings
 
-
 The *bios.ini* can be injected to the iso using [Anyburn](https://anyburn.com/download.php) please follow the instructions [here](https://anyburn.com/tutorials/edit-iso-file.htm)
+
+## Scenario 2 : WinPE via FOG
+
+The *biosupdate.bat* file is modifed, it searche the bios.ini config from a network share
+
+```batch
+net use Z: \\10.57.0.4\batchs /user:user pass
+X:\Command_Configure\X86_64\cctk.exe -i Z:\bios\bios.ini --ValSetupPwd=test 
+```
+
+
 
