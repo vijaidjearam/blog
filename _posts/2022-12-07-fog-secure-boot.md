@@ -41,3 +41,6 @@ git clone git://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git
 
 
 https://community.spiceworks.com/topic/2343741-fog-self-signing-kernel-so-secure-boot-works?source=recommended
+
+
+https://forums.fogproject.org/topic/15888/imaging-with-fog-and-secure-boot-poc/2
