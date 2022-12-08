@@ -44,3 +44,5 @@ https://community.spiceworks.com/topic/2343741-fog-self-signing-kernel-so-secure
 
 
 https://forums.fogproject.org/topic/15888/imaging-with-fog-and-secure-boot-poc/2
+
+https://wiki.gentoo.org/wiki/User:Sakaki/Sakaki%27s_EFI_Install_Guide/Configuring_Secure_Boot_under_OpenRC
