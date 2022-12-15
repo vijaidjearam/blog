@@ -135,12 +135,15 @@ In the fog go to fog configuration -> click on iPXE New Menu Entry and configure
 
 The parameter configuration should be as below:
 
+😈 The wimboot.efi and bootx64.efi should be signed
+
 ```
-set http-path http://${fog-ip}/isos/winpe
+set http-path http://${fog-ip}/isos/winpe1
 kernel ${http-path}/wimboot
-initrd ${http-path}/Boot/BCD BCD
-initrd ${http-path}/Boot/boot.sdi boot.sdi
-initrd ${http-path}/sources/boot.wim boot.wim
+initrd ${http-path}/media/EFI/Boot/bootx64.efi bootx64.efi
+initrd ${http-path}/media/Boot/BCD BCD
+initrd ${http-path}/media/Boot/boot.sdi boot.sdi
+initrd ${http-path}/media/sources/boot.wim boot.wim
 boot || goto MENU
 ```
 
