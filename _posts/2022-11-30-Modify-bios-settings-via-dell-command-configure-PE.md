@@ -162,7 +162,7 @@ DISM /image=C:\dellbios\mount /Add-Package /PackagePath:"winpe-wmi.cab"
 DISM /image=C:\dellbios\mount /Add-Package /PackagePath:"winpe-scripting.cab"
 DISM /image=C:\dellbios\mount /Add-Package /PackagePath:"winpe-wds-tools.cab"
 
-REM Adding French keyboard layout
+REM Adding French keyboard layout to winPE environment
 DISM /image=C:\dellbios\mount /set-inputlocale:040c:0000040c
 
 REM Copy Custom files to inside mounted WIM folder
@@ -181,6 +181,12 @@ echo Dell command configure not installed.
 pause
 ```
 The above script creates the winpe folder structure in c:\dellbios
+
+Make a directory *winpe* in fog in the location ```/var/www/html/isos```
+
+Copy the contents of the dellbios folder to fog /var/www/html/isos/winpe
+
+
 
 
 The *biosupdate.bat* file is modifed, it searches the bios.ini config from a local network share
