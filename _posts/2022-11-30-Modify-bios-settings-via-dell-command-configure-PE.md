@@ -186,6 +186,38 @@ Make a directory *winpe* in fog in the location ```/var/www/html/isos```
 
 Copy the contents of the dellbios folder to fog /var/www/html/isos/winpe
 
+Here is the data structure: 
+![image](https://user-images.githubusercontent.com/1507737/208092088-7a2a4368-e088-4512-b433-b2257d2488dc.png)
+
+content of the install.bat
+
+```
+Wpeutil InitializeNetwork
+Wpeutil WaitForNetwork
+net use Z: \\10.57.0.4\batchs /user:user pass
+X:\Command_Configure\X86_64\cctk.exe -i Z:\bios\bios.ini --ValSetupPwd=urcq
+pause
+```
+
+content of winpeshl.ini
+
+```
+[LaunchApps]
+"install.bat"
+```
+Here are the files signed and needs to be in the respective places for the secure boot to work:
+
+bootx64.efi -> /var/www/html/isos/winpe (root of the winpe directory)
+wimboot.efi -> /var/www/html/isos/winpe (root of the winpe directory)
+bzImage.efi -> /var/www/html/fog/service/ipxe
+ipxe.efi -> /tftpboot
+
+to sign the above file use the sbsign command in ubuntu
+
+```bash
+
+sbsign --key DB.key --cert DB.crt --output bootx64.efi bootx64-unsigned.efi 
+```
 
 
 
