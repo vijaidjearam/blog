@@ -209,8 +209,11 @@ content of winpeshl.ini
 Here are the files signed and needs to be in the respective places for the secure boot to work:
 
 bootx64.efi -> /var/www/html/isos/winpe (root of the winpe directory)
+
 wimboot.efi -> /var/www/html/isos/winpe (root of the winpe directory)
+
 bzImage.efi -> /var/www/html/fog/service/ipxe
+
 ipxe.efi -> /tftpboot
 
 to sign the above file use the sbsign command in ubuntu
