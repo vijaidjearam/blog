@@ -6,8 +6,9 @@ category: BIOS
 tags: bios dell winPE 
 ---
 
-# Modify BIOS settings via dell command configure winPE ISO
+# Modify BIOS settings via dell command configure via winPE 
 
+## Method 1 Via ISO
 :information_source: The following script creates an iso by default, changing the makewinpemedia switch to udf and pointing to the drive lettre of usb creates a bootable usb.
 
 :key: Pre-requisites:
@@ -87,7 +88,6 @@ echo Dell command configure not installed.
 :end
 pause
 ```
-## Scenario 1 : Create iso
 
 The above script creates a dellbios.iso in c:\dellbios
 
@@ -111,12 +111,82 @@ Booting the iso goes to the winPE environment:
 
 The *bios.ini* can be injected to the iso using [Anyburn](https://anyburn.com/download.php) please follow the instructions [here](https://anyburn.com/tutorials/edit-iso-file.htm)
 
-## Scenario 2 : WinPE via FOG
+## Method 2 : WinPE via FOG
+
+
+:key: Pre-requisites:
+* [Install the Windows ADK](https://go.microsoft.com/fwlink/?linkid=2196127)
+
+* [Install the Windows PE add-on for the Windows ADK](https://go.microsoft.com/fwlink/?linkid=2196224)
+
+*  Install Dell Command Configure
+
+In this method we will create a winpe environment in c:\dellbios
+
+```Batch
+@echo off
+REM Check if Windows ADK is Installed
+if exist "C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools" ( echo windows ADK is installed ) else (GOTO :WindowsADK)
+
+REM check if dell command configure is installed
+if exist "C:\Progra~2\Dell\Comman~2\X86_64" (echo Dell command configure Installed) else (GOTO :Dellcommandconfigurenotinstalled)
+
+REM check if Dellbios folder exist on the machine
+if exist "C:\dellbios" (GOTO :dellbiosfolderdetected) else (GOTO :main)
+:dellbiosfolderdetected
+echo dellbios folder detected so deleting the existing folder
+REM Un-mount any previous mounts to C:\dellbios\mount
+imagex /unmount "C:\dellbios\mount"
+rmdir /s /q c:\dellbios
+GOTO :main
+
+:main
+
+REM Change Dir to Dep Tools
+cd /d "C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools"
+
+REM Set PE Tools ENV Variables
+call DandISetEnv.bat
+
+REM Create PE Boot .WIM
+call copype.cmd amd64 c:\dellbios
+
+REM Mount Boot.WIM to Mount Folder
+DISM /mount-Wim /WimFile:C:\dellbios\media\sources\boot.wim /index:1 /mountdir:C:\dellbios\mount
+
+REM Add commonly used packages to mounted WIM
+cd /d "C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Windows Preinstallation Environment\amd64\WinPE_OCs"
+DISM /image=C:\dellbios\mount /Add-Package /PackagePath:"WinPE-FontSupport-JA-JP.cab"
+DISM /image=C:\dellbios\mount /Add-Package /PackagePath:"winpe-fontsupport-zh-cn.cab"
+DISM /image=C:\dellbios\mount /Add-Package /PackagePath:"winpe-wmi.cab"
+DISM /image=C:\dellbios\mount /Add-Package /PackagePath:"winpe-scripting.cab"
+DISM /image=C:\dellbios\mount /Add-Package /PackagePath:"winpe-wds-tools.cab"
+
+REM Adding French keyboard layout
+DISM /image=C:\dellbios\mount /set-inputlocale:040c:0000040c
+
+REM Copy Custom files to inside mounted WIM folder
+xcopy C:\Progra~2\Dell\Comman~2\X86_64  c:\dellbios\mount\Command_Configure\X86_64 /S /E /i /Y
+
+REM unmount the wim
+DISM /Unmount-Wim /mountDir:C:\dellbios\mount /commit
+
+GOTO :end
+:WindowsADK
+@echo windows ADK is not installed
+GOTO :end
+:Dellcommandconfigurenotinstalled
+echo Dell command configure not installed.
+:end
+pause
+```
+The above script creates the winpe folder structure in c:\dellbios
+
 
 The *biosupdate.bat* file is modifed, it searches the bios.ini config from a local network share
 
 ```batch
-net use Z: \\10.57.0.4\batchs /user:user pass
+net use Z: \\NETWORKSHARE\batchs /user:user pass
 X:\Command_Configure\X86_64\cctk.exe -i Z:\bios\bios.ini --ValSetupPwd=test 
 ```
 Place the *biosupdate.bat* in ``` C:\Progra~2\Dell\Comman~2\X86_64 ```
