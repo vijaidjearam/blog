@@ -184,6 +184,8 @@ The above script creates the winpe folder structure in c:\dellbios
 
 Make a directory *winpe* in fog in the location ```/var/www/html/isos```
 
+Download the latest version of the kernel for wimboot from [here](https://github.com/ipxe/wimboot/releases) and place it in the root of the same directory.
+
 Copy the contents of the dellbios folder to fog /var/www/html/isos/winpe
 
 Here is the data structure: 
@@ -196,7 +198,7 @@ content of the install.bat
 Wpeutil InitializeNetwork
 Wpeutil WaitForNetwork
 net use Z: \\10.57.0.4\batchs /user:user pass
-X:\Command_Configure\X86_64\cctk.exe -i Z:\bios\bios.ini --ValSetupPwd=urcq
+X:\Command_Configure\X86_64\cctk.exe -i Z:\bios\bios.ini --ValSetupPwd=test
 pause
 ```
 
@@ -239,7 +241,7 @@ Generate the dellbios.iso following the same method as described above.
 
 Mount the iso and copy the contents of the iso to fog */var/www/html/isos/winpe*
 
-Download the latest version of the kernel for wimboot from [here](https://github.com/ipxe/wimboot/releases) and place it in the root of the same directory.
+
 
 In the fog go to fog configuration -> click on iPXE New Menu Entry and configure the settings as below:
 
