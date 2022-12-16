@@ -187,6 +187,7 @@ Make a directory *winpe* in fog in the location ```/var/www/html/isos```
 Copy the contents of the dellbios folder to fog /var/www/html/isos/winpe
 
 Here is the data structure: 
+
 ![image](https://user-images.githubusercontent.com/1507737/208092088-7a2a4368-e088-4512-b433-b2257d2488dc.png)
 
 content of the install.bat
