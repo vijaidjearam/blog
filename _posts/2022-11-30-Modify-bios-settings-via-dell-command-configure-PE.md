@@ -289,11 +289,13 @@ sudo apt install libfile-slurper-perl sudo apt-get install libssl-dev build-esse
 
 Reference : https://www.geeksforgeeks.org/perl-slurp-module/
 
-install as root
+😈 install as root
 
+```
 perl -MCPAN -e shell
 
 install File::Slurp
+```
 
 Ref: https://stackoverflow.com/questions/1039107/how-can-i-check-if-a-perl-module-is-installed-on-my-system-from-the-command-line 
 
