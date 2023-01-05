@@ -244,9 +244,11 @@ sleep 5
 reboot
 params
 ```
+Now lets add a menu entry for configuring the BIOS 
+
 In the fog go to fog configuration -> click on iPXE New Menu Entry and configure the settings as below:
 
-![image](https://user-images.githubusercontent.com/1507737/205088215-da033c83-83cc-4d66-adac-ef887968c296.png)
+![image](https://user-images.githubusercontent.com/1507737/210765679-4f48c9ed-ccfb-4828-bd58-e429d0c0ad98.png)
 
 The parameter configuration should be as below:
 
@@ -268,10 +270,6 @@ boot || goto MENU
 In the client machine boot to pxe menu and select the Enroll key option in the fog menu.
 
 The key will be automatically enrolled to the bios and the secure boot mode is set to **Deployed Mode**
-
-The client machine will restart and now reboot to the pxe menu and select 
-
-
 
 Boot the machine via network IP V4 and select the winpe in the menu , that's it the winpe environment will configure the bios 😃
 
