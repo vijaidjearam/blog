@@ -227,7 +227,23 @@ sbsign --key DB.key --cert DB.crt --output bootx64.efi bootx64-unsigned.efi
 ```
 
 
+To enroll the key in the BIOS:
 
+Go to the secure boot settings in the BIOS and change the secure boot to **Audit mode**
+
+In the fog go to fog configuration -> click on iPXE New Menu Entry and configure the settings as below:
+
+![image](https://user-images.githubusercontent.com/1507737/210764287-4af8ca34-4896-4563-aedc-c94bc6c2d60f.png)
+
+The parameter configuration should be as below:
+
+```
+chain http://${fog-ip}/fog/service/ipxe/Enrollkey.efi
+echo Rebooting System in 5 Seconds
+sleep 5
+reboot
+params
+```
 In the fog go to fog configuration -> click on iPXE New Menu Entry and configure the settings as below:
 
 ![image](https://user-images.githubusercontent.com/1507737/205088215-da033c83-83cc-4d66-adac-ef887968c296.png)
@@ -237,16 +253,27 @@ The parameter configuration should be as below:
 😈 The wimboot.efi and bootx64.efi should be signed
 
 ```
-set http-path http://${fog-ip}/isos/winpe1
+set http-path http://${fog-ip}/isos/winpe
 kernel ${http-path}/wimboot
-initrd ${http-path}/media/EFI/Boot/bootx64.efi bootx64.efi
+initrd ${http-path}/bootx64.efi bootx64.efi
+initrd ${http-path}/install.bat install.bat
+initrd ${http-path}/winpeshl.ini winpeshl.ini
 initrd ${http-path}/media/Boot/BCD BCD
 initrd ${http-path}/media/Boot/boot.sdi boot.sdi
 initrd ${http-path}/media/sources/boot.wim boot.wim
 boot || goto MENU
 ```
 
-Boot the machine via network IP V4 and select the dellbios in the menu , that's it the winpe environment will configure the bios 😃
+
+In the client machine boot to pxe menu and select the Enroll key option in the fog menu.
+
+The key will be automatically enrolled to the bios and the secure boot mode is set to **Deployed Mode**
+
+The client machine will restart and now reboot to the pxe menu and select 
+
+
+
+Boot the machine via network IP V4 and select the winpe in the menu , that's it the winpe environment will configure the bios 😃
 
 
 
