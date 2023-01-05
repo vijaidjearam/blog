@@ -278,7 +278,7 @@ Boot the machine via network IP V4 and select the winpe in the menu , that's it 
 
 **References**
 
-https://www.rodsbooks.com/efi-bootloaders/controlling-sb.html#creatingkeys
+[Creating Keys](https://www.rodsbooks.com/efi-bootloaders/controlling-sb.html#creatingkeys){target="_blank"}
 
 sudo apt-get update && apt-get upgrade
 
