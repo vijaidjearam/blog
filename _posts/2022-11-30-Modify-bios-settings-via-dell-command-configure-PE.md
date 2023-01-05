@@ -113,6 +113,7 @@ The *bios.ini* can be injected to the iso using [Anyburn](https://anyburn.com/do
 
 ## Method 2 : WinPE via FOG
 
+ℹ️ Source: [link](https://ipxe.org/wimboot)
 
 :key: Pre-requisites:
 * [Install the Windows ADK](https://go.microsoft.com/fwlink/?linkid=2196127)
@@ -194,7 +195,7 @@ Here is the data structure:
 
 content of the install.bat
 
-```
+```Batch
 Wpeutil InitializeNetwork
 Wpeutil WaitForNetwork
 net use Z: \\10.57.0.4\batchs /user:user pass
@@ -204,7 +205,7 @@ pause
 
 content of winpeshl.ini
 
-```
+```Batch
 [LaunchApps]
 "install.bat"
 ```
@@ -224,22 +225,6 @@ to sign the above file use the sbsign command in ubuntu
 
 sbsign --key DB.key --cert DB.crt --output bootx64.efi bootx64-unsigned.efi 
 ```
-
-
-
-The *biosupdate.bat* file is modifed, it searches the bios.ini config from a local network share
-
-```batch
-net use Z: \\NETWORKSHARE\batchs /user:user pass
-X:\Command_Configure\X86_64\cctk.exe -i Z:\bios\bios.ini --ValSetupPwd=test 
-```
-Place the *biosupdate.bat* in ``` C:\Progra~2\Dell\Comman~2\X86_64 ```
-
-Generate the dellbios.iso following the same method as described above.
-
-ℹ️ Source: [link](https://ipxe.org/wimboot)
-
-Mount the iso and copy the contents of the iso to fog */var/www/html/isos/winpe*
 
 
 
