@@ -273,6 +273,8 @@ The key will be automatically enrolled to the bios and the secure boot mode is s
 
 Boot the machine via network IP V4 and select the winpe in the menu , that's it the winpe environment will configure the bios 😃
 
+---
+
 
 **References**
 
