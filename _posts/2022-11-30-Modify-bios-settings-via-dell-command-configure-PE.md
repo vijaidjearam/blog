@@ -197,7 +197,11 @@ content of the install.bat
 
 ```Batch
 Wpeutil InitializeNetwork
+:Loop
+ping -n 10 localhost
 Wpeutil WaitForNetwork
+echo error: %errorlevel% Network connection could not be established check the network switch port config ,retrying after few seconds
+if %errorlevel% neq 0 goto :Loop
 net use Z: \\10.57.0.4\batchs /user:user pass
 X:\Command_Configure\X86_64\cctk.exe -i Z:\bios\bios.ini --ValSetupPwd=test
 pause
