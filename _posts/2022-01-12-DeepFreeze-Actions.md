@@ -75,5 +75,26 @@ tags: DeepFreeze
    </ACTION2>
 </CUSTOMDEFINEDACTIONS>
 ```
+## Set Paging File Size for All Drives to be Automatically Managed
 
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Deep Freeze Exported Custom Action file-->
+<CUSTOMDEFINEDACTIONS>
+   <ACTION2>
+      <CAPTION>
+         <FRENCH>Set Page files to Automatically managed by windows</FRENCH>
+         <ENGLISH>Set Page files to Automatically managed by windows</ENGLISH>
+      </CAPTION>
+      <FILEMENU>Y</FILEMENU>
+      <POPUPMENU>Y</POPUPMENU>
+      <SUBITEMS />
+      <PARAMS />
+      <SYNC />
+      <LOG />
+      <EXECUTE>winrs -r:%%WKSNAME%% cmd /k wmic computersystem where name="%computername%" set AutomaticManagedPagefile=True</EXECUTE>
+      <WORKDIR>C:\windows\system32</WORKDIR>
+   </ACTION2>
+</CUSTOMDEFINEDACTIONS>
+```
 
