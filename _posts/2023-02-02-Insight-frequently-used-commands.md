@@ -19,7 +19,7 @@ cmd /k c:\temp\roboguide-collect-license-info.exe
 
 ```
 
-## program paths
+## Program paths
 
 ```
 Automation Studio
