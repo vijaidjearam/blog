@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2023-02-02 08:26:29
-title: Insight Freequently used commands
+title: Insight Frequently used commands
 category: insight
 tags: insight
 ---
