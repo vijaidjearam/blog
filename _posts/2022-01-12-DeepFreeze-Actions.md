@@ -375,6 +375,89 @@ tags: DeepFreeze
 
 ```
 
+## wakeup via DELL bios
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Deep Freeze Exported Custom Action file-->
+<CUSTOMDEFINEDACTIONS>
+  <ACTION2>
+		<CAPTION>
+			<FRENCH>wake up locally</FRENCH>
+			<ENGLISH>wake up locally</ENGLISH>
+		</CAPTION>
+		<FILEMENU>Y</FILEMENU>
+		<POPUPMENU>Y</POPUPMENU>
+		<SUBITEMS/>
+		<PARAMS>
+			<SelectDays>
+				<VAR>%SelectDays%</VAR>
+				<CAPTION>
+					<ENGLISH>SelectDays (mon,sun):</ENGLISH>
+					<FRENCH>SelectDays (mon,sun):</FRENCH>
+				</CAPTION>
+			</SelectDays>
+			<SelectHours>
+				<VAR>%SelectHours%</VAR>
+				<CAPTION>
+					<ENGLISH>SelectHours:</ENGLISH>
+					<FRENCH>SelectHours:</FRENCH>
+				</CAPTION>
+			</SelectHours>
+			<SelectMinutes>
+				<VAR>%SelectMinutes%</VAR>
+				<CAPTION>
+					<ENGLISH>SelectMinutes:</ENGLISH>
+					<FRENCH>SelectMinutes:</FRENCH>
+				</CAPTION>
+			</SelectMinutes>
+			<Password>
+				<VAR>%biospassword%</VAR>
+				<CAPTION>
+					<ENGLISH>Password</ENGLISH>
+					<FRENCH>Password</FRENCH>
+				</CAPTION>
+			</Password>
+		</PARAMS>
+		<SYNC/>
+		<LOG/>
+		<EXECUTE>winrs -r:%%WKSNAME%% cmd /c C:\PROGRA~2\Dell\COMMAN~2\X86_64\cctk.exe --valsetuppwd=%biospassword% --autoon=selectdays:%SelectDays% --autoonhr=%SelectHours% --autoonmn=%SelectMinutes%</EXECUTE>
+		<WORKDIR>C:\windows\system32</WORKDIR>
+	</ACTION2>
+</CUSTOMDEFINEDACTIONS>
+
+```
+
+## disable wakeup via DELL bios
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Deep Freeze Exported Custom Action file-->
+<CUSTOMDEFINEDACTIONS>
+  <ACTION2>
+		<CAPTION>
+			<FRENCH>disable wake up locally</FRENCH>
+			<ENGLISH>disable wake up locally</ENGLISH>
+		</CAPTION>
+		<FILEMENU>Y</FILEMENU>
+		<POPUPMENU>Y</POPUPMENU>
+		<SUBITEMS/>
+		<PARAMS>
+			<Password>
+				<VAR>%biospassword%</VAR>
+				<CAPTION>
+					<ENGLISH>Password</ENGLISH>
+					<FRENCH>Password</FRENCH>
+				</CAPTION>
+			</Password>
+		</PARAMS>
+		<SYNC/>
+		<LOG/>
+		<EXECUTE>winrs -r:%%WKSNAME%% cmd /k C:\PROGRA~2\Dell\COMMAN~2\X86_64\cctk.exe --valsetuppwd=%biospassword% --autoon=disable</EXECUTE>
+		<WORKDIR>C:\windows\system32</WORKDIR>
+	</ACTION2>
+</CUSTOMDEFINEDACTIONS>
+```
 
 
 
