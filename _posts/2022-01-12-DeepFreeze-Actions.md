@@ -459,6 +459,37 @@ tags: DeepFreeze
 </CUSTOMDEFINEDACTIONS>
 ```
 
+## Change insight Channel
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Deep Freeze Exported Custom Action file-->
+<CUSTOMDEFINEDACTIONS>
+  <ACTION2>
+		<CAPTION>
+			<FRENCH>Insight Channel</FRENCH>
+			<ENGLISH>Insight Channel</ENGLISH>
+		</CAPTION>
+		<FILEMENU>Y</FILEMENU>
+		<POPUPMENU>Y</POPUPMENU>
+		<SUBITEMS/>
+		<PARAMS>
+			<channel>
+				<VAR>%channel%</VAR>
+				<CAPTION>
+					<ENGLISH>Channel:</ENGLISH>
+					<FRENCH>Channel:</FRENCH>
+				</CAPTION>
+			</channel>
+		</PARAMS>
+		<SYNC/>
+		<LOG/>
+		<EXECUTE>winrs -r:%%WKSNAME%% cmd /k reg add HKLM\SOFTWARE\WOW6432Node\Insight /v Channel /t REG_DWORD /d %channel% /f</EXECUTE>
+		<WORKDIR>C:\windows</WORKDIR>
+	</ACTION2>
+</CUSTOMDEFINEDACTIONS>
+```
+
 
 
 
