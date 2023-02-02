@@ -375,6 +375,70 @@ tags: DeepFreeze
 
 ```
 
+## DELL disable uefi network stack
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Deep Freeze Exported Custom Action file-->
+<CUSTOMDEFINEDACTIONS>
+  <ACTION2>
+		<CAPTION>
+			<FRENCH>disable uefi network stack</FRENCH>
+			<ENGLISH>disable uefi network stack</ENGLISH>
+		</CAPTION>
+		<FILEMENU>Y</FILEMENU>
+		<POPUPMENU>Y</POPUPMENU>
+		<SUBITEMS/>
+		<PARAMS>
+			<biospassword>
+				<VAR>%biospwd%</VAR>
+				<CAPTION>
+					<ENGLISH>Bios Password:</ENGLISH>
+					<FRENCH>Bios Password:</FRENCH>
+				</CAPTION>
+			</biospassword>
+		</PARAMS>
+		<SYNC/>
+		<LOG/>
+		<EXECUTE>winrs -r:%%WKSNAME%% cmd /c C:\PROGRA~2\Dell\COMMAN~2\X86_64\cctk.exe --UefiNwStack=disable --valsetuppwd=%biospwd%</EXECUTE>
+		<WORKDIR>C:\windows\system32</WORKDIR>
+	</ACTION2>
+</CUSTOMDEFINEDACTIONS>
+
+```
+
+## DELL Enable uefi network stack
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Deep Freeze Exported Custom Action file-->
+<CUSTOMDEFINEDACTIONS>
+  <ACTION2>
+		<CAPTION>
+			<FRENCH>Enable uefi network stack</FRENCH>
+			<ENGLISH>Enable uefi network stack</ENGLISH>
+		</CAPTION>
+		<FILEMENU>Y</FILEMENU>
+		<POPUPMENU>Y</POPUPMENU>
+		<SUBITEMS/>
+		<PARAMS>
+			<biospassword>
+				<VAR>%biospwd%</VAR>
+				<CAPTION>
+					<ENGLISH>Bios Password:</ENGLISH>
+					<FRENCH>Bios Password:</FRENCH>
+				</CAPTION>
+			</biospassword>
+		</PARAMS>
+		<SYNC/>
+		<LOG/>
+		<EXECUTE>winrs -r:%%WKSNAME%% cmd /c C:\PROGRA~2\Dell\COMMAN~2\X86_64\cctk.exe --UefiNwStack=enable --valsetuppwd=%biospwd%</EXECUTE>
+		<WORKDIR>C:\windows\system32</WORKDIR>
+	</ACTION2>
+</CUSTOMDEFINEDACTIONS>
+
+```
+
 ## wakeup via DELL bios
 
 ```xml
