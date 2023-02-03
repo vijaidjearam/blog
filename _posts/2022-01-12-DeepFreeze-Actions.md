@@ -303,7 +303,7 @@ tags: DeepFreeze
 		<SUBITEMS/>
 		<SYNC/>
 		<LOG/>
-		</PARAMS>
+		<PARAMS/>
 		<EXECUTE>winrs -r:%%WKSNAME%% cmd /k net user jpo /delete &amp; REG DELETE "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon" /v DefaultUserName /f &amp; REG DELETE "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon" /v DefaultPassword /f &amp; REG ADD "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon" /v AutoAdminLogon /t REG_SZ /d 0 /f &amp; REG ADD "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon" /v Shell /t REG_SZ /d explorer.exe /f &amp; REG DELETE "HKLM\SYSTEM\CurrentControlSet\Control\Keyboard Layout" /v "Scancode Map" /f &amp; shutdown /r /f /t 5</EXECUTE>
 		<WORKDIR>C:\WINDOWS</WORKDIR>
 	</ACTION3>
