@@ -54,9 +54,15 @@ create repository chocolatey-proxy
 ![image](https://user-images.githubusercontent.com/1507737/150816743-02b1390d-8432-4c3a-9437-317b6af38732.png)
 
 click save
+
 for the chocolatey-hosted( this is for uploading internal package)
+
 click on create new repository -> select nuget(hosted) -> in the name field type chocolatey-hosted
+
 now for Chocolatey-group
+
 click create repository and choose nuget(group)
+
 name it as chocolatey-group 
+
 add chocolatey-proxy and chocolatey-hosted as members
