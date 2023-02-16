@@ -554,6 +554,174 @@ tags: DeepFreeze
 </CUSTOMDEFINEDACTIONS>
 ```
 
+## F-Secure Reset UID
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Deep Freeze Exported Custom Action file-->
+<CUSTOMDEFINEDACTIONS>
+  <ACTION3>
+		<CAPTION>
+			<ENGLISH>F-Secure Reset UID</ENGLISH>
+			<FRENCH>F-Secure Reset UID</FRENCH>
+		</CAPTION>
+		<FILEMENU>Y</FILEMENU>
+		<POPUPMENU>Y</POPUPMENU>
+		<SILENT>Y</SILENT>
+		<SUBITEMS/>
+		<PARAMS/>
+		<SYNC/>
+		<LOG/>
+		<EXECUTE>winrs -r:%%WKSNAME%% cmd /k &quot;C:\Program Files (x86)\F-Secure\Client Security\BusinessSuite\resetuid.exe&quot; RESETUID RANDOMGUID</EXECUTE>
+		<WORKDIR>C:\WINDOWS\system32</WORKDIR>
+	</ACTION3>
+</CUSTOMDEFINEDACTIONS>
+```
+
+## Powerbutton to shutdown PC
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Deep Freeze Exported Custom Action file-->
+<CUSTOMDEFINEDACTIONS>
+  <ACTION2>
+		<CAPTION>
+			<FRENCH>Powerbutton to shutdown PC</FRENCH>
+			<ENGLISH>Powerbutton to shutdown PC</ENGLISH>
+		</CAPTION>
+		<FILEMENU>Y</FILEMENU>
+		<POPUPMENU>Y</POPUPMENU>
+		<SUBITEMS/>
+		<PARAMS/>
+		<SYNC/>
+		<LOG/>
+		<EXECUTE>winrs -r:%%WKSNAME%% cmd /k &quot;powercfg -setacvalueindex SCHEME_CURRENT 4f971e89-eebd-4455-a8de-9e59040e7347 7648efa3-dd9c-4e3e-b566-50f929386280 3&quot;</EXECUTE>
+		<WORKDIR>C:\windows\system32</WORKDIR>
+	</ACTION2>
+</CUSTOMDEFINEDACTIONS>
+```
+
+## Force Fusion Inventory
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Deep Freeze Exported Custom Action file-->
+<CUSTOMDEFINEDACTIONS>
+  <ACTION2>
+		<CAPTION>
+			<FRENCH>Force Fusion Inventory</FRENCH>
+			<ENGLISH>Force Fusion InventorY</ENGLISH>
+		</CAPTION>
+		<FILEMENU>Y</FILEMENU>
+		<POPUPMENU>Y</POPUPMENU>
+		<SUBITEMS/>
+		<PARAMS/>
+		<SYNC/>
+		<LOG/>
+		<EXECUTE>winrs -r:%%WKSNAME%% cmd /k c:\progra~1\Fusioninventory-agent\fusioninventory-agent.bat</EXECUTE>
+		<WORKDIR>C:\windows\system32</WORKDIR>
+	</ACTION2>
+</CUSTOMDEFINEDACTIONS>
+```
+## disable kiosk - assigned access
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Deep Freeze Exported Custom Action file-->
+<CUSTOMDEFINEDACTIONS>
+  <ACTION3>
+		<CAPTION>
+			<ENGLISH>disable kiosk - assigned access</ENGLISH>
+			<FRENCH>disable kiosk - - assigned access</FRENCH>
+		</CAPTION>
+		<FILEMENU>Y</FILEMENU>
+		<POPUPMENU>Y</POPUPMENU>
+		<SILENT>Y</SILENT>
+		<SUBITEMS/>
+		<SYNC/>
+		<LOG/>
+		<PARAMS/>
+		<EXECUTE>psexec \\%%WKSNAME%% cmd /k net user jpo /delete &amp; REG DELETE &quot;HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon&quot; /v DefaultUserName /f &amp; REG DELETE &quot;HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon&quot; /v DefaultPassword /f &amp; REG ADD &quot;HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon&quot; /v AutoAdminLogon /t REG_SZ /d 0 /f &amp; powershell -command Clear-AssignedAccess</EXECUTE>
+		<WORKDIR>C:\WINDOWS</WORKDIR>
+	</ACTION3>
+</CUSTOMDEFINEDACTIONS>
+```
+## create user JPO
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Deep Freeze Exported Custom Action file-->
+<CUSTOMDEFINEDACTIONS>
+   <ACTION2>
+      <CAPTION>
+         <FRENCH>create user JPO</FRENCH>
+         <ENGLISH>create user JPO</ENGLISH>
+      </CAPTION>
+      <FILEMENU>Y</FILEMENU>
+      <POPUPMENU>Y</POPUPMENU>
+      <SUBITEMS />
+      <PARAMS />
+      <SYNC />
+      <LOG />
+      <EXECUTE>psexec \\%%WKSNAME%% cmd /k net user jpo jpo /add /passwordchg:no &amp;&amp; reg add &quot;HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon&quot; /v &quot;AutoAdminLogon&quot; /t REG_SZ /d &quot;1&quot; /f &amp;&amp; reg add &quot;HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon&quot; /v &quot;DefaultUserName&quot; /t REG_SZ /d &quot;jpo&quot; /f &amp;&amp; REG ADD &quot;HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon&quot; /v DefaultPassword /t REG_SZ /d &quot;jpo&quot; /f </EXECUTE>
+      <WORKDIR>C:\windows\system32</WORKDIR>
+   </ACTION2>
+</CUSTOMDEFINEDACTIONS>
+```
+## kiosk-2020
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Deep Freeze Exported Custom Action file-->
+<CUSTOMDEFINEDACTIONS>
+  <ACTION3>
+		<CAPTION>
+			<ENGLISH>kiosk-2020</ENGLISH>
+			<FRENCH>kiosk-2020</FRENCH>
+		</CAPTION>
+		<FILEMENU>Y</FILEMENU>
+		<POPUPMENU>Y</POPUPMENU>
+		<SILENT>Y</SILENT>
+		<SUBITEMS/>
+		<SYNC/>
+		<LOG/>
+		<PARAMS>
+			<URL>
+				<VAR>%URL%</VAR>
+				<CAPTION>
+					<ENGLISH>URL:</ENGLISH>
+					<FRENCH>URL:</FRENCH>
+				</CAPTION>
+			</URL>
+		</PARAMS>
+		<EXECUTE>psexec.exe \\%%IP%% cmd /k net user jpo jpo /add /passwordchg:no &amp; REG ADD "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon" /v DefaultUserName /t REG_SZ /d jpo /f &amp; REG ADD "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon" /v DefaultPassword /t REG_SZ /d jpo /f &amp; REG ADD "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon" /v AutoAdminLogon /t REG_SZ /d 1 /f &amp; REG ADD "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon" /v Shell /t REG_SZ /d "C:\Progra~2\Google\Chrome\Application\chrome.exe -kiosk %URL%" /f &amp; REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Keyboard Layout" /v "Scancode Map" /t REG_BINARY /d 0000000000000000080000000000380000001d0000005be000001de000005ce000003b0000003e0000000000 /f &amp; shutdown /r /f /t 5</EXECUTE>
+		<WORKDIR>C:\WINDOWS</WORKDIR>
+	</ACTION3>
+</CUSTOMDEFINEDACTIONS>
+```
+## disable kiosk-2020
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Deep Freeze Exported Custom Action file-->
+<CUSTOMDEFINEDACTIONS>
+  <ACTION3>
+		<CAPTION>
+			<ENGLISH>disable kiosk-2020</ENGLISH>
+			<FRENCH>disable kiosk-2020</FRENCH>
+		</CAPTION>
+		<FILEMENU>Y</FILEMENU>
+		<POPUPMENU>Y</POPUPMENU>
+		<SILENT>Y</SILENT>
+		<SUBITEMS/>
+		<SYNC/>
+		<LOG/>
+		<PARAMS/>
+		<EXECUTE>winrs -r:%%WKSNAME%% cmd /k net user jpo /delete &amp; REG DELETE &quot;HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon&quot; /v DefaultUserName /f &amp; REG DELETE &quot;HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon&quot; /v DefaultPassword /f &amp; REG ADD &quot;HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon&quot; /v AutoAdminLogon /t REG_SZ /d 0 /f &amp; REG ADD &quot;HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon&quot; /v Shell /t REG_SZ /d explorer.exe /f &amp; REG DELETE &quot;HKLM\SYSTEM\CurrentControlSet\Control\Keyboard Layout&quot; /v &quot;Scancode Map&quot; /f &amp; shutdown /r /f /t 5</EXECUTE>
+		<WORKDIR>C:\WINDOWS</WORKDIR>
+	</ACTION3>
+</CUSTOMDEFINEDACTIONS>
+```
 
 
 
