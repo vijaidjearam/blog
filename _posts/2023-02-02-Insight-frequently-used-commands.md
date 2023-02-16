@@ -21,20 +21,18 @@ cmd /k c:\temp\roboguide-collect-license-info.exe
 
 ## Program paths
 
-```
 Automation Studio
+```
 "C:\Program Files\Famic Technologies\Automation Studio E7.1\AsProjet.exe"
-
 ```
 
-```
 Dell Command Configure
+```
 c:\progra~2\dell\comman~2\x86_64\cctk.exe
+```
 
-```
-```
 MS Project 2013
+```
 C:\PROGRA~2\MICROS~3\Office15\ospp.vbs
-
 ```
 
