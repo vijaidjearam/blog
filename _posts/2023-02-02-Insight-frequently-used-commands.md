@@ -36,6 +36,11 @@ MS Project 2013
 C:\PROGRA~2\MICROS~3\Office15\ospp.vbs
 ```
 
+Roboguide 
+```
+"C:\Program Files (x86)\FANUC\ROBOGUIDE\bin\ROBOGUIDE.exe"
+```
+
 Roboguide License Manager
 ```
 "C:\Program Files (x86)\FANUC\Shared\Utilities\FRLicenseManager.exe"
