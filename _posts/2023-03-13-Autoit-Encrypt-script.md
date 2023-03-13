@@ -7,7 +7,7 @@ tags: automation chocolatey package deployment
 ---
 # AutoIT Encrypt Script
 
-Source: https://www.autoitscript.com/forum/files/file/491-codescannercrypterbundle/
+Source: [Autoit](https://www.autoitscript.com/forum/files/file/491-codescannercrypterbundle/)
 
 
 • Open MCFinclude.au3 in Scite and find Func MCFCC_Init()
