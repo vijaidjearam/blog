@@ -58,7 +58,9 @@ In your target script, add the line: #include “MCFinclude.au3” (with path, i
 
 • Restart Code Crypter.
   
-• Under Tab Encrypt, specify the Key ID ; this is the selector in array CCkey in MCFinclude.au3
+• Under Tab Encrypt, specify the Key ID ; this is the selector in array CCkey in MCFinclude.au3 
+	
+	*The KeyID 8 in the source code MCFinclude.au3
   
 • Under Tab Main, disable option [Create and enable option [ Encrypt]; then Press [Run]
   
