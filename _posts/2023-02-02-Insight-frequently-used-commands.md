@@ -48,7 +48,7 @@ Dell Command Configure
 c:\progra~2\dell\comman~2\x86_64\cctk.exe
 ```
 
-MS Project 2013
+MS Project 2013 Activation path
 ```
 C:\PROGRA~2\MICROS~3\Office15\ospp.vbs
 ```
