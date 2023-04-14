@@ -18,6 +18,23 @@ cmd /k c:\temp\RG_V9_Rev.ZA_ROBOGUIDE_[A08B-9410-J605]\roboguide-collect-license
 cmd /k c:\temp\roboguide-collect-license-info.exe
 
 ```
+Microsoft office change parameters:
+
+To Uncheck the option "Use system separator"
+
+```batch
+REG LOAD HKU\Default C:\Users\Default\NTUSER.DAT
+REG ADD "HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Excel\Options" /v "UseSystemSeparators" /t REG_DWORD /d 0 /f
+REG UNLOAD HKU\Default
+```
+
+Insight command to deploy
+
+```batch
+cmd /k \\10.57.0.4\batchs\scripts\bat\office-uncheck-usesystemseparator.bat
+```
+
+
 
 ## Program paths
 
