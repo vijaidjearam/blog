@@ -601,9 +601,13 @@ ATT VOL CLEAR HIDDEN
 
 
 # For Restoring the disk with clonezilla backup
+## DELL
 ⚠️ Make sure in the BIOS : UEFI boot path security is set to Never.
 After complteing the restoration process set UEFI boot path security to Always ( which prompts user for bios password to enter clonezilla partition)
 
+## HP
+To lock the user from accessing Clonezilla partition.
+Go to Security Tab in the Bios -> Administration Authentication Policies ->  Enable option "Prompt for Admin authentication on F9(Boot Menu)"
 
 
 # Clone the disk using dd
