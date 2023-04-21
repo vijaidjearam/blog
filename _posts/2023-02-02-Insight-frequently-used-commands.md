@@ -62,3 +62,8 @@ Roboguide License Manager
 ```
 "C:\Program Files (x86)\FANUC\Shared\Utilities\FRLicenseManager.exe"
 ```
+
+Catia
+```
+"C:\Program Files\Dassault Systemes\B31\win_b64\code\bin\CATSTART.exe"  -run "CNEXT.exe" -env CATIA.V5-6R2021.B31 -direnv "C:\ProgramData\DassaultSystemes\CATEnv" -nowindow 
+```
