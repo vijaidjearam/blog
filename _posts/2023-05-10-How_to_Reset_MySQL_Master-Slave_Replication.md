@@ -6,7 +6,7 @@ category: Glpi
 tags: glpi inventory 
 ---
 # How to Reset ( Re-Sync ) MySQL Master-Slave Replication
-Source: (https://tecadmin.net/reset-re-sync-mysql-master-slave-replication/)[https://tecadmin.net/reset-re-sync-mysql-master-slave-replication/]
+Source: [https://tecadmin.net/reset-re-sync-mysql-master-slave-replication/](https://tecadmin.net/reset-re-sync-mysql-master-slave-replication/)
 
 This article will guide you to how to reset MySQL replication and it will start again from scratch.
 
