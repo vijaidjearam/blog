@@ -53,7 +53,7 @@ You can also crosscheck  the same from hardware id properties in the device mana
 so in my case:
 
 ```
-pnputil /remove-device "HDAUDIO\FUNC_01&VEN_10EC&DEV_0256&SUBSYS_10280AC7&REV_1000"
+pnputil /remove-device "HDAUDIO\FUNC_01&VEN_10EC&DEV_0256&SUBSYS_10280AC7&REV_1000\4&3110e0b5&0&0001"
 pnputil /delete-driver oem339.inf /force
 pnputil /delete-driver oem192.inf /force
 pnputil /delete-driver oem338.inf /force
