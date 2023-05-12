@@ -16,6 +16,7 @@ cmd /k choco install automation-studio-7.1.0-sr1 -y
 TASKKILL /F /IM Asprojet.exe /T
 cmd /k c:\temp\RG_V9_Rev.ZA_ROBOGUIDE_[A08B-9410-J605]\roboguide-collect-license-info.exe
 cmd /k c:\temp\roboguide-collect-license-info.exe
+cmd /k del /S /Q c:\temp\*
 
 ```
 Microsoft office change parameters:
