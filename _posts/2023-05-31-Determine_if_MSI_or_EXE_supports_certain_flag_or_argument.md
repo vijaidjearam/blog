@@ -41,7 +41,6 @@ Property(S): DiskPrompt = [1]
 Property(S): UpgradeCode = {553E9642-0563-479F-BC64-FD30E96CB1D6}
 Property(S): ProductCode = {9603284E-977A-4C85-9855-5B789FFF081B}
 Property(S): VersionNT = 603
-Property(S): ABB = C:\Program Files (x86)\ABB\
 Property(S): ProgramFilesFolder = C:\Program Files (x86)\
 Property(S): TARGETDIR = C:\
 Property(S): ALLUSERSPROFILE = C:\ProgramData\
