@@ -31,7 +31,7 @@ msiexec /lp! <msi_property_logfile> /i <msi_name>
 When the package is included in an EXE bootstrapper, the command line no longer uses "msiexec". For example, the command line can look like this:
 
 ```
-setup.exe /s /v"/qb /log logfile.txt ADDLOCAL=ALL LICENSE_SERVER=myhostname"
+setup.exe /s /v"/qb /log logfile.txt"
 ```
 
 Check the log file you will find all the properties and switches as shown 
