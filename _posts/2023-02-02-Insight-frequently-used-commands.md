@@ -17,6 +17,7 @@ TASKKILL /F /IM Asprojet.exe /T
 cmd /k c:\temp\RG_V9_Rev.ZA_ROBOGUIDE_[A08B-9410-J605]\roboguide-collect-license-info.exe
 cmd /k c:\temp\roboguide-collect-license-info.exe
 cmd /k del /S /Q c:\temp\*
+cmd /k choco install fog-client-urca -y --params "'/server:fog-gmp.local.iut-troyes.univ-reims.fr'"
 
 ```
 Microsoft office change parameters:
