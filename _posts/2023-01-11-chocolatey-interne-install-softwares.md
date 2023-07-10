@@ -25,3 +25,9 @@ choco install -y celcat
 ```
 choco install -y celcat ctlicensemanager smartrapport
 ```
+
+## celcat et smartrapport
+
+```
+choco install fog-client-urca -y --params "'/server:fog-gmp.local.fr'"
+```
