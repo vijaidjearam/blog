@@ -8,6 +8,13 @@ tags: chocolatey
 
 # Chocolatey Interne software install commands
 
+## Chocolatey Features
+
+```
+choco feature enable -n=useRememberedArgumentsForUpgrades
+```
+
+
 ## Sifac
 
 ```
@@ -26,8 +33,14 @@ choco install -y celcat
 choco install -y celcat ctlicensemanager smartrapport
 ```
 
-## celcat et smartrapport
+## Fog client
 
 ```
 choco install fog-client-urca -y --params "'/server:fog-gmp.local.fr'"
+```
+
+## Microsoft Teams
+
+```
+choco install microsoft-teams.install --params "'/AllUsers /NoAutoStart'"
 ```
