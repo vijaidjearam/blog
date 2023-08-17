@@ -66,4 +66,28 @@ pnputil /delete-driver oem125.inf /force
 ```
 
 Note: first delete the device and then delete the drivers.
-    
+
+examples:
+D001-Optiplex 7050
+
+```
+pnputil /remove-device "HDAUDIO\FUNC_01&VEN_10EC&DEV_0255&SUBSYS_102807A1&REV_1000\4&188ed708&0&0001"
+pnputil /delete-driver oem241.inf /force
+pnputil /delete-driver oem41.inf /force
+pnputil /delete-driver oem193.inf /force
+```
+
+D001-optiplex 7040
+
+```
+pnputil /remove-device "HDAUDIO\FUNC_01&VEN_10EC&DEV_0255&SUBSYS_102806B9&REV_1000\4&15f8c031&0&0001"
+pnputil /delete-driver oem237.inf /force
+```
+
+D001-optiplex 7060
+
+```
+pnputil /remove-device "HDAUDIO\FUNC_01&VEN_10EC&DEV_0255&SUBSYS_1028085A&REV_1000\4&323a812&0&0001"
+pnputil /delete-driver oem41.inf /force
+pnputil /delete-driver oem193.inf /force
+```    
