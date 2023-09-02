@@ -20,7 +20,7 @@ After creating new post just CTRL + V to paste the FrontMatter
 // @grant       GM_setClipboard
 // ==/UserScript==
 
-(function() {// 2022-03-09
+document.onload = (function() {// 2022-03-09
 
     'use strict';
     const date = formatDate(new Date())+ ' ' + formatHour(new Date());
@@ -34,11 +34,37 @@ tags: \n\
 ---\n\
 filename:'+ formatDate(new Date()) + '-title.md \n\
 ';
-    //Unable to set the value to the filename, javascript error unable to set value to a null value.
-    //const input = document.querySelector('input[aria-label="File name"]').value;
+    GM_setClipboard (header);
+    // Convenience function to execute your callback only after an element matching readySelector has been added to the page.
+    // Example: runWhenReady('.search-result', augmentSearchResults);
+    // Gives up after 1 minute.
+    function runWhenReady(readySelector, callback) {
+        var numAttempts = 0;
+        console.log(readySelector)
+        var tryNow = function() {
+            var elem = document.querySelector(readySelector);
+            console.log(elem);
+            if (elem) {
+                document.querySelector('input[aria-label="File name"]').value = formatDate(new Date()) + "-title.md";
+            } else {
+                numAttempts++;
+                if (numAttempts >= 34) {
+                    console.log(readySelector);
+                    console.log('Giving up after 34 attempts. Could not find: ' + readySelector);
+                } else {
+                    setTimeout(tryNow, 250 * Math.pow(1.1, numAttempts));
+                }
+            }
+        };
+        tryNow();
+    };
+    const readySelector = 'input[aria-label="File name"]'
+    runWhenReady(readySelector);
+    //const input = document.querySelector('input[aria-label="File name"]');
+    //console.log(input)
     //input.value = "-title.md";
     //document.querySelector('input[aria-label="File name"]').value = formatDate(new Date()) + "-title.md";
-    GM_setClipboard (header);
+
 
     function padTo2Digits(num) {
         return num.toString().padStart(2, '0');
