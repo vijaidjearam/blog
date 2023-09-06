@@ -29,4 +29,4 @@ $packageArgs = @{
 Install-ChocolateyInstallPackage @packageArgs
 Copy-Item $licensefile -Destination 'C:\Program Files\example' -Force 
 ```
-The above script checks if the license file is present in the network share using the Get-Item command. If the file doesnt exist then eventually the get-item raises an error, which eventually stops the script.
+The above script checks if the license file is present in the network share using the Get-Item command. If the file doesn't exist then eventually the get-item raises an error, which eventually stops the script.
