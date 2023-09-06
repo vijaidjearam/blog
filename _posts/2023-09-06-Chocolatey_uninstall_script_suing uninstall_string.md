@@ -22,9 +22,9 @@ Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
 Import-Module $env:ChocolateyInstall\helpers\chocolateyInstaller.psm1
 ```
 Here is an example of Get-UninstallRegistryKey
+![image](https://github.com/vijaidjearam/blog/assets/1507737/07de61dc-30fb-45a8-a0b4-af342ca78068)
 
-
-Here is an example script to uninstall stata software
+Here is an example script to uninstall java software using the ID got using the Get-UninstallRegistryKey
 
 ```
 $ErrorActionPreference = 'Stop';
@@ -32,13 +32,24 @@ $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
   softwareName  = 'stata*'
   fileType      = 'MSI'
-  silentArgs    = "{10194505-E31E-4C7A-A76A-4D421FAAD4D0} /qn /norestart"
+  silentArgs    = "{71124AE4-039E-4CA4-87B4-2F64180371F0} /qn /norestart"
   validExitCodes= @(0, 3010, 1605, 1614, 1641)
 }
 Uninstall-ChocolateyPackage @packageArgs
 
 ```
-Here in the above script need to find the correspnding ID for the software need sto be uninstalled.
 
-The ID can be found from the uninstall string.
+Here is the template for uninstall script
+```
+$ErrorActionPreference = 'Stop';
+$packageArgs = @{
+  packageName   = $env:ChocolateyPackageName
+  softwareName  = 'stata*'
+  fileType      = 'MSI'
+  silentArgs    = "{ID} /qn /norestart"
+  validExitCodes= @(0, 3010, 1605, 1614, 1641)
+}
+Uninstall-ChocolateyPackage @packageArgs
+
+```
 
