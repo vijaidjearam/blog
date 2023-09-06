@@ -3,7 +3,7 @@ layout: post
 date: 2023-09-06 13:50:37
 title: Chocolatey Uninstall MSI using uninstall string
 category: chocolatey
-tags: chocolatey powershell
+tags: chocolatey powershell uninstall
 ---
 
 To uninstall a package which uses MSI filetype.
