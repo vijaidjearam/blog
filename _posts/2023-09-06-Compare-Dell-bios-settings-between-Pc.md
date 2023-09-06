@@ -37,7 +37,7 @@ Function Get_Dell_BIOS_Settings
 	}
 
 #compare a remote pc with the current pc
-#Compare-Object Get_Dell_BIOS_Settings (Invoke-Command -ComputerName "028F2-0C0004004" -ScriptBlock ${Function:Get_Dell_BIOS_Settings}) -IncludeEqual
+#Compare-Object Get_Dell_BIOS_Settings (Invoke-Command -ComputerName "test1" -ScriptBlock ${Function:Get_Dell_BIOS_Settings}) -IncludeEqual
 # compare two remote Pc
 #Compare-Object (Invoke-Command -ComputerName "test1" -ScriptBlock ${Function:Get_Dell_BIOS_Settings}) (Invoke-Command -ComputerName "test2" -ScriptBlock ${Function:Get_Dell_BIOS_Settings}) -IncludeEqual
 ```
