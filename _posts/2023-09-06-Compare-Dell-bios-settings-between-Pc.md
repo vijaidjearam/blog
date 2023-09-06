@@ -25,7 +25,7 @@ Function Get_Dell_BIOS_Settings
 			$Script:Get_BIOS_Settings = get-childitem -path DellSmbios:\ | select-object category | 
 			foreach {
 			get-childitem -path @("DellSmbios:\" + $_.Category)  | select-object attribute, currentvalue 
-			# get-childitem -path @("DellSmbios:\" + $_.Category)  | select attribute, currentvalue, possiblevalues, PSPath 
+			#get-childitem -path @("DellSmbios:\" + $_.Category)  | select attribute, currentvalue, possiblevalues, PSPath 
 			}		
 				$Script:Get_BIOS_Settings = $Get_BIOS_Settings |  % { New-Object psobject -Property @{
 					Setting = $_."attribute"
@@ -36,5 +36,8 @@ Function Get_Dell_BIOS_Settings
 		END{ }			
 	}
 
-#Compare-Object Get_Dell_BIOS_Settings (Invoke-Command -ComputerName "test" Get_Dell_BIOS_Settings) -IncludeEqual
+#compare a remote pc with the current pc
+#Compare-Object Get_Dell_BIOS_Settings (Invoke-Command -ComputerName "028F2-0C0004004" -ScriptBlock ${Function:Get_Dell_BIOS_Settings}) -IncludeEqual
+# compare two remote Pc
+#Compare-Object (Invoke-Command -ComputerName "test1" -ScriptBlock ${Function:Get_Dell_BIOS_Settings}) (Invoke-Command -ComputerName "test2" -ScriptBlock ${Function:Get_Dell_BIOS_Settings}) -IncludeEqual
 ```
