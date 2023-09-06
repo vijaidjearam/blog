@@ -6,10 +6,10 @@ category: chocolatey
 tags: chocolatey powershell uninstall
 ---
 
-To uninstall a package which uses MSI filetype.
+# To uninstall a package which uses MSI filetype.
 
 The defalt uninstall script provided by chocolatey loop over to find all the uninstall string corresponding to the software name.
-Which is actually good, but not precise. So inorder to uninstall the correct software we need to get the ID from the uninstall string
+Which is actually good, but not precise. So in order to uninstall the correct software we need to know the ID from the uninstall string
 
 To get the uninstall string you can use the Get-UninstallRegistryKey built in chocolatey.
 
