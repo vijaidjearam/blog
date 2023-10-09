@@ -22,3 +22,5 @@ Alice->Bob: Where have you been?
 ```
 
 More information about **sequence diagrams** syntax [here](https://bramp.github.io/js-sequence-diagrams/).
+
+[![](https://mermaid.ink/img/pako:eNptkLsOwjAMRX_FeKX9gQ4gJAZAYmLNYiW3baQ8ICRCCPHvpC1seLLscyxdv1hHA-74jltB0NhbGZJ4FajWzlmNdrNZn-IYOjrAuUhT39AYHyQJ9Ixl-xdeMC1hQmiEJPL4otOurWg7O_WwXeyGjrMx01Vb_ceP1AOOhgTJK27YI3mxpqZ4TYLiPMJDcVdbg16Ky4pVeFdUSo6XZ9Dc5VTQcLkayb_QvyGMzTGdl8foGHo78PsDV-NgJA?type=png)](https://mermaid.live/edit#pako:eNptkLsOwjAMRX_FeKX9gQ4gJAZAYmLNYiW3baQ8ICRCCPHvpC1seLLscyxdv1hHA-74jltB0NhbGZJ4FajWzlmNdrNZn-IYOjrAuUhT39AYHyQJ9Ixl-xdeMC1hQmiEJPL4otOurWg7O_WwXeyGjrMx01Vb_ceP1AOOhgTJK27YI3mxpqZ4TYLiPMJDcVdbg16Ky4pVeFdUSo6XZ9Dc5VTQcLkayb_QvyGMzTGdl8foGHo78PsDV-NgJA)
