@@ -24,4 +24,4 @@ You can render sequence diagrams like this:
         TFTPserver-->>Client: Provides the Boot File required;
 ```
 
-More information about **sequence diagrams** syntax [here](https://bramp.github.io/js-sequence-diagrams/).
+More information about **sequence diagrams** syntax [here](https://mermaid.live/edit).
