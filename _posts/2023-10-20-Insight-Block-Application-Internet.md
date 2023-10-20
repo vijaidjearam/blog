@@ -11,7 +11,7 @@ tags: insight
 Source : [PDF pages 62 -64](https://www.faronics.com/assets/INS_Manual_F.pdf)
 
 ## Restrictions Internet
-![image](https://github.com/vijaidjearam/blog/assets/1507737/15378ecf-71ac-4ac8-8533-2724863756bf)
+![image](https://github.com/vijaidjearam/blog/assets/1507737/689537ca-f437-40cc-aefc-90b6fcafe501)
 
 Les listes de sites Web peuvent être sauvegardées et chargées en utilisant les boutons Charger et Sauvegarder. Les fichiers sont enregistrés comme des fichiers au format .Isu, vers l'emplacement de votre choix.
 
