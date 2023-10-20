@@ -8,7 +8,7 @@ tags: insight
 
 # Insight Block Application and Internet
 
-Source : [PDF pages 62 -64](https://www.faronics.com/assets/INS_Manual_F.pdf){:targget="_blank"}
+Source : [PDF pages 62 -64](https://www.faronics.com/assets/INS_Manual_F.pdf){:target="_blank"}
 
 ## Restrictions Internet
 [![image](https://github.com/vijaidjearam/blog/assets/1507737/689537ca-f437-40cc-aefc-90b6fcafe501)](https://github-production-user-asset-6210df.s3.amazonaws.com/1507737/276852145-689537ca-f437-40cc-aefc-90b6fcafe501.png)
