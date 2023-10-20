@@ -5,7 +5,7 @@ title: Insight Block Application and Internet
 category: Insight
 tags: insight
 ---
-ss
+
 # Insight Block Application and Internet
 
 Source : [PDF pages 62 -64](https://www.faronics.com/assets/INS_Manual_F.pdf)
