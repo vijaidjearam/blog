@@ -18,7 +18,7 @@ Source : [PDF pages 62 -64](https://www.faronics.com/assets/INS_Manual_F.pdf)
   
   - **Étape 4 de la capture d'écran** : permet d'activer ou de désactiver cette option.
 
-Les listes de sites Web peuvent être sauvegardées et chargées en utilisant les boutons Charger et Sauvegarder. Les fichiers sont enregistrés comme des fichiers au format .Isu, vers l'emplacement de votre choix.
+Les listes de sites Web peuvent être sauvegardées et chargées en utilisant les boutons Charger et Enregistrer. Les fichiers sont enregistrés comme des fichiers au format .Isu, vers l'emplacement de votre choix.
 
 
 ## Restrictions des logiciels
@@ -26,4 +26,4 @@ Les listes de sites Web peuvent être sauvegardées et chargées en utilisant le
 
 **Étape 5 de la capture d'écran** : Il est recommandé de désactiver cette option.
 
-Les listes des applications peuvent être sauvegardées et chargées en utilisant les boutons Charger et Sauvegarder. Les fichiers sont enregistrés au format .lsa.
+Les listes des applications peuvent être sauvegardées et chargées en utilisant les boutons Charger et Enregistrer. Les fichiers sont enregistrés au format .lsa.
