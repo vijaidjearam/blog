@@ -8,10 +8,10 @@ tags: insight
 
 # Insight Block Application and Internet
 
-Source : [PDF pages 62 -64](https://www.faronics.com/assets/INS_Manual_F.pdf)
+Source : [PDF pages 62 -64](https://www.faronics.com/assets/INS_Manual_F.pdf){:targget="_blank"}
 
 ## Restrictions Internet
-![image](https://github.com/vijaidjearam/blog/assets/1507737/689537ca-f437-40cc-aefc-90b6fcafe501)
+[![image](https://github.com/vijaidjearam/blog/assets/1507737/689537ca-f437-40cc-aefc-90b6fcafe501)](https://github-production-user-asset-6210df.s3.amazonaws.com/1507737/276852145-689537ca-f437-40cc-aefc-90b6fcafe501.png)
 
 ### Limiter la navigation par adresse IP, privée et Microsoft Edge
   - Empêche les étudiants d'accéder aux sites à l’aide du système de Navigation InPrivate et empêche l’accès aux sites à partir de leur adresse IP.
@@ -22,7 +22,7 @@ Les listes de sites Web peuvent être sauvegardées et chargées en utilisant le
 
 
 ## Restrictions des logiciels
-![image](https://github.com/vijaidjearam/blog/assets/1507737/57357bed-3489-4663-89fa-9b79bbd3fe9a)
+[![image](https://github.com/vijaidjearam/blog/assets/1507737/57357bed-3489-4663-89fa-9b79bbd3fe9a)](https://github-production-user-asset-6210df.s3.amazonaws.com/1507737/276848804-57357bed-3489-4663-89fa-9b79bbd3fe9a.png)
 
 **Étape 5 de la capture d'écran** : Il est recommandé de désactiver cette option.
 
