@@ -24,6 +24,6 @@ Les listes de sites Web peuvent être sauvegardées et chargées en utilisant le
 ## Restrictions des logiciels
 ![image](https://github.com/vijaidjearam/blog/assets/1507737/57357bed-3489-4663-89fa-9b79bbd3fe9a)
 
-**Étape 5 de la capture d'écran** : Il est recommandé d'activer cette option.
+**Étape 5 de la capture d'écran** : Il est recommandé de désactiver cette option.
 
 Les listes des applications peuvent être sauvegardées et chargées en utilisant les boutons Charger et Sauvegarder. Les fichiers sont enregistrés au format .lsa.
