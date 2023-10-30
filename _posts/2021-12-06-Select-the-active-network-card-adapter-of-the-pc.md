@@ -21,4 +21,8 @@ Get-WmiObject -Class Win32_NetworkAdapterConfiguration -ComputerName $env:COMPUT
 # To change the network adapater name
 Get-NetAdapter -InterfaceIndex (Get-WmiObject -Class Win32_NetworkAdapterConfiguration -ComputerName $env:COMPUTERNAME |  where { $_.IpAddress -eq ([System.Net.Dns]::GetHostByName($Inputmachine).AddressList[0]).IpAddressToString }).InterfaceIndex | Rename-NetAdapter -NewName pedagogie
 
+# To run the above command from command line
+
+powershell.exe -command "Get-NetAdapter -InterfaceIndex (Get-WmiObject -Class Win32_NetworkAdapterConfiguration -ComputerName $env:COMPUTERNAME |  where { $_.IpAddress -eq ([System.Net.Dns]::GetHostByName($Inputmachine).AddressList[0]).IpAddressToString }).InterfaceIndex | Rename-NetAdapter -NewName pedagogie"
+
 ```
