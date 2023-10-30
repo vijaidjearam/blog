@@ -35,6 +35,10 @@ SSH root login is disabled by default as a security feature
 
 Open the /etc/ssh/sshd_config file with administrative privileges and change the following line:
 
+```
+nano /etc/ssh/sshd_config
+```
+
 ![image](https://github.com/vijaidjearam/blog/assets/1507737/f2c3ed77-d7ed-41f0-a3ee-cd8a0d0c2a17)
 
 ```
