@@ -50,7 +50,7 @@ Restart SSH service:
 sudo systemctl restart ssh
 ```
 
-## copy public key to server
+## Copy public key to server
 
 The following command will copy the public key to the server.
 ```
