@@ -74,3 +74,12 @@ F-secure GUI
 ```
 "C:\Program Files (x86)\F-Secure\Client Security\fs_ui_32.exe"
 ```
+
+## Wireshark
+```
+cmd /k choco install -y wireshark npcap
+"c:\Program Files\Wireshark\wireshark.exe" -i pedagogie -k -Y "ip.addr == 192.168.2.1"
+TASKKILL /F /IM dumpcap.exe /T
+TASKKILL /F /IM wireshark.exe /T
+```
+
