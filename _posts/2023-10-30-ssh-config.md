@@ -62,3 +62,40 @@ Now try to login with
 ssh root@server
 ```
 
+## SSH config file
+
+The config file helps to configure all the host details which facilitates the connection:
+
+Here is a sample config:
+
+```
+Host targaryen
+    HostName 192.168.1.10
+    User daenerys
+    Port 7654
+    IdentityFile ~/.ssh/targaryen.key
+
+Host tyrell
+    HostName 192.168.10.20
+
+Host martell
+    HostName 192.168.10.50
+
+Host *ell
+    user oberyn
+
+Host * !martell
+    LogLevel INFO
+
+Host *
+    User root
+    Compression yes
+```
+
+Having the config file saved in c:\users\username\.ssh\config
+
+You can ssh just by typing the hostname :
+
+```
+ssh targaryen
+```
