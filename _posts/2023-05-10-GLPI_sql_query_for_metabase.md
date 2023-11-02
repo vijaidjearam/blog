@@ -115,3 +115,13 @@ PREPARE stmt FROM @sql;
 EXECUTE stmt;
 DEALLOCATE PREPARE stmt;
 SELECT * FROM TMP1
+
+------------
+```SQL
+CREATE TEMPORARY TABLE TMP
+SELECT glpi_computers.id, glpi_computers.name, glpi_infocoms.warranty_date, TIMESTAMPDIFF(YEAR, glpi_infocoms.warranty_date, CURDATE()) AS Age, MID(glpi_computers.name,8,1) AS Batiment, MID(glpi_computers.name,9,4) AS Salle, MID(glpi_computers.name,8,5) AS Salle1 FROM glpi_computers LEFT JOIN glpi_infocoms ON glpi_computers.id = glpi_infocoms.items_id WHERE ((glpi_computers.name LIKE '028F2%') AND (glpi_computers.states_id=2));
+
+SET @sql = NULL; SELECT GROUP_CONCAT( DISTINCT CONCAT( 'COUNT( CASE WHEN Age = ',Age,' THEN 1 ELSE NULL END) AS ','`',Age,'`') ) INTO @sql FROM TMP;
+
+SET @sql = CONCAT('CREATE TEMPORARY TABLE TMP1 SELECT Salle1,', @sql,' FROM TMP GROUP BY Salle1'); SELECT @sql; PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt; SELECT * FROM TMP1
+```
