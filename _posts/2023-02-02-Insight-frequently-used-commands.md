@@ -76,7 +76,7 @@ F-secure GUI
 ```
 
 ## Wireshark
-```
+```batch
 cmd /k choco install -y wireshark npcap
 "c:\Program Files\Wireshark\wireshark.exe" -i pedagogie -k -Y "ip.addr == 192.168.2.1"
 TASKKILL /F /IM dumpcap.exe /T
