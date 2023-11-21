@@ -18,7 +18,7 @@ cmd /k c:\temp\RG_V9_Rev.ZA_ROBOGUIDE_[A08B-9410-J605]\roboguide-collect-license
 cmd /k c:\temp\roboguide-collect-license-info.exe
 cmd /k del /S /Q c:\temp\*
 cmd /k choco install fog-client-urca -y --params "'/server:fog-gmp.local.com'"
-cmd /k rmdir c:\3folder /s /q
+cmd /k rmdir c:\folder /s /q
 ```
 Microsoft office change parameters:
 
