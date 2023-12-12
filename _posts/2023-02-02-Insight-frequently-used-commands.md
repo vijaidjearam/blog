@@ -74,6 +74,10 @@ F-secure GUI
 ```
 "C:\Program Files (x86)\F-Secure\Client Security\fs_ui_32.exe"
 ```
+Automation license Manager
+```
+"C:\Program Files\Siemens\Automation\Automation License Manager\almapp\almgui64x.exe"
+```
 
 ## Wireshark
 ```batch
