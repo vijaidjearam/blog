@@ -12,6 +12,11 @@ tags: powershell oneliners
 ```
 invoke-command -ComputerName $comp -ScriptBlock {Get-ScheduledTask -TaskName scheduled-shutdown} |Select-Object PSComputername,state, @{N="Starttime";E={$_.Triggers.StartBoundary}}
 ```
+### To set scheduled-shutdown time to midnight on a Remote Pc
+
+```powershell
+invoke-command -ComputerName $comp -ScriptBlock {Set-ScheduledTask -TaskName "scheduled-shutdown" -Trigger (New-ScheduledTaskTrigger -At 00:00 -Once)}
+```
 
 ### To install Powershell Modules on Remote Pc with out prompting confirmation to the user (ex: DellBiosprovider)
 
