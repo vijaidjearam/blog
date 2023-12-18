@@ -15,6 +15,7 @@ invoke-command -ComputerName $comp -ScriptBlock {Get-ScheduledTask -TaskName sch
 ### To set scheduled-shutdown time to midnight on a Remote Pc
 
 ```powershell
+invoke-command -ComputerName $comp -ScriptBlock {Set-ScheduledTask -TaskName "scheduled-shutdown" -Trigger (New-ScheduledTaskTrigger -At 00:00 -Daily)}
 invoke-command -ComputerName $comp -ScriptBlock {Set-ScheduledTask -TaskName "scheduled-shutdown" -Trigger (New-ScheduledTaskTrigger -At 00:00 -Once)}
 ```
 
