@@ -6,6 +6,11 @@ category: Powershell
 tags: powershell oneliners
 ---
 
+### To remove appx provisioned package
+
+```powershell
+Get-AppxProvisionedPackage -online |Out-GridView -PassThru|Select-Object -Property PackageName |Remove-ProvisionedAppPackage -Online
+```
 
 ### To get scheduled-shutdown task parameters from Remote Pc
 
