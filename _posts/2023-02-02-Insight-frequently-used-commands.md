@@ -79,6 +79,11 @@ Automation license Manager
 "C:\Program Files\Siemens\Automation\Automation License Manager\almapp\almgui64x.exe"
 ```
 
+VPS
+```
+"C:\Program Files\ESI Group\Virtual-Performance\2023.0\Solver\Visual\VisualVPS.bat"
+```
+
 ## Wireshark
 ```batch
 cmd /k choco install -y wireshark npcap
