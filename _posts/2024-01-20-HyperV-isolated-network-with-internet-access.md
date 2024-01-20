@@ -5,7 +5,8 @@ title: HyperV isolated network with internet access
 category: HyperV
 tags: Hyperv virtualisation
 ---
-#HyperV isolated network with internet access
+# HyperV isolated network with internet access
+
 source : [petri.com](https://petri.com/using-nat-virtual-switch-hyper-v)
 
 ```powershell
