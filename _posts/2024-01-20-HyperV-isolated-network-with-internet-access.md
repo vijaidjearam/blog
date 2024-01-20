@@ -13,8 +13,8 @@ source : [petri.com](https://petri.com/using-nat-virtual-switch-hyper-v)
 New-VMSwitch -SwitchName “NATSwitch” -SwitchType Internal
 # get-netadapter to find the interface index for the next set of commands
 Get-NetAdapter
-New-NetIPAddress -IPAddress 10.0.0.1 -PrefixLength 24 -InterfaceIndex 49
-New-NetNat -Name NatNetwork -InternalIPInterfaceAddressPrefix 10.0.0.0/24
+New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex 49
+New-NetNat -Name NatNetwork -InternalIPInterfaceAddressPrefix 192.168.0.0./24
 ```
 ![image](https://petri-media.s3.amazonaws.com/2017/02/Hyper-VNATSwitch.png)
 
