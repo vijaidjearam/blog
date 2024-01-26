@@ -7,7 +7,7 @@ tags: environmentvariable windows10
 ---
 
 # To apply settings to the current user session
-The set commands sets the variable but its not persitant after reboot
+The set commands sets the variable but its not persistant after reboot
 
 ```batch
 set [variable_name] “[variable_value]”
