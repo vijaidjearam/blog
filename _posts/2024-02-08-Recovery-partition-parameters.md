@@ -9,6 +9,8 @@ tags: recovery windows
 # process to hide and mark it as windows recovery patrition
 
 list volume 
+
+```
 N° volume   Ltr  Nom          Fs     Type        Taille   Statut     Info
   ----------  ---  -----------  -----  ----------  -------  ---------  --------
   Volume 0     C   OS           NTFS   Partition    203 G   Sain       Démarrag
@@ -16,6 +18,7 @@ N° volume   Ltr  Nom          Fs     Type        Taille   Statut     Info
   Volume 2     Z   backup       NTFS   Partition     28 G   Sain
   Volume 3         WINRE        NTFS   Partition    300 M   Sain       Masqué
   Volume 4         SYSTEM       FAT32  Partition    100 M   Sain       Système
+```
 
 ## In my case :
     
