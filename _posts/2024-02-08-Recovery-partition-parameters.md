@@ -6,7 +6,7 @@ category: recovery
 tags: recovery windows
 ---
 
-# process to hide and mark it as windows recovery patrition
+# Process to hide and mark a partition as windows recovery partition
 
 list volume 
 
