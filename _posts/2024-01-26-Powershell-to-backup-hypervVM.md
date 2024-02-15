@@ -69,7 +69,7 @@ catch
     $msg = "Error has occured while backing up VM: "+$VMName
     $Request = @{
               Method = "POST"
-              URI = "https://ntfy.sh/YOUR SUBSCRIPTION ID"
+              URI = "https://ntfy.sh/YOUR TOPIC ID"
               Headers = @{
                             Title = "VM Backup"
                             Priority = "urgent"
