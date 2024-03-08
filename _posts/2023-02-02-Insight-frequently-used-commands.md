@@ -36,6 +36,11 @@ Insight command to deploy
 cmd /k \\10.57.0.4\batchs\scripts\bat\office-uncheck-usesystemseparator.bat
 ```
 
+To delete the user profile :
+
+```batch
+cmd /k wmic /node:localhost path win32_UserProfile where LocalPath="c:\\users\\local-userxxx" Delete
+```
 
 
 ## Program paths
