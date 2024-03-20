@@ -24,7 +24,7 @@ tags: slow startup windows performance
 - Open the WPR file created earlier by the windows performance recorder
 - Apply the [Boot-Logon-GPO-basic.wpaprofile](https://github.com/itoleck/WindowsPerformance/blob/main/ETW/Tools/WPT/WPA/Profiles/Boot-Logon-GPO-Basic.wpaProfile)
 - Goto the Analysis tab and check the time duration taken for "Authentication to desktop Ready" this would give you the exact time taken after the user enters the credentials and get to tsee the desktop screen.
-- Make sure all the process during this period is windows related its better to move all the thirdy party to start after this phase.
+- Make sure all the process during this period is windows related and its better to move all the thirdy party to start after this phase.
 - ![image](https://github.com/vijaidjearam/blog/assets/1507737/b2f23d4d-4113-4ed0-9c92-96cdbcbdf276)
 
 
