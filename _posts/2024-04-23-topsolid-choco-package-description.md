@@ -16,6 +16,6 @@ tags: chocolatey topsolid
 - After license update you will be requested to import the basic libraries to the Vault.
 - Importing Libraries to the vault is mandatory.
 - After importing libraries, Topsolid would prompt for an Update.
-- Please configure Topsolid to update in client mode and the server path would be "\\synosia.local.iut-troyes.univ-reims.fr\batchs\topsolid-update"
+- Please configure Topsolid to update in client mode and the server path would be "\\\\synosia.local.iut-troyes.univ-reims.fr\batchs\topsolid-update"
 - ![image](https://github.com/vijaidjearam/blog/assets/1507737/0219404a-e473-44f7-86b6-051257a7d49e)
 
