@@ -22,3 +22,9 @@ While proceeding to the next step , the wireshark sniffing shows that the client
 After downloading the certificates, its installed the client maching which can be found in the certificate Manager (shortcut command : certmgr.msc)
 
 ![image](https://github.com/vijaidjearam/blog/assets/1507737/ac31b3ce-069a-4b5b-af69-c33a530e5a08)
+
+
+Resolution:
+
+- Try to check if you could ping to the server using the FQDN.
+- if ping fails add FQDN to the host file in "c:\windows\system32\drivers\etc"
