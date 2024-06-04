@@ -27,4 +27,4 @@ After downloading the certificates, its installed the client maching which can b
 Resolution:
 
 - Try to check if you could ping to the server using the FQDN.
-- if ping fails add FQDN to the host file in "c:\windows\system32\drivers\etc"
+- If ping fails add FQDN to the host file in "c:\windows\system32\drivers\etc"
