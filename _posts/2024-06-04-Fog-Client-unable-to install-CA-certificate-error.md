@@ -5,7 +5,7 @@ title: Fog Client unable to install CA certificate Error
 category: Fog
 tags: Fog chocolatey
 ---
-During install of Fog client you might enccounter the following error: 
+During install of Fog client you might encounter the following error: 
 
 ![image](https://github.com/vijaidjearam/blog/assets/1507737/3abffe66-53f1-49f0-933c-245cc4a199cd)
 
