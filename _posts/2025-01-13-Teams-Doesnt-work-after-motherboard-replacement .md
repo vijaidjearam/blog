@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2025-01-13 08:54:06
-title: Microsoft 365 Apps activation error: “Trusted Platform Module malfunctioned”
+title: Microsoft 365 Apps activation error: Trusted Platform Module malfunctioned
 category: Microsoft365 
 tags: Teams microsoft365
 ---
