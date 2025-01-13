@@ -3,7 +3,7 @@ layout: post
 date: 2025-01-13 08:54:06
 title: Microsoft 365 Apps activation error: Trusted Platform Module malfunctioned
 category: Microsoft365 
-tags: Teams microsoft365
+tags: Teams,microsoft365
 ---
 
 ## When a motherboard has been replaced, Teams may not work and could give you an error stating "Trusted Platform Module malfunctioned"
