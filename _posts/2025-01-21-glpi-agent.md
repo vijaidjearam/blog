@@ -31,5 +31,5 @@ The glpi task frequency is set to exceute once every 3 days and with the runnow 
 To force the inventory in the local machine use the following commmand: 
 
 ```batch
-c:\progra~1\glpi-agent\glpi-agent --forece --logger=stderr
+c:\progra~1\glpi-agent\glpi-agent --force --logger=stderr
 ```
