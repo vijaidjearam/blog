@@ -47,7 +47,7 @@ c:\progra~1\glpi-agent\glpi-agent --force --logger=stderr
 
 Download the latest version of the pearl script : [glpi-agent-x.xx-linux-installer.pl](https://github.com/glpi-project/glpi-agent/releases) from github
 
-Install glpi agnet using the following command:
+Install glpi agent using the following command:
 
 ```bash
 sudo perl glpi-agent-x.xx-linux-installer.pl --install --server=URL --runnow --verbose
