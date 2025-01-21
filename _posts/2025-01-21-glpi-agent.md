@@ -6,7 +6,12 @@ category: Glpi
 tags: glpi inventory
 ---
 
+Ref: [Doc](https://glpi-agent.readthedocs.io/en/1.11/)
+
+## Windows
+
 The Glpi agent is installed with the following parameters using Chocolatey:
+
 chocolateyinstall.ps1
 
 ```powershell
@@ -33,3 +38,36 @@ To force the inventory in the local machine use the following commmand:
 ```batch
 c:\progra~1\glpi-agent\glpi-agent --force --logger=stderr
 ```
+
+## Linux
+
+Download the latest version of the pearl script : [glpi-agent-x.xx-linux-installer.pl](https://github.com/glpi-project/glpi-agent/releases) from github
+
+Install glpi agnet using the following command:
+
+```bash
+sudo perl glpi-agent-x.xx-linux-installer.pl --install --server=URL --runnow --verbose
+```
+
+The above command installs glpi agent and makes an inventory to the server.
+
+To manually update inventory 
+
+```bash
+glpi-agent --force --logger=stderr
+```
+
+## MacOS
+
+The installer integrates its native, although reduced but recent, version of Perl including recent OpenSSL support.
+
+Get the latest .pkg package from our releases page or the nightly build page. 
+
+After installing it, you'll have to configure the agent to your needs by creating a dedicated .cfg file under the /Applications/GLPI-Agent/etc/conf.d folder.
+
+You can for example create a local.cfg file and:
+
+  - add the server = GLPI_URL line to point to your GLPI server,
+
+A MacOSX installation video tutorial is available here: [GLPI Agent Demonstration - macOS Monterey - Apple M1](https://www.youtube.com/watch?v=zFYcURQNh9k)
+
