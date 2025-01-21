@@ -37,7 +37,7 @@ Install-ChocolateyPackage @packageArgs
 
 The glpi task frequency is set to exceute once every 3 days and with the runnow parameter, the inventory is executed as soon as the software package is installed.
 
-To force the inventory in the local machine use the following commmand: 
+To force the inventory from the client end: 
 
 ```batch
 c:\progra~1\glpi-agent\glpi-agent --force --logger=stderr
@@ -55,7 +55,7 @@ sudo perl glpi-agent-x.xx-linux-installer.pl --install --server=URL --runnow --v
 
 The above command installs glpi agent and makes an inventory to the server.
 
-To manually update inventory 
+To manually force an inventory from the client end at a later time:
 
 ```bash
 glpi-agent --force --logger=stderr
