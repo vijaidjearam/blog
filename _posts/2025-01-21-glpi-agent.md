@@ -59,9 +59,7 @@ glpi-agent --force --logger=stderr
 
 ## MacOS
 
-The installer integrates its native, although reduced but recent, version of Perl including recent OpenSSL support.
-
-Get the latest .pkg package from our releases page or the nightly build page. 
+Get the latest .pkg package from the [releases page](https://github.com/glpi-project/glpi-agent/releases)
 
 After installing it, you'll have to configure the agent to your needs by creating a dedicated .cfg file under the /Applications/GLPI-Agent/etc/conf.d folder.
 
