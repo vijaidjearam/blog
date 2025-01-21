@@ -10,9 +10,13 @@ Ref: [Doc](https://glpi-agent.readthedocs.io/en/1.11/)
 
 ## Windows
 
-The Glpi agent is installed with the following parameters using Chocolatey:
+The glpi agent can be installed using the following command:
 
-chocolateyinstall.ps1
+```batch
+choco install -y glpi-agent-iut3
+```
+
+Chocolatey package script:  chocolateyinstall.ps1
 
 ```powershell
 $ErrorActionPreference = 'Stop';
