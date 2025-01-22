@@ -6,7 +6,7 @@ category: container
 tags: docker container metabase backup migration
 ---
 
-# Before upgrading the system, always take a backup of the database to prevent data loss.
+## Before upgrading the system, always take a backup of the database to prevent data loss.
 
 ```bash
 docker exec -i postgres /usr/bin/pg_dump -U post-gres-user metabase > /appdata/backup/metabase-postgres-backup-$(date +\%Y-\%m-\%d_\%H-\%M-\%S).sql
@@ -14,13 +14,13 @@ docker exec -i postgres /usr/bin/pg_dump -U post-gres-user metabase > /appdata/b
 - This command executes a PostgreSQL dump of the `metabase` database using the `post-gres-user`.
 - The backup file is saved with a timestamp in the `/appdata/backup` directory for easy identification.
 
-# Use the stackyml file to deploy the stack. (Not detailed here, assume a separate file for deployment.)
+## Use the stackyml file to deploy the stack. (Not detailed here, assume a separate file for deployment.)
 - This step is assumed to be setting up or updating the stack using a YAML configuration.
 
 - Stop the Metabase container to ensure no active connections to the database during the backup restore.
 
 
-# Copy the backup file to the PostgreSQL container for restoring.
+## Copy the backup file to the PostgreSQL container for restoring.
 
 ```bash
 docker cp metabase-backup.sql postgres:/tmp/metabase-backup.sql
@@ -28,27 +28,21 @@ docker cp metabase-backup.sql postgres:/tmp/metabase-backup.sql
 - This command copies the backup file `metabase-backup.sql` from the host machine to the PostgreSQL container.
 - The file is placed in the `/tmp` directory inside the container.
 
-# Before restoring the backup file, delete the existing 'metabase' database to ensure a fresh restore.
+## Before restoring the backup file, delete the existing 'metabase' database to ensure a fresh restore.
 Go into the container cli:
 
 ```bash
 # Connect to the PostgreSQL container and log in with the specified user to interact with the database.
 drobdb -U post-gres-user metabase
-```
-
-```bash
 # Create a new empty 'metabase' database to restore the backup into.
 createdb -U post-gres-user metabase
-```
-
-```bash
 # Restore the backup file into the newly created 'metabase' database.
 psql -U post-gres-user -d metabase < /tmp/metabase-backup.sql
 ```
 
 - This will restore the backup into the newly created `metabase` database.
 
-# A read-only user is needed for the GLPI database to access data from Metabase.
+## A read-only user is needed for the GLPI database to access data from Metabase.
 Go into the container cli:
 
 ```bash
