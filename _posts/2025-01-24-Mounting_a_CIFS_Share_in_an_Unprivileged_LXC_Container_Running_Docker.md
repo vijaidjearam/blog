@@ -136,6 +136,6 @@ docker run -v /mnt/cifs_share:/mnt/cifs_share your_docker_image
 3. **SMB Version Errors:**
    - Specify the SMB protocol version explicitly (e.g., `vers=3.0`).
 
----
+----
 
 By following these steps, you can securely mount a CIFS share in an unprivileged LXC container and make it accessible to Docker. This approach ensures compatibility and security within the Proxmox environment.
