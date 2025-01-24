@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2025-01-24 13:55:21
+date: 2025-01-24 14:00:00
 title: Mounting a CIFS Share in an Unprivileged LXC Container Running Docker
 category: FileSharing
 tags: filesharing docker proxmox cifs
