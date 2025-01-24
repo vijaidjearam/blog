@@ -38,7 +38,7 @@ In this scenario, you spin up a new duplicati instance from another server or an
 After loging in to Duplicati click on restore
 ![image](https://github.com/user-attachments/assets/5ac649b1-0e42-455b-8597-50470bb04bc8)
 
-Method 1 : Direct restore from backup files
+### Method 1 : Direct restore from backup files
  - ![image](https://github.com/user-attachments/assets/9898e2de-aa5f-4657-8a14-34adbf8eccec)
  - In the Storage type select SFTP (SSH)
  - ![image](https://github.com/user-attachments/assets/8c3471e6-587a-4d53-844e-cce7bbe8df4b)
@@ -52,7 +52,7 @@ Method 1 : Direct restore from backup files
  - ![image](https://github.com/user-attachments/assets/7fdcaf14-e55e-4e28-82ba-248a52be20fd)
  - click on Restore to complete the restore
    
-Method 2 : Restore from configuration
+### Method 2 : Restore from configuration
   - This method would work if you have backed up the configuartion file
   - ![image](https://github.com/user-attachments/assets/de896d9d-46fa-4505-ba28-19618d23df6b)
   - choosse the configuration file and hit import, you will see the infos autopopulated as below from the config file:
