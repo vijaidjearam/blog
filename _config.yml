@@ -10,5 +10,6 @@ theme: minima
 #remote_theme: pages-themes/hacker@v0.2.0
 show_excerpts: true # set to false to remove excerpts on the homepage
 show_tags: true # set to false to remove tags on the homepage
+future: true
 plugins:
   - jemoji
