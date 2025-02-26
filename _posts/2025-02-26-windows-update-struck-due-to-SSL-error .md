@@ -6,7 +6,7 @@ category: windows-update windows11
 tags: windows11 windows-update
 ---
 
-Source : (https://learn.microsoft.com/en-us/answers/questions/1571547/error-connecting-to-update-service-80072f8f)[https://learn.microsoft.com/en-us/answers/questions/1571547/error-connecting-to-update-service-80072f8f]
+Source : [https://learn.microsoft.com/en-us/answers/questions/1571547/error-connecting-to-update-service-80072f8f](https://learn.microsoft.com/en-us/answers/questions/1571547/error-connecting-to-update-service-80072f8f)
 
 - Unable to update windows and its struck on a certain date 
 - get-windowsupdatelog generated the logfile from etl files.
