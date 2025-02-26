@@ -9,7 +9,7 @@ tags: windows11 windows-update
 Source : [https://learn.microsoft.com/en-us/answers/questions/1571547/error-connecting-to-update-service-80072f8f](https://learn.microsoft.com/en-us/answers/questions/1571547/error-connecting-to-update-service-80072f8f)
 
 - Unable to update windows and its struck on a certain date 
-- get-windowsupdatelog generated the logfile from etl files.
+- get-windowsupdatelog generated the log file from etl files.
 - The windows log points to the following error
 
 ```
