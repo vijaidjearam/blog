@@ -7,16 +7,21 @@ tags: defaultprofile windows11
 ---
 
 
-How to Use the Script
+How to Use the Script:
+
 1️⃣ Log in using a temporary account (NOT the profile you want to copy).
+
 2️⃣ Run PowerShell as Administrator.
+
 3️⃣ Enter the source profile name when prompted.
+
 4️⃣ The script will:
 
  - Back up the C:\Users\Default folder to c:\users\Default-timestamp.
  - Delete all existing contents from C:\Users\Default.
  - Copy only the necessary files and folders, \appdata\local\microsoft\ and \appdata\roaming\microsoft excluding OneDrive & WindowsApps.
  - Copy NTUSER.DAT to the root of the default profile
+
 5️⃣ Success message appears when done.
 
 ```powershell
