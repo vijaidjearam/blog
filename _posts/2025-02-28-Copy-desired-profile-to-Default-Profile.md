@@ -14,6 +14,8 @@ defprof user
 defprof /DeleteAppxService
 ```
 
+Deleting "C:\Users\Default\AppData\Local\ForensiT" gives fast boot time during first logon.
+
 🔍 What is the ForensiT Folder?
 ---
 
