@@ -23,12 +23,15 @@ Here is to clarify the impact of deleteing the ForensIT folder via ChatGPT
 🔴 Any Risks in Deleting It?
 
 🚨 No major risks if the profile is already copied and working correctly.
+
 ⚠ Only delete it AFTER logging in and verifying that the new profile loads correctly.
 
 🎯 Final Verdict
 
 ✅ Safe to delete after profile migration
+
 ✅ Improves first login speed
+
 ✅ No negative impact on profile functionality
 
 
