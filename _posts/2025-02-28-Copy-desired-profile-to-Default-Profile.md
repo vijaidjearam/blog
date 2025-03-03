@@ -14,11 +14,30 @@ defprof user
 defprof /DeleteAppxService
 ```
 
-Go to C:\Users\default\appdata\local and delete ForensIT
+🔍 What is the ForensiT Folder?
+---
 
-Here is to clarify the impact of deleteing the ForensIT folder via ChatGPT
+When DefProf copies a user profile, it creates temporary data in C:\Users\Default\AppData\Local\ForensiT.
+
+This folder stores logs, AppX registration data, and migration details related to user profile cloning.
+
+Normally, Windows does not need this folder after the profile has been copied successfully.
+
+🚀 Why Deleting It Speeds Up Login
+---
+
+The ForensiT folder contains unnecessary AppX data, which Windows processes when a new user logs in.
+
+This delays first logins because:
+
+Windows tries to re-register AppX packages stored in AppData\Local\ForensiT.
+
+It can cause delays in setting up UWP (Universal Windows Platform) apps, like Edge, OneDrive, and Calculator.
+
+✅ Deleting it forces Windows to re-register AppX apps correctly without stale data.
 
 🛠️ How to Safely Delete ForensiT After Using DefProf
+---
 
 🔴 Any Risks in Deleting It?
 ---
