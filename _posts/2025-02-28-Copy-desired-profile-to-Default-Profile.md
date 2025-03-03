@@ -11,7 +11,7 @@ Use defprof to copy the desired profile
 
 ```cmd
 defprof user
-defprf /DeleteAppxService
+defprof /DeleteAppxService
 ```
 
 Go to C:\Users\default\appdata\local and delete ForensIT
