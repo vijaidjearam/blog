@@ -9,6 +9,8 @@ tags: slow startup windows performance
 
 ## Download the latest version of Windows ADK and install the windows performance toolkit.
 
+Link: [Télécharger le Windows ADK 10.1.26100.2454 (décembre 2024)](https://go.microsoft.com/fwlink/?linkid=2289980)
+
 ![image](https://github.com/vijaidjearam/blog/assets/1507737/4e70471e-5e65-491d-b8f4-2238bd8b2589)
 
 ### Windows performance recorder
