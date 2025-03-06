@@ -13,7 +13,10 @@ Source: [link](https://learn.microsoft.com/en-us/microsoftteams/new-teams-bulk-i
 To install new Teams on a single computer with many users, follow these steps:
  - [Download the .exe installer.](https://go.microsoft.com/fwlink/?linkid=2243204&clcid=0x409) If you have downloaded this file previously confirm you have the latest version by comparing the properties on each file.
  - Open the Command Prompt as an Admin.
- - At the prompt enter: .\teamsbootstrapper.exe -p
+ - At the prompt enter:
+ ```cmd
+   .\teamsbootstrapper.exe -p
+```
  - A success or fail status displays. If you receive an error, learn more at [Common HRESULT values](https://learn.microsoft.com/en-us/windows/win32/seccrypto/common-hresult-values).
  - ![image](https://github.com/user-attachments/assets/2561f4da-6a86-40a7-b401-74eb6d08e3a0)
 
@@ -23,12 +26,16 @@ Admins can also use a local teams MSIX to provision new Teams. This option minim
 
  - [Download the .exe installer.](https://go.microsoft.com/fwlink/?linkid=2243204&clcid=0x409) If you have downloaded this file previously confirm you have the latest version by comparing the properties on each file.
  - Download the MSIX:
- - MSIX x86
- - MSIX x64
- - ARM64
+ - [MSIX x86](https://go.microsoft.com/fwlink/?linkid=2196060&clcid=0x409)
+ - [MSIX x64](https://go.microsoft.com/fwlink/?linkid=2196106)
+ - [ARM64](https://go.microsoft.com/fwlink/?linkid=2196207&clcid=0x409)
  - Open the Command Prompt as an Admin.
  - Depending on where your MSIX is located, do the following:
-For local path, enter: .\teamsbootstrapper.exe -p -o "c:\path\to\teams.msix"
+For local path, enter:
+
+```cmd
+.\teamsbootstrapper.exe -p -o "c:\path\to\teams.msix"
+```
 
 Example:
 
