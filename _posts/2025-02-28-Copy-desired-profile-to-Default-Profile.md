@@ -10,11 +10,12 @@ tags: defaultprofile windows11
 Use defprof to copy the desired profile
 
 ```cmd
-defprof user
-defprof /DeleteAppxService
+defprof administrateur /q /noappx
 ```
+Use the /noappx switch to avoid installing Appxprovisioned apps. Not using the /noappx created "C:\Users\Default\AppData\Local\ForensiT" which has the configuration to deploy the appx apps after every new login which increases the boot time.
 
-Deleting "C:\Users\Default\AppData\Local\ForensiT" gives fast boot time during first logon.
+The chrome pinned extensions could not be automated via google chrome policy. To fix this issue, you could enable and pin the extension in a profile and copy the user profile "\appdata\local\Google" -> default profile "\appdata\local\Google"
+
 
 🔍 What is the ForensiT Folder?
 ---
