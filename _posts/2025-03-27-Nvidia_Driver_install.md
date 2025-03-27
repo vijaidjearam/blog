@@ -17,7 +17,7 @@ Display Driver Uninstaller (DDU) is a **free utility** designed to thoroughly re
 **Steps to Use DDU:**
 
 1.  **Download DDU:**
-    *   Navigate to the official DDU download link provided in the source: (Link)[https://www.wagnardsoft.com/display-driver-uninstaller-DDU-].
+    *   Navigate to the official DDU download link provided in the source: [Link](https://www.wagnardsoft.com/display-driver-uninstaller-DDU-).
 
 2.  **Decompress DDU:**
     *   Once downloaded, DDU will be in a self-extracting archive [4].
