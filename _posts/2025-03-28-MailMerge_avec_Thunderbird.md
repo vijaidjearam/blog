@@ -22,13 +22,27 @@ tags: thunderbird mailmerge email
 L’installation de MailMerge dans Thunderbird est simple :
 
 1. Ouvrir **Thunderbird** et aller dans **Outils** > **Modules Complémentaires**.
+
+![image](https://github.com/user-attachments/assets/2446808f-8e5f-4195-abcc-17085350a7cb)
+
 2. Dans la fenêtre des modules, sélectionner l’onglet **Catalogue** à gauche, puis cliquer sur **Voir tous**.
+
+![image](https://github.com/user-attachments/assets/0b45a085-4825-4297-b2a1-a02c6600b24e)
+
 3. Dans le champ de recherche, entrer **MailMerge** et appuyer sur **Enter**.
+
+![image](https://github.com/user-attachments/assets/ee94668b-521a-425e-b421-fad5b40404ac)
+
 4. Une fois le module trouvé, cliquer sur **Ajouter à Thunderbird**.
+
+![image](https://github.com/user-attachments/assets/1b0b091a-4581-4b5e-8139-f82eae242044)
+
 5. Après l’installation, redémarrer Thunderbird en cliquant sur **Redémarrer maintenant**.
+
+![image](https://github.com/user-attachments/assets/957c4455-0ec3-4b3c-aedb-01e3ca338623)
+
 6. Le module sera listé dans **Extensions**, où il peut être activé/désactivé ou supprimé.
 
-![Installation MailMerge](image1.png)
 
 ---
 
@@ -49,7 +63,8 @@ Jean Dupont,jean.dupont@example.com
 Marie Curie,marie.curie@example.com
 ```
 
-![Base de données](image2.png)
+![image](https://github.com/user-attachments/assets/89ce2a0d-c4db-459b-ba5b-4bcb3e2e5c7e)
+
 
 ---
 
@@ -72,7 +87,8 @@ Cordialement,
 L'équipe.
 ```
 
-![Rédaction email](image3.png)
+![image](https://github.com/user-attachments/assets/1688e65a-71ca-4e87-ab49-f3c4267dd222)
+
 
 ---
 
@@ -80,12 +96,17 @@ L'équipe.
 
 1. Dans la fenêtre de rédaction, cliquer sur la **flèche noire** à côté du bouton "Envoyer".
 2. Sélectionner **MailMerge**.
+
+![image](https://github.com/user-attachments/assets/d2322a1c-f2a7-42c7-957f-ea0b810e85e5)
+
 3. Dans la fenêtre qui s’ouvre, cliquer sur **Parcourir** et sélectionner le fichier **.csv**.
 4. Dans le champ **Attachements**, entrer `file://{{Fichiers}}` si des pièces jointes sont à inclure.
+
+![image](https://github.com/user-attachments/assets/e2898d9c-6e26-47f2-9393-e2464af35db8)
+
 5. Cliquer sur **OK** pour envoyer les emails.
 6. Vérifier l’envoi dans le dossier **Envoyé** de Thunderbird.
 
-![Envoi avec MailMerge](image4.png)
 
 ---
 
