@@ -8,6 +8,8 @@ tags: thunderbird mailmerge email
 
 # MailMerge avec Thunderbird
 
+Source : [Link](https://numerique26.web.ac-grenoble.fr/publipostage-thunderbird)
+
 ## Table des matières
 1. [Installer le module MailMerge sous Thunderbird](#installer-mailmerge)
 2. [Créer la base de données avec CALC de OpenOffice ou Excel](#creer-base-donnees)
