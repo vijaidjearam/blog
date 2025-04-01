@@ -17,7 +17,9 @@ After launching the app in the android tablet, you will get a message check cabl
 ## Resolution:
 
 The link between the robot controller and the tablet uses the Ethernet protocol.
-In ordre for it to work properly, you must ensure that **WIFI is NOT enabled** on the tablet. 
+
+In order for it to work properly, you must ensure that **WIFI is NOT enabled** on the tablet. 
+
 You must also ensure that its IP address is set to static and that it is **1.1.0.12**.
 
 |  Item 	| Value  	| 
