@@ -2,7 +2,7 @@
 layout: post
 date: 2025-05-06 08:49:00
 title: Change the Metrics of the Network adapater
-category: Network
+category: network
 tags: network powershell
 ---
 
