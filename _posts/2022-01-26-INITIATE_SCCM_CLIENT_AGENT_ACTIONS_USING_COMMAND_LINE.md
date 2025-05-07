@@ -86,7 +86,43 @@ Invoke-WmiMethod -ComputerName “hostname” -Namespace root\ccm -Class sms_cli
 psexec.exe \\%%WKSNAME%% cmd /k WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000021}" /NOINTERACTIVE &amp;&amp; WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000121}" /NOINTERACTIVE &amp;&amp; WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000114}" /NOINTERACTIVE
 ```
 
+## Powershell script to trigger the deployment on the client end
 
+```Powershell
+# List of target computer names (edit as needed)
+$computers = @("Pc-01","Pc-02","Pc-03")
+
+# Actions to trigger: Name => GUID mapping
+$actions = @{
+    "Machine Policy Retrieval & Evaluation Cycle"    = "{00000000-0000-0000-0000-000000000021}"
+    "Application Deployment Evaluation Cycle"        = "{00000000-0000-0000-0000-000000000121}"
+    "Software Updates Deployment Evaluation Cycle"   = "{00000000-0000-0000-0000-000000000113}"
+    "Discovery Data Collection Cycle"                = "{00000000-0000-0000-0000-000000000003}"
+}
+
+foreach ($computer in $computers) {
+    Write-Host "`n=== Processing $computer ===" -ForegroundColor Cyan
+
+    # Ping test
+    if (Test-Connection -ComputerName $computer -Count 1 -Quiet) {
+        Write-Host "✓ $computer is reachable. Executing actions..." -ForegroundColor Green
+        foreach ($action in $actions.GetEnumerator()) {
+            try {
+                Invoke-Command -ComputerName $computer -ScriptBlock {
+                    param($actionName, $guid)
+                    Write-Host "Triggering: $actionName ($guid)"
+                    Invoke-WmiMethod -Namespace root\ccm -Class SMS_Client -Name TriggerSchedule -ArgumentList $guid
+                } -ArgumentList $action.Key, $action.Value -ErrorAction Stop
+                Write-Host "→ Success: $($action.Key)" -ForegroundColor Green
+            } catch {
+                Write-Host "→ Failed: $($action.Key) on $computer. $_" -ForegroundColor Red
+            }
+        }
+    } else {
+        Write-Host "✗ $computer is not reachable. Skipping..." -ForegroundColor Yellow
+    }
+}
+```
 
 
 
