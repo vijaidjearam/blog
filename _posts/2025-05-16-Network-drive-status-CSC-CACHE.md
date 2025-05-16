@@ -11,6 +11,7 @@ tags: NAS windows networkshare SMB
 ## 📝 Problème
 
 Un lecteur réseau affiche le statut `CSC CACHE`, ce qui indique que les **fichiers hors connexion** sont activés via le **Centre de synchronisation**. Cela entraîne les problèmes suivants :
+
 ![alt text](image.png)
 - Dossiers incomplets ou contenus manquants.
 - Conflits de fichiers ou fichiers obsolètes.
@@ -28,7 +29,7 @@ Désactiver les **fichiers hors connexion** pour que le lecteur réseau reflète
 
 1. Ouvrir le **Panneau de configuration**.
 2. Rechercher et ouvrir le **Centre de synchronisation**.
-![alt text](image-1.png)
+
 3. Dans le menu de gauche, cliquer sur **Gérer les fichiers hors connexion**.
 4. Vérifier le statut :
    - Si le message indique que **les fichiers hors connexion sont activés**, passer à l’étape suivante.
