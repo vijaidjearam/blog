@@ -7,7 +7,8 @@ timezone: Europe/Paris
 #twitter_username: vijaidjearam # DO NOT include the @ character, or else the build will fail!
 github_username:  vijaidjearam # DO NOT include the @ character, or else the build will fail!
 #theme: minima
-remote_theme: pages-themes/hacker@v0.2.0
+#remote_theme: pages-themes/hacker@v0.2.0
+remote_theme: cotes2020/jekyll-theme-chirpy@v7.2.4
 show_excerpts: true # set to false to remove excerpts on the homepage
 show_tags: true # set to false to remove tags on the homepage
 future: true
