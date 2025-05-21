@@ -6,6 +6,55 @@ category: Glpi
 tags: glpi inventory
 ---
 
+## When you would like to upgrade to the new version of Glpi
+
+It is better to start from the new slate instead of copying the old database volume.
+
+Create a new stack with all the versions taken into account.
+
+### mariadb backup using the following method:
+
+The mariadb folder in the host should be provided with the following permissions
+
+```bash
+sudo chown -R 1001:0 mariadb-master
+sudo chown -R 1001:0 mariadb-slave
+```
+
+```bash
+mariadb-backup --backup --target-dir=/bitnami/mariadb/backup --user=root --password=
+# run a prepare command to remove the timestamp requires for INNODB to restore properly
+mariadb-backup --prepare --target-dir=/bitnami/mariadb/backup
+```
+Restoration:
+
+```bash
+mariadb-backup --copy-back --target-dir=/bitnami/mariadb/backup
+```
+
+### To check and validate if the database is copied properly:
+
+- connect via phpmyadmin
+- run the following SQL query and check all the rows total are matching with the source.
+
+```sql
+SELECT 
+    table_name AS 'Table Name',
+    table_rows AS 'Row Count'
+FROM 
+    information_schema.tables
+WHERE 
+    table_schema = 'glpi'
+    AND table_type = 'BASE TABLE'
+ORDER BY 
+    table_rows DESC;
+```
+### Need to copy the glpicrypt.key file from the old glpi to the new installation
+
+The key file "/var/www/html/glpi/config/glpicrypt.key" used to encrypt/decrypt sensitive data is missing. You should retrieve it from your previous installation or encrypted data will be unreadable.
+
+
+
 ## When you would like to upgrade to the new version of Glpi or new version of Fusion inventory.
 
 For instance if you have installed Glpi 9.5.7 and fusion invnetory 9.5.30 the folder where the data resides is Glpi957fusion9530
@@ -19,7 +68,7 @@ ssh into the docker host and change the user group for the Mariadb-master and Ma
 
 ```
 sudo chown -R 1001:1001 mariadb-master
-sudo chown -R 1001:1001 mariadb-master
+sudo chown -R 1001:1001 mariadb-slave
 ```
 
 Make the following changes in the stack code
