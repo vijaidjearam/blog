@@ -182,6 +182,19 @@ Configures Windows Boot Manager with custom entry:
 bcdboot X:\windows /d "Custom Boot Name"
 ```
 
+### Creating Child Vms with differencing disk
+
+```powershell
+New-VHD -ParentPath 'E:\VHD_Store\Win11tinycore.vhdx' -Path 'E:\VHD_Store\Android.vhdx' -Differencing
+```
+
+Note: 
+    - Use the command above to create a differencing VHD. Then, use EasyBCD to add the newly created VHDX to the boot menu. Ensure that the Hyper-V Virtual Machine Management service is running.
+
+    - Before creating the differencing disk, ensure that you have installed all necessary drivers and essential software on the parent VM. This will prevent the need to reinstall them on the child VMs.
+
+    - Do not update the parent VM under any circumstances, as this could render the child VMs unbootable. Make sure not to boot into the parent VM after creating child vms.
+
 ## Use Cases
 
 ### 1. Virtual Machine Development
