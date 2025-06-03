@@ -43,6 +43,7 @@ To print in draft quality, select "Draft Mode".
 To print in color, select "Color".
 
 – Confirm the entries with "OK".
+
 ![image](https://github.com/user-attachments/assets/05a0c3a3-022f-4e06-bab6-f3228921f742)
 
 - make sure the network configuration of the HMI is from DHCP
