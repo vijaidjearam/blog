@@ -15,7 +15,6 @@ Analyser des liens suspects provenant d’e-mails ou de messages **en toute séc
 
 1. Coller les liens dans un bloc-notes en ligne **avant** d’entrer dans le bac à sable.
 2. Ouvrir **Microsoft Edge avec Application Guard**.
-![image](https://github.com/user-attachments/assets/02dc8247-d7b0-4f38-a364-510fc8198ef3)
 3. Accéder à la page du bloc-notes **depuis Edge sécurisé** pour copier les liens et les inspecter sans risque.
 
 ---
@@ -46,6 +45,7 @@ Analyser des liens suspects provenant d’e-mails ou de messages **en toute séc
 
 1. Lancez **Microsoft Edge**.
 2. Cliquez sur le menu à trois points → **Nouvelle fenêtre Application Guard**.
+![image](https://github.com/user-attachments/assets/02dc8247-d7b0-4f38-a364-510fc8198ef3)
 
 > 🔐 Cela ouvre une session de navigation hautement isolée.
 
