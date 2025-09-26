@@ -25,12 +25,11 @@ param(
 # ========================
 
 function Disable-ServiceAndSetRecovery {
-    param (
-        [string]$ServiceName
-    )
+    param ([string]$ServiceName)
+
     try {
         Set-Service -Name $ServiceName -StartupType Disabled -ErrorAction Stop
-        sc.exe failure $ServiceName reset= 0 actions= none/0/none/0/none/0 | Out-Null
+        sc.exe failure $ServiceName reset=0 actions=none/0/none/0/none/0 | Out-Null
         return $true
     }
     catch {
@@ -39,9 +38,7 @@ function Disable-ServiceAndSetRecovery {
 }
 
 function Get-ServiceRecoveryStatus {
-    param (
-        [string]$ServiceName
-    )
+    param ([string]$ServiceName)
 
     $service  = Get-Service -Name $ServiceName -ErrorAction SilentlyContinue
     $recovery = sc.exe qfailure $ServiceName
@@ -50,7 +47,7 @@ function Get-ServiceRecoveryStatus {
         ComputerName    = $env:COMPUTERNAME
         ServiceName     = $ServiceName
         Status          = $service.Status
-        StartType       = (Get-WmiObject -Class Win32_Service -Filter "Name='$ServiceName'").StartMode
+        StartType       = (Get-CimInstance Win32_Service -Filter "Name='$ServiceName'").StartMode
         RecoveryOptions = ($recovery | Select-String "FAILURE_ACTIONS" -Context 0,3).Context.PostContext -join "; "
     }
 }
@@ -64,7 +61,7 @@ if (-not (Test-Path $ComputerListFile)) {
     exit
 }
 
-$Computers  = Get-Content $ComputerListFile | Where-Object { $_ -and $_.Trim() -ne "" }
+$Computers  = Get-Content $ComputerListFile | Where-Object { $_.Trim() }
 $Total      = $Computers.Count
 $Processed  = 0
 $AllResults = @()
@@ -74,23 +71,57 @@ if ($Total -eq 0) {
     exit
 }
 
-foreach ($Batch in ($Computers | ForEach-Object -Begin { $i=0 } -Process { 
-    [PSCustomObject]@{ Index = [math]::Floor($i++ / $Throttle); Computer = $_ } 
-} | Group-Object Index)) {
-    
+# Split into batches
+$Batches = [System.Collections.Generic.List[object]]::new()
+for ($i=0; $i -lt $Total; $i += $Throttle) {
+    $Batches.Add($Computers[$i..([math]::Min($i+$Throttle-1, $Total-1))])
+}
+
+foreach ($Batch in $Batches) {
     $jobs = @()
 
-    foreach ($Computer in $Batch.Group.Computer) {
-        # Test connectivity with one ping
+    foreach ($Computer in $Batch) {
         if (Test-Connection -ComputerName $Computer -Count 1 -Quiet) {
             $jobs += Invoke-Command -ComputerName $Computer -AsJob -ScriptBlock {
                 param($ServiceName)
-                Disable-ServiceAndSetRecovery -ServiceName $ServiceName | Out-Null
-                Get-ServiceRecoveryStatus -ServiceName $ServiceName
+
+                function Disable-ServiceAndSetRecovery {
+                    param([string]$ServiceName)
+                    try {
+                        Set-Service -Name $ServiceName -StartupType Disabled -ErrorAction Stop
+                        sc.exe failure $ServiceName reset=0 actions=none/0/none/0/none/0 | Out-Null
+                        return $true
+                    }
+                    catch { return $false }
+                }
+
+                function Get-ServiceRecoveryStatus {
+                    param([string]$ServiceName)
+                    $service  = Get-Service -Name $ServiceName -ErrorAction SilentlyContinue
+                    $recovery = sc.exe qfailure $ServiceName
+                    [PSCustomObject]@{
+                        ComputerName    = $env:COMPUTERNAME
+                        ServiceName     = $ServiceName
+                        Status          = $service.Status
+                        StartType       = (Get-CimInstance Win32_Service -Filter "Name='$ServiceName'").StartMode
+                        RecoveryOptions = ($recovery | Select-String "FAILURE_ACTIONS" -Context 0,3).Context.PostContext -join "; "
+                    }
+                }
+
+                if (Disable-ServiceAndSetRecovery -ServiceName $ServiceName) {
+                    Get-ServiceRecoveryStatus -ServiceName $ServiceName
+                } else {
+                    [PSCustomObject]@{
+                        ComputerName    = $env:COMPUTERNAME
+                        ServiceName     = $ServiceName
+                        Status          = "Failed"
+                        StartType       = "N/A"
+                        RecoveryOptions = "N/A"
+                    }
+                }
             } -ArgumentList $ServiceName
         }
         else {
-            # Add "Unreachable" entry for skipped computer
             $AllResults += [PSCustomObject]@{
                 ComputerName    = $Computer
                 ServiceName     = $ServiceName
@@ -103,24 +134,23 @@ foreach ($Batch in ($Computers | ForEach-Object -Begin { $i=0 } -Process {
 
     if ($jobs.Count -gt 0) {
         Wait-Job -Job $jobs | Out-Null
-        $results = Receive-Job -Job $jobs
-        $AllResults += $results
+        $AllResults += Receive-Job -Job $jobs
         Remove-Job -Job $jobs
     }
 
-    # Update progress bar
-    $Processed += $Batch.Group.Count
+    $Processed += $Batch.Count
     $Percent = [math]::Round(($Processed / $Total) * 100,2)
     Write-Progress -Activity "Processing Computers" -Status "$Processed of $Total complete" -PercentComplete $Percent
 }
 
-# Show results in table
+# Show results
 $AllResults | Format-Table -AutoSize
 
 # Export results
 $AllResults | Export-Csv $OutFile -NoTypeInformation
 Write-Host "✅ Report saved to $OutFile"
 ```
+
 ## Usage Examples
 
 ```powershell
@@ -146,3 +176,160 @@ PC2          Spooler     Unreachable  N/A       N/A
 PC3          Spooler     Stopped      Disabled  (none/0); (none/0); (none/0)
 
 ```
+
+⚡ Parallelized Script (PowerShell 7+)
+
+```powershell
+param(
+    [Parameter(Mandatory = $true)]
+    [string]$ServiceName,
+
+    [Parameter(Mandatory = $true)]
+    [string]$ComputerListFile,
+
+    [int]$Throttle = 10,
+
+    [string]$OutFile = "ServiceStatusReport.csv"
+)
+
+# ========================
+# FUNCTIONS
+# ========================
+
+function Disable-ServiceAndSetRecovery {
+    param ([string]$ServiceName)
+
+    try {
+        Set-Service -Name $ServiceName -StartupType Disabled -ErrorAction Stop
+        sc.exe failure $ServiceName reset=0 actions=none/0/none/0/none/0 | Out-Null
+        return $true
+    }
+    catch {
+        return $false
+    }
+}
+
+function Get-ServiceRecoveryStatus {
+    param ([string]$ServiceName)
+
+    $service  = Get-Service -Name $ServiceName -ErrorAction SilentlyContinue
+    $recovery = sc.exe qfailure $ServiceName
+
+    [PSCustomObject]@{
+        ComputerName    = $env:COMPUTERNAME
+        ServiceName     = $ServiceName
+        Status          = $service.Status
+        StartType       = (Get-CimInstance Win32_Service -Filter "Name='$ServiceName'").StartMode
+        RecoveryOptions = ($recovery | Select-String "FAILURE_ACTIONS" -Context 0,3).Context.PostContext -join "; "
+    }
+}
+
+# ========================
+# MAIN SCRIPT
+# ========================
+
+if (-not (Test-Path $ComputerListFile)) {
+    Write-Error "❌ Computer list file '$ComputerListFile' not found."
+    exit
+}
+
+$Computers = Get-Content $ComputerListFile | Where-Object { $_.Trim() }
+if (-not $Computers) {
+    Write-Error "❌ No computer names found in '$ComputerListFile'."
+    exit
+}
+
+$Total = $Computers.Count
+$Processed = 0
+$Sync = [System.Collections.Concurrent.ConcurrentBag[object]]::new()
+
+$Computers | ForEach-Object -Parallel {
+    param($ServiceName, $Total, $Sync)
+
+    $Computer = $_
+    if (-not (Test-Connection -ComputerName $Computer -Count 1 -Quiet)) {
+        $Sync.Add([PSCustomObject]@{
+            ComputerName    = $Computer
+            ServiceName     = $ServiceName
+            Status          = "Unreachable"
+            StartType       = "N/A"
+            RecoveryOptions = "N/A"
+        })
+        return
+    }
+
+    try {
+        function Disable-ServiceAndSetRecovery {
+            param([string]$ServiceName)
+            try {
+                Set-Service -Name $ServiceName -StartupType Disabled -ErrorAction Stop
+                sc.exe failure $ServiceName reset=0 actions=none/0/none/0/none/0 | Out-Null
+                return $true
+            }
+            catch { return $false }
+        }
+
+        function Get-ServiceRecoveryStatus {
+            param([string]$ServiceName)
+            $service  = Get-Service -Name $ServiceName -ErrorAction SilentlyContinue
+            $recovery = sc.exe qfailure $ServiceName
+            [PSCustomObject]@{
+                ComputerName    = $env:COMPUTERNAME
+                ServiceName     = $ServiceName
+                Status          = $service.Status
+                StartType       = (Get-CimInstance Win32_Service -Filter "Name='$ServiceName'").StartMode
+                RecoveryOptions = ($recovery | Select-String "FAILURE_ACTIONS" -Context 0,3).Context.PostContext -join "; "
+            }
+        }
+
+        if (Disable-ServiceAndSetRecovery -ServiceName $ServiceName) {
+            $result = Get-ServiceRecoveryStatus -ServiceName $ServiceName
+        } else {
+            $result = [PSCustomObject]@{
+                ComputerName    = $Computer
+                ServiceName     = $ServiceName
+                Status          = "Failed"
+                StartType       = "N/A"
+                RecoveryOptions = "N/A"
+            }
+        }
+
+        $Sync.Add($result)
+    }
+    catch {
+        $Sync.Add([PSCustomObject]@{
+            ComputerName    = $Computer
+            ServiceName     = $ServiceName
+            Status          = "Error: $_"
+            StartType       = "N/A"
+            RecoveryOptions = "N/A"
+        })
+    }
+
+    # Update progress (approximate since parallel)
+    [System.Threading.Interlocked]::Increment([ref]$using:Processed) | Out-Null
+    $Percent = [math]::Round(($using:Processed / $Total) * 100, 2)
+    Write-Progress -Activity "Processing Computers" -Status "$using:Processed of $Total complete" -PercentComplete $Percent
+
+} -ArgumentList $ServiceName, $Total, $Sync -ThrottleLimit $Throttle
+
+# ========================
+# OUTPUT
+# ========================
+
+$Results = $Sync.ToArray() | Sort-Object ComputerName
+$Results | Format-Table -AutoSize
+$Results | Export-Csv $OutFile -NoTypeInformation
+Write-Host "✅ Report saved to $OutFile"
+```
+## 🚀 Key Advantages
+
+1. No manual job management — ForEach-Object -Parallel handles parallelism.
+
+2. Throttle control built-in via -ThrottleLimit.
+
+3. Thread-safe collection (ConcurrentBag) to aggregate results safely from parallel threads.
+
+4. Cleaner progress tracking with Interlocked.Increment.
+
+5. Better error reporting (explicit "Failed" vs "Unreachable" vs "Error: ...")
