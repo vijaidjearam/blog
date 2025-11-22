@@ -6,7 +6,7 @@ category: ai
 tags: ai chatgpt shortcut
 ---
 
-## ⭐ Favorite Shortcut Commands
+## ⭐ <span style="color:green">Favorite Shortcut Commands</span>
 
 - **LISTIFY** — Turn content into lists  
 - **ELI10** — Explain like I'm 10  
