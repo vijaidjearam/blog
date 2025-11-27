@@ -96,4 +96,5 @@ The selected configuration must remain viable for 7 years, balancing performance
 - Price-to-Value (10%)
 
 - Lab Suitability (power, thermals, acoustics) (5%)
+
 ---
