@@ -44,3 +44,59 @@ Then wait for about 1 minute or 2, then go to your blog homepage. (It should be 
 ## Note
 
 If you rename your repository (you can do it in Settings), don't forget to edit the _config.yml file in order to modify the baseurl variable also.
+
+## Tempermonkey script for Frontmatter
+
+```Javascript
+// ==UserScript==
+// @name        front_matter_block_github_blog
+// @namespace   brahimmachkouri
+// @version     0.1
+// @description Paste the "Front Matter" block for Github blogs : go in the edit post and CTRL-V
+// @author      Brahim Machkouri
+// @include     https://github.com/*/new/main/_posts
+// @grant       GM_setClipboard
+// @match      none
+// ==/UserScript==
+
+(function() {// 2022-03-09
+    'use strict';
+    const date = formatDate(new Date())+ ' ' + formatHour(new Date());
+    console.log("yes");
+    const header = "---\n\
+layout: post\n\
+date: "+ date + "\n\
+title: \n\
+category: \n\
+tags: \n\
+---\n\
+";
+    document.querySelector('input[name="filename"]').value = formatDate(new Date()) + "-title.md";
+    GM_setClipboard (header);
+
+    function padTo2Digits(num) {
+        return num.toString().padStart(2, '0');
+    }
+
+    function formatDate(date) {
+        return (
+            [
+                date.getFullYear(),
+                padTo2Digits(date.getMonth() + 1),
+                padTo2Digits(date.getDate()),
+            ].join('-')
+        );
+    }
+
+    function formatHour(date) {
+         return ([
+                padTo2Digits(date.getHours()),
+                padTo2Digits(date.getMinutes()),
+                padTo2Digits(date.getSeconds()),
+            ].join(':')
+         );
+
+    }
+
+})();
+```
