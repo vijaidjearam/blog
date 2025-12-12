@@ -6,9 +6,10 @@ category: TemperMonkey
 tags: TemperMonkey Javascript
 ---
 
-# ChatGPT Enhanced Markdown Copy with Code Blocks ,Tables and Formula: [link](https://greasyfork.org/en/scripts/524609-chatgpt-enhanced-markdown-copy-with-code-blocks-tables-and-formula-for-typora-and-chrome)
+# ChatGPT Enhanced Markdown Copy with Code Blocks ,Tables and Formula: [Download link](https://greasyfork.org/en/scripts/524609-chatgpt-enhanced-markdown-copy-with-code-blocks-tables-and-formula-for-typora-and-chrome)
 
 ## Tampermonkey Script Security Audit Report
+
 ## Executive Summary
 
 This script is **relatively safe to use** for its intended purpose. However, there are several **medium-risk issues** and best practices violations that warrant attention. The script does not attempt to exfiltrate data or access sensitive information, but it has code quality and security concerns that should be addressed.
