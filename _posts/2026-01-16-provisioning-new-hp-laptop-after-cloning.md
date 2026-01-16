@@ -179,6 +179,7 @@ if ($Restart -match '^[Yy]$') {
 ## Folder Structure
 
 Your folder should look like this:
+Extract the contents bios.exe (in our case ex:  SP169859.exe) and rename it as bin and place it by the side of the powershell script.
 
 ```
 📁 YourFolder
@@ -208,4 +209,5 @@ Your folder should look like this:
 ```powershell
 $Process = Start-Process -FilePath $BiosExe -ArgumentList "-r -b -s -p YourPassword" -Wait -PassThru
 ```
+
 
