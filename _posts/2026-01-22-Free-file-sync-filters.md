@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 20262-01-22 12:19:00
+date: 2026-01-22 12:19:00
 title: Free file sync compare a synology folder to teams folder with exclusion filters
 category: freefilesync
 tags: freefilesync windows NAS backup
@@ -161,3 +161,4 @@ C:\Users\USERNAME\OneDrive - ORGANIZATION\Teams\TEAM_NAME
 ✔ Stable with CIFS + OneDrive
 
 ---
+
