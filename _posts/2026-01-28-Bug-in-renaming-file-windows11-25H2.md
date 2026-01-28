@@ -3,11 +3,8 @@ layout: post
 date: 2026-01-28 11:48:00
 title: Windows 11 25H2 File Explorer Rename Bug  
 category: windows11
-tags: Windows11-25H2  26200.7462
+tags: Windows11-25H2 
 ---
-
-
-
 ## Space key opens the file instead of inserting a space
 
 ### Environment
