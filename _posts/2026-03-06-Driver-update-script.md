@@ -13,11 +13,6 @@ tags: Windows11-25H2 powershell
 ## Execution flow
 
 ```mermaid
-
----
-config:
-  theme: 'base'
----
 flowchart TB
     START([🚀 Script Start]) --> INIT[Initialize-PersistentScript<br/>Copy script to C:\Temp\]
     INIT -->|Failed| FAIL_INIT([❌ Throw Error])
@@ -3309,4 +3304,5 @@ catch {
 finally {
     try { Stop-Transcript } catch { }
 }
+
 ```
