@@ -1,15 +1,41 @@
 <!-- to be included in footer.html -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js" type="text/javascript"></script>
+<!-- Mermaid modern setup -->
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
 <script>
-var config = {
-    startOnLoad:true,
-    theme: 'forest',
-    flowchart:{
-            useMaxWidth:false,
-            htmlLabels:true
-        }
-};
-mermaid.initialize(config);
-window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+document.addEventListener("DOMContentLoaded", function () {
+
+  function detectTheme() {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+    return "default";
+  }
+
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: detectTheme(),
+    securityLevel: "loose",
+    flowchart: {
+      useMaxWidth: true,
+      htmlLabels: true,
+      curve: "basis"
+    }
+  });
+
+  // Convert markdown mermaid blocks
+  document.querySelectorAll("code.language-mermaid").forEach(function (block) {
+    const pre = block.parentElement;
+    const div = document.createElement("div");
+
+    div.className = "mermaid";
+    div.innerHTML = block.textContent;
+
+    pre.replaceWith(div);
+  });
+
+  mermaid.run();
+
+});
 </script>
