@@ -671,3 +671,16 @@ table td {
 .highlight .il {
     color: #099
 }
+/* Mermaid diagram styling */
+
+.mermaid {
+  width: 100%;
+  overflow-x: auto;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
