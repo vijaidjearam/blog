@@ -11,7 +11,9 @@ tags: Windows11-25H2 powershell
 ## Driver update from Networkshare 
 
 ## Execution flow
+
 ```mermaid
+
 ---
 config:
   theme: 'base'
@@ -241,6 +243,7 @@ flowchart TB
 ```
 
 ## Reboot Flow
+
 ```mermaid
 sequenceDiagram
     participant S as Script
