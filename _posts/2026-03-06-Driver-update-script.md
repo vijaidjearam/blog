@@ -320,8 +320,8 @@ $Script:CooldownSeconds  = 5
 $Script:DriverProcesses  = @('drvinst','pnputil','DPInst','DPInst64','SetupAPI')
 $Script:SpinnerFrames    = @('[ ]','[= ]','[== ]','[=== ]','[====]','[ ===]','[ ==]','[ =]')
 $Script:ChocoSourceName  = 'chocosia'
-$Script:ChocoSourceUrl   = 'http://choco.local.xyz.com/repository/chocolatey-group'
-$Script:NetworkShareBase    = '\\networkshare'
+$Script:ChocoSourceUrl   = 'http://choco.local.iut-troyes.univ-reims.fr/repository/chocolatey-group'
+$Script:NetworkShareBase    = '\\synosia.local.iut-troyes.univ-reims.fr\batchs'
 $Script:ShareDriverFolder   = 'driver'
 $Script:ManufacturerShareMap = @{
     'Dell'             = 'dell'
@@ -1613,11 +1613,11 @@ function Invoke-HPUpdates {
     param([pscustomobject]$State)
     Write-Banner "HP SYSTEM UPDATE"
 
-    # ── Find HPIA before Chocolatey ──
+    # â”€â”€ Find HPIA before Chocolatey â”€â”€
     Write-SubBanner "Locating HP Image Assistant"
     $hpia = Find-HPIA
 
-    # ── Try Chocolatey install if not found ──
+    # â”€â”€ Try Chocolatey install if not found â”€â”€
     if (-not $hpia) {
         Write-Status WARN "HPIA not found - attempting Chocolatey install..."
 
@@ -1638,7 +1638,7 @@ function Invoke-HPUpdates {
         }
     }
 
-    # ── Final validation ──
+    # â”€â”€ Final validation â”€â”€
     if (-not $hpia) {
         Write-Status ERROR "HP Image Assistant (HPImageAssistant.exe) could not be found anywhere."
         Write-Status INFO "Searched: known paths, Chocolatey lib, Program Files, C:\HP, C:\SWSetup"
@@ -1657,20 +1657,20 @@ function Invoke-HPUpdates {
     Write-Status DEBUG "HPIA size: $([math]::Round($hpiaItem.Length / 1MB, 1)) MB"
     Write-Status DEBUG "HPIA version: $($hpiaItem.VersionInfo.FileVersion)"
 
-    # ── Create report folder ──
+    # â”€â”€ Create report folder â”€â”€
     $hpiaReport = 'C:\Temp\HPIA'
     if (-not (Test-Path $hpiaReport)) {
         New-Item -Path $hpiaReport -ItemType Directory -Force | Out-Null
     }
 
-    # ── Run HPIA ──
+    # â”€â”€ Run HPIA â”€â”€
     Write-SubBanner "HP Image Assistant: Analyze & Install"
     Write-Status STEP "All update names and progress will appear below."
 
     $hpArgs = "/Operation:Analyze /Action:Install /Selection:All /Silent /Noninteractive /ReportFolder:`"$hpiaReport`""
     $hpExit = Invoke-CommandVerbose -FilePath $hpia -Arguments $hpArgs -Label "HPIA"
 
-    # ── Report results ──
+    # â”€â”€ Report results â”€â”€
     Write-LoggedHost
     Write-LoggedHost "  ======================================================================" -ForegroundColor DarkCyan
     Write-LoggedHost "              HP IMAGE ASSISTANT RESULTS" -ForegroundColor Cyan
@@ -3355,5 +3355,6 @@ finally {
 }
 
 ```
+
 
 
