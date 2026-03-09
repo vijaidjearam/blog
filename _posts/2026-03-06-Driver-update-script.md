@@ -321,7 +321,7 @@ $Script:DriverProcesses  = @('drvinst','pnputil','DPInst','DPInst64','SetupAPI')
 $Script:SpinnerFrames    = @('[ ]','[= ]','[== ]','[=== ]','[====]','[ ===]','[ ==]','[ =]')
 $Script:ChocoSourceName  = 'chocosia'
 $Script:ChocoSourceUrl   = 'http://choco.local.xyz.com/repository/chocolatey-group'
-$Script:NetworkShareBase    = '\\networkshare'
+$Script:NetworkShareBase    = '\\synosia.local.xyz.com\batchs'
 $Script:ShareDriverFolder   = 'driver'
 $Script:ManufacturerShareMap = @{
     'Dell'             = 'dell'
@@ -332,31 +332,15 @@ $Script:ManufacturerShareMap = @{
 $Script:USBDriverFolders = @('DriversOS','Drivers')
 
 #===================================================================
-#  INITIALISATION
-#===================================================================
-function Initialize-PersistentScript {
-    if (-not (Test-Path $Script:TempFolder)) {
-        New-Item -Path $Script:TempFolder -ItemType Directory -Force | Out-Null
-    }
-    $currentScript = $MyInvocation.ScriptName
-    if (-not $currentScript) { $currentScript = $PSCommandPath }
-    if ($currentScript -and $currentScript -ne $Script:PersistentScript) {
-        if (Test-Path $currentScript) {
-            Write-Host "[INIT] Copying script to $Script:PersistentScript" -ForegroundColor Yellow
-            Copy-Item -Path $currentScript -Destination $Script:PersistentScript -Force
-            Write-Host "[INIT] Script copied successfully." -ForegroundColor Green
-        }
-    }
-    if (-not (Test-Path $Script:PersistentScript)) {
-        Write-Host "[ERROR] Persistent script could not be created." -ForegroundColor Red
-        return $false
-    }
-    return $true
-}
-
-#===================================================================
 #  LOGGING HELPERS
 #===================================================================
+# NOTE: Append-ToLog is now a no-op because Start-Transcript captures all output
+# This avoids file locking conflicts with the transcript
+function Append-ToLog {
+    param([Parameter(Mandatory=$false)][AllowEmptyString()][string]$Message = "")
+    # No-op: Start-Transcript captures all console output automatically
+}
+
 function Write-Status {
     param(
         [Parameter(Mandatory)]
@@ -393,15 +377,17 @@ function Write-Status {
         'KILL'     { '[K]' }
         default    { '[ ]' }
     }
-    Write-Host "[$timestamp] $prefix $Message" -ForegroundColor $color
+    $line = "[$timestamp] $prefix [$Level] $Message"
+    Write-Host $line -ForegroundColor $color
 }
 
 function Write-Banner {
     param([string]$Text)
+    $sep = "=" * 70
     Write-Host ""
-    Write-Host ("=" * 70) -ForegroundColor Magenta
+    Write-Host $sep -ForegroundColor Magenta
     Write-Host "  $Text" -ForegroundColor Magenta
-    Write-Host ("=" * 70) -ForegroundColor Magenta
+    Write-Host $sep -ForegroundColor Magenta
     Write-Host ""
 }
 
@@ -410,6 +396,19 @@ function Write-SubBanner {
     Write-Host ""
     Write-Host "--- $Text ---" -ForegroundColor Yellow
     Write-Host ""
+}
+
+function Write-LoggedHost {
+    param(
+        [Parameter(Mandatory=$false)][AllowEmptyString()][string]$Message = "",
+        [string]$ForegroundColor = 'White'
+    )
+    if ($Message) {
+        Write-Host $Message -ForegroundColor $ForegroundColor
+    }
+    else {
+        Write-Host ""
+    }
 }
 
 function Format-Duration {
@@ -438,12 +437,51 @@ function Write-DriverHeader {
     $filled = [math]::Floor($pct / 5)
     $empty = 20 - $filled
     $bar = "[" + ("#" * $filled) + ("-" * $empty) + "]"
+    $lines = @(
+        "  ======================================================================"
+        "  $bar $pct% ($Current of $Total drivers)"
+        "  Driver: $DriverName"
+        "  Timeout: $Script:DriverTimeout seconds"
+        "  ======================================================================"
+    )
     Write-Host ""
-    Write-Host "  ======================================================================" -ForegroundColor DarkCyan
-    Write-Host "  $bar $pct% ($Current of $Total drivers)" -ForegroundColor Cyan
-    Write-Host "  Driver: $DriverName" -ForegroundColor White
-    Write-Host "  Timeout: $Script:DriverTimeout seconds" -ForegroundColor DarkGray
-    Write-Host "  ======================================================================" -ForegroundColor DarkCyan
+    foreach ($l in $lines) {
+        Write-Host $l -ForegroundColor DarkCyan
+    }
+}
+
+#===================================================================
+#  INITIALISATION
+#===================================================================
+function Initialize-PersistentScript {
+    if (-not (Test-Path $Script:TempFolder)) {
+        New-Item -Path $Script:TempFolder -ItemType Directory -Force | Out-Null
+    }
+    $sessionHeader = @(
+        ""
+        "=================================================================="
+        "  NEW SESSION: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
+        "  PID: $PID | User: $env:USERNAME | Computer: $env:COMPUTERNAME"
+        "=================================================================="
+        ""
+    )
+    foreach ($line in $sessionHeader) {
+        Write-Host $line -ForegroundColor DarkGray
+    }
+    $currentScript = $MyInvocation.ScriptName
+    if (-not $currentScript) { $currentScript = $PSCommandPath }
+    if ($currentScript -and $currentScript -ne $Script:PersistentScript) {
+        if (Test-Path $currentScript) {
+            Write-LoggedHost "[INIT] Copying script to $Script:PersistentScript" -ForegroundColor Yellow
+            Copy-Item -Path $currentScript -Destination $Script:PersistentScript -Force
+            Write-LoggedHost "[INIT] Script copied successfully." -ForegroundColor Green
+        }
+    }
+    if (-not (Test-Path $Script:PersistentScript)) {
+        Write-LoggedHost "[ERROR] Persistent script could not be created." -ForegroundColor Red
+        return $false
+    }
+    return $true
 }
 
 #===================================================================
@@ -518,7 +556,7 @@ function Clear-DriverInstallEnvironment {
 }
 
 #===================================================================
-#  VERBOSE COMMAND EXECUTION
+#  VERBOSE COMMAND EXECUTION (logs to console, captured by transcript)
 #===================================================================
 function Invoke-CommandVerbose {
     param(
@@ -532,7 +570,6 @@ function Invoke-CommandVerbose {
     }
     $exeName = Split-Path $FilePath -Leaf
     Write-Status INFO "Executing: $exeName $Arguments"
-    Write-Host ""
     $psi = [System.Diagnostics.ProcessStartInfo]::new()
     $psi.FileName = $FilePath
     $psi.Arguments = $Arguments
@@ -564,7 +601,8 @@ function Invoke-CommandVerbose {
                 $trimmed = $line.Trim()
                 if ($trimmed) {
                     $ts = Get-Date -Format 'HH:mm:ss'
-                    Write-Host "  [$ts] [$Label] $trimmed" -ForegroundColor White
+                    $formatted = "  [$ts] [$Label] $trimmed"
+                    Write-Host $formatted -ForegroundColor White
                     [void]$logLines.Add("[$ts] $trimmed")
                 }
                 $stdoutTask = $process.StandardOutput.ReadLineAsync()
@@ -579,8 +617,9 @@ function Invoke-CommandVerbose {
                 $trimmed = $line.Trim()
                 if ($trimmed) {
                     $ts = Get-Date -Format 'HH:mm:ss'
-                    Write-Host "  [$ts] [$Label] $trimmed" -ForegroundColor Yellow
-                    [void]$logLines.Add("[$ts] [WARN] $trimmed")
+                    $formatted = "  [$ts] [$Label] [STDERR] $trimmed"
+                    Write-Host $formatted -ForegroundColor Yellow
+                    [void]$logLines.Add("[$ts] [STDERR] $trimmed")
                 }
                 $stderrTask = $process.StandardError.ReadLineAsync()
                 $activity = $true; $lastActivity.Restart()
@@ -590,7 +629,8 @@ function Invoke-CommandVerbose {
         if ((-not $activity) -and ($lastActivity.Elapsed.TotalSeconds -ge $heartbeatSec)) {
             $ts = Get-Date -Format 'HH:mm:ss'
             $elapsed = [math]::Round($sw.Elapsed.TotalSeconds)
-            Write-Host "  [$ts] [$Label] ... still running (${elapsed}s elapsed)" -ForegroundColor DarkGray
+            $heartbeatMsg = "  [$ts] [$Label] ... still running (${elapsed}s elapsed)"
+            Write-Host $heartbeatMsg -ForegroundColor DarkGray
             [void]$logLines.Add("[$ts] [heartbeat] ${elapsed}s elapsed")
             $lastActivity.Restart()
         }
@@ -600,16 +640,15 @@ function Invoke-CommandVerbose {
     $sw.Stop()
     $exitCode = $process.ExitCode
     $safeLabel = $Label -replace '[^a-zA-Z0-9]', '_'
-    $logFile = Join-Path $Script:TempFolder "${safeLabel}_$(Get-Date -Format 'yyyyMMdd_HHmmss').log"
+    $cmdLogFile = Join-Path $Script:TempFolder "${safeLabel}_$(Get-Date -Format 'yyyyMMdd_HHmmss').log"
     try {
         $header = "Command : $FilePath $Arguments`nExit    : $exitCode`nDuration: $(Format-Duration $sw.Elapsed.TotalSeconds)`n$('=' * 60)`n"
         $body = ($logLines | ForEach-Object { $_ }) -join "`n"
-        "$header$body" | Out-File $logFile -Encoding UTF8 -Force
+        "$header$body" | Out-File $cmdLogFile -Encoding UTF8 -Force
     } catch { }
-    Write-Host ""
     Write-Status TIME "Completed in $(Format-Duration $sw.Elapsed.TotalSeconds)"
     Write-Status INFO "Exit code: $exitCode"
-    Write-Status DEBUG "Log: $logFile"
+    Write-Status DEBUG "Per-command log: $cmdLogFile"
     try { $process.Dispose() } catch { }
     return $exitCode
 }
@@ -623,36 +662,15 @@ function Get-ChocoExePath {
 }
 
 #===================================================================
-#  SMB GUEST AUTH & SIGNING FIX (Windows 11 GPO workaround)
+#  SMB GUEST AUTH & SIGNING FIX
 #===================================================================
 function Enable-GuestNetworkAccess {
-    <#
-    .SYNOPSIS
-        Configures Windows to allow insecure guest authentication and disables
-        SMB digital signature requirements. Required on Windows 11 to access
-        network shares that allow guest/anonymous access.
-
-    .DESCRIPTION
-        Windows 11 blocks guest logins to SMB shares by default via GPO.
-        This function:
-        1. Creates the LanmanWorkstation policy key if missing
-        2. Sets AllowInsecureGuestAuth = 1 (policy level)
-        3. Sets AllowInsecureGuestAuth = 1 (service parameter level)
-        4. Disables RequireSecuritySignature (digitally sign always)
-        5. Disables EnableSecuritySignature (digitally sign if server agrees)
-        6. Restarts the LanmanWorkstation service to apply changes immediately
-    #>
-
     Write-SubBanner "Configuring SMB Guest Access & Signing"
     Write-Status INFO "Windows 11 blocks guest SMB access by default."
-    Write-Status INFO "Applying registry fixes for network share access..."
-    Write-Host ""
-
+    Write-Status INFO "Applying registry fixes..."
     $policyPath = 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation'
     $servicePath = 'HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters'
     $changes = 0
-
-    # --- Step 1: Create policy key if it doesn't exist ---
     if (-not (Test-Path $policyPath)) {
         Write-Status INFO "Creating policy key: $policyPath"
         try {
@@ -660,125 +678,83 @@ function Enable-GuestNetworkAccess {
             Write-Status OK "Policy key created."
             $changes++
         }
-        catch {
-            Write-Status ERROR "Failed to create policy key: $($_.Exception.Message)"
-        }
+        catch { Write-Status ERROR "Failed to create policy key: $($_.Exception.Message)" }
     }
-    else {
-        Write-Status OK "Policy key already exists."
-    }
-
-    # --- Step 2: AllowInsecureGuestAuth at POLICY level ---
-    Write-Status INFO "Setting AllowInsecureGuestAuth = 1 (policy level)..."
+    else { Write-Status OK "Policy key exists." }
     try {
         $currentVal = $null
         try { $currentVal = Get-ItemPropertyValue -Path $policyPath -Name 'AllowInsecureGuestAuth' -ErrorAction SilentlyContinue } catch { }
-        if ($currentVal -eq 1) {
-            Write-Status OK "AllowInsecureGuestAuth (policy) already set to 1."
-        }
+        if ($currentVal -eq 1) { Write-Status OK "AllowInsecureGuestAuth (policy) already 1." }
         else {
             Set-ItemProperty -Path $policyPath -Name 'AllowInsecureGuestAuth' -Value 1 -Type DWord -Force
             Write-Status OK "AllowInsecureGuestAuth (policy) set to 1."
             $changes++
         }
     }
-    catch {
-        Write-Status ERROR "Failed to set policy AllowInsecureGuestAuth: $($_.Exception.Message)"
-    }
-
-    # --- Step 3: AllowInsecureGuestAuth at SERVICE level ---
-    Write-Status INFO "Setting AllowInsecureGuestAuth = 1 (service parameters)..."
+    catch { Write-Status ERROR "Failed: $($_.Exception.Message)" }
     try {
         $currentVal = $null
         try { $currentVal = Get-ItemPropertyValue -Path $servicePath -Name 'AllowInsecureGuestAuth' -ErrorAction SilentlyContinue } catch { }
-        if ($currentVal -eq 1) {
-            Write-Status OK "AllowInsecureGuestAuth (service) already set to 1."
-        }
+        if ($currentVal -eq 1) { Write-Status OK "AllowInsecureGuestAuth (service) already 1." }
         else {
             Set-ItemProperty -Path $servicePath -Name 'AllowInsecureGuestAuth' -Value 1 -Type DWord -Force
             Write-Status OK "AllowInsecureGuestAuth (service) set to 1."
             $changes++
         }
     }
-    catch {
-        Write-Status ERROR "Failed to set service AllowInsecureGuestAuth: $($_.Exception.Message)"
-    }
-
-    # --- Step 4: Disable RequireSecuritySignature (digitally sign always) ---
-    Write-Status INFO "Disabling 'Digitally sign communications (always)'..."
+    catch { Write-Status ERROR "Failed: $($_.Exception.Message)" }
     try {
         $currentVal = $null
         try { $currentVal = Get-ItemPropertyValue -Path $servicePath -Name 'RequireSecuritySignature' -ErrorAction SilentlyContinue } catch { }
-        if ($currentVal -eq 0) {
-            Write-Status OK "RequireSecuritySignature already disabled."
-        }
+        if ($currentVal -eq 0) { Write-Status OK "RequireSecuritySignature already 0." }
         else {
             Set-ItemProperty -Path $servicePath -Name 'RequireSecuritySignature' -Value 0 -Type DWord -Force
-            Write-Status OK "RequireSecuritySignature disabled."
+            Write-Status OK "RequireSecuritySignature set to 0."
             $changes++
         }
     }
-    catch {
-        Write-Status ERROR "Failed to disable RequireSecuritySignature: $($_.Exception.Message)"
-    }
-
-    # --- Step 5: Disable EnableSecuritySignature (digitally sign if server agrees) ---
-    Write-Status INFO "Disabling 'Digitally sign communications (if server agrees)'..."
+    catch { Write-Status ERROR "Failed: $($_.Exception.Message)" }
     try {
         $currentVal = $null
         try { $currentVal = Get-ItemPropertyValue -Path $servicePath -Name 'EnableSecuritySignature' -ErrorAction SilentlyContinue } catch { }
-        if ($currentVal -eq 0) {
-            Write-Status OK "EnableSecuritySignature already disabled."
-        }
+        if ($currentVal -eq 0) { Write-Status OK "EnableSecuritySignature already 0." }
         else {
             Set-ItemProperty -Path $servicePath -Name 'EnableSecuritySignature' -Value 0 -Type DWord -Force
-            Write-Status OK "EnableSecuritySignature disabled."
+            Write-Status OK "EnableSecuritySignature set to 0."
             $changes++
         }
     }
-    catch {
-        Write-Status ERROR "Failed to disable EnableSecuritySignature: $($_.Exception.Message)"
-    }
-
-    # --- Step 6: Restart LanmanWorkstation service if changes were made ---
+    catch { Write-Status ERROR "Failed: $($_.Exception.Message)" }
     if ($changes -gt 0) {
-        Write-Status INFO "Restarting LanmanWorkstation service to apply $changes change(s)..."
+        Write-Status INFO "Restarting LanmanWorkstation service ($changes changes)..."
         try {
-            # LanmanWorkstation has dependent services - restart with dependencies
             $saveEA = $ErrorActionPreference
             $ErrorActionPreference = 'SilentlyContinue'
             $null = cmd.exe /c "net stop LanmanWorkstation /y >nul 2>&1"
             Start-Sleep -Seconds 2
             $null = cmd.exe /c "net start LanmanWorkstation >nul 2>&1"
-            # Also restart dependent services that may have stopped
             $null = cmd.exe /c "net start LanmanServer >nul 2>&1"
             $null = cmd.exe /c "net start Netlogon >nul 2>&1"
             $ErrorActionPreference = $saveEA
             Start-Sleep -Seconds 3
-            Write-Status OK "LanmanWorkstation service restarted."
+            Write-Status OK "LanmanWorkstation restarted."
         }
         catch {
             try { $ErrorActionPreference = $saveEA } catch { }
-            Write-Status WARN "Service restart may have partially failed - changes may require reboot."
+            Write-Status WARN "Service restart may need reboot."
         }
     }
-    else {
-        Write-Status OK "No changes needed - all SMB settings already configured."
-    }
-
-    # --- Summary ---
-    Write-Host ""
-    Write-Host "  ======================================================================" -ForegroundColor DarkCyan
-    Write-Host "              SMB GUEST ACCESS CONFIGURATION SUMMARY" -ForegroundColor Cyan
-    Write-Host "  ======================================================================" -ForegroundColor DarkCyan
-
-    # Read back current values for confirmation
+    else { Write-Status OK "No changes needed." }
     $readBack = @(
         @{ Name = 'AllowInsecureGuestAuth (policy)';  Path = $policyPath;  Key = 'AllowInsecureGuestAuth'; Expected = 1 }
         @{ Name = 'AllowInsecureGuestAuth (service)'; Path = $servicePath; Key = 'AllowInsecureGuestAuth'; Expected = 1 }
         @{ Name = 'RequireSecuritySignature';         Path = $servicePath; Key = 'RequireSecuritySignature'; Expected = 0 }
         @{ Name = 'EnableSecuritySignature';          Path = $servicePath; Key = 'EnableSecuritySignature'; Expected = 0 }
     )
+    Write-LoggedHost
+    Write-LoggedHost "  ======================================================================" -ForegroundColor DarkCyan
+    Write-LoggedHost "              SMB GUEST ACCESS VERIFICATION" -ForegroundColor Cyan
+    Write-LoggedHost "  ======================================================================" -ForegroundColor DarkCyan
     foreach ($item in $readBack) {
         $val = $null
         try { $val = Get-ItemPropertyValue -Path $item.Path -Name $item.Key -ErrorAction SilentlyContinue } catch { }
@@ -786,13 +762,11 @@ function Enable-GuestNetworkAccess {
         $match = ($val -eq $item.Expected)
         $statusColor = if ($match) { 'Green' } else { 'Red' }
         $statusIcon = if ($match) { 'OK' } else { 'FAIL' }
-        Write-Host "  [$statusIcon] $($item.Name): $valStr (expected: $($item.Expected))" -ForegroundColor $statusColor
+        Write-LoggedHost "  [$statusIcon] $($item.Name): $valStr (expected: $($item.Expected))" -ForegroundColor $statusColor
     }
-
-    Write-Host "  Changes applied: $changes" -ForegroundColor White
-    Write-Host "  ======================================================================" -ForegroundColor DarkCyan
-    Write-Host ""
-
+    Write-LoggedHost "  Changes applied: $changes" -ForegroundColor White
+    Write-LoggedHost "  ======================================================================" -ForegroundColor DarkCyan
+    Write-LoggedHost
     return ($changes -ge 0)
 }
 
@@ -814,18 +788,13 @@ function Get-SystemInfo {
 function Get-ManufacturerShareFolder {
     param([Parameter(Mandatory)][string]$Manufacturer)
     foreach ($key in $Script:ManufacturerShareMap.Keys) {
-        if ($Manufacturer -like "*$key*") {
-            return $Script:ManufacturerShareMap[$key]
-        }
+        if ($Manufacturer -like "*$key*") { return $Script:ManufacturerShareMap[$key] }
     }
     return ($Manufacturer -replace '\s', '').ToLower()
 }
 
 function Build-NetworkDriverPath {
-    param(
-        [Parameter(Mandatory)][string]$ManufacturerFolder,
-        [Parameter(Mandatory)][string]$CleanModel
-    )
+    param([Parameter(Mandatory)][string]$ManufacturerFolder, [Parameter(Mandatory)][string]$CleanModel)
     $path = Join-Path $Script:NetworkShareBase $ManufacturerFolder
     $path = Join-Path $path $Script:ShareDriverFolder
     $path = Join-Path $path $CleanModel
@@ -833,11 +802,7 @@ function Build-NetworkDriverPath {
 }
 
 function Test-NetworkShareAccess {
-    param(
-        [Parameter(Mandatory)][string]$SharePath,
-        [int]$MaxRetries = 10,
-        [int]$RetryDelaySec = 10
-    )
+    param([Parameter(Mandatory)][string]$SharePath, [int]$MaxRetries = 10, [int]$RetryDelaySec = 10)
     Write-Status INFO "Testing access to: $SharePath"
     for ($i = 1; $i -le $MaxRetries; $i++) {
         try {
@@ -852,7 +817,7 @@ function Test-NetworkShareAccess {
             Start-Sleep -Seconds $RetryDelaySec
         }
     }
-    Write-Status ERROR "Network share not accessible after $MaxRetries attempts: $SharePath"
+    Write-Status ERROR "Share not accessible after $MaxRetries attempts: $SharePath"
     return $false
 }
 
@@ -860,73 +825,54 @@ function Test-NetworkShareAccess {
 #  DEVICE SCANNING & INF MATCHING
 #===================================================================
 function Get-SystemDeviceIds {
-    $ids = [System.Collections.Generic.HashSet[string]]::new(
-        [System.StringComparer]::OrdinalIgnoreCase
-    )
+    $ids = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
     $deviceCount = 0
     $problemDeviceNames = [System.Collections.ArrayList]::new()
     try {
         $devices = @(Get-CimInstance Win32_PnPEntity -ErrorAction Stop)
         $deviceCount = ($devices | Measure-Object).Count
         foreach ($dev in $devices) {
-            if ($null -ne $dev.HardwareID) {
-                foreach ($hwid in @($dev.HardwareID)) { if ($hwid) { [void]$ids.Add($hwid) } }
-            }
-            if ($null -ne $dev.CompatibleID) {
-                foreach ($cid in @($dev.CompatibleID)) { if ($cid) { [void]$ids.Add($cid) } }
-            }
+            if ($null -ne $dev.HardwareID) { foreach ($hwid in @($dev.HardwareID)) { if ($hwid) { [void]$ids.Add($hwid) } } }
+            if ($null -ne $dev.CompatibleID) { foreach ($cid in @($dev.CompatibleID)) { if ($cid) { [void]$ids.Add($cid) } } }
             if ($null -ne $dev.ConfigManagerErrorCode -and $dev.ConfigManagerErrorCode -ne 0) {
-                $devName = $dev.Name
-                if (-not $devName) { $devName = $dev.DeviceID }
+                $devName = $dev.Name; if (-not $devName) { $devName = $dev.DeviceID }
                 [void]$problemDeviceNames.Add("$devName (error $($dev.ConfigManagerErrorCode))")
             }
         }
     }
-    catch { Write-Status WARN "WMI device scan failed: $($_.Exception.Message)" }
+    catch { Write-Status WARN "WMI scan failed: $($_.Exception.Message)" }
     if ($ids.Count -eq 0) {
-        Write-Status INFO "Trying Get-PnpDevice as fallback..."
         try {
             $pnpDevs = @(Get-PnpDevice -ErrorAction SilentlyContinue)
             $deviceCount = ($pnpDevs | Measure-Object).Count
             foreach ($dev in $pnpDevs) {
                 try {
                     $hwProp = $dev | Get-PnpDeviceProperty -KeyName 'DEVPKEY_Device_HardwareIds' -ErrorAction SilentlyContinue
-                    if ($null -ne $hwProp -and $null -ne $hwProp.Data) {
-                        foreach ($id in @($hwProp.Data)) { if ($id) { [void]$ids.Add($id) } }
-                    }
+                    if ($null -ne $hwProp -and $null -ne $hwProp.Data) { foreach ($id in @($hwProp.Data)) { if ($id) { [void]$ids.Add($id) } } }
                 } catch { }
                 try {
                     $cProp = $dev | Get-PnpDeviceProperty -KeyName 'DEVPKEY_Device_CompatibleIds' -ErrorAction SilentlyContinue
-                    if ($null -ne $cProp -and $null -ne $cProp.Data) {
-                        foreach ($id in @($cProp.Data)) { if ($id) { [void]$ids.Add($id) } }
-                    }
+                    if ($null -ne $cProp -and $null -ne $cProp.Data) { foreach ($id in @($cProp.Data)) { if ($id) { [void]$ids.Add($id) } } }
                 } catch { }
             }
-        }
-        catch { Write-Status WARN "Get-PnpDevice fallback also failed." }
+        } catch { }
     }
-    Write-Status OK "Scanned $deviceCount device(s), found $($ids.Count) unique hardware/compatible ID(s)."
+    Write-Status OK "Scanned $deviceCount device(s), $($ids.Count) unique ID(s)."
     $probCount = ($problemDeviceNames | Measure-Object).Count
     if ($probCount -gt 0) {
         Write-Status WARN "$probCount device(s) with problems:"
         foreach ($pd in $problemDeviceNames) { Write-Status INFO "  - $pd" }
     }
-    else { Write-Status OK "No devices with driver problems detected." }
     return $ids
 }
 
 function Get-InfHardwareIds {
     param([Parameter(Mandatory)][string]$InfPath)
-    $hardwareIds = [System.Collections.Generic.HashSet[string]]::new(
-        [System.StringComparer]::OrdinalIgnoreCase
-    )
-    try { $lines = @(Get-Content $InfPath -ErrorAction Stop) }
-    catch { return @($hardwareIds) }
+    $hardwareIds = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
+    try { $lines = @(Get-Content $InfPath -ErrorAction Stop) } catch { return @($hardwareIds) }
     $lineCount = ($lines | Measure-Object).Count
     if ($lineCount -eq 0) { return @($hardwareIds) }
-    $modelSections = [System.Collections.Generic.HashSet[string]]::new(
-        [System.StringComparer]::OrdinalIgnoreCase
-    )
+    $modelSections = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
     $inManufacturer = $false
     foreach ($line in $lines) {
         $trimmed = $line.Trim()
@@ -977,21 +923,16 @@ function Get-InfHardwareIds {
 }
 
 function Test-InfMatchesSystem {
-    param(
-        [Parameter(Mandatory)][string]$InfPath,
-        [Parameter(Mandatory)][System.Collections.Generic.HashSet[string]]$SystemIds
-    )
+    param([Parameter(Mandatory)][string]$InfPath, [Parameter(Mandatory)][System.Collections.Generic.HashSet[string]]$SystemIds)
     $infIds = Get-InfHardwareIds -InfPath $InfPath
     $infIdCount = ($infIds | Measure-Object).Count
     if ($infIdCount -eq 0) { return $true }
-    foreach ($infId in $infIds) {
-        if ($SystemIds.Contains($infId)) { return $true }
-    }
+    foreach ($infId in $infIds) { if ($SystemIds.Contains($infId)) { return $true } }
     return $false
 }
 
 #===================================================================
-#  STATE-MANAGEMENT HELPERS
+#  STATE-MANAGEMENT
 #===================================================================
 function Get-ScriptState {
     if (Test-Path $Script:StateFile) {
@@ -1016,9 +957,7 @@ function Get-ScriptState {
             }
             return $json
         }
-        catch {
-            Write-Status WARN "Failed reading state file - starting fresh: $($_.Exception.Message)"
-        }
+        catch { Write-Status WARN "State file error - fresh start: $($_.Exception.Message)" }
     }
     return [PSCustomObject]@{
         Phase = 0; USBCompleted = $false; USBRebootDone = $false
@@ -1040,89 +979,68 @@ function Set-ScriptState {
 }
 
 function Remove-ScriptState {
-    Write-Status INFO "Removing state file and RunOnce entry..."
+    Write-Status INFO "Removing state and RunOnce..."
     if (Test-Path $Script:StateFile) { Remove-Item $Script:StateFile -Force -ErrorAction SilentlyContinue }
     try {
-        $rk64 = [Microsoft.Win32.RegistryKey]::OpenBaseKey(
-            [Microsoft.Win32.RegistryHive]::LocalMachine,
-            [Microsoft.Win32.RegistryView]::Registry64
-        ).OpenSubKey('SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce', $true)
+        $rk64 = [Microsoft.Win32.RegistryKey]::OpenBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, [Microsoft.Win32.RegistryView]::Registry64).OpenSubKey('SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce', $true)
         if ($null -ne $rk64) { $rk64.DeleteValue($Script:RunOnceName, $false); $rk64.Close() }
     } catch { }
     $fallback = "$($Script:RunOnceName)_Task"
     try {
-        $existingTask = Get-ScheduledTask -TaskName $fallback -ErrorAction SilentlyContinue
-        if ($null -ne $existingTask) {
-            Unregister-ScheduledTask -TaskName $fallback -Confirm:$false -ErrorAction SilentlyContinue
-        }
+        $t = Get-ScheduledTask -TaskName $fallback -ErrorAction SilentlyContinue
+        if ($null -ne $t) { Unregister-ScheduledTask -TaskName $fallback -Confirm:$false -ErrorAction SilentlyContinue }
     } catch { }
     Write-Status OK "Cleanup finished."
 }
 
 #===================================================================
-#  RUNONCE HELPERS
+#  RUNONCE & REBOOT
 #===================================================================
 function Set-RunOnceEntry {
     param([Parameter(Mandatory)][string]$Name, [Parameter(Mandatory)][string]$Command)
     try {
-        $rk64 = [Microsoft.Win32.RegistryKey]::OpenBaseKey(
-            [Microsoft.Win32.RegistryHive]::LocalMachine,
-            [Microsoft.Win32.RegistryView]::Registry64
-        ).OpenSubKey('SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce', $true)
-        $rk64.SetValue($Name, $Command, [Microsoft.Win32.RegistryValueKind]::String)
-        $rk64.Close()
-        Write-Status OK "RunOnce entry created: $Name"
-        return $true
+        $rk64 = [Microsoft.Win32.RegistryKey]::OpenBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, [Microsoft.Win32.RegistryView]::Registry64).OpenSubKey('SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce', $true)
+        $rk64.SetValue($Name, $Command, [Microsoft.Win32.RegistryValueKind]::String); $rk64.Close()
+        Write-Status OK "RunOnce: $Name"; return $true
     }
-    catch {
-        Write-Status WARN "Failed to write RunOnce: $($_.Exception.Message)"
-        return $false
-    }
+    catch { Write-Status WARN "RunOnce failed: $($_.Exception.Message)"; return $false }
 }
 
 function Set-RunOnceTask {
     param([Parameter(Mandatory)][string]$Name, [Parameter(Mandatory)][string]$ScriptPath)
-    $taskAction = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-NoLogo -NoProfile -ExecutionPolicy Bypass -File `"$ScriptPath`""
-    $taskTrigger = New-ScheduledTaskTrigger -AtStartup
-    $principal = New-ScheduledTaskPrincipal -UserId 'SYSTEM' -RunLevel Highest -LogonType ServiceAccount
     try {
-        Register-ScheduledTask -TaskName $Name -Action $taskAction -Trigger $taskTrigger -Principal $principal -Force -ErrorAction Stop
-        Write-Status OK "Fallback task created: $Name"
-        return $true
+        $a = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-NoLogo -NoProfile -ExecutionPolicy Bypass -File `"$ScriptPath`""
+        $tr = New-ScheduledTaskTrigger -AtStartup
+        $p = New-ScheduledTaskPrincipal -UserId 'SYSTEM' -RunLevel Highest -LogonType ServiceAccount
+        Register-ScheduledTask -TaskName $Name -Action $a -Trigger $tr -Principal $p -Force -ErrorAction Stop
+        Write-Status OK "Fallback task: $Name"; return $true
     }
-    catch {
-        Write-Status ERROR "Could not create fallback task: $($_.Exception.Message)"
-        return $false
-    }
+    catch { Write-Status ERROR "Task failed: $($_.Exception.Message)"; return $false }
 }
 
 function Schedule-RebootAndContinue {
-    param([pscustomobject]$State, [string]$Reason = "Script requires reboot to continue")
-    Write-Host ""
-    Write-Host "======================================================================" -ForegroundColor Yellow
-    Write-Host "  REBOOT REQUIRED" -ForegroundColor Yellow
-    Write-Host "======================================================================" -ForegroundColor Yellow
-    Write-Host "  Reason: $Reason" -ForegroundColor Yellow
-    Write-Host "======================================================================" -ForegroundColor Yellow
-    Write-Host ""
+    param([pscustomobject]$State, [string]$Reason = "Reboot required")
+    Write-LoggedHost
+    Write-LoggedHost "======================================================================" -ForegroundColor Yellow
+    Write-LoggedHost "  REBOOT REQUIRED: $Reason" -ForegroundColor Yellow
+    Write-LoggedHost "======================================================================" -ForegroundColor Yellow
+    Write-LoggedHost
     Stop-DriverInstallProcesses -Silent | Out-Null
-    $State.RebootCount++
-    Set-ScriptState -State $State
+    $State.RebootCount++; Set-ScriptState -State $State
     $cmd = "powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$Script:PersistentScript`""
     $ok = Set-RunOnceEntry -Name $Script:RunOnceName -Command $cmd
     if (-not $ok) { Set-RunOnceTask -Name "$($Script:RunOnceName)_Task" -ScriptPath $Script:PersistentScript | Out-Null }
     for ($i = 15; $i -ge 1; $i--) {
-        Write-Host "  Rebooting in $i seconds..." -ForegroundColor Yellow
+        Write-LoggedHost "  Rebooting in $i seconds..." -ForegroundColor Yellow
         Start-Sleep -Seconds 1
     }
-    Write-Host "  Rebooting NOW!" -ForegroundColor Red
+    Write-LoggedHost "  Rebooting NOW!" -ForegroundColor Red
     try { Stop-Transcript } catch { }
-    Restart-Computer -Force
-    exit 0
+    Restart-Computer -Force; exit 0
 }
 
 #===================================================================
-#  DRIVER INSTALLATION (single driver)
+#  SINGLE DRIVER INSTALL
 #===================================================================
 function Install-SingleDriver {
     param(
@@ -1141,8 +1059,7 @@ function Install-SingleDriver {
     Write-DriverHeader -DriverName $DriverName -Current $CurrentNumber -Total $TotalCount
     Write-Status DRIVER "Path: $InfPath"
     Clear-DriverInstallEnvironment
-    Write-Status INFO "Starting installation..."
-    Write-Host ""
+    Write-Status INFO "Starting pnputil installation..."
     $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
     $consoleWidth = Get-ConsoleWidth
     $tempScript = [IO.Path]::GetTempFileName() + ".ps1"
@@ -1160,44 +1077,36 @@ try {
 "@
     $wrapperContent | Out-File -FilePath $tempScript -Encoding UTF8
     $proc = Start-Process -FilePath "powershell.exe" -ArgumentList "-ExecutionPolicy Bypass -WindowStyle Hidden -File `"$tempScript`"" -PassThru -WindowStyle Hidden
-    $frameIdx = 0
-    $frameCount = $Script:SpinnerFrames.Length
-    $animLine = 0
-    try { $animLine = [Console]::CursorTop } catch { }
+    $frameIdx = 0; $frameCount = $Script:SpinnerFrames.Length
+    $animLine = 0; try { $animLine = [Console]::CursorTop } catch { }
+    Write-Host "[PNPUTIL] Installing: $DriverName ($CurrentNumber/$TotalCount)" -ForegroundColor Cyan
     while ((-not $proc.HasExited) -and ($stopwatch.Elapsed.TotalSeconds -lt $TimeoutSeconds)) {
         $elapsed = $stopwatch.Elapsed.TotalSeconds
         $remaining = [math]::Max(0, $TimeoutSeconds - $elapsed)
         $pct = [math]::Round(($elapsed / $TimeoutSeconds) * 100)
-        $spinner = $Script:SpinnerFrames[$frameIdx % $frameCount]
-        $frameIdx++
+        $spinner = $Script:SpinnerFrames[$frameIdx % $frameCount]; $frameIdx++
         $line = "  $spinner $pct% | Elapsed: $([math]::Round($elapsed))s | Remaining: $([math]::Round($remaining))s"
         $padded = $line.PadRight($consoleWidth)
         try {
             [Console]::SetCursorPosition(0, $animLine)
             [Console]::ForegroundColor = [ConsoleColor]::Cyan
-            [Console]::Write($padded)
-            [Console]::ResetColor()
+            [Console]::Write($padded); [Console]::ResetColor()
         }
         catch { Write-Host "`r$padded" -NoNewline -ForegroundColor Cyan }
         Start-Sleep -Milliseconds 150
     }
-    try {
-        [Console]::SetCursorPosition(0, $animLine)
-        [Console]::Write(' ' * $consoleWidth)
-        [Console]::SetCursorPosition(0, $animLine)
-    }
+    try { [Console]::SetCursorPosition(0, $animLine); [Console]::Write(' ' * $consoleWidth); [Console]::SetCursorPosition(0, $animLine) }
     catch { Write-Host "`r$(' ' * $consoleWidth)`r" -NoNewline }
     $stopwatch.Stop()
     $result.Duration = $stopwatch.Elapsed.TotalSeconds
     if (-not $proc.HasExited) {
-        Write-Host ""
         Write-Status SKIP "TIMEOUT after $(Format-Duration $TimeoutSeconds)!"
         try { $proc.Kill() } catch { }
         $result.TimedOut = $true; $result.ErrorMessage = "Timeout"
-        $killed = Stop-DriverInstallProcesses
-        $result.ProcessesKilled = $killed
+        $killed = Stop-DriverInstallProcesses; $result.ProcessesKilled = $killed
         $null = Wait-ForDriverProcesses -TimeoutSeconds 10
         Remove-Item $tempScript, $outFile, $exitFile -Force -ErrorAction SilentlyContinue
+        Write-Host "[PNPUTIL] TIMEOUT for $DriverName after $TimeoutSeconds seconds" -ForegroundColor Yellow
         if ($Script:CooldownSeconds -gt 0) { Start-Sleep -Seconds $Script:CooldownSeconds }
         return $result
     }
@@ -1209,6 +1118,14 @@ try {
     }
     Remove-Item $tempScript, $outFile, $exitFile -Force -ErrorAction SilentlyContinue
     $result.ExitCode = $exit; $result.Output = $out
+    if ($null -ne $out -and $out.Trim()) {
+        Write-Host "[PNPUTIL] --- Output for $DriverName ---" -ForegroundColor DarkGray
+        foreach ($outLine in ($out -split "`n")) {
+            $trimLine = $outLine.Trim()
+            if ($trimLine) { Write-Host "[PNPUTIL] $trimLine" -ForegroundColor DarkGray }
+        }
+        Write-Host "[PNPUTIL] --- End output ---" -ForegroundColor DarkGray
+    }
     if ($null -ne $out) {
         if ($out -match 'added|successfully added|driver package added') { $result.Added = $true; Write-Status OK "Driver added to store" }
         if ($out -match 'install.*device|installed to device') { $result.Installed = $true; Write-Status OK "Driver installed on device" }
@@ -1234,7 +1151,7 @@ try {
 }
 
 #===================================================================
-#  GENERIC DRIVER FOLDER INSTALLER
+#  GENERIC FOLDER INSTALLER
 #===================================================================
 function Install-DriversFromFolder {
     param(
@@ -1258,14 +1175,14 @@ function Install-DriversFromFolder {
         $result.NotFound = $true; $result.Success = $true; return $result
     }
     $result.TotalFound = $totalFound
-    Write-Status OK "Found $totalFound INF file(s) in: $DriverRoot"
+    Write-Status OK "Found $totalFound INF(s) in: $DriverRoot"
     $processed = @($ProcessedList)
     $processedCount = ($processed | Measure-Object).Count
     if ($processedCount -gt 0) { Write-Status INFO "$processedCount already processed." }
     $matchedInfs = [System.Collections.ArrayList]::new()
     $skippedNoMatch = [System.Collections.ArrayList]::new()
     if ($SkipDeviceMatching) {
-        Write-Status INFO "Device matching DISABLED - installing ALL drivers."
+        Write-Status INFO "Device matching DISABLED - installing ALL."
         foreach ($inf in $allInfFiles) { [void]$matchedInfs.Add($inf) }
     }
     else {
@@ -1290,22 +1207,21 @@ function Install-DriversFromFolder {
     $matchedCount = ($matchedInfs | Measure-Object).Count
     $skippedNoMatchCount = ($skippedNoMatch | Measure-Object).Count
     $result.TotalMatched = $matchedCount; $result.TotalSkippedNoMatch = $skippedNoMatchCount
-    Write-Host ""
-    Write-Host "  ======================================================================" -ForegroundColor DarkCyan
-    Write-Host "              $Label - MATCHING RESULTS" -ForegroundColor Cyan
-    Write-Host "  ======================================================================" -ForegroundColor DarkCyan
-    Write-Host "  Total INFs:                   $totalFound" -ForegroundColor White
-    Write-Host "  Already processed:            $processedCount" -ForegroundColor DarkGray
-    Write-Host "  Matched to devices:           $matchedCount" -ForegroundColor Green
-    Write-Host "  Skipped (no match):           $skippedNoMatchCount" -ForegroundColor Yellow
     $modeLabel = if ($SkipDeviceMatching) { "ALL (no filtering)" } else { "TARGETED" }
     $modeColor = if ($SkipDeviceMatching) { 'Yellow' } else { 'Green' }
-    Write-Host "  Mode:                         $modeLabel" -ForegroundColor $modeColor
-    Write-Host "  ======================================================================" -ForegroundColor DarkCyan
-    Write-Host ""
+    Write-LoggedHost
+    Write-LoggedHost "  ======================================================================" -ForegroundColor DarkCyan
+    Write-LoggedHost "              $Label - MATCHING RESULTS" -ForegroundColor Cyan
+    Write-LoggedHost "  ======================================================================" -ForegroundColor DarkCyan
+    Write-LoggedHost "  Total INFs:       $totalFound" -ForegroundColor White
+    Write-LoggedHost "  Processed:        $processedCount" -ForegroundColor DarkGray
+    Write-LoggedHost "  Matched:          $matchedCount" -ForegroundColor Green
+    Write-LoggedHost "  Skipped:          $skippedNoMatchCount" -ForegroundColor Yellow
+    Write-LoggedHost "  Mode:             $modeLabel" -ForegroundColor $modeColor
+    Write-LoggedHost "  ======================================================================" -ForegroundColor DarkCyan
+    Write-LoggedHost
     if ($matchedCount -eq 0) {
-        Write-Status OK "No new drivers to install."
-        $result.Success = $true; return $result
+        Write-Status OK "No new drivers to install."; $result.Success = $true; return $result
     }
     $overallSw = [System.Diagnostics.Stopwatch]::StartNew()
     $globalReboot = $false; $i = 0
@@ -1316,8 +1232,7 @@ function Install-DriversFromFolder {
         if ($rel -in $processed) { continue }
         $drvResult = Install-SingleDriver -InfPath $inf.FullName -DriverName $rel -CurrentNumber $i -TotalCount $matchedCount
         $result.TotalTime += $drvResult.Duration; $result.TotalKilled += $drvResult.ProcessesKilled
-        if ($drvResult.TimedOut) { $result.TotalTimedOut++ }
-        elseif ($drvResult.Added) { $result.TotalAdded++ }
+        if ($drvResult.TimedOut) { $result.TotalTimedOut++ } elseif ($drvResult.Added) { $result.TotalAdded++ }
         if ($drvResult.Installed) { $result.TotalInstalled++ }
         if ($drvResult.AlreadyExists) { $result.TotalAlreadyExist++ }
         if ((-not $drvResult.Success) -and (-not $drvResult.TimedOut)) { $result.TotalFailed++ }
@@ -1329,40 +1244,38 @@ function Install-DriversFromFolder {
     $timeoutColor = if ($result.TotalTimedOut -gt 0) { 'Yellow' } else { 'Green' }
     $killColor = if ($result.TotalKilled -gt 0) { 'Yellow' } else { 'Green' }
     $rebootColor = if ($globalReboot) { 'Yellow' } else { 'Green' }
-    Write-Host ""
-    Write-Host "======================================================================" -ForegroundColor Green
-    Write-Host "              $Label DRIVER SUMMARY" -ForegroundColor Green
-    Write-Host "======================================================================" -ForegroundColor Green
-    Write-Host "  Found:          $($result.TotalFound)" -ForegroundColor White
-    Write-Host "  Matched:        $($result.TotalMatched)" -ForegroundColor Green
-    Write-Host "  Skipped:        $($result.TotalSkippedNoMatch)" -ForegroundColor Yellow
-    Write-Host "  Added:          $($result.TotalAdded)" -ForegroundColor Green
-    Write-Host "  Installed:      $($result.TotalInstalled)" -ForegroundColor Green
-    Write-Host "  Up-to-date:     $($result.TotalAlreadyExist)" -ForegroundColor Cyan
-    Write-Host "  Failed:         $($result.TotalFailed)" -ForegroundColor $failColor
-    Write-Host "  Timed out:      $($result.TotalTimedOut)" -ForegroundColor $timeoutColor
-    Write-Host "  Killed:         $($result.TotalKilled)" -ForegroundColor $killColor
-    Write-Host "  Time:           $(Format-Duration $overallSw.Elapsed.TotalSeconds)" -ForegroundColor Magenta
-    Write-Host "  Reboot needed:  $globalReboot" -ForegroundColor $rebootColor
-    Write-Host "======================================================================" -ForegroundColor Green
-    Write-Host ""
+    Write-LoggedHost
+    Write-LoggedHost "======================================================================" -ForegroundColor Green
+    Write-LoggedHost "              $Label DRIVER SUMMARY" -ForegroundColor Green
+    Write-LoggedHost "======================================================================" -ForegroundColor Green
+    Write-LoggedHost "  Found:      $($result.TotalFound)" -ForegroundColor White
+    Write-LoggedHost "  Matched:    $($result.TotalMatched)" -ForegroundColor Green
+    Write-LoggedHost "  Skipped:    $($result.TotalSkippedNoMatch)" -ForegroundColor Yellow
+    Write-LoggedHost "  Added:      $($result.TotalAdded)" -ForegroundColor Green
+    Write-LoggedHost "  Installed:  $($result.TotalInstalled)" -ForegroundColor Green
+    Write-LoggedHost "  Up-to-date: $($result.TotalAlreadyExist)" -ForegroundColor Cyan
+    Write-LoggedHost "  Failed:     $($result.TotalFailed)" -ForegroundColor $failColor
+    Write-LoggedHost "  Timed out:  $($result.TotalTimedOut)" -ForegroundColor $timeoutColor
+    Write-LoggedHost "  Killed:     $($result.TotalKilled)" -ForegroundColor $killColor
+    Write-LoggedHost "  Time:       $(Format-Duration $overallSw.Elapsed.TotalSeconds)" -ForegroundColor Magenta
+    Write-LoggedHost "  Reboot:     $globalReboot" -ForegroundColor $rebootColor
+    Write-LoggedHost "======================================================================" -ForegroundColor Green
+    Write-LoggedHost
     $result.Success = $true; $result.NeedsReboot = $globalReboot
     return $result
 }
 
 #===================================================================
-#  PHASE-0A: USB NETWORK DRIVERS
+#  PHASE-0A: USB NIC DRIVERS
 #===================================================================
 function Install-USBNetworkDrivers {
     param([pscustomobject]$State)
     Write-Banner "PHASE-0A: USB NETWORK DRIVER INSTALLATION"
-    Write-Status STEP "Installing NIC/WiFi drivers from USB to enable network."
-    Write-Host ""
+    Write-Status STEP "Installing NIC/WiFi drivers from USB."
     Clear-DriverInstallEnvironment
     $root = $null
     if ($State.USBDriverRoot -and (Test-Path $State.USBDriverRoot)) {
         $root = $State.USBDriverRoot
-        Write-Status OK "Using saved USB root: $root"
     }
     else {
         foreach ($drive in @('D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z')) {
@@ -1378,8 +1291,7 @@ function Install-USBNetworkDrivers {
         return [PSCustomObject]@{ Success = $true; NeedsReboot = $false; NotFound = $true }
     }
     $State.USBDriverRoot = $root; Set-ScriptState -State $State
-    $processed = @()
-    if ($State.USBProcessedDrivers) { $processed = @($State.USBProcessedDrivers) }
+    $processed = @(); if ($State.USBProcessedDrivers) { $processed = @($State.USBProcessedDrivers) }
     $usbResult = Install-DriversFromFolder -DriverRoot $root -Label "USB NETWORK" -ProcessedList $processed -SkipDeviceMatching
     $State.USBProcessedDrivers = $usbResult.ProcessedDrivers
     $State.TotalDriversAdded += $usbResult.TotalAdded
@@ -1398,90 +1310,55 @@ function Install-USBNetworkDrivers {
 function Install-NetworkShareDrivers {
     param([pscustomobject]$State)
     Write-Banner "PHASE-0B: NETWORK SHARE DRIVER INSTALLATION"
-
-    # --- Configure guest auth BEFORE attempting share access ---
     if (-not $State.GuestAuthConfigured) {
-        Write-Status STEP "Configuring SMB guest access (required for Windows 11)..."
-        $guestOk = Enable-GuestNetworkAccess
-        $State.GuestAuthConfigured = $true
-        Set-ScriptState -State $State
-        if ($guestOk) {
-            Write-Status OK "SMB guest access configured."
-        }
-        else {
-            Write-Status WARN "SMB configuration may have issues - will attempt share access anyway."
-        }
+        Enable-GuestNetworkAccess | Out-Null
+        $State.GuestAuthConfigured = $true; Set-ScriptState -State $State
     }
-    else {
-        Write-Status OK "SMB guest access already configured (previous run)."
-    }
-
-    # --- Get system info ---
+    else { Write-Status OK "SMB guest access already configured." }
     Write-SubBanner "Identifying System Model"
     $sysInfo = Get-SystemInfo
     $State.SystemManufacturer = $sysInfo.RawManufacturer
     $State.SystemModel = $sysInfo.RawModel
     $State.CleanModel = $sysInfo.CleanModel
     Set-ScriptState -State $State
-    Write-Status INFO "Manufacturer:  $($sysInfo.RawManufacturer)"
-    Write-Status INFO "Model:         $($sysInfo.RawModel)"
-    Write-Status INFO "Clean model:   $($sysInfo.CleanModel)"
+    Write-Status INFO "Manufacturer: $($sysInfo.RawManufacturer)"
+    Write-Status INFO "Model:        $($sysInfo.RawModel)"
+    Write-Status INFO "Clean model:  $($sysInfo.CleanModel)"
     $mfgFolder = Get-ManufacturerShareFolder -Manufacturer $sysInfo.RawManufacturer
-    Write-Status INFO "Share folder:  $mfgFolder"
-
-    # --- Build path ---
     $sharePath = ""
     if ($State.NetworkSharePath -and (Test-Path $State.NetworkSharePath -ErrorAction SilentlyContinue)) {
         $sharePath = $State.NetworkSharePath
-        Write-Status OK "Using saved path: $sharePath"
     }
-    else {
-        $sharePath = Build-NetworkDriverPath -ManufacturerFolder $mfgFolder -CleanModel $sysInfo.CleanModel
-    }
-    Write-Host ""
-    Write-Host "  ======================================================================" -ForegroundColor DarkCyan
-    Write-Host "              NETWORK SHARE PATH RESOLUTION" -ForegroundColor Cyan
-    Write-Host "  ======================================================================" -ForegroundColor DarkCyan
-    Write-Host "  Base:           $($Script:NetworkShareBase)" -ForegroundColor White
-    Write-Host "  Manufacturer:   $mfgFolder" -ForegroundColor White
-    Write-Host "  Driver folder:  $($Script:ShareDriverFolder)" -ForegroundColor White
-    Write-Host "  Model:          $($sysInfo.CleanModel)" -ForegroundColor White
-    Write-Host "  Full path:      $sharePath" -ForegroundColor Green
-    Write-Host "  ======================================================================" -ForegroundColor DarkCyan
-    Write-Host ""
-
-    # --- Test access ---
+    else { $sharePath = Build-NetworkDriverPath -ManufacturerFolder $mfgFolder -CleanModel $sysInfo.CleanModel }
+    Write-LoggedHost
+    Write-LoggedHost "  ======================================================================" -ForegroundColor DarkCyan
+    Write-LoggedHost "              NETWORK SHARE PATH" -ForegroundColor Cyan
+    Write-LoggedHost "  ======================================================================" -ForegroundColor DarkCyan
+    Write-LoggedHost "  Base:    $($Script:NetworkShareBase)" -ForegroundColor White
+    Write-LoggedHost "  Mfg:     $mfgFolder" -ForegroundColor White
+    Write-LoggedHost "  Model:   $($sysInfo.CleanModel)" -ForegroundColor White
+    Write-LoggedHost "  Path:    $sharePath" -ForegroundColor Green
+    Write-LoggedHost "  ======================================================================" -ForegroundColor DarkCyan
+    Write-LoggedHost
     Write-SubBanner "Testing Network Share Access"
-    $shareAccessible = Test-NetworkShareAccess -SharePath $sharePath -MaxRetries 10 -RetryDelaySec 10
-    if (-not $shareAccessible) {
-        Write-Status WARN "Primary path not accessible. Trying alternatives..."
-        $alternatives = @(
-            ($sysInfo.RawModel -replace '\s', '-').ToLower()
-            ($sysInfo.RawModel -replace '\s', '_').ToLower()
-            $sysInfo.RawModel.ToLower()
-        )
+    $shareOk = Test-NetworkShareAccess -SharePath $sharePath -MaxRetries 10 -RetryDelaySec 10
+    if (-not $shareOk) {
+        $alternatives = @(($sysInfo.RawModel -replace '\s', '-').ToLower(), ($sysInfo.RawModel -replace '\s', '_').ToLower(), $sysInfo.RawModel.ToLower())
         $altFound = $false
         foreach ($alt in $alternatives) {
             $altPath = Build-NetworkDriverPath -ManufacturerFolder $mfgFolder -CleanModel $alt
             Write-Status INFO "Trying: $altPath"
             if (Test-Path $altPath -ErrorAction SilentlyContinue) {
-                $sharePath = $altPath
-                Write-Status OK "Found: $sharePath"
-                $altFound = $true; break
+                $sharePath = $altPath; Write-Status OK "Found: $sharePath"; $altFound = $true; break
             }
         }
         if (-not $altFound) {
-            Write-Status ERROR "No matching share folder found."
-            Write-Status INFO "Expected: $sharePath"
-            Write-Status INFO "Ensure the share is accessible and the folder exists."
+            Write-Status ERROR "No share folder found. Expected: $sharePath"
             return [PSCustomObject]@{ Success = $true; NeedsReboot = $false; NotFound = $true }
         }
     }
     $State.NetworkSharePath = $sharePath; Set-ScriptState -State $State
-
-    # --- Install ---
-    $processed = @()
-    if ($State.NetworkShareProcessedDrivers) { $processed = @($State.NetworkShareProcessedDrivers) }
+    $processed = @(); if ($State.NetworkShareProcessedDrivers) { $processed = @($State.NetworkShareProcessedDrivers) }
     Write-SubBanner "Scanning Devices"
     $systemIds = Get-SystemDeviceIds
     $netResult = Install-DriversFromFolder -DriverRoot $sharePath -Label "NETWORK SHARE" -ProcessedList $processed -SystemIds $systemIds
@@ -1516,11 +1393,7 @@ function Test-InternetConnectivity {
                 for ($s = $RetryDelay; $s -ge 1; $s--) {
                     $spinner = $Script:SpinnerFrames[($RetryDelay - $s) % $totalFrames]
                     $pad = "  $spinner Waiting $s sec...".PadRight($w)
-                    try {
-                        [Console]::SetCursorPosition(0, [Console]::CursorTop)
-                        [Console]::ForegroundColor = [ConsoleColor]::DarkGray
-                        [Console]::Write($pad); [Console]::ResetColor()
-                    }
+                    try { [Console]::SetCursorPosition(0, [Console]::CursorTop); [Console]::ForegroundColor = [ConsoleColor]::DarkGray; [Console]::Write($pad); [Console]::ResetColor() }
                     catch { Write-Host "`r$pad" -NoNewline -ForegroundColor DarkGray }
                     Start-Sleep -Seconds 1
                 }
@@ -1544,8 +1417,7 @@ function Get-SystemManufacturer {
 #===================================================================
 function Set-ChocolateySource {
     Write-SubBanner "Configuring Chocolatey Sources"
-    $chocoExe = Get-ChocoExePath
-    if (-not $chocoExe) { return }
+    $chocoExe = Get-ChocoExePath; if (-not $chocoExe) { return }
     $null = Invoke-CommandVerbose -FilePath $chocoExe -Arguments "source add -n `"$($Script:ChocoSourceName)`" -s `"$($Script:ChocoSourceUrl)`" --priority=1 --allow-self-service" -Label "CHOCO"
     $null = Invoke-CommandVerbose -FilePath $chocoExe -Arguments "source disable -n `"chocolatey`"" -Label "CHOCO"
     $null = Invoke-CommandVerbose -FilePath $chocoExe -Arguments "source list" -Label "CHOCO"
@@ -1555,6 +1427,7 @@ function Install-ChocolateyIfNeeded {
     Write-SubBanner "Ensuring Chocolatey"
     if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
         Write-Status INFO "Installing Chocolatey..."
+        Write-Host "[CHOCO] Installing Chocolatey from community.chocolatey.org..." -ForegroundColor Cyan
         Set-ExecutionPolicy Bypass -Scope Process -Force
         [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor 3072
         Invoke-Expression (Invoke-RestMethod https://community.chocolatey.org/install.ps1)
@@ -1568,8 +1441,7 @@ function Install-ChocolateyIfNeeded {
 function Install-ChocoPackage {
     param([Parameter(Mandatory)][string]$PackageName, [string]$DisplayName)
     if (-not $DisplayName) { $DisplayName = $PackageName }
-    $chocoExe = Get-ChocoExePath
-    if (-not $chocoExe) { return $false }
+    $chocoExe = Get-ChocoExePath; if (-not $chocoExe) { return $false }
     Write-SubBanner "Installing $DisplayName via Chocolatey"
     $exitCode = Invoke-CommandVerbose -FilePath $chocoExe -Arguments "install $PackageName -y --source=`"$($Script:ChocoSourceName)`"" -Label "CHOCO"
     if ($exitCode -ne 0) {
@@ -1581,22 +1453,16 @@ function Install-ChocoPackage {
 }
 
 #===================================================================
-#  DELL UPDATE LOGIC
+#  DELL UPDATES (verbose, logged)
 #===================================================================
 function Invoke-DellUpdates {
     param([pscustomobject]$State)
     Write-Banner "DELL SYSTEM UPDATE"
-    $cli = @(
-        'C:\Program Files\Dell\CommandUpdate\dcu-cli.exe',
-        'C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe'
-    ) | Where-Object { Test-Path $_ } | Select-Object -First 1
+    $cli = @('C:\Program Files\Dell\CommandUpdate\dcu-cli.exe', 'C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe') | Where-Object { Test-Path $_ } | Select-Object -First 1
     if (-not $cli) {
         Install-ChocoPackage -PackageName "dellcommandupdate" -DisplayName "Dell Command Update" | Out-Null
         Start-Sleep -Seconds 5
-        $cli = @(
-            'C:\Program Files\Dell\CommandUpdate\dcu-cli.exe',
-            'C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe'
-        ) | Where-Object { Test-Path $_ } | Select-Object -First 1
+        $cli = @('C:\Program Files\Dell\CommandUpdate\dcu-cli.exe', 'C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe') | Where-Object { Test-Path $_ } | Select-Object -First 1
     }
     if (-not $cli) { Write-Status ERROR "Dell CLI missing."; return $false }
     Write-Status OK "Dell CLI: $cli"
@@ -1606,6 +1472,7 @@ function Invoke-DellUpdates {
             Write-SubBanner "Dell Phase-0: Configure ADR"
             $null = Invoke-CommandVerbose -FilePath $cli -Arguments "/configure -advancedDriverRestore=enable" -Label "DCU-CFG"
             Write-SubBanner "Dell Phase-0: ADR Driver Install"
+            Write-Status STEP "All driver names and progress will appear below."
             $dellExit = Invoke-CommandVerbose -FilePath $cli -Arguments "/driverinstall" -Label "DCU"
             switch ($dellExit) {
                 0 { $State.ManufacturerPhase = 2; Set-ScriptState -State $State; return (Invoke-DellUpdates -State $State) }
@@ -1619,18 +1486,18 @@ function Invoke-DellUpdates {
         1 {
             Write-SubBanner "Dell Phase-1: Post-Reboot Scan"
             $null = Invoke-CommandVerbose -FilePath $cli -Arguments "/scan" -Label "DCU"
-            $State.ManufacturerPhase = 2; Set-ScriptState -State $State
-            return (Invoke-DellUpdates -State $State)
+            $State.ManufacturerPhase = 2; Set-ScriptState -State $State; return (Invoke-DellUpdates -State $State)
         }
         2 {
             Write-SubBanner "Dell Phase-2: Apply All Updates"
+            Write-Status STEP "Each update name, download, and install status shown below."
             $dellExit = Invoke-CommandVerbose -FilePath $cli -Arguments "/applyupdates -forceUpdate=enable -autoSuspendBitLocker=enable" -Label "DCU"
             switch ($dellExit) {
-                0 { $State.ManufacturerPhase = 3; Set-ScriptState -State $State; return $true }
+                0 { Write-Status OK "All updates applied."; $State.ManufacturerPhase = 3; Set-ScriptState -State $State; return $true }
                 1 { $State.ManufacturerPhase = 3; Schedule-RebootAndContinue -State $State -Reason "Dell updates (exit 1)" }
                 5 { $State.ManufacturerPhase = 3; Schedule-RebootAndContinue -State $State -Reason "Dell updates (exit 5)" }
-                3 { $State.ManufacturerPhase = 3; Set-ScriptState -State $State; return $true }
-                default { $State.ManufacturerPhase = 3; Set-ScriptState -State $State; return $true }
+                3 { Write-Status OK "Already up to date."; $State.ManufacturerPhase = 3; Set-ScriptState -State $State; return $true }
+                default { Write-Status WARN "Exit $dellExit - continuing."; $State.ManufacturerPhase = 3; Set-ScriptState -State $State; return $true }
             }
         }
         default { Write-Status OK "Dell updates done."; return $true }
@@ -1639,16 +1506,12 @@ function Invoke-DellUpdates {
 }
 
 #===================================================================
-#  HP UPDATE LOGIC
+#  HP UPDATES (verbose, logged)
 #===================================================================
 function Invoke-HPUpdates {
     param([pscustomobject]$State)
     Write-Banner "HP SYSTEM UPDATE"
-    $hpiaPaths = @(
-        'C:\HP\HPIA\HPImageAssistant.exe',
-        'C:\Program Files\HP\HPIA\HPImageAssistant.exe',
-        'C:\Program Files (x86)\HP\HPIA\HPImageAssistant.exe'
-    )
+    $hpiaPaths = @('C:\HP\HPIA\HPImageAssistant.exe', 'C:\Program Files\HP\HPIA\HPImageAssistant.exe', 'C:\Program Files (x86)\HP\HPIA\HPImageAssistant.exe')
     $hpia = $hpiaPaths | Where-Object { Test-Path $_ } | Select-Object -First 1
     if (-not $hpia) {
         Install-ChocoPackage -PackageName "hpimageassistant" -DisplayName "HP Image Assistant" | Out-Null
@@ -1656,7 +1519,9 @@ function Invoke-HPUpdates {
         $hpia = $hpiaPaths | Where-Object { Test-Path $_ } | Select-Object -First 1
     }
     if (-not $hpia) { Write-Status ERROR "HPIA missing."; return $false }
+    Write-Status OK "HPIA: $hpia"
     Write-SubBanner "HP Image Assistant: Analyze & Install"
+    Write-Status STEP "All update names and progress will appear below."
     $hpExit = Invoke-CommandVerbose -FilePath $hpia -Arguments "/Operation:Analyze /Action:Install /Selection:All /Silent /Noninteractive /ReportFolder:C:\Temp\HPIA" -Label "HPIA"
     switch ($hpExit) {
         0    { Write-Status OK "HP done."; return $true }
@@ -1670,85 +1535,84 @@ function Invoke-HPUpdates {
 #  MAIN EXECUTION
 #===================================================================
 try {
-    if (-not (Initialize-PersistentScript)) { throw "Failed to initialise persistent script." }
+    if (-not (Initialize-PersistentScript)) { throw "Failed to initialise." }
+    
+    # Start transcript AFTER initialization to avoid conflicts
     Start-Transcript -Path $Script:LogFile -Append -Force
 
     $sysInfoHeader = Get-SystemInfo
     $mfg = Get-ManufacturerShareFolder -Manufacturer $sysInfoHeader.RawManufacturer
     $expectedPath = Build-NetworkDriverPath -ManufacturerFolder $mfg -CleanModel $sysInfoHeader.CleanModel
-    Write-Host ""
-    Write-Host "======================================================================" -ForegroundColor Cyan
-    Write-Host "       DRIVER UPDATE SCRIPT - PowerShell $($PSVersionTable.PSVersion)" -ForegroundColor Cyan
-    Write-Host "======================================================================" -ForegroundColor Cyan
-    Write-Host "  User:          $env:USERNAME" -ForegroundColor Cyan
-    Write-Host "  Computer:      $env:COMPUTERNAME" -ForegroundColor Cyan
-    Write-Host "  Manufacturer:  $($sysInfoHeader.RawManufacturer)" -ForegroundColor Cyan
-    Write-Host "  Model:         $($sysInfoHeader.RawModel)" -ForegroundColor Cyan
-    Write-Host "  Clean model:   $($sysInfoHeader.CleanModel)" -ForegroundColor Cyan
-    Write-Host "  Driver share:  $expectedPath" -ForegroundColor Cyan
-    Write-Host "  Timeout:       $Script:DriverTimeout sec/driver" -ForegroundColor Cyan
-    Write-Host "  Flow:          USB(NIC) -> GuestAuth -> Share(all) -> OEM(online)" -ForegroundColor Cyan
-    Write-Host "======================================================================" -ForegroundColor Cyan
-    Write-Host ""
+
+    $headerLines = @(
+        "======================================================================"
+        "       DRIVER UPDATE SCRIPT - PowerShell $($PSVersionTable.PSVersion)"
+        "======================================================================"
+        "  User:          $env:USERNAME"
+        "  Computer:      $env:COMPUTERNAME"
+        "  Manufacturer:  $($sysInfoHeader.RawManufacturer)"
+        "  Model:         $($sysInfoHeader.RawModel)"
+        "  Clean model:   $($sysInfoHeader.CleanModel)"
+        "  Driver share:  $expectedPath"
+        "  Timeout:       $Script:DriverTimeout sec/driver"
+        "  Choco source:  $Script:ChocoSourceName"
+        "  Flow:          USB(NIC) -> GuestAuth -> Share(all) -> OEM(online)"
+        "======================================================================"
+    )
+    Write-LoggedHost
+    foreach ($hl in $headerLines) {
+        Write-LoggedHost $hl -ForegroundColor Cyan
+    }
+    Write-LoggedHost
 
     Write-Status INFO "Checking for orphan processes..."
     $orphanKilled = Stop-DriverInstallProcesses -Silent
     if ($orphanKilled -gt 0) { Write-Status WARN "Terminated $orphanKilled."; Start-Sleep -Seconds 2 }
 
     $state = Get-ScriptState
-    Write-Host "----------------------------------------------------------------------" -ForegroundColor DarkGray
-    Write-Host "  CURRENT STATE" -ForegroundColor DarkGray
-    Write-Host "----------------------------------------------------------------------" -ForegroundColor DarkGray
+    Write-Host "--- Current State ---" -ForegroundColor DarkGray
     foreach ($prop in $state.PSObject.Properties) {
-        Write-Host ("  {0,-35}: {1}" -f $prop.Name, $prop.Value) -ForegroundColor DarkGray
+        $stLine = "  {0,-35}: {1}" -f $prop.Name, $prop.Value
+        Write-Host $stLine -ForegroundColor DarkGray
     }
-    Write-Host "----------------------------------------------------------------------" -ForegroundColor DarkGray
+    Write-Host "--- End State ---" -ForegroundColor DarkGray
     Write-Host ""
 
-    # PHASE-0A: USB NIC drivers
+    # PHASE-0A
     if ($state.Phase -eq 0) {
         if (-not $state.USBCompleted) {
             $usbResult = Install-USBNetworkDrivers -State $state
             if ($usbResult.NeedsReboot) {
-                $state.USBCompleted = $true; $state.USBRebootDone = $false
-                Set-ScriptState -State $state
-                Schedule-RebootAndContinue -State $state -Reason "USB NIC driver install - reboot required"
+                $state.USBCompleted = $true; $state.USBRebootDone = $false; Set-ScriptState -State $state
+                Schedule-RebootAndContinue -State $state -Reason "USB NIC drivers - reboot"
             }
-            else {
-                $state.USBCompleted = $true; $state.USBRebootDone = $true
-                Set-ScriptState -State $state
-            }
+            else { $state.USBCompleted = $true; $state.USBRebootDone = $true; Set-ScriptState -State $state }
         }
         else {
             if (-not $state.USBRebootDone) {
-                Write-Status OK "Post-reboot: USB NIC drivers finalized."
+                Write-Status OK "Post-reboot: USB NIC finalized."
                 $state.USBRebootDone = $true; Set-ScriptState -State $state
             }
         }
-
-        # PHASE-0B: Network share drivers
+        # PHASE-0B
         if (-not $state.NetworkShareCompleted) {
             $netResult = Install-NetworkShareDrivers -State $state
             if ($netResult.NeedsReboot) {
-                $state.NetworkShareCompleted = $true; $state.NetworkShareRebootDone = $false
-                Set-ScriptState -State $state
-                Schedule-RebootAndContinue -State $state -Reason "Network share drivers - reboot required"
+                $state.NetworkShareCompleted = $true; $state.NetworkShareRebootDone = $false; Set-ScriptState -State $state
+                Schedule-RebootAndContinue -State $state -Reason "Network share drivers - reboot"
             }
-            else {
-                $state.NetworkShareCompleted = $true; $state.NetworkShareRebootDone = $true
-                $state.Phase = 1; Set-ScriptState -State $state
-            }
+            else { $state.NetworkShareCompleted = $true; $state.NetworkShareRebootDone = $true; $state.Phase = 1; Set-ScriptState -State $state }
         }
         else {
             if (-not $state.NetworkShareRebootDone) {
-                Write-Status OK "Post-reboot: Network share drivers finalized."
+                Write-Status OK "Post-reboot: Share drivers finalized."
                 $state.NetworkShareRebootDone = $true
             }
             $state.Phase = 1; Set-ScriptState -State $state
         }
     }
 
-    # PHASE-1: Online OEM updates
+    # PHASE-1
     if ($state.Phase -ge 1) {
         Write-Banner "PHASE 1: ONLINE OEM UPDATES"
         if (-not (Test-InternetConnectivity -MaxRetries 15 -RetryDelay 10)) {
@@ -1763,40 +1627,44 @@ try {
 
     # FINAL
     Stop-DriverInstallProcesses -Silent | Out-Null
-    Write-Host ""
-    Write-Host "======================================================================" -ForegroundColor Green
-    Write-Host "      DRIVER UPDATE SCRIPT COMPLETED SUCCESSFULLY!" -ForegroundColor Green
-    Write-Host "======================================================================" -ForegroundColor Green
-    Write-Host ""
-    Write-Host "  System:            $($state.SystemManufacturer) $($state.SystemModel)" -ForegroundColor White
-    Write-Host "  Model (cleaned):   $($state.CleanModel)" -ForegroundColor White
-    Write-Host "  Share path:        $($state.NetworkSharePath)" -ForegroundColor White
-    Write-Host "  Guest auth:        $($state.GuestAuthConfigured)" -ForegroundColor White
-    Write-Host "  Total reboots:     $($state.RebootCount)" -ForegroundColor White
-    Write-Host "  Drivers added:     $($state.TotalDriversAdded)" -ForegroundColor White
-    Write-Host "  Drivers installed: $($state.TotalDriversInstalled)" -ForegroundColor White
-    Write-Host "  Drivers skipped:   $($state.TotalDriversSkipped)" -ForegroundColor White
-    Write-Host "  Drivers failed:    $($state.TotalDriversFailed)" -ForegroundColor White
-    Write-Host "  Timed out:         $($state.TotalDriversTimedOut)" -ForegroundColor White
-    Write-Host "  Killed:            $($state.TotalProcessesKilled)" -ForegroundColor White
-    Write-Host "  Total time:        $(Format-Duration $state.TotalTimeSpent)" -ForegroundColor White
-    Write-Host ""
-    Write-Host "======================================================================" -ForegroundColor Green
-    Write-Host ""
+    $summaryLines = @(
+        "======================================================================"
+        "      DRIVER UPDATE SCRIPT COMPLETED SUCCESSFULLY!"
+        "======================================================================"
+        "  System:          $($state.SystemManufacturer) $($state.SystemModel)"
+        "  Clean model:     $($state.CleanModel)"
+        "  Share path:      $($state.NetworkSharePath)"
+        "  Guest auth:      $($state.GuestAuthConfigured)"
+        "  Reboots:         $($state.RebootCount)"
+        "  Drivers added:   $($state.TotalDriversAdded)"
+        "  Installed:       $($state.TotalDriversInstalled)"
+        "  Skipped:         $($state.TotalDriversSkipped)"
+        "  Failed:          $($state.TotalDriversFailed)"
+        "  Timed out:       $($state.TotalDriversTimedOut)"
+        "  Killed:          $($state.TotalProcessesKilled)"
+        "  Total time:      $(Format-Duration $state.TotalTimeSpent)"
+        "======================================================================"
+    )
+    Write-LoggedHost
+    foreach ($sl in $summaryLines) {
+        Write-LoggedHost $sl -ForegroundColor Green
+    }
+    Write-LoggedHost
     Remove-ScriptState
 }
 catch {
-    Write-Host ""
-    Write-Host "======================================================================" -ForegroundColor Red
-    Write-Host "  SCRIPT ERROR" -ForegroundColor Red
-    Write-Host "======================================================================" -ForegroundColor Red
+    Write-LoggedHost
+    Write-LoggedHost "======================================================================" -ForegroundColor Red
+    Write-LoggedHost "  SCRIPT ERROR" -ForegroundColor Red
+    Write-LoggedHost "======================================================================" -ForegroundColor Red
     Write-Status ERROR "Message: $($_.Exception.Message)"
     Write-Status ERROR "Line:    $($_.InvocationInfo.ScriptLineNumber)"
-    Write-Host $_.ScriptStackTrace -ForegroundColor Red
-    Write-Host ""
+    $stackStr = $_.ScriptStackTrace
+    Write-Host $stackStr -ForegroundColor Red
+    Write-LoggedHost
+    Write-Status INFO "Emergency clean-up..."
     try {
-        $saveEA = $ErrorActionPreference
-        $ErrorActionPreference = 'SilentlyContinue'
+        $saveEA = $ErrorActionPreference; $ErrorActionPreference = 'SilentlyContinue'
         Stop-DriverInstallProcesses -Silent | Out-Null
         $ErrorActionPreference = $saveEA
     }
@@ -3306,3 +3174,4 @@ finally {
 }
 
 ```
+
