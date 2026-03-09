@@ -321,7 +321,7 @@ $Script:DriverProcesses  = @('drvinst','pnputil','DPInst','DPInst64','SetupAPI')
 $Script:SpinnerFrames    = @('[ ]','[= ]','[== ]','[=== ]','[====]','[ ===]','[ ==]','[ =]')
 $Script:ChocoSourceName  = 'chocosia'
 $Script:ChocoSourceUrl   = 'http://choco.local.xyz.com/repository/chocolatey-group'
-$Script:NetworkShareBase    = '\\synosia.local.xyz.com\batchs'
+$Script:NetworkShareBase    = '\\networkshare'
 $Script:ShareDriverFolder   = 'driver'
 $Script:ManufacturerShareMap = @{
     'Dell'             = 'dell'
@@ -334,8 +334,6 @@ $Script:USBDriverFolders = @('DriversOS','Drivers')
 #===================================================================
 #  LOGGING HELPERS
 #===================================================================
-# NOTE: Append-ToLog is now a no-op because Start-Transcript captures all output
-# This avoids file locking conflicts with the transcript
 function Append-ToLog {
     param([Parameter(Mandatory=$false)][AllowEmptyString()][string]$Message = "")
     # No-op: Start-Transcript captures all console output automatically
@@ -556,7 +554,72 @@ function Clear-DriverInstallEnvironment {
 }
 
 #===================================================================
-#  VERBOSE COMMAND EXECUTION (logs to console, captured by transcript)
+#  EXECUTABLE FINDER (validates file, not directory)
+#===================================================================
+function Find-Executable {
+    param(
+        [Parameter(Mandatory)][string]$FileName,
+        [Parameter(Mandatory)][string[]]$KnownPaths,
+        [string[]]$SearchRoots = @(),
+        [string]$Label = "executable"
+    )
+
+    # 1 - Check known paths (MUST be a file, not a directory)
+    foreach ($p in $KnownPaths) {
+        if (Test-Path $p -PathType Leaf) {
+            Write-Status OK "Found $Label at known path: $p"
+            return $p
+        }
+    }
+    Write-Status INFO "$Label not found at known paths."
+
+    # 2 - Search Chocolatey lib folder
+    $chocoLib = "$env:ProgramData\chocolatey\lib"
+    if (Test-Path $chocoLib) {
+        Write-Status INFO "Searching Chocolatey lib for $FileName..."
+        $found = Get-ChildItem -Path $chocoLib -Filter $FileName -Recurse -File -ErrorAction SilentlyContinue | Select-Object -First 1
+        if ($found) {
+            Write-Status OK "Found $Label in Chocolatey: $($found.FullName)"
+            return $found.FullName
+        }
+    }
+
+    # 3 - Search Chocolatey bin for shims
+    $chocoBin = "$env:ProgramData\chocolatey\bin"
+    if (Test-Path $chocoBin) {
+        $shimPath = Join-Path $chocoBin $FileName
+        if (Test-Path $shimPath -PathType Leaf) {
+            Write-Status OK "Found $Label shim: $shimPath"
+            return $shimPath
+        }
+    }
+
+    # 4 - Search provided root directories
+    $defaultRoots = @(
+        'C:\Program Files'
+        'C:\Program Files (x86)'
+        $env:ProgramData
+        'C:\HP'
+        'C:\SWSetup'
+        'C:\Dell'
+    )
+    $allRoots = @($SearchRoots) + $defaultRoots | Select-Object -Unique
+    foreach ($root in $allRoots) {
+        if (-not (Test-Path $root)) { continue }
+        Write-Status DEBUG "Searching $root for $FileName..."
+        $found = Get-ChildItem -Path $root -Filter $FileName -Recurse -File -ErrorAction SilentlyContinue | Select-Object -First 1
+        if ($found) {
+            Write-Status OK "Found $Label via search: $($found.FullName)"
+            return $found.FullName
+        }
+    }
+
+    Write-Status WARN "$Label ($FileName) not found anywhere."
+    return $null
+}
+
+#===================================================================
+#  VERBOSE COMMAND EXECUTION
 #===================================================================
 function Invoke-CommandVerbose {
     param(
@@ -564,12 +627,17 @@ function Invoke-CommandVerbose {
         [Parameter(Mandatory)][string]$Arguments,
         [Parameter(Mandatory)][string]$Label
     )
-    if (-not (Test-Path $FilePath)) {
-        Write-Status ERROR "Executable not found: $FilePath"
+
+    # Validate: must exist AND be a file (not a directory)
+    if (-not (Test-Path $FilePath -PathType Leaf)) {
+        Write-Status ERROR "Executable not found or is a directory: $FilePath"
         return 999
     }
+
     $exeName = Split-Path $FilePath -Leaf
     Write-Status INFO "Executing: $exeName $Arguments"
+    Write-Status DEBUG "Full path: $FilePath"
+
     $psi = [System.Diagnostics.ProcessStartInfo]::new()
     $psi.FileName = $FilePath
     $psi.Arguments = $Arguments
@@ -1266,12 +1334,12 @@ function Install-DriversFromFolder {
 }
 
 #===================================================================
-#  PHASE-0A: USB NIC DRIVERS
+#  PHASE-0A: USB DRIVERS (TARGETED)
 #===================================================================
 function Install-USBNetworkDrivers {
     param([pscustomobject]$State)
-    Write-Banner "PHASE-0A: USB NETWORK DRIVER INSTALLATION"
-    Write-Status STEP "Installing NIC/WiFi drivers from USB."
+    Write-Banner "PHASE-0A: USB DRIVER INSTALLATION (TARGETED)"
+    Write-Status STEP "Installing ONLY drivers matching this PC's devices from USB."
     Clear-DriverInstallEnvironment
     $root = $null
     if ($State.USBDriverRoot -and (Test-Path $State.USBDriverRoot)) {
@@ -1281,25 +1349,29 @@ function Install-USBNetworkDrivers {
         foreach ($drive in @('D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z')) {
             foreach ($folder in $Script:USBDriverFolders) {
                 $candidate = "${drive}:\$folder"
-                if (Test-Path $candidate) { $root = $candidate; Write-Status OK "Found: $root"; break }
+                if (Test-Path $candidate) { $root = $candidate; Write-Status OK "Found USB driver folder: $root"; break }
             }
             if ($null -ne $root) { break }
         }
     }
     if ($null -eq $root) {
-        Write-Status INFO "No USB driver folder found."
+        Write-Status INFO "No USB driver folder found - skipping USB phase."
         return [PSCustomObject]@{ Success = $true; NeedsReboot = $false; NotFound = $true }
     }
     $State.USBDriverRoot = $root; Set-ScriptState -State $State
+    Write-SubBanner "Scanning System Devices for USB Driver Matching"
+    $systemIds = Get-SystemDeviceIds
+    Write-Status INFO "Will match USB INF files against $($systemIds.Count) hardware ID(s)."
     $processed = @(); if ($State.USBProcessedDrivers) { $processed = @($State.USBProcessedDrivers) }
-    $usbResult = Install-DriversFromFolder -DriverRoot $root -Label "USB NETWORK" -ProcessedList $processed -SkipDeviceMatching
-    $State.USBProcessedDrivers = $usbResult.ProcessedDrivers
-    $State.TotalDriversAdded += $usbResult.TotalAdded
-    $State.TotalDriversInstalled += $usbResult.TotalInstalled
-    $State.TotalDriversFailed += $usbResult.TotalFailed
-    $State.TotalDriversTimedOut += $usbResult.TotalTimedOut
-    $State.TotalTimeSpent += $usbResult.TotalTime
-    $State.TotalProcessesKilled += $usbResult.TotalKilled
+    $usbResult = Install-DriversFromFolder -DriverRoot $root -Label "USB" -ProcessedList $processed -SystemIds $systemIds
+    $State.USBProcessedDrivers     = $usbResult.ProcessedDrivers
+    $State.TotalDriversAdded      += $usbResult.TotalAdded
+    $State.TotalDriversInstalled  += $usbResult.TotalInstalled
+    $State.TotalDriversFailed     += $usbResult.TotalFailed
+    $State.TotalDriversSkipped    += $usbResult.TotalSkippedNoMatch
+    $State.TotalDriversTimedOut   += $usbResult.TotalTimedOut
+    $State.TotalTimeSpent         += $usbResult.TotalTime
+    $State.TotalProcessesKilled   += $usbResult.TotalKilled
     Set-ScriptState -State $State
     return $usbResult
 }
@@ -1363,13 +1435,13 @@ function Install-NetworkShareDrivers {
     $systemIds = Get-SystemDeviceIds
     $netResult = Install-DriversFromFolder -DriverRoot $sharePath -Label "NETWORK SHARE" -ProcessedList $processed -SystemIds $systemIds
     $State.NetworkShareProcessedDrivers = $netResult.ProcessedDrivers
-    $State.TotalDriversAdded += $netResult.TotalAdded
-    $State.TotalDriversInstalled += $netResult.TotalInstalled
-    $State.TotalDriversFailed += $netResult.TotalFailed
-    $State.TotalDriversSkipped += $netResult.TotalSkippedNoMatch
-    $State.TotalDriversTimedOut += $netResult.TotalTimedOut
-    $State.TotalTimeSpent += $netResult.TotalTime
-    $State.TotalProcessesKilled += $netResult.TotalKilled
+    $State.TotalDriversAdded      += $netResult.TotalAdded
+    $State.TotalDriversInstalled  += $netResult.TotalInstalled
+    $State.TotalDriversFailed     += $netResult.TotalFailed
+    $State.TotalDriversSkipped    += $netResult.TotalSkippedNoMatch
+    $State.TotalDriversTimedOut   += $netResult.TotalTimedOut
+    $State.TotalTimeSpent         += $netResult.TotalTime
+    $State.TotalProcessesKilled   += $netResult.TotalKilled
     Set-ScriptState -State $State
     return $netResult
 }
@@ -1453,19 +1525,31 @@ function Install-ChocoPackage {
 }
 
 #===================================================================
-#  DELL UPDATES (verbose, logged)
+#  DELL UPDATES
 #===================================================================
+function Find-DellCLI {
+    $knownPaths = @(
+        'C:\Program Files\Dell\CommandUpdate\dcu-cli.exe'
+        'C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe'
+        'C:\Program Files\Dell\Dell Command Update\dcu-cli.exe'
+        'C:\Program Files (x86)\Dell\Dell Command Update\dcu-cli.exe'
+    )
+    return Find-Executable -FileName 'dcu-cli.exe' -KnownPaths $knownPaths -SearchRoots @('C:\Dell') -Label "Dell Command Update CLI"
+}
+
 function Invoke-DellUpdates {
     param([pscustomobject]$State)
     Write-Banner "DELL SYSTEM UPDATE"
-    $cli = @('C:\Program Files\Dell\CommandUpdate\dcu-cli.exe', 'C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe') | Where-Object { Test-Path $_ } | Select-Object -First 1
+
+    $cli = Find-DellCLI
     if (-not $cli) {
         Install-ChocoPackage -PackageName "dellcommandupdate" -DisplayName "Dell Command Update" | Out-Null
         Start-Sleep -Seconds 5
-        $cli = @('C:\Program Files\Dell\CommandUpdate\dcu-cli.exe', 'C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe') | Where-Object { Test-Path $_ } | Select-Object -First 1
+        $cli = Find-DellCLI
     }
-    if (-not $cli) { Write-Status ERROR "Dell CLI missing."; return $false }
+    if (-not $cli) { Write-Status ERROR "Dell CLI not found anywhere."; return $false }
     Write-Status OK "Dell CLI: $cli"
+
     switch ($State.ManufacturerPhase) {
         0 {
             if ($State.DellADRFailed) { $State.ManufacturerPhase = 2; Set-ScriptState -State $State; return (Invoke-DellUpdates -State $State) }
@@ -1506,28 +1590,126 @@ function Invoke-DellUpdates {
 }
 
 #===================================================================
-#  HP UPDATES (verbose, logged)
+#  HP UPDATES (FIXED - robust exe discovery)
 #===================================================================
+function Find-HPIA {
+    $knownPaths = @(
+        # Chocolatey install location (priority - most common after choco install)
+        "$env:ProgramData\chocolatey\lib\hpimageassistant\tools\HPImageAssistant.exe"
+        # Standard HP install locations
+        'C:\HP\HPIA\HPImageAssistant.exe'
+        'C:\Program Files\HP\HPIA\HPImageAssistant.exe'
+        'C:\Program Files (x86)\HP\HPIA\HPImageAssistant.exe'
+        'C:\SWSetup\HPIA\HPImageAssistant.exe'
+        'C:\Program Files\HPImageAssistant\HPImageAssistant.exe'
+        'C:\Program Files (x86)\HPImageAssistant\HPImageAssistant.exe'
+        "$env:ProgramData\HP\HPIA\HPImageAssistant.exe"
+        'C:\HP\HPImageAssistant\HPImageAssistant.exe'
+    )
+    return Find-Executable -FileName 'HPImageAssistant.exe' -KnownPaths $knownPaths -SearchRoots @('C:\HP', 'C:\SWSetup') -Label "HP Image Assistant"
+}
+
 function Invoke-HPUpdates {
     param([pscustomobject]$State)
     Write-Banner "HP SYSTEM UPDATE"
-    $hpiaPaths = @('C:\HP\HPIA\HPImageAssistant.exe', 'C:\Program Files\HP\HPIA\HPImageAssistant.exe', 'C:\Program Files (x86)\HP\HPIA\HPImageAssistant.exe')
-    $hpia = $hpiaPaths | Where-Object { Test-Path $_ } | Select-Object -First 1
+
+    # ── Find HPIA before Chocolatey ──
+    Write-SubBanner "Locating HP Image Assistant"
+    $hpia = Find-HPIA
+
+    # ── Try Chocolatey install if not found ──
     if (-not $hpia) {
-        Install-ChocoPackage -PackageName "hpimageassistant" -DisplayName "HP Image Assistant" | Out-Null
-        Start-Sleep -Seconds 5
-        $hpia = $hpiaPaths | Where-Object { Test-Path $_ } | Select-Object -First 1
+        Write-Status WARN "HPIA not found - attempting Chocolatey install..."
+
+        # Try multiple known package names
+        $chocoPackages = @('hpimageassistant', 'hp-hpia', 'hp-image-assistant')
+        $installed = $false
+        foreach ($pkg in $chocoPackages) {
+            Write-Status INFO "Trying Chocolatey package: $pkg"
+            $result = Install-ChocoPackage -PackageName $pkg -DisplayName "HP Image Assistant ($pkg)"
+            if ($result) { $installed = $true; break }
+        }
+
+        if ($installed) {
+            Start-Sleep -Seconds 5
+            # Refresh PATH
+            $env:Path = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path', 'User')
+            $hpia = Find-HPIA
+        }
     }
-    if (-not $hpia) { Write-Status ERROR "HPIA missing."; return $false }
-    Write-Status OK "HPIA: $hpia"
+
+    # ── Final validation ──
+    if (-not $hpia) {
+        Write-Status ERROR "HP Image Assistant (HPImageAssistant.exe) could not be found anywhere."
+        Write-Status INFO "Searched: known paths, Chocolatey lib, Program Files, C:\HP, C:\SWSetup"
+        Write-Status INFO "Please install HPIA manually and re-run the script."
+        return $false
+    }
+
+    # Verify it is a file, not a directory
+    $hpiaItem = Get-Item $hpia -ErrorAction SilentlyContinue
+    if ($null -eq $hpiaItem -or $hpiaItem.PSIsContainer) {
+        Write-Status ERROR "Path is a directory, not an executable: $hpia"
+        return $false
+    }
+
+    Write-Status OK  "HPIA executable: $hpia"
+    Write-Status DEBUG "HPIA size: $([math]::Round($hpiaItem.Length / 1MB, 1)) MB"
+    Write-Status DEBUG "HPIA version: $($hpiaItem.VersionInfo.FileVersion)"
+
+    # ── Create report folder ──
+    $hpiaReport = 'C:\Temp\HPIA'
+    if (-not (Test-Path $hpiaReport)) {
+        New-Item -Path $hpiaReport -ItemType Directory -Force | Out-Null
+    }
+
+    # ── Run HPIA ──
     Write-SubBanner "HP Image Assistant: Analyze & Install"
     Write-Status STEP "All update names and progress will appear below."
-    $hpExit = Invoke-CommandVerbose -FilePath $hpia -Arguments "/Operation:Analyze /Action:Install /Selection:All /Silent /Noninteractive /ReportFolder:C:\Temp\HPIA" -Label "HPIA"
+
+    $hpArgs = "/Operation:Analyze /Action:Install /Selection:All /Silent /Noninteractive /ReportFolder:`"$hpiaReport`""
+    $hpExit = Invoke-CommandVerbose -FilePath $hpia -Arguments $hpArgs -Label "HPIA"
+
+    # ── Report results ──
+    Write-LoggedHost
+    Write-LoggedHost "  ======================================================================" -ForegroundColor DarkCyan
+    Write-LoggedHost "              HP IMAGE ASSISTANT RESULTS" -ForegroundColor Cyan
+    Write-LoggedHost "  ======================================================================" -ForegroundColor DarkCyan
+    Write-LoggedHost "  Executable:  $hpia" -ForegroundColor White
+    Write-LoggedHost "  Exit code:   $hpExit" -ForegroundColor White
+    Write-LoggedHost "  Report:      $hpiaReport" -ForegroundColor White
+
+    # Parse report if available
+    $jsonReport = Get-ChildItem -Path $hpiaReport -Filter '*.json' -File -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+    if ($jsonReport) {
+        Write-LoggedHost "  Report file: $($jsonReport.FullName)" -ForegroundColor Green
+        try {
+            $reportData = Get-Content $jsonReport.FullName -Raw -ErrorAction SilentlyContinue | ConvertFrom-Json -ErrorAction SilentlyContinue
+            if ($null -ne $reportData -and $null -ne $reportData.HPIA -and $null -ne $reportData.HPIA.Recommendations) {
+                $recs = @($reportData.HPIA.Recommendations)
+                $recCount = ($recs | Measure-Object).Count
+                Write-LoggedHost "  Updates:     $recCount recommendation(s)" -ForegroundColor White
+                foreach ($rec in $recs) {
+                    $name = if ($rec.Name) { $rec.Name } else { $rec.SoftPaqId }
+                    $status = if ($rec.RecommendationValue) { $rec.RecommendationValue } else { 'Unknown' }
+                    Write-LoggedHost "    - $name ($status)" -ForegroundColor DarkGray
+                }
+            }
+        }
+        catch { Write-Status DEBUG "Could not parse HPIA report: $($_.Exception.Message)" }
+    }
+    else {
+        Write-LoggedHost "  Report file: (none found)" -ForegroundColor Yellow
+    }
+    Write-LoggedHost "  ======================================================================" -ForegroundColor DarkCyan
+    Write-LoggedHost
+
     switch ($hpExit) {
-        0    { Write-Status OK "HP done."; return $true }
-        256  { Write-Status WARN "HP: reboot needed."; return $true }
-        3010 { Write-Status WARN "HP: reboot needed."; return $true }
-        default { Write-Status WARN "HP exit $hpExit."; return $true }
+        0    { Write-Status OK "HP updates completed successfully."; return $true }
+        256  { Write-Status WARN "HP: reboot needed for some updates."; return $true }
+        3010 { Write-Status WARN "HP: reboot needed (exit 3010)."; return $true }
+        1    { Write-Status WARN "HP: completed with warnings."; return $true }
+        default { Write-Status WARN "HP exit $hpExit - check report at $hpiaReport"; return $true }
     }
 }
 
@@ -1536,8 +1718,7 @@ function Invoke-HPUpdates {
 #===================================================================
 try {
     if (-not (Initialize-PersistentScript)) { throw "Failed to initialise." }
-    
-    # Start transcript AFTER initialization to avoid conflicts
+
     Start-Transcript -Path $Script:LogFile -Append -Force
 
     $sysInfoHeader = Get-SystemInfo
@@ -1556,7 +1737,7 @@ try {
         "  Driver share:  $expectedPath"
         "  Timeout:       $Script:DriverTimeout sec/driver"
         "  Choco source:  $Script:ChocoSourceName"
-        "  Flow:          USB(NIC) -> GuestAuth -> Share(all) -> OEM(online)"
+        "  Flow:          USB(targeted) -> GuestAuth -> Share(targeted) -> OEM(online)"
         "======================================================================"
     )
     Write-LoggedHost
@@ -1578,23 +1759,23 @@ try {
     Write-Host "--- End State ---" -ForegroundColor DarkGray
     Write-Host ""
 
-    # PHASE-0A
+    # PHASE-0A: USB drivers (TARGETED)
     if ($state.Phase -eq 0) {
         if (-not $state.USBCompleted) {
             $usbResult = Install-USBNetworkDrivers -State $state
             if ($usbResult.NeedsReboot) {
                 $state.USBCompleted = $true; $state.USBRebootDone = $false; Set-ScriptState -State $state
-                Schedule-RebootAndContinue -State $state -Reason "USB NIC drivers - reboot"
+                Schedule-RebootAndContinue -State $state -Reason "USB drivers - reboot"
             }
             else { $state.USBCompleted = $true; $state.USBRebootDone = $true; Set-ScriptState -State $state }
         }
         else {
             if (-not $state.USBRebootDone) {
-                Write-Status OK "Post-reboot: USB NIC finalized."
+                Write-Status OK "Post-reboot: USB drivers finalized."
                 $state.USBRebootDone = $true; Set-ScriptState -State $state
             }
         }
-        # PHASE-0B
+        # PHASE-0B: Network share drivers (TARGETED)
         if (-not $state.NetworkShareCompleted) {
             $netResult = Install-NetworkShareDrivers -State $state
             if ($netResult.NeedsReboot) {
@@ -1612,7 +1793,7 @@ try {
         }
     }
 
-    # PHASE-1
+    # PHASE-1: Online OEM updates
     if ($state.Phase -ge 1) {
         Write-Banner "PHASE 1: ONLINE OEM UPDATES"
         if (-not (Test-InternetConnectivity -MaxRetries 15 -RetryDelay 10)) {
@@ -1625,7 +1806,7 @@ try {
         else { Write-Status WARN "Unsupported: $manufacturer" }
     }
 
-    # FINAL
+    # FINAL SUMMARY
     Stop-DriverInstallProcesses -Silent | Out-Null
     $summaryLines = @(
         "======================================================================"
@@ -3174,4 +3355,5 @@ finally {
 }
 
 ```
+
 
