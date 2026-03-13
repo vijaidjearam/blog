@@ -8,6 +8,8 @@ tags: TemperMonkey Javascript
 
 # ChatGPT Enhanced Markdown Copy with Code Blocks ,Tables and Formula: [Download link](https://greasyfork.org/en/scripts/524609-chatgpt-enhanced-markdown-copy-with-code-blocks-tables-and-formula-for-typora-and-chrome)
 
+# ChatGPT/Claude/Grok/Arena | Conversation/Chat Markdown Export/Download : [Download link](https://greasyfork.org/en/scripts/559376-chatgpt-claude-grok-arena-conversation-chat-markdown-export-download)
+
 ## Tampermonkey Script Security Audit Report
 
 ## Executive Summary
