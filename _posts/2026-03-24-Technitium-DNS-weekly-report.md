@@ -37,7 +37,7 @@ PASSWORD        = "your_password"              # <-- Your password
 
 # Target Device
 TARGET_DEVICE_IP = "192.168.1.100"             # <-- Device IP to report
-DEVICE_NAME      = "Vijai's PC"                # <-- Friendly name
+DEVICE_NAME      = "Test's PC"                # <-- Friendly name
 
 # Pagination (increase MAX_PAGES if you have heavy traffic)
 ENTRIES_PER_PAGE = 1000
@@ -45,7 +45,7 @@ MAX_PAGES        = 100
 
 # ---- NTFY Configuration ----
 NTFY_ENABLED = True
-NTFY_URL     = "https://ntfy.sh/vijai-home"
+NTFY_URL     = "https://ntfy.sh/test-home"
 NTFY_TITLE   = "DNS Report"
 NTFY_PRIORITY = "default"                      # min, low, default, high, urgent
 NTFY_TAGS     = "bar_chart,globe_with_meridians"
@@ -442,7 +442,7 @@ if __name__ == "__main__":
 
 **Notification 1 — Readable Summary:**
 ```
-📱 Vijai's PC (192.168.1.100)
+📱 Test's PC (192.168.1.100)
 📅 2025-01-08 → 2025-01-15
 📊 Queries: 12847 | Blocked: 2341
 🛡️ Block rate: 18.2%
@@ -471,7 +471,7 @@ if __name__ == "__main__":
 DNS_SERVER       = "http://192.168.1.5:5380"    # Your Technitium IP
 PASSWORD         = "your_actual_password"
 TARGET_DEVICE_IP = "192.168.1.100"              # Device to track
-DEVICE_NAME      = "Vijai's PC"
+DEVICE_NAME      = "Test's PC"
 ```
 
 ### 2. Enable Query Logging in Technitium
@@ -494,7 +494,7 @@ python3 dns_report.py
 ```bash
 crontab -e
 # Add:
-0 8 * * 1 /usr/bin/python3 /home/vijai/dns_report.py >> /home/vijai/dns_report.log 2>&1
+0 8 * * 1 /usr/bin/python3 /home/test/dns_report.py >> /home/test/dns_report.log 2>&1
 ```
 
 **Windows (Task Scheduler):**
