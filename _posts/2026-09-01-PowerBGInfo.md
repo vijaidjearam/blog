@@ -321,7 +321,10 @@ foreach ($pc in $ComputerName) {
     catch {
         Write-Warning "$pc : $($_.Exception.Message)"
     }
+    # --- Apply BGInfo on all successfully deployed machines ---
+    Invoke-Command -ComputerName $ComputerName -ScriptBlock {Start-ScheduledTask -TaskName 'PowerBGInfo'}
 }
+
 
 ```
 To Deploy the script use the following command
