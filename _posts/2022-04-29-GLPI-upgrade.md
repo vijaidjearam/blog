@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2022-04-29 08:24:01
 title: GLPI Upgrade
 category: Glpi

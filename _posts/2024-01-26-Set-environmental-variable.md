@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2024-01-26 10:51:36
 title: Set Environment varaiable 
 category: Environmentvariable

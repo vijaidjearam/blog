@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2023-05-10 12:09:00
 title: How_to_Reset_MySQL_Master-Slave_Replication
 category: Glpi

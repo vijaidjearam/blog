@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2022-06-10 16:40:10
 title: Powershell remote install/uninstall softwares
 category: Powershell

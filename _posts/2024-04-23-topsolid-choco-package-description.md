@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2024-04-23 09:22:01
 title: Topsolid Chocolatey Package Description
 category: chocolatey

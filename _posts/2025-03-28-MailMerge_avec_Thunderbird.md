@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2025-03-28 14:17:35
 title: MailMerge avec ThunderBird
 category: thunderbird

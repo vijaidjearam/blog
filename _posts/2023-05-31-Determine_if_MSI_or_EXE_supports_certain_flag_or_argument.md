@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2023-05-31 12:55:00
 title: Determine if MSI/EXE supports certain flag/argument
 category: Automation 

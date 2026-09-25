@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2022-11-30 12:18:39
 title: Modify BIOS settings via dell command configure winPE ISO
 category: BIOS

@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2022-10-06 17:09:00
 title: Factory Reset your Aastra phone
 category: phone

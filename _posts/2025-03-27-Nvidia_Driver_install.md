@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2025-03-27 12:45:09
 title: Nvidia Driver install
 category: nvidia

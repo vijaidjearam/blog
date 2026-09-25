@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2024-01-19 15:26:14
 title: Container-time-and-date-settings
 category: docker

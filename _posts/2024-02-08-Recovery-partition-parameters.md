@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2024-02-08 11:01:04
 title: Recovery Partition Parameters
 category: recovery

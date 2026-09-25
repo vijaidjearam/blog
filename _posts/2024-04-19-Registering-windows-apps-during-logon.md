@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2024-04-19 12:21:58
 title: Registering windows apps screen appears during logon
 category: defprof

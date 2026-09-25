@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2023-09-28 08:13:28
 title: Add DNS Entry To Hosts File Using The Command Prompt
 category: batch windows dns

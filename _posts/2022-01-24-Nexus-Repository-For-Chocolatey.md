@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2022-01-24 16:45:00
 title: Nexus Repository For Chocolatey
 category: chocolatey

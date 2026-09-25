@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2021-12-06 16:33:00
 title: Select the active network card adapter of the pc
 category: Powershell

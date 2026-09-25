@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2021-12-03 09:16:00
 title: BSOD-INACCESSIBLE_BOOT_DEVICE
 category: BSOD 

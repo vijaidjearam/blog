@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2022-01-12 10:06:00
 title: DeepFreeze-Actions
 category: DeepFreeze

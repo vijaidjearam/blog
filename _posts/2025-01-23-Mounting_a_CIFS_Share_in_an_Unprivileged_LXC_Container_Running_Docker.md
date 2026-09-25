@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2025-01-23 14:00:00
 title: Mounting a CIFS Share in an Unprivileged LXC Container Running Docker
 category: FileSharing

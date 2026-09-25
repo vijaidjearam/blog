@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2022-08-30 08:43:11
 title: Factory Reset Partition via Clonezilla
 category: Recovery 

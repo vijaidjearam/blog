@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2021-12-07 11:45:00
 title: Installing Fusioninventory Plugin
 category: Glpi

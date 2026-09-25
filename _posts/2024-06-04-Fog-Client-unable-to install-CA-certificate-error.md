@@ -1,5 +1,5 @@
 ---
-layout: single
+
 date: 2024-06-04 11:49:00
 title: Fog Client unable to install CA certificate Error
 category: Fog
