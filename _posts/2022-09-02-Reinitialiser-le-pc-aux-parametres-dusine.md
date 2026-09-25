@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 date: 2022-09-02 14:34:20
 title: Reinitialiser le pc aux paramètres dusine
 category: Recovery 

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 date: 2024-10-09 11:36:50
 title: File Association
 category: windows

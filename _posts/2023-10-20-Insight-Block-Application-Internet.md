@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 date: 2023-10-20 08:57:44
 title: Insight Block Application and Internet
 category: Insight

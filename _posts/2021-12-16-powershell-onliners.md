@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 date: 2021-12-16 12:08:00
 title: Powershell - Onliners
 category: Powershell

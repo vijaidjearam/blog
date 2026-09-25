@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 date: 2021-05-12 11:33:00
 title: Delete_device_and_driver_windows10
 category: Driver

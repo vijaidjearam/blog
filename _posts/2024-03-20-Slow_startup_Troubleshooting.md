@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 date: 2024-03-20 16:38:25
 title: Slow startup Troubleshooting
 category: windows-finetuning

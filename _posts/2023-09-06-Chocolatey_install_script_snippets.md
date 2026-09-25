@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 date: 2023-09-06 14:10:46
 title: Chocolatey Install script snippets
 category: chocolatey

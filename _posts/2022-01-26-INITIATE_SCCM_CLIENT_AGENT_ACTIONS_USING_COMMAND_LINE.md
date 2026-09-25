@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 date: 2022-01-26 12:26:00
 title: INITIATE SCCM CLIENT AGENT ACTIONS USING COMMAND LINE
 category: sccm

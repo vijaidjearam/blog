@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 date: 2025-03-31 10:29:44
 title: Freemobile SMS API template
 category: notification

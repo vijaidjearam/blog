@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 date: 2021-12-06 03:58:00
 title: Apply changes to Pc while UWF is enabled
 category: Powershell

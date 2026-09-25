@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 date: 2023-05-10 12:14:00
 title: 2023-05-10-GLPI_sql_query_for_metabase
 category: Glpi

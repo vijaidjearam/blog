@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 date: 2023-12-19 10:03:22
 title: Convert from Dynamic VHD/VHDX Disk Format to / from Fixed in Hyper-V
 category: Hyper-v

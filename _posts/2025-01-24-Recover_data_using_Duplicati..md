@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 date: 2025-01-24 14:41:13
 title: Recover data using Duplicati
 category: duplicati
