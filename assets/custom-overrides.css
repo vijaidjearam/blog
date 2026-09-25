@@ -688,7 +688,7 @@ table td {
   body.layout--single article.page {
     float: none;
     width: 100%;
-    max-width: none;
+    max-width: max-content;
     margin-inline: auto;
     padding-right: 0;
   }
