@@ -1,5 +1,5 @@
 ---
-date 2024-01-22 14:37:41
+date: 2024-01-22 14:37:41
 title: docker-stack-nexus
 category: docker-stacks
 tags: docker stacks config

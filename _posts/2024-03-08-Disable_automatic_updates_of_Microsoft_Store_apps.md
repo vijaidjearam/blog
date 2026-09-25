@@ -1,5 +1,5 @@
 ---
-date 2024-03-08 11:04:55
+date: 2024-03-08 11:04:55
 title: Disable automatic updates of Microsoft Store apps
 category: Microsoft-store-apps
 tags: Microsoft-store-apps windows

@@ -1,5 +1,5 @@
 ---
-date 2025-02-26 15:57:34
+date: 2025-02-26 15:57:34
 title: Unable to update windows due to SSL error
 category: windows-update windows11
 tags: windows11 windows-update

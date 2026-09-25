@@ -1,5 +1,5 @@
 ---
-date 2024-03-20 16:38:25
+date: 2024-03-20 16:38:25
 title: Slow startup Troubleshooting
 category: windows-finetuning
 tags: slow startup windows performance

@@ -1,5 +1,5 @@
 ---
-date 2024-10-09 11:36:50
+date: 2024-10-09 11:36:50
 title: File Association
 category: windows
 tags: windows_settings 

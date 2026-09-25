@@ -1,5 +1,5 @@
 ---
-date 2023-01-11 08:39:45
+date: 2023-01-11 08:39:45
 title: Chocolatey Softwares install commands
 category: chocolatey
 tags: chocolatey

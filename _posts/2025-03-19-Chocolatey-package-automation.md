@@ -1,5 +1,5 @@
 ---
-date 2025-03-19 13:54:51
+date: 2025-03-19 13:54:51
 title: Chocolatey package automation via github workflow
 category: chocolatey
 tags: chocolatey github

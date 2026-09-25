@@ -1,5 +1,5 @@
 ---
-date 2024-01-20 23:23:17
+date: 2024-01-20 23:23:17
 title: HyperV isolated network with internet access
 category: HyperV
 tags: Hyperv virtualisation

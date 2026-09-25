@@ -1,5 +1,5 @@
 ---
-date 2021-12-06 16:29:00
+date: 2021-12-06 16:29:00
 title: Bypass powershell execution policy
 category: Powershell
 tags: powershell bypass

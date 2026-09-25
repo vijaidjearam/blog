@@ -1,5 +1,5 @@
 ---
-date 2023-09-06 14:10:46
+date: 2023-09-06 14:10:46
 title: Chocolatey Install script snippets
 category: chocolatey
 tags: chocolatey install powershell

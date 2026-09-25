@@ -1,5 +1,5 @@
 ---
-date 2024-01-22 10:57:39
+date: 2024-01-22 10:57:39
 title: Flexlm command line switches
 category: flexlm
 tags: flexlm lmutil

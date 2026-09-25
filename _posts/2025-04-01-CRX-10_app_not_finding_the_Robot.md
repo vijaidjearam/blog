@@ -1,5 +1,5 @@
 ---
-date 2025-04-01 12:09:48
+date: 2025-04-01 12:09:48
 title: CRX-10 app not finding the Robot
 category: Fanuc
 tags: fanuc robot crx10

@@ -1,5 +1,5 @@
 ---
-date 2024-09-09 15:51:42
+date: 2024-09-09 15:51:42
 title: Powershell script to list the Members in the Administrateur Group
 category: powershell 
 tags: powershell

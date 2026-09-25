@@ -1,5 +1,5 @@
 ---
-date 2025-03-06 10:24:20
+date: 2025-03-06 10:24:20
 title: Deploy the new Microsoft Teams client
 category: teams
 tags: teams windows microsoft

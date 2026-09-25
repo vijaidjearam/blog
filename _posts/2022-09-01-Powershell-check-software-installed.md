@@ -1,5 +1,5 @@
 ---
-date 2022-09-01 08:59:45
+date: 2022-09-01 08:59:45
 title: Powershell script to check if the software is installed on remote PC 
 category: Powershell
 tags: powershell

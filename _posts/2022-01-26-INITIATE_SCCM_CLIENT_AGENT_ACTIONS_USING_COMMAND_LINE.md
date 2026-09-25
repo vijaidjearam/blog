@@ -1,5 +1,5 @@
 ---
-date 2022-01-26 12:26:00
+date: 2022-01-26 12:26:00
 title: INITIATE SCCM CLIENT AGENT ACTIONS USING COMMAND LINE
 category: sccm
 tags: sccm powershell cmd

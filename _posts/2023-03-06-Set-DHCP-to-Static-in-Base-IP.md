@@ -1,5 +1,5 @@
 ---
-date 2023-03-06 09:52:36
+date: 2023-03-06 09:52:36
 title: Set DHCP to static for PC in Base-IP
 category: network
 tags: network base-ip
