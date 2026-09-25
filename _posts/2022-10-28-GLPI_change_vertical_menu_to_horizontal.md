@@ -1,6 +1,5 @@
 ---
-
-date: 2022-10-28 11:31:50
+date 2022-10-28 11:31:50
 title: Change Vertical Menu to Horizontal Menu
 category: Glpi
 tags: glpi inventory

@@ -1,6 +1,5 @@
 ---
-
-date: 2023-09-06 13:50:37
+date 2023-09-06 13:50:37
 title: Chocolatey Uninstall MSI using uninstall string
 category: chocolatey
 tags: chocolatey powershell uninstall

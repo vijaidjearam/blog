@@ -1,6 +1,5 @@
 ---
-
-date: 2023-10-30 14:29:56
+date 2023-10-30 14:29:56
 title: Update portainer
 category: portainer
 tags: docker portainer

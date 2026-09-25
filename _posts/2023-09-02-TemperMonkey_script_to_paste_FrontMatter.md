@@ -1,6 +1,5 @@
 ---
-
-date: 2023-09-02 22:15:36
+date 2023-09-02 22:15:36
 title: TemperMonkey Script to paste Front Matter Template
 category: TemperMonkey
 tags: Tempermonkey javascript

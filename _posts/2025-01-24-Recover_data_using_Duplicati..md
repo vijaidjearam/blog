@@ -1,6 +1,5 @@
 ---
-
-date: 2025-01-24 14:41:13
+date 2025-01-24 14:41:13
 title: Recover data using Duplicati
 category: duplicati
 tags: docker container duplicati

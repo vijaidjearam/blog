@@ -1,6 +1,5 @@
 ---
-
-date: 2025-01-21 09:03:26
+date 2025-01-21 09:03:26
 title: Glpi-Agent
 category: Glpi
 tags: glpi inventory

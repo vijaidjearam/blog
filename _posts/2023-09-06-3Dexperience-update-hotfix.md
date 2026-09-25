@@ -1,6 +1,5 @@
 ---
-
-date: 2023-09-06 12:38:46
+date 2023-09-06 12:38:46
 title: 3Dexperince how to update Hotfix.
 category: 3DExperience
 tags: 3DExperience GMP

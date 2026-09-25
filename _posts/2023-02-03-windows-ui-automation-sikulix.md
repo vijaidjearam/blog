@@ -1,6 +1,5 @@
 ---
-
-date: 2023-02-03 15:11:04
+date 2023-02-03 15:11:04
 title: Windows_UI_Automation_with_Sikulix
 category: Automation 
 tags: python automation windows

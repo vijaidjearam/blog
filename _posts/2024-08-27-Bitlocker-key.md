@@ -1,6 +1,5 @@
 ---
-
-date: 2024-08-27 08:13:29
+date 2024-08-27 08:13:29
 title: Bitlocker key 
 category: Bitlocker
 tags: windows bitlocker

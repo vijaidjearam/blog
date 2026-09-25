@@ -1,6 +1,5 @@
 ---
-
-date: 2025-02-28 15:51:12
+date 2025-02-28 15:51:12
 title: Copy a desired profile to default profile
 category: windows11
 tags: defaultprofile windows11

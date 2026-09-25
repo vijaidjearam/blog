@@ -1,6 +1,5 @@
 ---
-
-date: 2023-02-02 08:26:29
+date 2023-02-02 08:26:29
 title: Insight Frequently used commands
 category: Insight
 tags: insight

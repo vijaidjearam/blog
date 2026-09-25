@@ -1,6 +1,5 @@
 ---
-
-date: 2023-03-06 09:52:36
+date 2023-03-06 09:52:36
 title: AutoIT Encrypt Script
 category: chocolatey
 tags: automation chocolatey package deployment

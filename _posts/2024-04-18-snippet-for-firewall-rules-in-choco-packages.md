@@ -1,6 +1,5 @@
 ---
-
-date: 2024-04-18 08:53:47
+date 2024-04-18 08:53:47
 title: Snippet for firewall rule in choco package
 category: chocolatey
 tags: chocolatey windows package

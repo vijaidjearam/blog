@@ -1,6 +1,5 @@
 ---
-
-date: 2023-09-06 15:44:55
+date 2023-09-06 15:44:55
 title: Compare Dell Bios parameters between Pcs
 category: BIOS
 tags: dell bios

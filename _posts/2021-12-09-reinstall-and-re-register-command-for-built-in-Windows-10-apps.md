@@ -1,6 +1,5 @@
 ---
-
-date: 2021-12-09 09:59:00
+date 2021-12-09 09:59:00
 title: Reinstall and re-register command for built-in Windows 10 apps
 category: Powershell
 tags: powershell windowsapp

@@ -1,6 +1,5 @@
 ---
-
-date: 2023-10-06 08:45:39
+date 2023-10-06 08:45:39
 title: MarkDown Diagrams and Charts
 category: MarkDown
 tags: markdown

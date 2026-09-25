@@ -1,6 +1,5 @@
 ---
-
-date: 2022-12-07 16:46:41
+date 2022-12-07 16:46:41
 title: Fog Secure Boot issue
 category: Fog
 tags: fog secureboot

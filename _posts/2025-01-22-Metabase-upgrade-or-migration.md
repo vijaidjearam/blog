@@ -1,6 +1,5 @@
 ---
-
-date: 2025-01-22 11:33:55
+date 2025-01-22 11:33:55
 title: Metabase upgrade or migration to new server
 category: container
 tags: docker container metabase backup migration

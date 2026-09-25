@@ -1,6 +1,5 @@
 ---
-
-date: 2022-11-14 14:48:39
+date 2022-11-14 14:48:39
 title: Insight Tech Console Backup WOL
 category: Insight
 tags: Insight-Tech-console Insight 
