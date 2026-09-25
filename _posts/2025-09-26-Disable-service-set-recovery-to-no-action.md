@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-09-26 08:57:41
 title: Disable a service and set the recovery to take no action.
 category: windows-services

@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-09-15 14:10:53
 title: Turn off Bitlocker and check the status of the decrytion.
 category: bitlocker

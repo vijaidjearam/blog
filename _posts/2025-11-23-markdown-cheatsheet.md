@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-11-23 00:32:00
 title: markdown-cheatsheet
 category: markdown

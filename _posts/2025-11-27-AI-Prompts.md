@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-11-27 10:46:00
 title: AI Prompts
 category: AI-Prompts

@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2026-09-01 12:42:00
 title: Deploying PowerBGInfo
 category: Powershell

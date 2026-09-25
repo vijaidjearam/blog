@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-05-16 15:05:00
 title: Network Drive Status CSC CACHE
 category: WindowsShare

@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-10-01 10:48:28
 title: Enable Run as Administartor option to a shortcut in desktop
 category: windows-shortcut

@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-11-22 23:40:00
 title: AI Shortcut Prompt Codes
 category: ai 
