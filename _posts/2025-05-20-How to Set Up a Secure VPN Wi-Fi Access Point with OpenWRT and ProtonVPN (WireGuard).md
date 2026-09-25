@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-05-20 11:40
 title: How to Set Up a Secure VPN Wi-Fi Access Point with OpenWRT and ProtonVPN (WireGuard)
 category: openwrt

@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-12-12 14:54:00
 title: ChatGPT Enhanced Markdown Copy with Code Blocks ,Tables and Formula
 category: TemperMonkey

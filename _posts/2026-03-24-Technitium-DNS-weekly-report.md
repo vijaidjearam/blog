@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2026-03-24 11:29:00
 title: Technitium DNS Weekly Report → ntfy / Email
 category: DNS

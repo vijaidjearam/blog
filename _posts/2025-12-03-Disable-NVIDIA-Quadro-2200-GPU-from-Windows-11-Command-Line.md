@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-12-03 17:08:00
 title: Disable NVIDIA Quadro 2200 GPU from Windows 11 Command Line
 category: Nvidia

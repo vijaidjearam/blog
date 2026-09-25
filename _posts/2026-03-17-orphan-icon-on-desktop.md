@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2026-03-16 15:38:00
 title: White Desktop Icon in Windows 11 Caused by OneDrive
 category: windows11 

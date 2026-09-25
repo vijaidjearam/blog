@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2026-01-28 11:48:00
 title: Driver Update script
 category: powershell 

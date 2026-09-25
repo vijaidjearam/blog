@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-05-30 18:40
 title: Extend Logical Volume in Ubuntu
 category: proxmox 

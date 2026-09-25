@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2026-03-18 14:19:00
 title: Lenovo Workstation Recommendation for Research
 category: PC-Config 

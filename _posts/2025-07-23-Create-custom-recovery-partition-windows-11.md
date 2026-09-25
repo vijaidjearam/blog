@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-07-23 12:30:00
 title: Create a Custom Recovery Partition on Windows 11
 category: recovery 

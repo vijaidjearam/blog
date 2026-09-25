@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-05-31 14:04
 title: Dual boot to VHDX without USB
 category: windows11

@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2026-04-29 12:10:00
 title: Configuring Default User Profile for Third-Party Applications
 category: default-profile

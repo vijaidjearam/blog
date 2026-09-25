@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-05-16 11:52:00
 title: Update Portainer on Ubuntu with Docker
 category: portainer

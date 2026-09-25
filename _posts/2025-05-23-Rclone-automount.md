@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-05-23 15:53:00
 title: Automount Rclone Remote at System Startup
 category: rclone

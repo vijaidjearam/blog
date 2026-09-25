@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2026-01-07 16:46:00
 title: Add GSD files to Tia-Portal
 category: tia-portal

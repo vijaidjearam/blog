@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-06-26 09:24:00
 title: Inspection sécurisée de liens suspects avec Application Guard
 category: spam

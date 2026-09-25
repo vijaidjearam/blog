@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-05-24 12:42
 title: Setting Up a Weekly Cron Job for Pi-hole Gravity Updates
 category: pihole

@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-06-03 12:04:00
 title: How to Configure network printer on HMI
 category: tia-portal

@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2025-11-24 10:46:00
 title: Désactiver Privacy Badger pour un site spécifique
 category: Chrome-Extensions

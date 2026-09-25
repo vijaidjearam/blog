@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2026-03-24 09:09:00
 title: PowerToys Peek on Spacebar Is a UX Trap in Windows 11
 category: PowerToys

@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2026-05-06 13:57:00
 title: Windows Unified Write Filter (UWF) Status Monitor - System Tray Application
 category: uwf

@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2026-01-16 14:26:00
 title: Provisioning New HP Laptop after clonage
 category: HP 

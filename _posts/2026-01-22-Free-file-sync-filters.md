@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2026-01-22 12:19:00
 title: Free file sync compare a synology folder to teams folder with exclusion filters
 category: freefilesync

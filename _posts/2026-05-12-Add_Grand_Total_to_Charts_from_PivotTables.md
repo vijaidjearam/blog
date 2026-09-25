@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2026-05-12 12:23:00
 title: Add Grand Total to Charts from PivotTables
 category: excel

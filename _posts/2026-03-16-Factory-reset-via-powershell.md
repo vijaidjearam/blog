@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2026-03-16 15:38:00
 title: Building an OEM-Style Factory Reset for Windows 11 — Complete Guide
 category: Recovery 

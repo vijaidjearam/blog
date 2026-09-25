@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2026-09-11 12:49:36
 title: TemperMonkey Script to export the entire chat of mammouth.ai to a markdownfile 
 category: TemperMonkey
