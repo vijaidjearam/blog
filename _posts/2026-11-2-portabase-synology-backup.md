@@ -1,6 +1,6 @@
 ---
 date: 2026-11-02 10:35:00
-title: Portabase + Synology WORM: MariaDB backup runbook 
+title: Portabase and Synology WORM MariaDB backup runbook 
 category: backup
 tags: portabase synology 
 ---
