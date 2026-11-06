@@ -5,7 +5,7 @@ category: windows
 tags: windows_settings 
 ---
 
-![File_Associations_Configuration_Guide](/blog/images/File_Associations_Configuration_Guide.png)
+![File_Associations_Configuration_Guide](/images/File_Associations_Configuration_Guide.png)
 
 ## 1. Introduction
 
