@@ -5,6 +5,8 @@ category: windows
 tags: windows_settings 
 ---
 
+![File_Associations_Configuration_Guide](images/File_Associations_Configuration_Guide.png)
+
 ## 1. Introduction
 
 This document describes how to verify and configure default file associations in Windows using the Windows Registry and an XML configuration file.
