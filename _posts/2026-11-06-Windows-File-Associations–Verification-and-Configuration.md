@@ -5,7 +5,7 @@ category: windows
 tags: windows_settings 
 ---
 
-![File_Associations_Configuration_Guide](images/File_Associations_Configuration_Guide.png)
+![File_Associations_Configuration_Guide]({{ '/images/File_Associations_Configuration_Guide.png' | relative_url }})
 
 ## 1. Introduction
 
