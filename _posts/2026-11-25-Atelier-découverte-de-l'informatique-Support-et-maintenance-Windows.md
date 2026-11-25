@@ -161,8 +161,6 @@ Demander au stagiaire de :
 
 ![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-7.jpg)
 
-![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-8.jpg)
-
 ### **Qu'est-ce que Hiren's BootCD PE ?**
 
 Hiren's BootCD PE est un environnement Windows démarrable sur clé USB qui contient différents outils de dépannage et de maintenance.
@@ -221,7 +219,7 @@ Autre méthode :
 | Invite de commandes           | Permet d'effectuer des opérations de dépannage avec des commandes.       |
 | Désinstaller des mises à jour | Permet de retirer certaines mises à jour problématiques.                 |
 
-![How to fix your PC's installation using five effective methods on Windows 11 | Windows Central](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-RE-2.jpg)
+![How to fix your PC's installation using five effective methods on Windows 11  Windows Central](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-RE-2.jpg)
 
 ### **Exercice pratique**
 
@@ -408,15 +406,15 @@ Copie directe du contenu d'un disque vers un autre disque.
 
 ![Connect the hard drive](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk4.jpg)
 
-![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk5.jpg)
+![A Basic Guide to Identifying the Major Components in a Desktop System  Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk5.jpg)
 
-![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk6.jpg)
+![A Basic Guide to Identifying the Major Components in a Desktop System  Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk6.jpg)
 
-![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk7.jpg)
+![A Basic Guide to Identifying the Major Components in a Desktop System  Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk7.jpg)
 
-![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk8.jpg)
+![A Basic Guide to Identifying the Major Components in a Desktop System  Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk8.jpg)
 
-![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk9.jpg)
+![A Basic Guide to Identifying the Major Components in a Desktop System  Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk9.jpg)
 
 
 
@@ -1021,7 +1019,6 @@ Ask the trainee to:
 
 ![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-7.jpg)
 
-![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-8.jpg)
 
 ### **What is Hiren's BootCD PE?**
 
@@ -1086,7 +1083,7 @@ Or:
 | Command Prompt    | Provides command-line access for troubleshooting.                |
 | Uninstall Updates | Removes certain problematic updates.                             |
 
-![How to fix your PC's installation using five effective methods on Windows 11 | Windows Central](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-RE-2.jpg)
+![How to fix your PC's installation using five effective methods on Windows 11  Windows Central](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-RE-2.jpg)
 
 ### **Practical exercise**
 
@@ -1273,15 +1270,15 @@ Copies the contents of one disk directly onto another disk.
 
 ![Connect the hard drive](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk4.jpg)
 
-![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk5.jpg)
+![A Basic Guide to Identifying the Major Components in a Desktop System Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk5.jpg)
 
-![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk6.jpg)
+![A Basic Guide to Identifying the Major Components in a Desktop System Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk6.jpg)
 
-![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk7.jpg)
+![A Basic Guide to Identifying the Major Components in a Desktop System Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk7.jpg)
 
-![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk8.jpg)
+![A Basic Guide to Identifying the Major Components in a Desktop System Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk8.jpg)
 
-![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk9.jpg)
+![A Basic Guide to Identifying the Major Components in a Desktop System Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk9.jpg)
 
 ### **Why do we back up computers?**
 
