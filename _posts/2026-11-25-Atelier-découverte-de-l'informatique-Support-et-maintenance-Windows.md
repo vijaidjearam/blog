@@ -21,9 +21,9 @@ L'idée est de consacrer environ 30 % du temps aux explications et 70 % aux mani
 
 ## **1. Découverte de Faronics Insight (15 min)**
 
-![Classroom Management Software | Class Control Software | Faronics](https://raw.githubusercontent.com/vijaidjearam/blog/main/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight1.jpg)
+![Classroom Management Software | Class Control Software | Faronics]({{ '/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight1.jpg' | relative_url }})
 
-![Put to the Test: Insight from Faronics | Tech & Learning](https://raw.githubusercontent.com/vijaidjearam/blog/main/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight2.jpg)
+![Put to the Test: Insight from Faronics | Tech & Learning](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight2.jpg)
 
 [Faronics Insight – Powerful Classroom Management for Modern Learning](https://raw.githubusercontent.com/vijaidjearam/blog/main/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight3.jpg)
 
