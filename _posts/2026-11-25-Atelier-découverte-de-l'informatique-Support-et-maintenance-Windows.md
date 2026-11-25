@@ -21,17 +21,20 @@ L'idée est de consacrer environ 30 % du temps aux explications et 70 % aux mani
 
 ## **1. Découverte de Faronics Insight (15 min)**
 
-![Classroom Management Software Class Control Software Faronics]({{ '/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight1.jpg' | relative_url }})
+![Classroom Management Software Class Control Software Faronics](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight1.jpg)
 
-![Classroom Management Software Class Control Software Faronics](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight2.jpg)
+![Put to the Test: Insight from Faronics  Tech & Learning](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight2.jpg)
 
+![Faronics Insight – Powerful Classroom Management for Modern Learning](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight3.jpg)
 
+![Faronics Insight – Powerful Classroom Management for Modern Learning](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight4.jpg)
 
-![Put to the Test: Insight from Faronics | Tech & Learning](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight2.jpg)
+![Faronics Insight – Powerful Classroom Management for Modern Learning](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight5.jpg)
 
-[Faronics Insight – Powerful Classroom Management for Modern Learning](https://raw.githubusercontent.com/vijaidjearam/blog/main/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight3.jpg)
+![Faronics Insight – Powerful Classroom Management for Modern Learning](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight6.jpg)
 
-6
+![Faronics Insight – Powerful Classroom Management for Modern Learning](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight7.jpg)
+
 
 ### **Qu'est-ce que Faronics Insight ?**
 
@@ -65,13 +68,15 @@ Faronics Insight est un logiciel utilisé dans les salles informatiques pour per
 
 ## **2. Dépannage Windows et Observateur d'événements (25 min)**
 
-[How to get started with Event Viewer on Windows 11 | Windows Central](https://images.openai.com/static-rsc-4/GsodOdh1N53miPlcIlQePh3aqI1fwoTdGlqXh4gkQsSt5yzqRVjLExx2Ohx-uJAo_j5euxG8a1eXtCHPp0-D0ek69_JO1p5zgcQFj7u3wHEKiKiIwdQxT5ifi911_OHB39Sn5ChLpvK5zpIq1UcBuIGnDfwKvd01-yXoGKyrNAY?purpose=inline)
+![How to get started with Event Viewer on Windows 11 Windows Central](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-event-viewer1.jpg)
+![Windows 11 is slow even in Safe Mode, even after formatting, fresh install and updating - Microsoft Q&A](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-event-viewer2.jpg)
 
-[Windows 11 is slow even in Safe Mode, even after formatting, fresh install and updating - Microsoft Q&A](https://images.openai.com/static-rsc-4/d4cP0CbrLKukm6vcTywipEnUcghneq_GuGPka40B54Bbu_d6V8FZcEwERKatTNwmnupDgzNwbC0Nw-yq3oVwG-kJlIJx_e6snYzw06eWOmQWnQJTi8_iBUi43X3RnMqtfcgOF5TZ2w71yyHa6Ktd_mUGrldzEJ9zw2i3rruJE10?purpose=inline)
+![How to get started with Event Viewer on Windows 11  Windows Central](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-event-viewer3.jpg)
 
-[How to get started with Event Viewer on Windows 11 | Windows Central](https://images.openai.com/static-rsc-4/0CP-PwzdA17AzRy8pkd4ffjW93mGLbjv_M7Ykml0CvBEdXEom9Lk7D90G4Dlo_TIHlqydpwbBga28lLkbxajatdkJoQU798rI_R_PWRx4I25k0F_wjLVLAVt-IaIUBjjpcG7cSmg1vGCxFMDVfegv9P_AaQ9_3EuumrUhoEjKFM?purpose=inline)
+![How to get started with Event Viewer on Windows 11  Windows Central](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-event-viewer4.jpg)
 
-6
+![How to get started with Event Viewer on Windows 11  Windows Central](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-event-viewer5.jpg)
+
 
 ### **Qu'est-ce que le dépannage informatique ?**
 
@@ -102,9 +107,7 @@ Que faire ?
 
 L'Observateur d'événements est un outil Windows qui enregistre les événements qui se produisent sur un ordinateur.
 
-[Cách kiểm tra nhật ký sự cố trên Windows 11 - QuanTriMang.com](https://images.openai.com/static-rsc-4/higVys5hgsZEa7T_1Nb6X2-ESYBGjtxHkhiqWwzr7-SlC3Nzkm7zath9VMsMyP08YUtw_43_DwzFMGmhWvBKHRItJ11PG6AydGpDBjjONJReGncl9F7GWaa9-yPJrLEKMrZI6Lr0Bp0lw7-k5YCI1x2tNh2iH5KAqXtBKtVapEU?purpose=inline)
-
-[quantrimang.com](https://quantrimang.com/cong-nghe/khac-phuc-su-co-windows-bang-nhat-ky-event-viewer-177108?utm_source=chatgpt.com)
+![L'Observateur d'événements](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-event-viewer5.jpg)
 
 #### **Comment l'ouvrir ?**
 
@@ -142,13 +145,23 @@ Demander au stagiaire de :
 
 ## **3. Découverte de Hiren's BootCD PE (20 min)**
 
-[Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](https://images.openai.com/static-rsc-4/JowOTAnQMYA6hpq727_8O1uiWiHIOrIx7AhVS2_sSHVNx94g6UW0hdu6Za6rPASBksBq0SCXMKUnY9igN1rpF97w6AzHrqJ-LDTeAnPTj7d5zn4VpdcGAAT6njdAnvcc19CG0an-kAm8McALrcRvHwsP9veEE_n2zvkhcBkll3g?purpose=inline)
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-1.jpg)
 
-[Hiren's BootCD PE - Learn Ubuntu MATE](https://images.openai.com/static-rsc-4/qYZCDbcmTWvnowh-aEl8lc2bTqcADJW-Ni0vUEoUIDUbx2JI2xOpEX34hTp8CFbtr6DMpH8P9sINI4ZZgzVdCYMnXB148jnpCj-tSNqRme4XON3Dxcs2PtCSx2yETKbSl8vSGxI5rMWYs6WikLnJyVlwdF0rCwbR9AZ8qFYipI4?purpose=inline)
 
-[Hiren's BootCD PE - Learn Ubuntu MATE](https://images.openai.com/static-rsc-4/kwv8WLk1PjMl7udJOX-fTiQXAJxw6mUkXqtgYfOfqQ9A2Mo2535hJIdLi2zfpTYgchL9hbzt3EJBKFIcmZmQBL18XyaOLLHq2JetqwLqNht8PVeoQ5WN1wRL6hyF9p3VlAukQcWSKQ0L45cWIxRv2Vuqrw9Ecz6ap51XEZaDFFU?purpose=inline)
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-2.jpg)
 
-8
+
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-3.jpg)
+
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-4.jpg)
+
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-5.jpg)
+
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-6.jpg)
+
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-7.jpg)
+
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-8.jpg)
 
 ### **Qu'est-ce que Hiren's BootCD PE ?**
 
@@ -172,7 +185,7 @@ Il est particulièrement utile lorsque Windows ne démarre plus ou lorsqu'un tec
 4. Identifier les disques et les partitions.
 5. Montrer comment accéder aux fichiers d'un disque de test.
 
-[Hiren's BootCD PE - Learn Ubuntu MATE](https://images.openai.com/static-rsc-4/s1KVgv0GssHmuHHmyoEGJBe1DgK5w_63bfrwC0S6RDrxp_5IonjZAeLqviAV6W1bFu08QmJF7eI6ZHiXgcI3NjN8F7ZaoP5nHh_TXdS1g_bS8H6dVqqOl4qQZFWylHb_kRcWBe0aA8WOOrqzg1j30Lq_lmuR_3pJ-0XwdNNa2Yc?purpose=inline)
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-5.jpg)
 
 **Attention :** Ne pas supprimer de partitions, formater de disques ou modifier des mots de passe pendant cette découverte. Utiliser un poste de test.
 
@@ -180,8 +193,7 @@ Il est particulièrement utile lorsque Windows ne démarre plus ou lorsqu'un tec
 
 ## **4. Découverte de l'environnement de récupération Windows (WinRE) (20 min)**
 
-[(5 Methods) How to Enter Windows Recovery Environment?](https://images.openai.com/static-rsc-4/3wvZLlD8Fd6Zp7SmktZlq5ucsYsE5YNsRlKpB09jJ5UPGpGhzQS5fxdMxtPSL6S0QnccL-mJzHp-6HTV7u3592c9jB3qPoFbYjKkVEtQA47WPKZNR5bPP42x59Fw_6m59Ox4-dOqTOj1h91ttDneRFMg_GeKpxXmPsAF073f-EE?purpose=inline)
-
+![(5 Methods) How to Enter Windows Recovery Environment?](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-RE-1.jpg)
 ### **Qu'est-ce que WinRE ?**
 
 WinRE (Windows Recovery Environment) est un environnement de récupération intégré à Windows. Il permet de dépanner et de réparer Windows lorsque le système rencontre des problèmes, notamment au démarrage.
@@ -209,7 +221,7 @@ Autre méthode :
 | Invite de commandes           | Permet d'effectuer des opérations de dépannage avec des commandes.       |
 | Désinstaller des mises à jour | Permet de retirer certaines mises à jour problématiques.                 |
 
-[How to fix your PC's installation using five effective methods on Windows 11 | Windows Central](https://images.openai.com/static-rsc-4/kS47qaFpyQt9BY8GvKNk-K1OE_f2DtN6yEkkAkB3DqEPbGe5CVPw_4600cCuboDlAMeeJuh3cDsHgpAphTZjTrfseH5r8ohPEdriJNu9drWvuRfeQSUL4sPLVP2O7ApraWS3TlGvdpzKfwURUVHBlpUFxdMrUIVQMXq-DdHS9-Y?purpose=inline)
+![How to fix your PC's installation using five effective methods on Windows 11 | Windows Central](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-RE-2.jpg)
 
 ### **Exercice pratique**
 
@@ -225,7 +237,7 @@ Sur un PC de test ou une machine virtuelle :
 
 ## **5. Découverte de CMD – Les commandes Windows (30 min)**
 
-[File:Command Prompt on Windows 11.png - Wikimedia Commons](https://images.openai.com/static-rsc-4/Y349dUzN2IblXexwLqWV6KA7CMmTBDZ3oTSr4g0dMG5_SJnqUakjdwWQcnMFy_xpM9Ofdw-t5Gz0xiblwwSAgKDN6Tn4POUY8O93QSDFy4PGoRQTpX2Nzfc0YMu3IS2N2QuqYyrNBWn8ypjXMTqJDflxpKjLCtK1TtuWQ46Clcs?purpose=inline)
+![File:Command Prompt on Windows 11.png - Wikimedia Commons](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/commandline-1.jpg)
 
 ### **Qu'est-ce que CMD ?**
 
@@ -308,7 +320,7 @@ Demander au stagiaire de :
 
 ## **6. Introduction aux outils Sysinternals (10 min)**
 
-[Process Explorer - Screenshots](https://images.openai.com/static-rsc-4/Zfl1do_Hp0tti1ZVZFGKrSzPjxy4Jmu0v1M7_321dCXsxJMWeixVN1ezHH4sdSqwvLtebd70XUUSy1lX9AQMhK6Uc-iQvjSXC_btF_liJR_TYKEGUUR_5_siZbTKjEMNeQePZ-ZDzK8AW8kQmadFqSFPIUhZTRZVMcG_ynPZFuI?purpose=inline)
+![Process Explorer - Screenshots](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/sysinternals-1.jpg)
 
 ### **Qu'est-ce que Sysinternals ?**
 
@@ -336,11 +348,19 @@ Sysinternals est une collection d'outils avancés de dépannage et d'administrat
 
 ## **7. Découverte de Clonezilla (20 min)**
 
-[Clonezilla - Download (Linux) - Softpedia](https://images.openai.com/static-rsc-4/60NehNgGTU_bCgddEGqo8uXW3eCCFm4h4Ns9Nr_rF60BGU8EyOpbZmUMD_J7dG99ULKgFJe_8ojyPpaH2FTnmu8a9iCbmIEHdLs4ciVSSPSSXm7PzGMSXr1gxJhA-2Xwe0kI-NCwNhZRmbCmHqWu_ziJLb9OiwoeDVUuk6KcHgU?purpose=inline)
+![Clonezilla - Download (Linux) - Softpedia](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla1.jpg)
 
-[7 Best Free Disk Cloning Software For Mac in 2022 \[Top Rated\]](https://images.openai.com/static-rsc-4/iM2ibBLowbtITczzycgHhvDsI8ONVsQ_lbuApSgZXLUl_OZcpLXzDLOavYh6VZfkaIo2ESLSQVcmVu_iCoekp1QiwRfCeOOcOWDtZubmCHZBQwygS0Iy_FEDP9s0iJ82p9KCky4x9Jo0qCvgfzcTJLgt7XnadkWUuEwT_i0QHNY?purpose=inline)
+![7 Best Free Disk Cloning Software For Mac in 2022 \[Top Rated\]](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla2.jpg)
 
-[Clonezilla Live Doc](https://images.openai.com/static-rsc-4/2vW_MQU4ZAxRpCbexoZCt6IBSTRp3mxp90dn59wKpt-qS0dSv-HFgI_4nzxd5s7vK97wpAYCFWDT7aGn8-oQS1cenN7_pg5y-HYB2IBbe_Dzwn5Kgu29ix0cUDdWpW2d1S0rVkdU9IwOmoDFWrm9ExxStFQcqW6gDjwY0vU2e4o?purpose=inline)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla3.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla4.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla5.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla6.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla7.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla8.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla9.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla10.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla11.jpg)
 
 ### **Qu'est-ce que Clonezilla ?**
 
@@ -372,13 +392,9 @@ Copie directe du contenu d'un disque vers un autre disque.
 4. Expliquer la différence entre disque source et disque destination.
 5. Montrer comment préparer la création d'une image disque.
 
-[How to Back Up a Computer using Clonezilla - iFixit Repair Guide](https://images.openai.com/static-rsc-4/is9ZElL5OPsPWIG4iKjiH1t7x_NPDm3-3_eRBNFvIZsauGBqrTcawtK0oNAJr_V0jJDwohkmcvO_WMnrvI2_MrnBtfwwJONg5t43V829qgfo1bN-4_XoJoqaI38b0uJn90e3IO2lsoIKNXpb5_pdOv8e9JUmpRDptEpyhsXEUOM?purpose=inline)
-
-[Disk Cloning with DRBL/Clonezilla for Multiple Laptops (3) | by Vijay Yongjoon Park | Medium](https://images.openai.com/static-rsc-4/xTCEBhunZ2ZtoH8uWgdmUCgFM0MNbSjvi804JXehd9p5kWsEwl-JhEHhNiIfuwrP5rAHOYfAf1vWVA6HzhsnBtItfPQVhjeSkggZKAhK-oe21MNKbaJj6D5TX7CeFJLsIYsa5XpvtWkptTPzROWd71Y1bma2kMxucpkJMqJ25Vc?purpose=inline)
-
-[Clonezilla review | TechRadar](https://images.openai.com/static-rsc-4/UMDnxnnOeSsXVdSGMz34D3emmeqbStQ2qw7YJY1H0W1vFJlDnW8ByGUy98HIat9pTlN8t1CMGLRiVQ11TWGyzKNuXeAXzPxQE4pwO8nYayMZmRj3NZKjrOi1csuclAgw0kgC4fdUArAMoOlZKD2htgEeoYNha4YFdcGgO1LbOaw?purpose=inline)
-
-6
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla9.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla10.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla11.jpg)
 
 **Attention :** Clonezilla peut écraser les données du disque de destination. Ne jamais choisir un disque au hasard. Pendant cette séance, rester sur la démonstration des menus sans lancer une opération irréversible.
 
@@ -386,13 +402,23 @@ Copie directe du contenu d'un disque vers un autre disque.
 
 ## **8. Sauvegarde, remplacement de disque et restauration (20 min)**
 
-[SSD Upgrade & Installation in Oceanside & Encinitas](https://images.openai.com/static-rsc-4/T7EzZIWIefqcJ0hSwyGcRBLqYlDRwGyGYjFIcjWn10xHI9wVs8KdTmSCFo-Ha3TulM7ORHmOLDCrUlGpuuQ3PkLJ-83uNTgwMk2XSdJnd82rfVUtdFnnY4cEMHCYzVjAVpJv2-H6Gb-xjLUFe1UY19zZ-8OuC5itW8m-WouK-wI?purpose=inline)
+![SSD Upgrade & Installation in Oceanside & Encinitas](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk1.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk2.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk3.jpg)
 
-[Connect the hard drive](https://images.openai.com/static-rsc-4/-J12nnf32FfHyX4BDq6wpZ4A40Hv_FcX04xJSOu-j02uIf51041B79SDjDqxfeJcS7QJF1RfJTviMpHXPaQCR2EDgHvqjeR3YTwauWAL8r0FlK7sOBWYCIUaRRI_YGYwfRLipNlsrK4EtV2GqfMYnexHpBqeqXaJrx2pgKhjZdxIMxVuhK2BXq9cJNbj4sCo?purpose=inline)
+![Connect the hard drive](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk4.jpg)
 
-[A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](https://images.openai.com/static-rsc-4/GtMQPa8KeapHaoQGgwm5LOZJOHzIv_Jfwo1uRiAnEa38eOwlOpuDiBcbUfiS80raqFY8005OPr-A9oSg81o2cEkRs8_60MVI2kJCcEE3cWq-SWBCZoE9t46vcXv91LsuLv-9_g-pm8_RBLOcMW9xpOXvAtM4X5nXJaBPYgbgaiY?purpose=inline)
+![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk5.jpg)
 
-9
+![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk6.jpg)
+
+![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk7.jpg)
+
+![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk8.jpg)
+
+![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk9.jpg)
+
+
 
 ### **Pourquoi sauvegarder un ordinateur ?**
 
@@ -404,13 +430,15 @@ Une sauvegarde est une copie des données importantes conservée séparément po
 
 ### **Exemple : remplacement d'un SSD défectueux**
 
-[Objawy uszkodzenia dysku ssd – na co zwrócić uwagę](https://images.openai.com/static-rsc-4/UNgM8Ebib39nV5UwoG1UQQ7YsXzpKHaGwrAdC0YBhz7Zw-3lApIly13hr55mWuve48hYis5h0biHIC3nc_F-KuXnJahfYoa1AqR6inYxZbZZsPcmuK0DcS64q0QzfjtVUpWAZzWF2ppurdVWt4DQbzxI6hldtW90x4m1PYXaLpc?purpose=inline)
+![Objawy uszkodzenia dysku ssd – na co zwrócić uwagę](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk10.jpg)
+
 
 **Ancien disque**
 
 Disque d'origine
 
-[Western Digital Blue SN580 1TB M.2 NVMe SSD](https://images.openai.com/static-rsc-4/8iD44QLl1Md8fS0FQFrDZi9DUFajH0u997WxNQ4-EVPUWub-_ymbVfw7WCBdaSLPg8YjAGytTh4mbouwd9SQeQcO4my87dPllSF8JUX9t4hrgOwa69iuZIJWjbESkrBseMAarKxMy4nxkjy4nsfiX0iJ5bXnbu-Yw8bMenU3mY0?purpose=inline)
+![Western Digital Blue SN580 1TB M.2 NVMe SSD](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk11.jpg)
+
 
 **Nouveau disque**
 
@@ -443,13 +471,13 @@ Montrer au stagiaire :
 
 ## **9. Découverte de Deep Freeze (20 min)**
 
-[Installing Deep Freeze](https://images.openai.com/static-rsc-4/U9bZCELqFwK7aVBL7C4odqJDUMuEg86iyIHmebVKi1JZPCREB7y-GoYgCN3sZJQ3dR6Lyri9CxaySUga-jKU7fB-1QRnt-iWIytosSFoVT8ScKqPy_GSGgdVo0KdHp7C-rvOO8WcGwXDfmN0LFMQwIlUKHYNkeJIlLW2yF73k4g?purpose=inline)
+![Installing Deep Freeze](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/deepfreeze1.jpg)
 
-[Deep Freeze](https://images.openai.com/static-rsc-4/rX0VBdlXCzfO_GtLJh5h_urUiX7ErD4gMD1o_jHSG_bPYyoEjQdi165yR2Rk35XBv5g-wBNO_tQmRSqjEkZg6EK4FgXCSbmfI0dHj7Jr7a-4EzG4BM748yVBRP0oj6EZ2vNIBNBcifTYGagpTRLX_kgEIojHOgxz02o5e8ltBX8?purpose=inline)
+![Deep Freeze](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/deepfreeze2.jpg)
 
-[Thawed Period](https://images.openai.com/static-rsc-4/3GXqwHwtnWEI0CxfalA4vs0Dm06bquEm0RmQO2cjE4h2c1XDYhrZ1e1kM6z5MKzLBZU90LiGWdyEMtAAuRZ7VYGWAAb4I9rmKY70w4nLUZsH_eVXDaT06eUEVpokiWLRCSqeFM0L7wHitmO5l7OSJ_h0jHd8FUMZSrVHR7uTQjg?purpose=inline)
+![Thawed Period](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/deepfreeze3.jpg)
 
-8
+
 
 ### **Qu'est-ce que Deep Freeze ?**
 
@@ -506,7 +534,11 @@ Sur un poste de test :
 
 ## **10. Introduction à PowerShell (25 min)**
 
-[Rendering problem, blurry text · Issue #5759 · microsoft/terminal · GitHub](https://images.openai.com/static-rsc-4/VeR2CTfSSkYN4_uNCVqaqbNq0-vFyLVkUovrwJU3qhr9oxfm90AtOgT481vGPCbhxYgkXhHWEW80FHMPDXRWDs33DU8wW2Sq3y7XWsqcT8g_kMnW9J6ylPLPxugygw_pyhKJFqtjqL8XPmFtAaDgNFdMrgv3CTJwy_yArA-r3zc?purpose=inline)
+![Rendering problem, blurry text · Issue #5759 · microsoft/terminal · GitHub](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/powershell1.jpg)
+
+![Rendering problem, blurry text · Issue #5759 · microsoft/terminal · GitHub](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/powershell2.jpg)
+
+![Rendering problem, blurry text · Issue #5759 · microsoft/terminal · GitHub](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/powershell3.jpg)
 
 ### **Qu'est-ce que PowerShell ?**
 
@@ -850,13 +882,19 @@ The workshop is structured as two sessions:
 
 ## **1. Faronics Insight — 15 minutes**
 
-[Classroom Management Software | Computer Monitoring - Faronics Insight](https://images.openai.com/static-rsc-4/O61bJjvtB2mGwq324GUPFTLsFFFbRkhD0cPgJqL5JB1gZnxvFPbgftBFTYwMZvuUA1vsQB6ss-4R1hCqzSF8nBxT-_fwJiu6AKrYEHXEJbBaJcVw2UX3YTsuCVJRpNVdEU3gI4BClyp38-NrGCtA3_MjnDxQAYK3srrZMu32SgU?purpose=inline)
+![Classroom Management Software Class Control Software Faronics](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight1.jpg)
 
-[Faronics Insight – Powerful Classroom Management for Modern Learning](https://images.openai.com/static-rsc-4/qIHB6rmNE50EGkXaOcoialDH6QyR-gUyNftK8YWExKsLCxGtSf3QEi_nPGvlfqOTKEUdBEKOk6cRdUrVf1MZAGAdrCg1T0UBpLcMMlyDEC0Q140Dwpi0qydvOGpoYNG5akd7VevJd1T08p6Jmy0ruFYIy7f8rArPXSsqdQ6fNNM?purpose=inline)
+![Put to the Test: Insight from Faronics  Tech & Learning](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight2.jpg)
 
-[Put to the Test: Insight from Faronics | Tech & Learning](https://images.openai.com/static-rsc-4/fwA7rKHSVkTyQUmHM061DMrIkwgFm0UM5Mtcl3Y9kO_v7N1h2qyCyzIsezBGxUwaOn6GCBw1U_I62foPfUuQHckSzWzmeiQZFvwz7ASiFQm-RXs1_fBiqy3KkbPqv7xDRTRazlKRhpBsuTj5eZFnuunOZJZ2R8nOwHOGZM80x0M?purpose=inline)
+![Faronics Insight – Powerful Classroom Management for Modern Learning](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight3.jpg)
 
-7
+![Faronics Insight – Powerful Classroom Management for Modern Learning](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight4.jpg)
+
+![Faronics Insight – Powerful Classroom Management for Modern Learning](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight5.jpg)
+
+![Faronics Insight – Powerful Classroom Management for Modern Learning](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight6.jpg)
+
+![Faronics Insight – Powerful Classroom Management for Modern Learning](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/faronics-insight7.jpg)
 
 ### **What is Faronics Insight?**
 
@@ -890,13 +928,15 @@ Faronics Insight is a classroom management tool used by teachers and IT staff to
 
 ## **2. Windows Troubleshooting & Event Viewer — 25 minutes**
 
-[How to get started with Event Viewer on Windows 11 | Windows Central](https://images.openai.com/static-rsc-4/0CP-PwzdA17AzRy8pkd4ffjW93mGLbjv_M7Ykml0CvBEdXEom9Lk7D90G4Dlo_TIHlqydpwbBga28lLkbxajatdkJoQU798rI_R_PWRx4I25k0F_wjLVLAVt-IaIUBjjpcG7cSmg1vGCxFMDVfegv9P_AaQ9_3EuumrUhoEjKFM?purpose=inline)
+![How to get started with Event Viewer on Windows 11 Windows Central](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-event-viewer1.jpg)
+![Windows 11 is slow even in Safe Mode, even after formatting, fresh install and updating - Microsoft Q&A](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-event-viewer2.jpg)
 
-[How to find out why your PC shut down for no reason on Windows 10 and 11 | Windows Central](https://images.openai.com/static-rsc-4/De839STV0Ef0IpdKy3ZkLR7pbLoZhYYBk3BoOrmFFjaIRxFmDrh3e0uhwW4AKZhhyr3ih87VtisncN54jFD2LdPDqW68GKHe1wX2qDunKX4brjBZmHQb4PIMMZ__hxsvU5B7KP_gKIKHCSE317Afj5XLbj3bkccts2wCKzzhrEg?purpose=inline)
+![How to get started with Event Viewer on Windows 11  Windows Central](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-event-viewer3.jpg)
 
-[WSL Crash on Windows 10 - McFiscH’s](https://images.openai.com/static-rsc-4/TnGomypF-f7-ElTd3_uaYDav0FX2yxbgT-Adz7ENj4j0PJ-dd4jfQS7McSTyO94f5y0IHyhQ7ehVC65QmEzQa6x9myHvMuZ34nok-ILgqQmgfgHtO2dBlR_YhLHwXTx33pWTMIClqeNSBWmVihoo94BEu4CedRKvwosYSHS1xic?purpose=inline)
+![How to get started with Event Viewer on Windows 11  Windows Central](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-event-viewer4.jpg)
 
-4
+![How to get started with Event Viewer on Windows 11  Windows Central](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-event-viewer5.jpg)
+
 
 ### **What is troubleshooting?**
 
@@ -927,9 +967,7 @@ What should we do?
 
 Event Viewer is a Windows tool that records events occurring on a computer.
 
-[How to get started with Event Viewer on Windows 11](https://images.openai.com/static-rsc-4/P-8Qa6jRxSg18I_8QxnO9_ybVtc5LfwzJxImW-u7ruEmvFZLfOjryhrat7k4juzq8xsV3QXJaRCD3MOVA8b7Mz5w01QgRFYuP87g9AsYqcPpRhLpY9v0FayuKOpE275fJw5AOBFAuHzVUWajoHorWFrN41qgbGuLEcFLdshBvUc?purpose=inline)
-
-[inkl.com](https://www.inkl.com/news/how-to-get-started-with-event-viewer-on-windows-11?utm_source=chatgpt.com)
+![L'Observateur d'événements](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-event-viewer5.jpg)
 
 #### **How to open it**
 
@@ -967,13 +1005,23 @@ Ask the trainee to:
 
 ## **3. Hiren's BootCD PE — 20 minutes**
 
-[Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](https://images.openai.com/static-rsc-4/JowOTAnQMYA6hpq727_8O1uiWiHIOrIx7AhVS2_sSHVNx94g6UW0hdu6Za6rPASBksBq0SCXMKUnY9igN1rpF97w6AzHrqJ-LDTeAnPTj7d5zn4VpdcGAAT6njdAnvcc19CG0an-kAm8McALrcRvHwsP9veEE_n2zvkhcBkll3g?purpose=inline)
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-1.jpg)
 
-[Hiren's BootCD PE - Learn Ubuntu MATE](https://images.openai.com/static-rsc-4/JiX0wCHPDd03PzM-Jk_8HtUQoKXbEzA0595YW30R9KxAcmgiwuVg0XDp6QROE9CpoYzuHm9841Dh2d1SiwZ7tv9awZAQSeTdHhVJZpbsyDCaBqJ0TKF0Ws3PMIF_kODYitqMc80SjivFEq6CI64JcQceoUdhbbHOboVYtC6UU_0?purpose=inline)
 
-[Hiren's BootCD PE - Learn Ubuntu MATE](https://images.openai.com/static-rsc-4/kwv8WLk1PjMl7udJOX-fTiQXAJxw6mUkXqtgYfOfqQ9A2Mo2535hJIdLi2zfpTYgchL9hbzt3EJBKFIcmZmQBL18XyaOLLHq2JetqwLqNht8PVeoQ5WN1wRL6hyF9p3VlAukQcWSKQ0L45cWIxRv2Vuqrw9Ecz6ap51XEZaDFFU?purpose=inline)
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-2.jpg)
 
-7
+
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-3.jpg)
+
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-4.jpg)
+
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-5.jpg)
+
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-6.jpg)
+
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-7.jpg)
+
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-8.jpg)
 
 ### **What is Hiren's BootCD PE?**
 
@@ -997,13 +1045,11 @@ It can be useful when the normal Windows installation cannot start or when a tec
 4. Identify the disks and partitions.
 5. Demonstrate browsing files on a test disk.
 
-[Hiren's BootCD PE - Learn Ubuntu MATE](https://images.openai.com/static-rsc-4/s1KVgv0GssHmuHHmyoEGJBe1DgK5w_63bfrwC0S6RDrxp_5IonjZAeLqviAV6W1bFu08QmJF7eI6ZHiXgcI3NjN8F7ZaoP5nHh_TXdS1g_bS8H6dVqqOl4qQZFWylHb_kRcWBe0aA8WOOrqzg1j30Lq_lmuR_3pJ-0XwdNNa2Yc?purpose=inline)
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-6.jpg)
 
-[Hiren's BootCD PE - Learn Ubuntu MATE](https://images.openai.com/static-rsc-4/kwv8WLk1PjMl7udJOX-fTiQXAJxw6mUkXqtgYfOfqQ9A2Mo2535hJIdLi2zfpTYgchL9hbzt3EJBKFIcmZmQBL18XyaOLLHq2JetqwLqNht8PVeoQ5WN1wRL6hyF9p3VlAukQcWSKQ0L45cWIxRv2Vuqrw9Ecz6ap51XEZaDFFU?purpose=inline)
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-7.jpg)
 
-[Hiren's BootCD PE - Learn Ubuntu MATE](https://images.openai.com/static-rsc-4/JiX0wCHPDd03PzM-Jk_8HtUQoKXbEzA0595YW30R9KxAcmgiwuVg0XDp6QROE9CpoYzuHm9841Dh2d1SiwZ7tv9awZAQSeTdHhVJZpbsyDCaBqJ0TKF0Ws3PMIF_kODYitqMc80SjivFEq6CI64JcQceoUdhbbHOboVYtC6UU_0?purpose=inline)
-
-5
+![Software-update: Hiren's BootCD PE 1.0.2 - Computer - Downloads - Tweakers](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/Hiren-Boot-CD-8.jpg)
 
 **Safety:** Do not delete partitions, format disks or modify passwords during this introductory session. Use a test machine.
 
@@ -1011,7 +1057,7 @@ It can be useful when the normal Windows installation cannot start or when a tec
 
 ## **4. Windows Recovery Environment (WinRE) — 20 minutes**
 
-[(5 Methods) How to Enter Windows Recovery Environment?](https://images.openai.com/static-rsc-4/3wvZLlD8Fd6Zp7SmktZlq5ucsYsE5YNsRlKpB09jJ5UPGpGhzQS5fxdMxtPSL6S0QnccL-mJzHp-6HTV7u3592c9jB3qPoFbYjKkVEtQA47WPKZNR5bPP42x59Fw_6m59Ox4-dOqTOj1h91ttDneRFMg_GeKpxXmPsAF073f-EE?purpose=inline)
+![(5 Methods) How to Enter Windows Recovery Environment?](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-RE-1.jpg)
 
 ### **What is WinRE?**
 
@@ -1040,7 +1086,7 @@ Or:
 | Command Prompt    | Provides command-line access for troubleshooting.                |
 | Uninstall Updates | Removes certain problematic updates.                             |
 
-[How to fix your PC's installation using five effective methods on Windows 11 | Windows Central](https://images.openai.com/static-rsc-4/kS47qaFpyQt9BY8GvKNk-K1OE_f2DtN6yEkkAkB3DqEPbGe5CVPw_4600cCuboDlAMeeJuh3cDsHgpAphTZjTrfseH5r8ohPEdriJNu9drWvuRfeQSUL4sPLVP2O7ApraWS3TlGvdpzKfwURUVHBlpUFxdMrUIVQMXq-DdHS9-Y?purpose=inline)
+![How to fix your PC's installation using five effective methods on Windows 11 | Windows Central](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/windows-RE-2.jpg)
 
 ### **Practical exercise**
 
@@ -1056,7 +1102,7 @@ On a test machine or virtual machine:
 
 ## **5. CMD — Basic Windows command-line tools — 30 minutes**
 
-[「コマンドプロンプト」「Windows PowerShell」とは - パソコン用語解説](https://images.openai.com/static-rsc-4/3HoiYD0F9CD7blK2BFWpQSMJgQpxh4i_PKWAk_ih3Vp3RBmWoNF0h7YrcBgiF2b1H3vkIzeIwOGhH0JuV7dbP5tT8b5eVVsOtQvZQYnfI4R4uCiZ54EFVuIY2jkQEZvqqWrCeqXXubBEG_jYpQCZ_SubYBCIUh4fDOrn2D-o4hw?purpose=inline)
+![File:Command Prompt on Windows 11.png - Wikimedia Commons](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/commandline-1.jpg)
 
 ### **What is CMD?**
 
@@ -1139,7 +1185,7 @@ Give the trainee these tasks:
 
 ## **6. Introduction to Sysinternals — 10 minutes**
 
-[4 Free Tools I Keep on My USB Drive to Fix Any Windows PC](https://images.openai.com/static-rsc-4/PBNycWvsd-5FuGeLejhAQxLlXg5bWSdQUoP_38TR_d4jxqlfLXG0gnUWPOStTatpq9B1PBKSgQDbfBCdnlqms49Xu8HcYtM7ahYj0FJgFPHlCDTpXAyjkPSHLiS3eOlAN5WOgPQOgHpnH_c5u8B0VYIoI8quYBojDsmFUaomF28?purpose=inline)
+![Process Explorer - Screenshots](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/sysinternals-1.jpg)
 
 ### **What is Sysinternals?**
 
@@ -1167,13 +1213,19 @@ Sysinternals is a collection of advanced Windows troubleshooting and administrat
 
 ## **7. Introduction to Clonezilla — 20 minutes**
 
-[Clonezilla - Download (Linux) - Softpedia](https://images.openai.com/static-rsc-4/60NehNgGTU_bCgddEGqo8uXW3eCCFm4h4Ns9Nr_rF60BGU8EyOpbZmUMD_J7dG99ULKgFJe_8ojyPpaH2FTnmu8a9iCbmIEHdLs4ciVSSPSSXm7PzGMSXr1gxJhA-2Xwe0kI-NCwNhZRmbCmHqWu_ziJLb9OiwoeDVUuk6KcHgU?purpose=inline)
+![Clonezilla - Download (Linux) - Softpedia](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla1.jpg)
 
-[How to use Clonezilla and Rescuezilla to clone or create/restore an image. | JustToThePoint](https://images.openai.com/static-rsc-4/u_SuIcNXloJLeArsBAI3cY7zGQALIhD6YgFJwgElbkBNuC0fx3cR2z-5kFjPtdZlGWj-kajbujwQSkmW_NQOENIpnpLMMIGsibKbiyR8SQG1GhUevPyXN71ochYyigWNPUqDcBMNsj2SQKKzb60YLd-e4_-IXAFYZLHVAX_bc7o?purpose=inline)
+![7 Best Free Disk Cloning Software For Mac in 2022 \[Top Rated\]](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla2.jpg)
 
-[How to Create a Bootable Clone of your Windows 10 Drive - Make Tech Easier](https://images.openai.com/static-rsc-4/q-baIuYDbvwNoyKDRgfG5XSbn11v9KeZ46fyCT7uXlyEPit_mbh4HrDLK37TpufBX2Dp2zIizsx90t7NAiCw7UiwRjJdzy63evT76MA_O85_5AZxPdTc_NC_Wuz8dmrELQ6Wh_0tvCXMD5WuVSKfi_ZK0v6ZIQAGNs1DyIYLLvM?purpose=inline)
-
-5
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla3.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla4.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla5.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla6.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla7.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla8.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla9.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla10.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla11.jpg)
 
 ### **What is Clonezilla?**
 
@@ -1205,13 +1257,9 @@ Copies the contents of one disk directly onto another disk.
 4. Explain the difference between source and destination.
 5. Show how a disk image can be created.
 
-[How to Back Up a Computer using Clonezilla - iFixit Repair Guide](https://images.openai.com/static-rsc-4/is9ZElL5OPsPWIG4iKjiH1t7x_NPDm3-3_eRBNFvIZsauGBqrTcawtK0oNAJr_V0jJDwohkmcvO_WMnrvI2_MrnBtfwwJONg5t43V829qgfo1bN-4_XoJoqaI38b0uJn90e3IO2lsoIKNXpb5_pdOv8e9JUmpRDptEpyhsXEUOM?purpose=inline)
-
-[Disk Cloning with DRBL/Clonezilla for Multiple Laptops (3) | by Vijay Yongjoon Park | Medium](https://images.openai.com/static-rsc-4/xTCEBhunZ2ZtoH8uWgdmUCgFM0MNbSjvi804JXehd9p5kWsEwl-JhEHhNiIfuwrP5rAHOYfAf1vWVA6HzhsnBtItfPQVhjeSkggZKAhK-oe21MNKbaJj6D5TX7CeFJLsIYsa5XpvtWkptTPzROWd71Y1bma2kMxucpkJMqJ25Vc?purpose=inline)
-
-[From GIS to Remote Sensing: Backup and Restore the Operating System with Clonezilla](https://images.openai.com/static-rsc-4/j8Ypcazry8o5KqCIbLUNTB1QTK3br-KCVaPw5SOISPNNsFP_FcKMEBpE4gm-8yW4u3B4KSfVA9ChD1XOfbxXMCU5XLfQETNeOVDYOiJ3K7-QDfn1CQu4ehj-vJD0njBb83UTrEb7v2AnKA4NKv7Hb58MxdmtjzWeDvxt1eAA8oE?purpose=inline)
-
-6
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla9.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla10.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/clonezilla11.jpg)
 
 **Important:** Clonezilla can erase the destination disk. Never select disks randomly. During the introduction, demonstrate the menus without starting an irreversible operation.
 
@@ -1219,13 +1267,21 @@ Copies the contents of one disk directly onto another disk.
 
 ## **8. Backup, disk replacement and restoration — 20 minutes**
 
-[Desktop Hard Drive Replacement | Miami Computer Repairs](https://images.openai.com/static-rsc-4/hSvXN3tuMECYaRF52Pxtjfe46Z-EWo62MJcnpq8kyd-OjkAmqYiNMkIlkFNwriYJQkVkN_N-OC23W2MAdPVWbP6r2V5LPCWQv3tWrV19q0ENzf_5_LdCqZC_dqu_oBOLEUtMbr5CKxzGSvDjheJViSRKInP5D9N0Nk9rBb34Nag?purpose=inline)
+![SSD Upgrade & Installation in Oceanside & Encinitas](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk1.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk2.jpg)
+![Clonezilla Live Doc](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk3.jpg)
 
-[SSD Installation Guide: Upgrade Your Computer and Boost Performance  – ACEMAGIC](https://images.openai.com/static-rsc-4/sebIeJNuOKT2fH2zElRH-34yLlYvn0DGavqfLH5E0bFMSlKCAFFJvgGjDQEKHujKyxCQiwEAGsMAIAFMUubZFPrklZ2oSbBp4WMIztXOuxY9wHxrBKIMV_A8-1lxwiCSqGMevRid8Qxbqi1uE7mKNnj0WP6JeXOWaBHbvt1FDv8?purpose=inline)
+![Connect the hard drive](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk4.jpg)
 
-[Connect the hard drive](https://images.openai.com/static-rsc-4/-J12nnf32FfHyX4BDq6wpZ4A40Hv_FcX04xJSOu-j02uIf51041B79SDjDqxfeJcS7QJF1RfJTviMpHXPaQCR2EDgHvqjeR3YTwauWAL8r0FlK7sOBWYCIUaRRI_YGYwfRLipNlsrK4EtV2GqfMYnexHpBqeqXaJrx2pgKhjZdxIMxVuhK2BXq9cJNbj4sCo?purpose=inline)
+![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk5.jpg)
 
-9
+![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk6.jpg)
+
+![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk7.jpg)
+
+![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk8.jpg)
+
+![A Basic Guide to Identifying the Major Components in a Desktop System | Dell India](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk9.jpg)
 
 ### **Why do we back up computers?**
 
@@ -1237,13 +1293,13 @@ A backup is a copy of important data stored separately so that it can be recover
 
 ### **Example: Replacing a damaged SSD**
 
-[Objawy uszkodzenia dysku ssd – na co zwrócić uwagę](https://images.openai.com/static-rsc-4/UNgM8Ebib39nV5UwoG1UQQ7YsXzpKHaGwrAdC0YBhz7Zw-3lApIly13hr55mWuve48hYis5h0biHIC3nc_F-KuXnJahfYoa1AqR6inYxZbZZsPcmuK0DcS64q0QzfjtVUpWAZzWF2ppurdVWt4DQbzxI6hldtW90x4m1PYXaLpc?purpose=inline)
+![Objawy uszkodzenia dysku ssd – na co zwrócić uwagę](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk10.jpg)
 
 **Old disk**
 
 Original disk
 
-[Western Digital Blue SN580 1TB M.2 NVMe SSD](https://images.openai.com/static-rsc-4/8iD44QLl1Md8fS0FQFrDZi9DUFajH0u997WxNQ4-EVPUWub-_ymbVfw7WCBdaSLPg8YjAGytTh4mbouwd9SQeQcO4my87dPllSF8JUX9t4hrgOwa69iuZIJWjbESkrBseMAarKxMy4nxkjy4nsfiX0iJ5bXnbu-Yw8bMenU3mY0?purpose=inline)
+![Western Digital Blue SN580 1TB M.2 NVMe SSD](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/backupdisk11.jpg)
 
 **New disk**
 
@@ -1276,13 +1332,11 @@ Show the trainee:
 
 ## **9. Deep Freeze — 20 minutes**
 
-[Installing Deep Freeze](https://images.openai.com/static-rsc-4/U9bZCELqFwK7aVBL7C4odqJDUMuEg86iyIHmebVKi1JZPCREB7y-GoYgCN3sZJQ3dR6Lyri9CxaySUga-jKU7fB-1QRnt-iWIytosSFoVT8ScKqPy_GSGgdVo0KdHp7C-rvOO8WcGwXDfmN0LFMQwIlUKHYNkeJIlLW2yF73k4g?purpose=inline)
+![Installing Deep Freeze](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/deepfreeze1.jpg)
 
-[Deep Freeze Enterprise - Download - Softpedia](https://images.openai.com/static-rsc-4/HJJa-GyY0IGfeoQg1P_7vifbXyrW4urBLs3POhePXKNFNm4ABH4ZGX37qFjh7wnGGu3wOBCggECvV9OYdmL9yrlClyB6LkiSkGOcWWxWayjiRcryDOLFLoNgvYmYp6vCN9XuYyv0QAjCk8Fqlidf4fIsAN3RxcLLYgm49EUlXJA?purpose=inline)
+![Deep Freeze](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/deepfreeze2.jpg)
 
-[Thawed Period](https://images.openai.com/static-rsc-4/27HXwZe2q217BV2HjRz5S3YVCUYkN7Pciak2fso1902idz836iDDGrNPxJ_g6_FNK8oismLotxBfuXS1Qtv_b9kTz2XQW9nB8OM5hu0aOAK-GetZWHvfbzYD5puYKBmv7xjKHNLsx9b7MqGaKDS7X2NuuWbvRfcADpJu-DP6hCw?purpose=inline)
-
-7
+![Thawed Period](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/deepfreeze3.jpg)
 
 ### **What is Deep Freeze?**
 
@@ -1339,11 +1393,11 @@ On a test computer:
 
 ## **10. Introduction to PowerShell — 25 minutes**
 
-[Rendering problem, blurry text · Issue #5759 · microsoft/terminal · GitHub](https://images.openai.com/static-rsc-4/VeR2CTfSSkYN4_uNCVqaqbNq0-vFyLVkUovrwJU3qhr9oxfm90AtOgT481vGPCbhxYgkXhHWEW80FHMPDXRWDs33DU8wW2Sq3y7XWsqcT8g_kMnW9J6ylPLPxugygw_pyhKJFqtjqL8XPmFtAaDgNFdMrgv3CTJwy_yArA-r3zc?purpose=inline)
+![Rendering problem, blurry text · Issue #5759 · microsoft/terminal · GitHub](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/powershell1.jpg)
 
-[Install windows terminal msixbundle - bpposa](https://images.openai.com/static-rsc-4/eYGaU26ZMEzpCSmLq2_CNSpdpVJq7Bw5OxT280_t4xnFpun18sgn-w2ZapLyBae_C_5lC79ktKKn6BykaEgzlTS5zM79zpdpcH-Ob9GXCvm5ihz8UGBS7LiNgmVkfGE7Wu2szGY_Ml4FNMm7c8L_muQxiqmtgEeTR1qSbHIZju4?purpose=inline)
+![Rendering problem, blurry text · Issue #5759 · microsoft/terminal · GitHub](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/powershell2.jpg)
 
-[Ejecuta sesiones de PowerShell y CMD al mismo tiempo en la misma ventana con Windows Terminal | Conocimiento Adictivo](https://images.openai.com/static-rsc-4/key_H-4QdKzou6Q3FADmBA2re29O1sFYmvSkdDR3UWRyqDI6OGuevJa5Jmtpj4Gw3n6UFTOU-V8YPvSDKQh-U4ruGj7FS3LZYhCpjIGW9PkFBPIgceJYW0f-kLumaVk8Dzb0fOKlJj73d4OjrpiuCnFXnLXOMLTI-cdQaIHVe3Q?purpose=inline)
+![Rendering problem, blurry text · Issue #5759 · microsoft/terminal · GitHub](/blog/assets/images/AtelierdecouvertedeinformatiqueSupportetmaintenanceWindows/powershell3.jpg)
 
 ### **What is PowerShell?**
 
