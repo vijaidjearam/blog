@@ -21,9 +21,9 @@ L'idée est de consacrer environ 30 % du temps aux explications et 70 % aux mani
 
 ## **1. Découverte de Faronics Insight (15 min)**
 
-[Classroom Management Software | Class Control Software | Faronics](https://images.openai.com/static-rsc-4/C4_Sb15rt0l69R31GW9dtexzjtP_OGaf6UNnbH8ggC1_t4eCqaIzi-7FmgDHZkv_RRzJfp_qa8exSheHUy8LEaTzV-cUGMldamQpR34HVGoVwCfqvQ9qEYUsZ5wilK5deqPvF_AEKkfI_lQt5_gSA3S89CDq5Z4EzztcbWtCOuQ?purpose=inline)
+![Classroom Management Software | Class Control Software | Faronics]({{ '/assets/images/Atelierdecouvertedeinformatique–SupportetmaintenanceWindows/faronics-insight1.jpg' | relative_url }})
 
-[Put to the Test: Insight from Faronics | Tech & Learning](https://images.openai.com/static-rsc-4/fwA7rKHSVkTyQUmHM061DMrIkwgFm0UM5Mtcl3Y9kO_v7N1h2qyCyzIsezBGxUwaOn6GCBw1U_I62foPfUuQHckSzWzmeiQZFvwz7ASiFQm-RXs1_fBiqy3KkbPqv7xDRTRazlKRhpBsuTj5eZFnuunOZJZ2R8nOwHOGZM80x0M?purpose=inline)
+[Put to the Test: Insight from Faronics | Tech & Learning](/assets/images/Atelierdecouvertedeinformatique–SupportetmaintenanceWindows/)
 
 [Faronics Insight – Powerful Classroom Management for Modern Learning](https://images.openai.com/static-rsc-4/qIHB6rmNE50EGkXaOcoialDH6QyR-gUyNftK8YWExKsLCxGtSf3QEi_nPGvlfqOTKEUdBEKOk6cRdUrVf1MZAGAdrCg1T0UBpLcMMlyDEC0Q140Dwpi0qydvOGpoYNG5akd7VevJd1T08p6Jmy0ruFYIy7f8rArPXSsqdQ6fNNM?purpose=inline)
 
